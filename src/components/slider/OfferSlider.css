@@ -1,0 +1,47 @@
+.slider-container {
+  position: relative;
+  margin: 0 auto;
+  /* overflow: hidden; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.slider-content-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.slider-content {
+  display: flex;
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  text-align: center;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.slide-image {
+  @apply size-[400px] relative top-10;
+}
+.btn-div {
+  @apply absolute bottom-0 space-x-5;
+}
+.arrow-button {
+  @apply px-10 border rounded-tr-[30px] rounded-bl-[30px];
+}
+
+.btn-div .arrow-button:nth-child(1) {
+  @apply text-white bg-[#280d0d];
+}
+.btn-div .arrow-button:nth-child(2) {
+  @apply text-white bg-[#170606] rotate-180;
+}
