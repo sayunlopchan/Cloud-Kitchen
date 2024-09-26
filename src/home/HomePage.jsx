@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import HomeBanner from './HomeFeatures/HomeBanner';
 import ExclusiveOfferBanner from './HomeFeatures/ExclusiveOfferBanner';
+import Card from '../components/Card';
 
 const sections = ['section1', 'section2', 'section3'];
 
@@ -44,15 +45,15 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className='px-20 py-14 space-y-20'>
-      <div id="section1" className="h-screen">
+    <div className='px-10 lg:px-20 py-14 space-y-5 lg:space-y-20'>
+      <div id="section1" className="h-full ">
         <HomeBanner />
       </div>
-      <div id="section2" className="h-screen ">
+      <div id="section2" className="h-screen bg-green-500">
         <ExclusiveOfferBanner />
       </div>
-      <div id="section3" className="h-screen flex items-center justify-center bg-red-300">
-        <h1>Section 3</h1>
+      <div id="section3" className="h-screen bg-cyan-400-500">
+        <Card />
       </div>
     </div>
   );

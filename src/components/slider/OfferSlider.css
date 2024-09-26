@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 0px 15px;
 }
 
 .slider-content-wrapper {
@@ -33,7 +34,7 @@
   @apply size-[400px] relative top-10;
 }
 .btn-div {
-  @apply absolute bottom-0 space-x-5;
+  @apply absolute -bottom-10 lg:bottom-0 space-x-5;
 }
 .arrow-button {
   @apply px-10 border rounded-tr-[30px] rounded-bl-[30px];

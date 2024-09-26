@@ -100,8 +100,8 @@ const OfferSlider = () => {
       <div className='btn-div'>
         <button
           className="arrow-button"
-          onClick={prevSlide}
           disabled={isButtonDisabled}
+          onClick={prevSlide}
         >
           <CgArrowLongLeft size={60} />
         </button>
