@@ -31,13 +31,16 @@
 }
 
 .slide-image {
-  @apply size-[400px] relative top-10;
+  @apply w-full h-full relative top-10;
 }
 .btn-div {
-  @apply absolute -bottom-10 lg:bottom-0 space-x-5;
+  @apply absolute -bottom-2 sm:bottom-2 md:-bottom-5 space-x-5 flex;
+}
+.arrow {
+  @apply w-24 h-14 md:w-16 md:h-10 lg:size-[50px];
 }
 .arrow-button {
-  @apply px-10 border rounded-tr-[30px] rounded-bl-[30px];
+  @apply px-3 lg:px-10 border rounded-tr-[30px] rounded-bl-[30px];
 }
 
 .btn-div .arrow-button:nth-child(1) {

@@ -11,7 +11,7 @@ import SliderBg from "../../assets/icon/bg-dark.png";
 
 function HomeBanner() {
   return (
-    <div className="w-full h-full lg:h-[85vh] grid grid-cols-1 md:grid-cols-12 mt-[-65px]">
+    <div className="w-full h-full grid grid-cols-1 md:grid-cols-12 mt-[-65px] transition-all duration-1000 px-20 py-20">
 
       <div className="w-full h-full md:col-span-8  ">
         {/* Sticker */}
