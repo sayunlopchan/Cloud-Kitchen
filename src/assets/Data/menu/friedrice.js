@@ -1,7 +1,6 @@
 import img14 from '../../../assets/img/foodItems/chicken Fried rice.jpg';
 
 const friedRice = {
-  category: "Fried Rice",
   items: [
     {
       title: "Chicken Fried Rice",
@@ -11,6 +10,7 @@ const friedRice = {
       description: "Flavorful fried rice stir-fried with tender chicken pieces.",
       rating: 4.7,
       likes: 250,
+      category: "Fried Rice" // Added category to each item
     },
     {
       title: "Buff Fried Rice",
@@ -20,6 +20,7 @@ const friedRice = {
       description: "Delicious fried rice with succulent buff pieces.",
       rating: 4.5,
       likes: 200,
+      category: "Fried Rice" // Added category to each item
     },
     {
       title: "Veg Fried Rice",
@@ -29,6 +30,7 @@ const friedRice = {
       description: "Healthy fried rice with a mix of fresh vegetables.",
       rating: 4.3,
       likes: 180,
+      category: "Fried Rice" // Added category to each item
     },
     {
       title: "Crunchy Fried Rice",
@@ -38,6 +40,7 @@ const friedRice = {
       description: "Crispy fried rice with a blend of vegetables and spices.",
       rating: 4.6,
       likes: 220,
+      category: "Fried Rice" // Added category to each item
     },
     {
       title: "Sukuti Fried Rice",
@@ -47,6 +50,7 @@ const friedRice = {
       description: "Fried rice served with traditional sukuti.",
       rating: 4.4,
       likes: 190,
+      category: "Fried Rice" // Added category to each item
     },
   ],
 };

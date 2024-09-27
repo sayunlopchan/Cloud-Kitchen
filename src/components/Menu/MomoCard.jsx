@@ -1,9 +1,9 @@
-// components/Card.js
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../features/cartSlice';
 
-const Card = ({ id, title, img, price, discount, description, rating, likes }) => {
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../features/cartSlice';
+import PropTypes from 'prop-types';
+
+const MomoCard = ({ id, title, img, price, discount, description, rating, likes }) => {
   const dispatch = useDispatch();
   const discountedPrice = price - (price * (discount / 100));
 
@@ -18,6 +18,7 @@ const Card = ({ id, title, img, price, discount, description, rating, likes }) =
       rating,
       likes,
     };
+    console.log('Adding to cart:', product); // Debugging line
     dispatch(addToCart(product));
   };
 
@@ -42,11 +43,23 @@ const Card = ({ id, title, img, price, discount, description, rating, likes }) =
           className="bg-red-600 text-white text-lg font-semibold px-5 py-2 transition-all duration-500 border hover:rounded-xl"
           onClick={handleAddToCart}
         >
-          Add to cart
+          Buy now
         </button>
       </div>
     </div>
   );
 };
 
-export default Card;
+// PropTypes validation
+MomoCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  discount: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  likes: PropTypes.number.isRequired,
+};
+
+export default MomoCard;

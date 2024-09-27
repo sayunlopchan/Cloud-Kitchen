@@ -1,11 +1,10 @@
-import img1 from '../../img/foodItems/Chowmein.jpg'
-import img2 from '../../img/foodItems/chicken chowmein.jpg'
-import img3 from '../../img/foodItems/Sukuwa chowmein.jpg'
-import img4 from '../../img/foodItems/Veg with egg chowmin.jpg'
+import img1 from '../../img/foodItems/Chowmein.jpg';
+import img2 from '../../img/foodItems/chicken chowmein.jpg';
+import img3 from '../../img/foodItems/Sukuwa chowmein.jpg';
+import img4 from '../../img/foodItems/Veg with egg chowmin.jpg';
 
 const chowmein = [
   {
-    category: "chowmein",
     items: [
       {
         title: "Chowmein (veg)",
@@ -15,6 +14,7 @@ const chowmein = [
         description: "A classic vegetable stir-fried chowmein with fresh veggies and flavorful spices.",
         rating: 4.5,
         likes: 120,
+        category: "chowmein" // Added category to each item
       },
       {
         title: "Chowmein (chicken)",
@@ -24,6 +24,7 @@ const chowmein = [
         description: "Savory chicken chowmein with tender chicken pieces and stir-fried noodles.",
         rating: 4.0,
         likes: 95,
+        category: "chowmein" // Added category to each item
       },
       {
         title: "Sukuwa Chowmein",
@@ -33,6 +34,7 @@ const chowmein = [
         description: "A fusion of traditional Nepali Sukuwa (smoked meat) with chowmein, offering a smoky and spicy flavor.",
         rating: 4.3,
         likes: 80,
+        category: "chowmein" // Added category to each item
       },
       {
         title: "Egg With Veg Chowmin",
@@ -42,6 +44,7 @@ const chowmein = [
         description: "A delightful mix of stir-fried vegetables and eggs combined with noodles for a nutritious meal.",
         rating: 4.7,
         likes: 150,
+        category: "chowmein" // Added category to each item
       },
     ]
   }

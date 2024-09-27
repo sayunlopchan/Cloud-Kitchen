@@ -4,10 +4,10 @@ import ExclusiveOfferData from '../../assets/Data/ExclusiveOfferData'
 
 const ExclusiveOfferBanner = () => {
   return (
-    <div className='px-10 pt-10 space-y-10 transition-all duration-1000'>
+    <div className='px-10 py-10 space-y-10 transition-all duration-1000 bg-clay'>
       {/* Heading */}
       <div className='relative w-fit '>
-        <h2 className='font-bold text-4xl pl-10'>20-30% off on Exclusive deals </h2>
+        <h2 className='font-bold text-3xl pl-10'>20-30% off on Exclusive deals </h2>
         <img src={CurveLine} alt={CurveLine} className='w-[130px] absolute top-10 right-24' />
       </div>
       {/* Heading */}

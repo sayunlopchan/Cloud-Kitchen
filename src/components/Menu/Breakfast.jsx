@@ -1,6 +1,6 @@
 // components/Breakfast.js
 import breakfast from '../../assets/Data/menu/breakfast';
-import Card from '../Card';
+import BreakfastCard from './BreakfastCard';
 
 const Breakfast = () => {
   const { category, items } = breakfast[0] || { category: "No Category", items: [] }; // Safe default
@@ -13,7 +13,7 @@ const Breakfast = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-20 place-items-center">
         {items.map((item) => (
-          <Card
+          <BreakfastCard
             key={item.id} // Use a unique identifier
             {...item} // Spread the item properties
           />

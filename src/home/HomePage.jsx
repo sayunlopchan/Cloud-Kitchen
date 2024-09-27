@@ -1,19 +1,18 @@
 
 import HomeBanner from './HomeFeatures/HomeBanner';
 import ExclusiveOfferBanner from './HomeFeatures/ExclusiveOfferBanner';
-import Breakfast from '../components/Menu/Breakfast';
-
+import PopularDish from './HomeFeatures/PopularDishes';
+import MostSold from './HomeFeatures/MostSold';
 
 const HomePage = () => {
 
 
   return (
-    <div className=' space-y-5 lg:space-y-20'>
+    <div className=' '>
       <HomeBanner />
       <ExclusiveOfferBanner />
-      <div className='bg-[#F0F2FF]'>
-        <Breakfast />
-      </div>
+      <PopularDish />
+      <MostSold />
     </div>
   );
 };

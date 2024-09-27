@@ -1,10 +1,7 @@
-// features/cartSlice.js
 import { createSlice } from "@reduxjs/toolkit";
-import breakfast from "../assets/Data/menu/breakfast"; // Import breakfast data
 
 const initialState = {
   cart: [],
-  items: breakfast[0].items, // Use breakfast items directly
   totalQuantity: 0,
   totalPrice: 0,
 };
@@ -14,11 +11,12 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+      // Check if the product is already in the cart
       let find = state.cart.findIndex((item) => item.id === action.payload.id);
       if (find >= 0) {
-        state.cart[find].quantity += 1;
+        state.cart[find].quantity += 1; // If found, increase the quantity
       } else {
-        state.cart.push({ ...action.payload, quantity: 1 });
+        state.cart.push({ ...action.payload, quantity: 1 }); // Otherwise, add the product with quantity 1
       }
     },
     getCartTotal: (state) => {

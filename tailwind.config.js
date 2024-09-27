@@ -7,14 +7,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        main: '#ff0000', // Red
-        secondary: '#ffa500', // Orange
-        default: '#ffffff', // White
+        mainText: '',
+        secendaryText: '#1F2937',
+        colorRed: '#ff0000', // Red
+        default: '#FFFFFF', //white
+        colorOrange: '#ffa500', // Orange
         grayblack: '#222121', // grayblack
-
+        clay: '#F0F2FF', // clay
       },
-
     },
+
   },
   plugins: [],
 }

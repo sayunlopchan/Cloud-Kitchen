@@ -8,7 +8,6 @@ import img6 from '../../img/foodItems/Scrumbled egg with hash potato.jpg';
 
 const breakfast = [
   {
-    category: "breakfast",
     items: [
       {
         id: 1,
@@ -19,6 +18,7 @@ const breakfast = [
         description: "A delicious poached egg served on brown bread.",
         rating: 4.5,
         likes: 120,
+        category: "breakfast" // Added category to each item
       },
       {
         id: 2,
@@ -29,6 +29,7 @@ const breakfast = [
         description: "Classic boiled egg.",
         rating: 4.0,
         likes: 95,
+        category: "breakfast" // Added category to each item
       },
       {
         id: 3,
@@ -39,6 +40,7 @@ const breakfast = [
         description: "Freshly made sandwich.",
         rating: 4.3,
         likes: 80,
+        category: "breakfast" // Added category to each item
       },
       {
         id: 4,
@@ -49,6 +51,7 @@ const breakfast = [
         description: "Grilled chicken sandwich for a hearty breakfast.",
         rating: 4.7,
         likes: 150,
+        category: "breakfast" // Added category to each item
       },
       {
         id: 5,
@@ -59,6 +62,7 @@ const breakfast = [
         description: "Delicious grilled buff sandwich.",
         rating: 4.6,
         likes: 110,
+        category: "breakfast" // Added category to each item
       },
       {
         id: 6,
@@ -69,6 +73,7 @@ const breakfast = [
         description: "Scrambled egg served with crispy hash potatoes.",
         rating: 4.4,
         likes: 90,
+        category: "breakfast" // Added category to each item
       },
     ]
   }
