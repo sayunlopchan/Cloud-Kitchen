@@ -9,36 +9,42 @@ import {
 import { NavLink } from "react-router-dom";
 
 const CartPage = () => {
+
+
   const { cart, totalQuantity, totalPrice } = useSelector(
     (state) => state.allCart
   );
 
-  const dispatch = useDispatch();
-  const charges = 99; // Fixed charges for order
-  const [coupon, setCoupon] = useState("");
-  const [couponDiscount, setCouponDiscount] = useState(0); // Coupon discount state
-  const [couponApplied, setCouponApplied] = useState(false);
-  const validCoupon = "DISCOUNT10"; // Example of a valid coupon
 
-  // Calculate discount (Assume a discount percentage or amount is defined for each item in the cart)
+
+
+  const dispatch = useDispatch();
+  // const charges = 99;
+  // const [coupon, setCoupon] = useState("");
+  // const [couponDiscount, setCouponDiscount] = useState(0);
+  // const [couponApplied, setCouponApplied] = useState(false);
+  // const validCoupon = "DISCOUNT10"; 
+
+
   const itemDiscount = cart.reduce((acc, item) => {
-    return acc + (item.discount || 0); // Assuming each item has a discount field
+    return acc + (item.discount || 0);
   }, 0);
 
   // Apply coupon discount if the valid coupon is entered
-  const handleApplyCoupon = () => {
-    if (coupon === validCoupon && !couponApplied) {
-      setCouponDiscount(0.1 * totalPrice); // 10% discount
-      setCouponApplied(true);
-    } else if (couponApplied) {
-      alert("Coupon already applied.");
-    } else {
-      alert("Invalid coupon code.");
-    }
-  };
+  // const handleApplyCoupon = () => {
+  //   if (coupon === validCoupon && !couponApplied) {
+  //     setCouponDiscount(0.1 * totalPrice); // 10% discount
+  //     setCouponApplied(true);
+  //   } else if (couponApplied) {
+  //     alert("Coupon already applied.");
+  //   } else {
+  //     alert("Invalid coupon code.");
+  //   }
+  // };
 
-  // Final total after applying item discount, coupon discount, and adding charges
-  const finalTotal = totalPrice - itemDiscount - couponDiscount + charges;
+
+  const finalTotal = totalPrice - itemDiscount;
+  // const finalTotal = totalPrice - itemDiscount - couponDiscount + charges;
 
   useEffect(() => {
     dispatch(getCartTotal());
@@ -94,6 +100,7 @@ const CartPage = () => {
                               </svg>
                             </button>
                           </div>
+                          {/*  */}
                           <div className="text-end md:order-4 md:w-32">
                             <p className="text-base font-bold text-gray-900">Rs.{item.price}</p>
                           </div>
@@ -138,16 +145,16 @@ const CartPage = () => {
                     <dt className="text-base font-normal text-gray-500">Discount</dt>
                     <dd className="text-base font-medium text-green-600">Rs.{itemDiscount}</dd>
                   </dl>
-                  {couponApplied && (
+                  {/* {couponApplied && (
                     <dl className="flex items-center justify-between gap-4">
                       <dt className="text-base font-normal text-gray-500">Coupon Discount</dt>
                       <dd className="text-base font-medium text-green-600">Rs.{couponDiscount}</dd>
                     </dl>
-                  )}
-                  <dl className="flex items-center justify-between gap-4">
+                  )} */}
+                  {/* <dl className="flex items-center justify-between gap-4">
                     <dt className="text-base font-normal text-gray-500">Charges</dt>
                     <dd className="text-base font-medium text-gray-900">Rs.{charges}</dd>
-                  </dl>
+                  </dl> */}
                 </div>
                 <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2">
                   <dt className="text-base font-bold text-gray-900">Total</dt>
@@ -161,17 +168,20 @@ const CartPage = () => {
                   type="text"
                   className="w-full p-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"
                   placeholder="Enter Coupon Code"
-                  value={coupon}
-                  onChange={(e) => setCoupon(e.target.value)}
-                  disabled={couponApplied} // Disable input if coupon already applied
+                // value={coupon}
+                // onChange={(e) => setCoupon(e.target.value)}
+                // disabled={couponApplied} // Disable input if coupon already applied
                 />
                 <button
-                  onClick={handleApplyCoupon}
-                  className={`w-full px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 ${couponApplied ? "cursor-not-allowed" : ""
-                    }`}
-                  disabled={couponApplied} // Disable button if coupon already applied
+                  // onClick={handleApplyCoupon}
+                  className={`w-full px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700`}
+                //  ${couponApplied ? "cursor-not-allowed" : ""
+                // }`}
+                // disabled={couponApplied} 
+                // Disable button if coupon already applied
                 >
-                  {couponApplied ? "Coupon Applied" : "Apply Coupon"}
+                  {/* {couponApplied ? "Coupon Applied" : "Apply Coupon"} */}
+                  Apply Coupon
                 </button>
               </div>
               <div className="flex flex-col items-center">
@@ -185,7 +195,7 @@ const CartPage = () => {
                 <p>Or</p>
 
                 <NavLink
-                  to="/checkout"
+                  to="/takeout-location-kitchen-near-me"
                   className="flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium bg-black transition-all duration-300 border-2 text-white"
                 >
                   Takeout
@@ -200,7 +210,7 @@ const CartPage = () => {
         </div>
       </div>
 
-    </section>
+    </section >
   );
 };
 

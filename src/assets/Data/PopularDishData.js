@@ -10,7 +10,8 @@ const PopularDishData = [
     description: "Spicy momos filled with minced meat and served with a flavorful dipping sauce.",
     discount: 10,
     price: 250,
-    category: ""
+    category: "",
+    cookingTime: 20
   },
   {
     id: 2,

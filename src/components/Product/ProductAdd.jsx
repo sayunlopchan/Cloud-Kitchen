@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
-const Admin = () => {
+const ProductAdd = () => {
   const [formData, setFormData] = useState({
     title: '',
     price: '',
@@ -125,4 +125,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default ProductAdd;

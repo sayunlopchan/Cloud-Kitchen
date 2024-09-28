@@ -1,10 +1,15 @@
 
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../features/cartSlice";
+
+
+// 
 import StarRating from "./StarRating";
 import { FaRegSquarePlus } from "react-icons/fa6";
 import TextLimit from "./TextLimit";
 import Heart from "./Heart";
+// 
+
 
 const ProductCard = () => {
   // Ensure the state path is correct
