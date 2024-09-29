@@ -1,8 +1,9 @@
-import React from 'react'
 
 const OfferSliderChild = () => {
   return (
-    <div>OfferSliderChild</div>
+    <div>
+      ss
+    </div>
   )
 }
 

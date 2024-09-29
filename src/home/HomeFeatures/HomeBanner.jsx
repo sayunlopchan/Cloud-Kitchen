@@ -7,6 +7,7 @@ import DiscountSticker from "../../assets/icon/discount-sticker.png";
 
 // svg
 import SliderBg from "../../assets/icon/bg-dark.png";
+import OfferSliderChild from "../../components/slider/OfferSliderChild";
 
 
 function HomeBanner() {
@@ -74,9 +75,7 @@ function HomeBanner() {
 
 
       <div className="flex gap-5 mt-20 bg-green-500 sm:hidden">
-        <div>
-          hello
-        </div>
+        <OfferSliderChild />
       </div>
 
 
