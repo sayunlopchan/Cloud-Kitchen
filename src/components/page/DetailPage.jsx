@@ -7,14 +7,11 @@ import { addToCart, increaseItemQuantity, decreaseItemQuantity } from '../../fea
 import PopularDishData from '../../assets/Data/PopularDishData'; // Adjust the import based on your data structure
 
 const DetailPage = () => {
-
   const nav = useNavigate();
-
   const { id } = useParams(); // Get the product id from the URL
   const product = PopularDishData.find(item => item.id === parseInt(id)); // Find the product by id
-  const dispatch = useDispatch(); // Hook to dispatch actions
+  const dispatch = useDispatch();
   const cart = useSelector(state => state.allCart.cart); // Updated line
-
 
   // Find if the product is already in the cart
   const cartItem = cart.find(item => item.id === product?.id);
@@ -24,10 +21,14 @@ const DetailPage = () => {
   }
 
   const handleAddToCart = () => {
+    const discountedPrice = product.discountPercentage
+      ? Math.round(product.price * (1 - product.discountPercentage / 100))
+      : product.price; // Calculate discounted price
+
     if (cartItem) {
       dispatch(increaseItemQuantity(product.id)); // Increase quantity if product is already in cart
     } else {
-      dispatch(addToCart(product)); // Add product to cart if it's not in the cart yet
+      dispatch(addToCart({ ...product, price: discountedPrice })); // Add product with discounted price to cart
     }
   };
 
@@ -37,9 +38,10 @@ const DetailPage = () => {
     }
   };
 
+  const afterDiscount = product.price * (1 - product.discountPercentage / 100)
+
   return (
     <div className='grid grid-cols-1 lg:grid-cols-12 bg-clay py-5 px-5 lg:px-20 space-y-10'>
-
       {/* img */}
       <div className='lg:col-span-6 flex justify-center items-center mb-5 lg:mb-0'>
         <img
@@ -63,9 +65,21 @@ const DetailPage = () => {
           <p className='space-x-2 text-base'>
             <span className='font-semibold text-lg'>Discount:</span>
             <span className='text-green-500 font-bold'>
-              {product.discount ? `${product.discount}%` : 'Not Available'}
+              {product.discountPercentage ? `${product.discountPercentage}%` : 'Not Available'}
             </span>
           </p>
+          {
+            product.discountPercentage ?
+              <p className='relative'>Rs.
+                <span className='pr-3'>
+                  {product.price}
+                  <span className='border-b-2 border-red-500 px-4 absolute top-3 left-[21px]'></span>
+                  {afterDiscount}
+                </span>
+              </p>
+              :
+              ""
+          }
 
           {product.discount ? (
             <p className='font-semibold space-x-2 text-lg'>
@@ -132,10 +146,8 @@ const DetailPage = () => {
         <div className='w-[260px] h-[300px] bg-white shadow-lg mx-auto'>
           <p className='text-gray-500 flex justify-center items-center pt-20'>No Data for now!</p>
         </div>
-
-
       </div>
-    </div>
+    </div >
   );
 };
 

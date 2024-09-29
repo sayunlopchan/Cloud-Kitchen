@@ -1,48 +1,45 @@
 import { useNavigate } from 'react-router-dom';
+import PopularDishData from '../../assets/Data/PopularDishData';
+import CurveLine from '../../assets/icon/red Curve.svg';
+import Arrow from '../../assets/icon/Arrow-next.svg';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../features/cartSlice';
 
-
-
-// card data
-import PopularDishData from '../../assets/Data/PopularDishData';
-
-// icons
-import CurveLine from '../../assets/icon/red Curve.svg';
-import Arrow from '../../assets/icon/Arrow-next.svg';
-
-
-
-
 const MostSold = () => {
   const nav = useNavigate();
-  const dispatch = useDispatch(); // Initialize useDispatch
+  const dispatch = useDispatch();
 
   const handleAddToCart = (item) => {
+    // Calculate the discounted price if applicable
+    const discountedPrice = item.discountPercentage
+      ? item.price * (1 - item.discountPercentage / 100)
+      : item.price;
+
     dispatch(addToCart({
-      id: item.id, // Ensure the ID is passed
+      id: item.id,
       title: item.title,
-      price: item.discount > 0 ? item.price - item.discount : item.price,
+      price: discountedPrice, // Store the discounted price
       img: item.img,
-    })); // Dispatch the addToCart action with product details
+    }));
   };
 
   return (
-    <div className='space-y-32 px-10 py-10 transition-all duration-1000 '>
+    <div className='space-y-32 px-10 py-10 transition-all duration-1000 bg-[#F0F2FF]'>
       {/* Heading */}
       <div className='relative w-fit'>
-        <h2 className='font-bold text-3xl pl-10'>Most Sold</h2>
+        <h2 className='font-bold text-3xl pl-10'>Our Most Sold</h2>
         <img src={CurveLine} alt="CurveLine" className='w-[100px] absolute top-10 right-0' />
       </div>
 
       {/* Dishes - Display only the first 3 */}
-      <div className="flex flex-wrap justify-center gap-10 items-center ">
+      <div className="flex flex-wrap justify-center gap-10 items-center">
         {
-          PopularDishData.slice(0, 3).map((item, idx) => (
+          PopularDishData.slice(0, 3).map((item) => (
             <div
-              key={idx}
+              key={item.id} // Use unique ID as key
               onClick={() => nav(`/product-detail/${item.id}`)}
-              className='w-[230px] h-[280px] relative rounded-2xl shadow-xl bg-white cursor-pointer'>
+              className='w-[230px] h-[280px] relative rounded-2xl shadow-xl bg-white cursor-pointer'
+            >
               <div className='h-[100px]'>
                 <img
                   src={item.img}
@@ -52,10 +49,11 @@ const MostSold = () => {
               </div>
               <div className='p-2'>
                 <h2 className='text-2xl font-bold'>{item.title}</h2>
-                {item.discount > 0 ? (
-                  <div>
-                    <span className='text-2xl font-semibold line-through text-red-600'>Rs.{item.price}</span>
-                    <span className='text-2xl font-semibold ml-2'>Rs.{(item.price - item.discount).toFixed(2)}</span>
+                {item.discountPercentage ? (
+                  <div className='text-2xl font-semibold'>
+                    Rs.
+                    <span className='line-through'>{item.price}</span>
+                    <span className='ml-2'>{item.price * (1 - item.discountPercentage / 100)}</span>
                   </div>
                 ) : (
                   <h2 className='text-2xl font-semibold'>Rs.{item.price}</h2>
@@ -63,13 +61,12 @@ const MostSold = () => {
               </div>
               <div className="absolute bottom-2 right-2 m-2">
                 <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleAddToCart(item);
-                  }
-                    // Add onClick to dispatch addToCart
-                  }
                   className="bg-red-600 text-white text-lg font-semibold px-5 py-2 transition-all duration-500 border hover:rounded-xl"
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent click on button from triggering the card click
+                    handleAddToCart(item); // Call the add to cart function with the current item
+                  }}
+                  aria-label={`Add ${item.title} to cart`}
                 >
                   Add To Cart
                 </button>
@@ -80,7 +77,7 @@ const MostSold = () => {
       </div>
 
       <button
-        onClick={() => nav('/most-sold')}
+        onClick={() => nav('/popular-dishes')}
         className='bg-red-600 px-3 py-2 rounded-tr-2xl rounded-bl-2xl flex items-center justify-center mx-auto text-white font-semibold hover:bg-red-800 transition-all duration-300'
       >
         <span>View All</span>
