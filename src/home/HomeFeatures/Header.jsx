@@ -21,8 +21,9 @@ const Header = () => {
   const isBgClay =
     location.pathname.includes("/product-detail/") ||
     location.pathname === "/menu" ||
-    location.pathname === "/cart" |
+    location.pathname === "/cart" ||
     location.pathname === "/most-sold" ||
+    location.pathname === "/takeout-location-near-me" ||
     location.pathname === "/popular-dishes";
 
 
