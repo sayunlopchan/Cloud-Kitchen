@@ -4,6 +4,7 @@ import CurveLine from '../../assets/icon/red Curve.svg';
 import Arrow from '../../assets/icon/Arrow-next.svg';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../features/cartSlice';
+import TextLimit from '../../components/TextLimit';
 
 const PopularDishes = () => {
   const nav = useNavigate();
@@ -33,38 +34,54 @@ const PopularDishes = () => {
       </div>
       {/* Heading */}
 
-      {/* Dishes - Display only the first 3 */}
-      <div className="flex flex-wrap justify-center gap-10 items-center">
+      {/* Dishes - Display only the first 4 */}
+      <div className="grid grid-cols-2  md:grid-cols-4 place-items-center place-content-center gap-10">
         {
-          PopularDishData.slice(0, 3).map((item) => (
+          PopularDishData.slice(0, 4).map((item) => (
             <div
               key={item.id} // Use unique ID as key
               onClick={() => nav(`/product-detail/${item.id}`)}
-              className='w-[100px] h-[140px] lg:w-[230px] lg:h-[280px] relative rounded-2xl shadow-xl bg-white cursor-pointer'
+              className='w-[130px] h-[160px] md:w-[186px] md:h-[240px] lg:w-[230px] lg:h-[280px] relative rounded-2xl shadow-xl bg-white cursor-pointer'
             >
-              <div className='h-[20px] lg:h-[100px] bg-gray-600'>
+              <div className='h-[40px] md:h-[100px] '>
                 <img
                   src={item.img}
                   alt={item.title}
-                  className='size-[60px] lg:size-[130px] rounded-full border-red-600 border-2 lg:border-4 absolute right-0 -top-10'
+                  className='size-[60px] md:size-[115px] lg:size-[130px] rounded-full border-red-600 border-2 md:border-4 absolute right-0 -top-5 lg:-top-10'
                 />
               </div>
-              <div className='p-1 lg:p-2'>
-                <h2 className='text-[10px] lg:text-2xl font-bold'>{item.title}</h2>
+              <div className='p-1 md:p-2'>
+
+                {/* card-title */}
+                <h2 className='text-sm md:text-xl lg:text-2xl font-bold'>
+                  <TextLimit text={item.title} limit={18} />
+                </h2>
+                {/* card-title */}
+
+
+                {/* card-price */}
                 {item.discountPercentage ? (
-                  <div className='text-sm lg:text-2xl font-semibold'>
+                  <div className='text-sm md:text-lg lg:text-2xl font-semibold relative'>
                     Rs.
-                    <span className='line-through'>{item.price}</span>
-                    <span className='ml-2'>{item.price * (1 - item.discountPercentage / 100)}</span>
+                    <span className='absolute border-b-2 px-[14px] md:px-[18px] border-red-500 top-[9px] md:top-[12px]'></span>
+                    {item.price}
+                    <span className='ml-2'>
+                      {
+                        item.price * (1 - item.discountPercentage / 100)
+                      }
+                    </span>
                   </div>
                 ) : (
-                  <h2 className='text-sm lg:text-2xl font-semibold'>Rs.{item.price}</h2>
+                  <h2 className='text-sm md:text-lg lg:text-2xl font-semibold'>Rs.{item.price}</h2>
                 )}
               </div>
+              {/* card-price */}
 
-              <div className="absolute bottom-2 right-2 m-2">
+              <div className="flex justify-center">
                 <button
-                  className="bg-red-600 text-white text-[8px] lg:text-lg lg:font-semibold px-2 py-1 lg:px-5 lg:py-2 transition-all duration-500 border hover:rounded-xl "
+                  className="
+                  absolute bottom-2
+                  bg-red-600 text-white text-sm lg:text-lg lg:font-semibold px-2 py-1 lg:px-5 lg:py-2 transition-all duration-500 border hover:rounded-xl "
                   onClick={(e) => {
                     e.stopPropagation(); // Prevent click on button from triggering the card click
                     handleAddToCart(item); // Call the add to cart function with the current item
