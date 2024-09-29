@@ -8,7 +8,7 @@ const PopularDishData = [
     img: img1,
     title: "B.chilly Momo",
     description: "Spicy momos filled with minced meat and served with a flavorful dipping sauce.",
-    discount: 10,
+    discountPercentage: 10,
     price: 250,
     category: "",
     cookingTime: 20
@@ -18,7 +18,7 @@ const PopularDishData = [
     img: img2,
     title: "Poached egg with brown bread",
     description: "Soft poached eggs served on toasted brown bread with a sprinkle of herbs.",
-    discount: null,
+    discountPercentage: null,
     price: 250,
     category: ""
   },
@@ -27,7 +27,7 @@ const PopularDishData = [
     img: img3,
     title: "Sandwich",
     description: "A classic sandwich with fresh vegetables, cheese, and a choice of spreads.",
-    discount: 0,
+    discountPercentage: 20,
     price: 250,
     category: ""
   },
@@ -36,7 +36,7 @@ const PopularDishData = [
     img: img1,
     title: "B.chilly Momo",
     description: "Spicy momos filled with minced meat and served with a flavorful dipping sauce.",
-    discount: 10,
+    discountPercentage: 10,
     price: 250,
     category: ""
   },
@@ -45,7 +45,7 @@ const PopularDishData = [
     img: img2,
     title: "Poached egg with brown bread",
     description: "Soft poached eggs served on toasted brown bread with a sprinkle of herbs.",
-    discount: null,
+    discountPercentage: null,
     price: 250,
     category: ""
   },
@@ -54,7 +54,7 @@ const PopularDishData = [
     img: img3,
     title: "Sandwich",
     description: "A classic sandwich with fresh vegetables, cheese, and a choice of spreads.",
-    discount: 0,
+    discountPercentage: 0,
     price: 250,
     category: ""
   },
@@ -63,7 +63,7 @@ const PopularDishData = [
     img: img1,
     title: "B.chilly Momo",
     description: "Spicy momos filled with minced meat and served with a flavorful dipping sauce.",
-    discount: 10,
+    discountPercentage: 10,
     price: 250,
     category: ""
   },
@@ -72,7 +72,7 @@ const PopularDishData = [
     img: img2,
     title: "Poached egg with brown bread",
     description: "Soft poached eggs served on toasted brown bread with a sprinkle of herbs.",
-    discount: null,
+    discountPercentage: null,
     price: 250,
     category: ""
   },
@@ -81,7 +81,7 @@ const PopularDishData = [
     img: img3,
     title: "Sandwich",
     description: "A classic sandwich with fresh vegetables, cheese, and a choice of spreads.",
-    discount: 0,
+    discountPercentage: 0,
     price: 250,
     category: ""
   },
@@ -90,7 +90,7 @@ const PopularDishData = [
     img: img1,
     title: "B.chilly Momo",
     description: "Spicy momos filled with minced meat and served with a flavorful dipping sauce.",
-    discount: 10,
+    discountPercentage: 10,
     price: 250,
     category: ""
   },
@@ -99,7 +99,7 @@ const PopularDishData = [
     img: img2,
     title: "Poached egg with brown bread",
     description: "Soft poached eggs served on toasted brown bread with a sprinkle of herbs.",
-    discount: null,
+    discountPercentage: null,
     price: 250,
     category: ""
   },
@@ -108,7 +108,7 @@ const PopularDishData = [
     img: img3,
     title: "Sandwich",
     description: "A classic sandwich with fresh vegetables, cheese, and a choice of spreads.",
-    discount: 0,
+    discountPercentage: 0,
     price: 250,
     category: ""
   },

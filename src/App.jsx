@@ -56,7 +56,7 @@ const App = () => {
           element: <Login />
         },
         {
-          path: "/takeout-location-kitchen-near-me",
+          path: "/takeout-location-near-me",
           element: <TakeoutPage />
         },
       ]

@@ -35,18 +35,18 @@ const Header = () => {
         className="size-[60px] cursor-pointer"
       />
       <div className="flex items-center gap-3">
-        <div className="relative">
+
+        <div
+          onClick={() => nav("/cart")}
+          className="relative group cursor-pointer">
           <span
             className={`absolute top-1 right-0 size-4 flex items-center justify-center rounded-full text-[10px] border border-gray-500 ${totalQuantity > 0 ? 'animate-bounce border-none text-white bg-red-500' : 'bg-white'}`}
           >
             {totalQuantity}
           </span>
-          <HiOutlineShoppingBag
-            size={35}
-            onClick={() => nav("/cart")}
-            className="cursor-pointer"
-          />
+          <HiOutlineShoppingBag size={35} />
         </div>
+
         <div className="space-x-1 bg-white p-2 border ">
           <NavLink className={"cursor-pointer gradient-Text "}>Login</NavLink>
           <span>|</span>

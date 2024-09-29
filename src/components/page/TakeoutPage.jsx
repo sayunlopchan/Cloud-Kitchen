@@ -1,7 +1,10 @@
-import { NavLink } from "react-router-dom"
-
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const TakeoutPage = () => {
+  const cart = useSelector((state) => state.allCart.cart); // Access cart from Redux state
+  const totalPrice = useSelector((state) => state.allCart.totalPrice); // Access totalPrice from Redux state
+
   return (
     <div className="p-10 lg:py-5 lg:px-20">
 
@@ -29,13 +32,39 @@ const TakeoutPage = () => {
           <div className="h-[400px] w-full bg-gray-400 "></div>
         </div>
 
-        <div className="md:col-span-5 border-2 flex justify-center max-md:order-1">
-          <h2 className="font-semibold text-xl lg:text-3xl">Order Summary</h2>
+        <div className="md:col-span-5 border-2 max-md:order-1">
+          <h2 className="font-semibold text-xl lg:text-3xl text-center m-2">Order Summary</h2>
+
+          {/* Loop through cart items */}
+          <div className="p-5">
+            {cart.length === 0 ? (
+              <p>Your cart is empty</p>
+            ) : (
+              cart.map((item) => (
+                <div key={item.id} className="flex gap-4 mb-5">
+                  <div className="w-20 h-20 bg-gray-400 rounded-lg overflow-hidden">
+                    <img src={item.img} alt={item.title} className="object-cover w-full h-full" />
+                  </div>
+                  <div>
+                    <h2 className="font-semibold">{item.title}</h2>
+                    <p className="text-sm">Rs. {item.price}</p>
+                    <p className="text-sm">Quantity: {item.quantity}</p>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+
+          {/* Total Price */}
+          <div className="flex justify-between px-5 py-3 border-t-2">
+            <h2 className="font-semibold">Total Price:</h2>
+            <p>Rs. {totalPrice}</p>
+          </div>
         </div>
 
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TakeoutPage
+export default TakeoutPage;

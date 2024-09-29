@@ -1,5 +1,5 @@
 
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'; // Redux hooks
 import { FaHeart, FaPlus, FaMinus } from "react-icons/fa6"; // Updated import for icons
 import { GoStarFill } from "react-icons/go";
@@ -7,6 +7,9 @@ import { addToCart, increaseItemQuantity, decreaseItemQuantity } from '../../fea
 import PopularDishData from '../../assets/Data/PopularDishData'; // Adjust the import based on your data structure
 
 const DetailPage = () => {
+
+  const nav = useNavigate();
+
   const { id } = useParams(); // Get the product id from the URL
   const product = PopularDishData.find(item => item.id === parseInt(id)); // Find the product by id
   const dispatch = useDispatch(); // Hook to dispatch actions
@@ -97,14 +100,21 @@ const DetailPage = () => {
         </div>
 
         <div className="h-10">
-          <div className="flex justify-between items-center px-5 absolute bottom-0 w-full">
-            <span className='flex items-center gap-2'>
+          <div className="flex justify-between items-center px-5 absolute bottom-0 w-full text-sm">
+            <span className='flex items-center gap-1 '>
               <GoStarFill size={30} color="gold" />{'(No data)'}
             </span>
-            <button className="bg-colorRed text-white font-semibold text-lg px-10 py-2">
-              Purchase
-            </button>
-            <span className='flex items-center gap-2'>
+            <div className='space-x-1'>
+              <button className="bg-colorRed text-white font-semibold text-lg px-8 py-2">
+                Purchase
+              </button>
+              <button
+                onClick={() => nav('/takeout-location-near-me')}
+                className="bg-black text-white font-semibold text-lg px-8 py-2">
+                Takeout
+              </button>
+            </div>
+            <span className='flex items-center gap-1'>
               <FaHeart size={30} color="red" />{'(No data)'}
             </span>
           </div>

@@ -17,7 +17,7 @@ const PopularDishes = () => {
     dispatch(addToCart({
       id: item.id,
       title: item.title,
-      price: item.price - (item.discount || 0), // Apply discount if available
+      price: item.price - (item.price * (item.discountPercentage || 0) / 100),
       img: item.img,
     }));
   };
@@ -49,9 +49,12 @@ const PopularDishes = () => {
               <div className='p-2'>
                 <h2 className='text-2xl font-bold'>{item.title}</h2>
                 {item.discount > 0 ? (
-                  <div>
-                    <span className='text-2xl font-semibold line-through text-red-600'>Rs.{item.price}</span>
-                    <span className='text-2xl font-semibold ml-2'>Rs.{(item.price - item.discount).toFixed(2)}</span>
+                  <div className='text-2xl font-semibold'>
+                    Rs.
+                    <span className='line-through text-red-600'>{item.price}</span>
+
+                    <span className='ml-2'>
+                      {(item.price - item.discountPercentage)}</span>
                   </div>
                 ) : (
                   <h2 className='text-2xl font-semibold'>Rs.{item.price}</h2>
