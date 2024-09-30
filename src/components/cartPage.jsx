@@ -6,14 +6,16 @@ import {
   decreaseItemQuantity,
   increaseItemQuantity,
 } from "../features/cartSlice";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const CartPage = () => {
   const { cart, totalQuantity, totalPrice } = useSelector(
     (state) => state.allCart
   );
 
-  const nav = useNavigate()
+
+
+
   const dispatch = useDispatch();
   const finalTotal = totalPrice;
 
@@ -126,30 +128,23 @@ const CartPage = () => {
                   Apply Coupon
                 </button>
               </div>
-              {/* buttons */}
               <div className="flex flex-col items-center">
-                <button
-                  onClick={() => cart.length > 0 && nav("/fill-my-form")}
-                  className={`flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-300 border-2 hover:border-green-500 ${cart.length === 0 ? "pointer-events-none opacity-50" : ""
-                    }`}
-                  disabled={cart.length === 0}
+                <NavLink
+                  to="/fill-my-form"
+                  className="flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-300 border-2 hover:border-green-500"
                 >
                   Proceed to Checkout
-                </button>
+                </NavLink>
 
                 <p>Or</p>
 
-                <button
-                  onClick={() => cart.length > 0 && nav("/takeout-location-near-me")}
-                  className={`flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-300 border-2 ${cart.length === 0 ? "pointer-events-none opacity-50" : ""
-                    }`}
-                  disabled={cart.length === 0}
+                <NavLink
+                  to="/takeout-location-near-me"
+                  className="flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium bg-black transition-all duration-300 border-2 text-white"
                 >
                   Takeout
-                </button>
+                </NavLink>
               </div>
-
-              {/* buttons */}
             </div>
           </div>
           {/* Order Summary */}

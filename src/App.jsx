@@ -17,6 +17,7 @@ import PopularDishesPage from "./components/page/PopularDishesPage";
 import DetailPage from "./components/page/DetailPage";
 import TakeoutPage from "./components/page/TakeoutPage";
 import FillMyForm from "./components/page/FillMyForm";
+import Payment from "./components/page/Payment";
 
 const App = () => {
 
@@ -78,6 +79,10 @@ const App = () => {
         {
           path: "/fill-my-form",
           element: <FillMyForm />
+        },
+        {
+          path: "/pay-my-order",
+          element: <Payment />
         },
       ]
     }

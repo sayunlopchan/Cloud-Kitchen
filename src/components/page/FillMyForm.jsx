@@ -1,10 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+
+
 const FillMyForm = () => {
+  const nav = useNavigate()
   const cart = useSelector((state) => state.allCart.cart); // Access cart from Redux state
   const totalPrice = useSelector((state) => state.allCart.totalPrice); // Access totalPrice from Redux state
   const [locationValue, setLocationValue] = useState('N/A'); // Track location state for summary
@@ -180,13 +183,15 @@ const FillMyForm = () => {
           </div>
           {/* Location */}
 
+          {/* Button */}
           <div className="w-full flex justify-center pb-2">
-            {/* Button */}
-            <button className="bg-black text-white px-28 py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300">
-              Order
+            <button
+              onClick={() => nav("/pay-my-order")}
+              className="bg-black text-white px-28 py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300">
+              Process Payment
             </button>
-            {/* Button */}
           </div>
+          {/* Button */}
         </div>
         {/* Summary */}
       </div>

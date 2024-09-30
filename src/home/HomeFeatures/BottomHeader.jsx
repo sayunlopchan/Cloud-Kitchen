@@ -87,7 +87,7 @@ const BottomHeader = () => {
         <h2 className="text-lg">Nrs.{totalPrice}</h2>
 
         <button className="bg-colorRed text-white px-10 py-3 max-lg:hidden">
-          Place Order
+          Menu {"->"}
         </button>
       </div>
     </header>

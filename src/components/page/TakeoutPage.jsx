@@ -10,7 +10,7 @@ const TakeoutPage = () => {
 
 
   return (
-    <div className="p-10 lg:pb-40 lg:px-20 bg-colorRed h-full">
+    <div className="p-10 lg:px-20 bg-clay h-full">
       {/* Navigation */}
       <div className="flex items-center gap-2 pb-1 pl-5 text-2xl font-semibold ">
         <NavLink to={'/cart'}>CART</NavLink>

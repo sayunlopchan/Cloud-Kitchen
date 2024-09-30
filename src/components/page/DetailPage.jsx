@@ -36,9 +36,11 @@ const DetailPage = () => {
 
   const afterDiscount = product.price * (1 - product.discountPercentage / 100);
 
+  // Check if the cart is empty
+  const isCartEmpty = cart.length === 0;
+
   return (
     <div className='grid grid-cols-1 lg:grid-cols-12 bg-clay py-5 px-5 lg:px-20 space-y-10'>
-
       {/* Image Section */}
       <div className='lg:col-span-6 flex justify-center items-center mb-5 lg:mb-0'>
         <img
@@ -56,7 +58,7 @@ const DetailPage = () => {
         <div className="space-y-3">
           <p className='space-x-2 text-lg'>
             <span className='font-semibold'>Cooking Time:</span>
-            <span>{product.cookingTime || '30 min'}min</span>
+            <span>{product.cookingTime || '30'}min</span>
           </p>
           <p className='space-x-2 text-base'>
             <span className='font-semibold text-lg'>Discount:</span>
@@ -102,12 +104,16 @@ const DetailPage = () => {
             <div className='flex gap-2 '>
               <button
                 onClick={() => nav('/fill-my-form')}
-                className="bg-colorRed text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2">
+                disabled={isCartEmpty} // Disable if cart is empty
+                className={`bg-colorRed text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${isCartEmpty ? 'opacity-50 cursor-not-allowed' : ''}`}
+              >
                 Purchase
               </button>
               <button
                 onClick={() => nav('/takeout-location-near-me')}
-                className="bg-black text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2">
+                disabled={isCartEmpty} // Disable if cart is empty
+                className={`bg-black text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${isCartEmpty ? 'opacity-50 cursor-not-allowed' : ''}`}
+              >
                 Takeout
               </button>
             </div>
@@ -132,3 +138,4 @@ const DetailPage = () => {
 };
 
 export default DetailPage;
+
