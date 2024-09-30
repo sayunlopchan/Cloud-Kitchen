@@ -1,10 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "../../features/cartSlice";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-const img = "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+
+// logo
+import logo from '../../assets/logo/Bhansha-Express-typo-logo.svg'
+
+
 
 const Header = () => {
   const nav = useNavigate();
@@ -29,12 +34,12 @@ const Header = () => {
 
 
   return (
-    <header className={`flex justify-between px-5 py-2 ${isBgClay ? 'bg-clay' : ''}`}>
+    <header className={`flex justify-between px-5 py-2 h-20 ${isBgClay ? 'bg-clay' : ''}`}>
       <img
-        src={img}
+        src={logo}
         alt="Logo"
         onClick={() => nav("/")}
-        className="size-[60px] cursor-pointer"
+        className="w-40 cursor-pointer "
       />
       <div className="flex items-center gap-3">
 
@@ -46,14 +51,9 @@ const Header = () => {
           >
             {totalQuantity}
           </span>
-          <HiOutlineShoppingBag size={35} />
+          <HiOutlineShoppingBag size={40} />
         </div>
 
-        <div className="space-x-1 bg-white p-2 border ">
-          <NavLink className={"cursor-pointer gradient-Text "}>Login</NavLink>
-          <span>|</span>
-          <NavLink className={"cursor-pointer"}>SignUp</NavLink>
-        </div>
       </div>
     </header>
   );

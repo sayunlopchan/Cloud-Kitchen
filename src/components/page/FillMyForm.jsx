@@ -1,12 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const FillMyForm = () => {
   const cart = useSelector((state) => state.allCart.cart); // Access cart from Redux state
   const totalPrice = useSelector((state) => state.allCart.totalPrice); // Access totalPrice from Redux state
+  const [locationValue, setLocationValue] = useState('N/A'); // Track location state for summary
 
   // Form validation schema using Yup
   const validationSchema = Yup.object({
@@ -18,7 +19,7 @@ const FillMyForm = () => {
   });
 
   return (
-    <div className="p-10 lg:py-5 lg:px-20 bg-clay">
+    <div className="p-10 lg:py-5 lg:px-20 bg-clay h-full">
       {/* Navigation */}
       <div className="flex items-center gap-2 pb-1 pl-5 text-2xl font-semibold">
         <NavLink to={'/cart'}>CART</NavLink>
@@ -47,7 +48,7 @@ const FillMyForm = () => {
             validationSchema={validationSchema}
             onSubmit={(values) => {
               console.log('Form data submitted:', values);
-              // Here you can handle form submission, like sending data to an API
+              setLocationValue(values.location);
             }}
           >
             {() => (
@@ -166,8 +167,16 @@ const FillMyForm = () => {
           {/* Total Price */}
 
           {/* Location */}
-          <div className='flex w-full bg-green-400 px-5 py-1'>
-            <p>Location: {'N/A'}</p>
+          <div className='w-full px-5 py-1 text-sm'>
+            <p className='space-x-1'>
+              <span className='font-semibold'>Location:</span>
+              <span>{locationValue}</span>
+            </p>
+            <p className='text-center text-secendaryText'>
+              <span className='text-colorRed'>*</span>
+              please wait for phone call confirmation after order
+              <span className='text-colorRed'>*</span>
+            </p>
           </div>
           {/* Location */}
 
