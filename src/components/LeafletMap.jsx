@@ -7,39 +7,18 @@ import MarkerClusterGroup from "react-leaflet-cluster";
 // Custom icons
 import icon from '../assets/logo/Bhansha-Express-logo.svg'; // Marker icon
 import userIcon from '../assets/icon/custom-user-icon.svg';
-
-// Add some basic styles for the navigation button
-const navButtonStyle = {
-  position: "absolute",
-  bottom: "100px",
-  right: "100px",
-  background: "blue",
-  color: "white",
-  padding: "10px",
-  borderRadius: "5px",
-  cursor: "pointer",
-  zIndex: 1000,
-};
+import { MdGpsFixed } from "react-icons/md";
 
 const LeafletMap = () => {
-  const [currentLocation, setCurrentLocation] = useState([27.517739681320215, 83.45339811946357]); // Default location
+  const [currentLocation, setCurrentLocation] = useState([27.620840542090686, 83.47506031658617]); // Default location
   const [closestMarker, setClosestMarker] = useState(null);
   const mapRef = useRef(); // Reference to the map instance
 
   // Pinned locations
   const markers = [
-    {
-      geocode: [27.517807496934417, 83.45374221849526],
-      popUp: "Bhairahawa",
-    },
-    {
-      geocode: [27.620840542090686, 83.47506031658617],
-      popUp: "Tilotama",
-    },
-    {
-      geocode: [27.685686821484325, 83.43390446133502],
-      popUp: "Butwal",
-    },
+    { geocode: [27.517807496934417, 83.45374221849526], popUp: "Bhairahawa" },
+    { geocode: [27.620840542090686, 83.47506031658617], popUp: "Tilotama" },
+    { geocode: [27.685686821484325, 83.43390446133502], popUp: "Butwal" },
   ];
 
   const customIcon = new Icon({
@@ -84,9 +63,17 @@ const LeafletMap = () => {
     // Get current location
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
-      setCurrentLocation([latitude, longitude]);
+      const userLocation = [latitude, longitude];
+
+      // Check distance from the default location
+      const distanceFromDefault = calculateDistance(userLocation, currentLocation);
+
+      if (distanceFromDefault > 5) { // Change this threshold as needed
+        setCurrentLocation(userLocation); // Update to the user's location
+      }
+
       if (mapRef.current) {
-        mapRef.current.setView([latitude, longitude], 13); // Center map to user's location
+        mapRef.current.setView(userLocation, 13); // Center map to user's location
       }
     }, (error) => {
       console.error("Error getting location", error);
@@ -104,7 +91,7 @@ const LeafletMap = () => {
   };
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className="relative h-full w-full">
       <MapContainer
         center={currentLocation}
         zoom={13}
@@ -132,15 +119,17 @@ const LeafletMap = () => {
         {closestMarker && (
           <Marker position={closestMarker.geocode} icon={customIcon}>
             <Popup>
-              Closest marker: {closestMarker.popUp}
+              Nearest location: {closestMarker.popUp}
             </Popup>
           </Marker>
         )}
       </MapContainer>
 
       {/* Navigation button to the user's location */}
-      <button onClick={handleNavigateToUser} style={navButtonStyle}>
-        Navigate to My Location
+      <button
+        onClick={handleNavigateToUser}
+        className="absolute bottom-5 right-5 z-[1000] text-blue-500">
+        <MdGpsFixed size={30} />
       </button>
     </div>
   );
