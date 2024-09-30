@@ -24,6 +24,7 @@ const Header = () => {
     location.pathname === "/cart" ||
     location.pathname === "/most-sold" ||
     location.pathname === "/takeout-location-near-me" ||
+    location.pathname === "/fill-my-form" ||
     location.pathname === "/popular-dishes";
 
 

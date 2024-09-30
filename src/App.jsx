@@ -1,15 +1,22 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
 import RootLayout from "./RootLayout/RootLayout";
+
+// admin 
+import Login from "./features/Auth/Login";
+import Dashboard from "./features/Admin/Dashboard";
+import ProductAdd from "./components/Product/ProductAdd";
+
+
+// users 
 import HomePage from "./home/HomePage";
 import CartPage from "./components/cartPage";
-import ProductAdd from "./components/Product/ProductAdd";
 import ProductList from "./components/Product/ProductList";
 import MostSoldPage from "./components/page/MostSoldPage";
 import PopularDishesPage from "./components/page/PopularDishesPage";
 import DetailPage from "./components/page/DetailPage";
-import Login from "./features/Auth/Login";
-import Dashboard from "./features/Admin/Dashboard";
 import TakeoutPage from "./components/page/TakeoutPage";
+import FillMyForm from "./components/page/FillMyForm";
 
 const App = () => {
 
@@ -23,21 +30,34 @@ const App = () => {
           index: true,
           element: <HomePage />
         },
+
+        // login route
+        // in development
+        {
+          path: "/login",
+          element: <Login />
+        },
+
+        // admin route
+        // in development
+        {
+          path: "/products",
+          element: <ProductList />
+        },
         {
           path: "/dashboard",
           element: <Dashboard />
         },
         {
-          path: "/cart",
-          element: <CartPage />
-        },
-        {
           path: "/product-add",
           element: <ProductAdd />
         },
+        // admin route
+
+        // pages routes
         {
-          path: "/products",
-          element: <ProductList />
+          path: "/cart",
+          element: <CartPage />
         },
         {
           path: "/popular-dishes",
@@ -52,12 +72,12 @@ const App = () => {
           element: <DetailPage />
         },
         {
-          path: "/login",
-          element: <Login />
-        },
-        {
           path: "/takeout-location-near-me",
           element: <TakeoutPage />
+        },
+        {
+          path: "/fill-my-form",
+          element: <FillMyForm />
         },
       ]
     }

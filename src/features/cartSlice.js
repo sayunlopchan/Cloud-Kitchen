@@ -48,18 +48,22 @@ const cartSlice = createSlice({
       });
     },
     decreaseItemQuantity: (state, action) => {
-      state.cart = state.cart
-        .map((item) => {
-          if (item.id === action.payload) {
-            return {
-              ...item,
-              quantity: item.quantity > 1 ? item.quantity - 1 : item.quantity,
-            };
-          }
-          return item;
-        })
-        .filter((item) => item.quantity > 0); // Remove items with quantity 0
-    },
+      const itemIndex = state.cart.findIndex(item => item.id === action.payload);
+
+      // If the item exists in the cart
+      if (itemIndex >= 0) {
+        const currentQuantity = state.cart[itemIndex].quantity;
+
+        if (currentQuantity > 1) {
+          // Decrease the quantity if it's greater than 1
+          state.cart[itemIndex].quantity -= 1;
+        } else {
+          // Remove the item from the cart if quantity is 1
+          state.cart.splice(itemIndex, 1);
+        }
+      }
+    }
+
   },
 });
 
