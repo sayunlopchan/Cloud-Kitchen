@@ -10,6 +10,9 @@ const RootLayout = () => {
       <Header />
       <Outlet />
       <BottomHeader />
+      <div className="h-[300px] w-full bg-colorRed">
+        Fotter
+      </div>
     </>
   )
 }

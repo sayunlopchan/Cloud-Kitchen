@@ -39,8 +39,9 @@ const BottomHeader = () => {
 
   return (
     <header
-      className={`flex items-center justify-between px-5 py-4 sticky bottom-5 z-[1000] w-[90vw] rounded-xl bg-white shadow-lg transition-transform duration-300 ease-in-out mx-auto ${showHeader ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+      className={`flex items-center justify-between px-5 py-2 fixed bottom-5 z-[1000] w-[90vw] rounded-xl bg-white shadow-lg transition-transform duration-1000 ease-in-out mx-auto ${showHeader ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
         }`}
+      style={{ left: "50%", transform: "translateX(-50%)" }}
     >
       <div className="flex items-center gap-5">
         {/* logo */}
