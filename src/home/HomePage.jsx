@@ -15,6 +15,7 @@ const HomePage = () => {
       <ExclusiveOfferBanner />
       <PopularDish />
       <MostSold />
+
     </div>
   );
 };

@@ -27,3 +27,13 @@ body {
   );
   @apply absolute top-0 left-0 w-full h-full;
 }
+
+/* Style of map container leaflet  */
+
+.leaflet-container {
+  @apply h-screen w-full;
+}
+
+.custom-icon {
+  @apply bg-colorRed size-8 text-white rounded-full flex justify-center items-center;
+}
