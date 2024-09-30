@@ -89,8 +89,8 @@ const LeafletMap = () => {
       {/* Navigation button to the user's location */}
       <button
         onClick={handleNavigateToUser}
-        className="absolute bottom-5 right-5 z-[1000] text-blue-500"
-        disabled={!currentLocation} // Disable if current location is not available
+        className="absolute bottom-5 right-5 z-[1000] text-blue-500 cursor-pointer"
+      // disabled={!currentLocation} // Disable if current location is not available
       >
         <MdGpsFixed size={30} />
       </button>
