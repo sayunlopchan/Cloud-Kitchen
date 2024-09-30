@@ -3,22 +3,29 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
-
-// Custom icons
 import icon from '../assets/logo/Bhansha-Express-logo.svg'; // Marker icon
 import userIcon from '../assets/icon/custom-user-icon.svg';
 import { MdGpsFixed } from "react-icons/md";
 
 const LeafletMap = () => {
-  const [currentLocation, setCurrentLocation] = useState([27.620840542090686, 83.47506031658617]); // Default location
+  const [currentLocation, setCurrentLocation] = useState(null); // Start with null location
   const [closestMarker, setClosestMarker] = useState(null);
   const mapRef = useRef(); // Reference to the map instance
 
   // Pinned locations
   const markers = [
-    { geocode: [27.517807496934417, 83.45374221849526], popUp: "Bhairahawa" },
-    { geocode: [27.620840542090686, 83.47506031658617], popUp: "Tilotama" },
-    { geocode: [27.685686821484325, 83.43390446133502], popUp: "Butwal" },
+    {
+      geocode: [27.477445243217847, 83.46696668007978],
+      popUp: "Bhairahawa"
+    },
+    {
+      geocode: [27.685686821484325, 83.43390446133502],
+      popUp: "Butwal"
+    },
+    {
+      geocode: [27.61988963583777, 83.47537405609275],
+      popUp: "Tilotama"
+    },
   ];
 
   const customIcon = new Icon({
@@ -32,6 +39,8 @@ const LeafletMap = () => {
   });
 
   const getClosestMarker = () => {
+    if (!currentLocation) return; // Exit if current location is not set
+
     let closest = null;
     let minDistance = Infinity;
 
@@ -64,13 +73,7 @@ const LeafletMap = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
       const userLocation = [latitude, longitude];
-
-      // Check distance from the default location
-      const distanceFromDefault = calculateDistance(userLocation, currentLocation);
-
-      if (distanceFromDefault > 5) { // Change this threshold as needed
-        setCurrentLocation(userLocation); // Update to the user's location
-      }
+      setCurrentLocation(userLocation); // Update to the user's location
 
       if (mapRef.current) {
         mapRef.current.setView(userLocation, 13); // Center map to user's location
@@ -84,8 +87,14 @@ const LeafletMap = () => {
     getClosestMarker();
   }, [currentLocation]);
 
+  useEffect(() => {
+    if (closestMarker && mapRef.current) {
+      mapRef.current.setView(closestMarker.geocode, 13); // Center map on the nearest marker
+    }
+  }, [closestMarker]);
+
   const handleNavigateToUser = () => {
-    if (mapRef.current) {
+    if (mapRef.current && currentLocation) {
       mapRef.current.setView(currentLocation, 13); // Center the map to user's location
     }
   };
@@ -93,8 +102,8 @@ const LeafletMap = () => {
   return (
     <div className="relative h-full w-full">
       <MapContainer
-        center={currentLocation}
-        zoom={13}
+        center={currentLocation || [27.620840542090686, 83.47506031658617]} // Default view if currentLocation is null
+        zoom={currentLocation ? 13 : 5} // Zoom level when location is not yet determined
         ref={mapRef} // Assigning the ref to the map container
         style={{ height: "100vh", width: "100%" }} // Ensuring map takes full height and width
       >
@@ -104,9 +113,11 @@ const LeafletMap = () => {
         />
 
         {/* Marker for current location */}
-        <Marker position={currentLocation} icon={userMarkerIcon}>
-          <Popup>Your current location</Popup>
-        </Marker>
+        {currentLocation && (
+          <Marker position={currentLocation} icon={userMarkerIcon}>
+            <Popup>Your current location</Popup>
+          </Marker>
+        )}
 
         <MarkerClusterGroup chunkedLoading>
           {markers.map((marker, idx) => (
@@ -116,13 +127,17 @@ const LeafletMap = () => {
           ))}
         </MarkerClusterGroup>
 
-        {closestMarker && (
-          <Marker position={closestMarker.geocode} icon={customIcon}>
-            <Popup>
-              Nearest location: {closestMarker.popUp}
-            </Popup>
-          </Marker>
-        )}
+        {/* Conditionally render the nearest marker if it's not already in the cluster */}
+        {closestMarker && !markers.some(marker =>
+          marker.geocode[0] === closestMarker.geocode[0] &&
+          marker.geocode[1] === closestMarker.geocode[1]
+        ) && (
+            <Marker position={closestMarker.geocode} icon={customIcon}>
+              <Popup>
+                Nearest
+              </Popup>
+            </Marker>
+          )}
       </MapContainer>
 
       {/* Navigation button to the user's location */}
