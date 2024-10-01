@@ -57,7 +57,7 @@ const Signup = () => {
         onSubmit={handleSignup}
       >
         {({ isSubmitting }) => (
-          <Form className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+          <Form className="bg-white p-6 rounded-lg shadow-md w-full max-w-md h-screen">
             <h2 className="text-xl font-bold mb-4">Signup</h2>
 
             {/* Display server-side error or success message */}

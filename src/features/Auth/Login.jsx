@@ -7,6 +7,9 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext'; // Import the useAuth hook
 import { loginUrl } from '../../apiPath/url';
 
+import logo from '../../assets/logo/Bhansha-Express-Logo-Only.svg';
+
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState('');
@@ -54,7 +57,13 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full flex flex-col justify-center items-center h-screen">
+
+      <img
+        src={logo}
+        alt="Bhansha Express logo"
+        className='size-20' />
+
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={validationSchema}
