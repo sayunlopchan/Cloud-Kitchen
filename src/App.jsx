@@ -1,12 +1,10 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
 import RootLayout from "./RootLayout/RootLayout";
 
 // admin 
 import Login from "./features/Auth/Login";
 import Dashboard from "./features/Admin/Dashboard";
 import ProductAdd from "./components/Product/ProductAdd";
-
 
 // users 
 import HomePage from "./home/HomePage";
@@ -18,9 +16,12 @@ import DetailPage from "./components/page/DetailPage";
 import TakeoutPage from "./components/page/TakeoutPage";
 import FillMyForm from "./components/page/FillMyForm";
 import Payment from "./components/page/Payment";
+import Menu from "./home/HomeFeatures/Menu";
+import Signup from "./features/Auth/Signup";
+
+import ProtectedRoute from './features/Auth/ProtectedRoute'; // Import ProtectedRoute
 
 const App = () => {
-
 
   const router = createBrowserRouter([
     {
@@ -33,29 +34,38 @@ const App = () => {
         },
 
         // login route
-        // in development
         {
           path: "/login",
           element: <Login />
         },
+        {
+          path: "/signup",
+          element: <Signup />
+        },
 
-        // admin route
-        // in development
+        // admin routes
         {
           path: "/products",
           element: <ProductList />
         },
         {
           path: "/dashboard",
-          element: <Dashboard />
+          element: (
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          )
         },
         {
           path: "/product-add",
-          element: <ProductAdd />
+          element: (
+            <ProtectedRoute>
+              <ProductAdd />
+            </ProtectedRoute>
+          )
         },
-        // admin route
 
-        // pages routes
+        // other pages
         {
           path: "/cart",
           element: <CartPage />
@@ -83,6 +93,10 @@ const App = () => {
         {
           path: "/pay-my-order",
           element: <Payment />
+        },
+        {
+          path: "/the-best-bhansha-express-menu",
+          element: <Menu />
         },
       ]
     }

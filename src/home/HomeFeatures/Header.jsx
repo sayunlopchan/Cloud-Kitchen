@@ -52,8 +52,13 @@ const Header = () => {
             {totalQuantity}
           </span>
           <HiOutlineShoppingBag size={40} />
-        </div>
 
+        </div>
+        <button
+          onClick={() => nav("/the-best-bhansha-express-menu")}
+          className="bg-colorRed text-white px-2 py-1 lg:px-10 lg:py-3 rounded-lg">
+          Menu
+        </button>
       </div>
     </header>
   );

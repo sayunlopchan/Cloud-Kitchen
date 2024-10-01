@@ -184,10 +184,10 @@ const FillMyForm = () => {
           {/* Location */}
 
           {/* Button */}
-          <div className="w-full flex justify-center pb-2">
+          <div className="w-full flex justify-center px-10 pb-2">
             <button
               onClick={() => nav("/pay-my-order")}
-              className="bg-black text-white px-28 py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300">
+              className="bg-black text-white w-full py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300">
               Process Payment
             </button>
           </div>

@@ -1,81 +1,118 @@
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext'; // Import the useAuth hook
+import { loginUrl } from '../../apiPath/url';
 
 const Login = () => {
-  const [email, setEmail] = useState(''); // Initial value is empty
-  const [password, setPassword] = useState(''); // Initial value is empty
-  const [error, setError] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginError, setLoginError] = useState('');
+  const { login } = useAuth(); // Destructure login from useAuth
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // Validation schema using Yup
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email('Invalid email format')
+      .required('Email is required'),
+    password: Yup.string()
+      .min(6, 'Password must be at least 6 characters')
+      .required('Password is required'),
+  });
 
-    // Basic validation
-    if (!email || !password) {
-      setError('Both fields are required');
-      return;
+  const handleLogin = async (values, { setSubmitting }) => {
+    try {
+      setLoginError(''); // Reset error message
+
+      // POST login request
+      const response = await axios.post(loginUrl, values);
+
+      if (response.data.token) {
+        const userData = response.data.user; // Store user data, including isAdmin
+
+        // Call login from AuthContext
+        login(userData);
+
+
+        // Redirect based on admin status
+        navigate(userData.isAdmin ? '/dashboard' : '/'); // Redirect to dashboard if admin, otherwise homepage
+      } else {
+        setLoginError(response.data.message || 'Invalid credentials');
+      }
+    } catch (error) {
+      if (error.response) {
+        setLoginError(error.response.data.message || 'An error occurred during login. Please try again.');
+      } else {
+        setLoginError('Network error. Please try again later.');
+      }
+    } finally {
+      setSubmitting(false); // Ensure submitting state is reset
     }
-
-    // Here you can implement your login logic
-    console.log('Email:', email);
-    console.log('Password:', password);
-
-    // Clear fields after submission
-    setEmail('');
-    setPassword('');
-    setError('');
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center ">
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-4">Login</h2>
-        {error && <p className="text-red-500 mb-2">{error}</p>}
+    <div className="w-full h-full flex justify-center items-center">
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        validationSchema={validationSchema}
+        onSubmit={handleLogin}
+      >
+        {({ isSubmitting }) => (
+          <Form className="bg-white p-6 rounded-lg shadow-md w-80">
+            <h2 className="text-xl font-bold mb-4">Login</h2>
 
-        <label htmlFor="email" className="block mb-2">
-          Email:
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={email} // Controlled input with no pre-written value
-            onChange={(e) => setEmail(e.target.value)} // Update state on change
-            placeholder="Enter your email"
-            required
-            className="w-full p-2 border border-gray-300 rounded-lg mb-4"
-          />
-        </label>
+            {/* Display server-side login error */}
+            {loginError && <p className="text-red-500 mb-2">{loginError}</p>}
 
-        <label htmlFor="password" className="block mb-2">
-          Password:
-          <div className="relative">
-            <input
-              type={showPassword ? 'text' : 'password'} // Toggle between text and password
-              name="password"
-              id="password"
-              value={password} // Controlled input with no pre-written value
-              onChange={(e) => setPassword(e.target.value)} // Update state on change
-              placeholder="Enter your password"
-              required
-              className="w-full p-2 border border-gray-300 rounded-lg mb-4"
-            />
+            {/* Email field */}
+            <div className="mb-4">
+              <label htmlFor="email" className="block mb-2">Email:</label>
+              <Field
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                className="w-full p-2 border border-gray-300 rounded-lg"
+              />
+              <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
+            </div>
+
+            {/* Password field */}
+            <div className="mb-4">
+              <label htmlFor="password" className="block mb-2">Password:</label>
+              <div className="relative">
+                <Field
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  id="password"
+                  placeholder="Enter your password"
+                  className="w-full p-2 border border-gray-300 rounded-lg"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(prev => !prev)}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600"
+                >
+                  {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+                </button>
+              </div>
+              <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
+            </div>
+
+            {/* Submit button */}
             <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)} // Toggle password visibility
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600"
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full p-2 text-white rounded-lg ${isSubmitting ? 'bg-gray-500' : 'bg-blue-500 hover:bg-blue-600'}`}
             >
-              {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+              {isSubmitting ? 'Logging in...' : 'Login'}
             </button>
-          </div>
-        </label>
-
-        <button
-          type="submit"
-          className="w-full bg-red-500 text-white font-semibold p-2 rounded-lg hover:bg-red-600 transition"
-        >
-          Login
-        </button>
-      </form>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
