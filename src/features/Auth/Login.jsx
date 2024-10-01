@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext'; // Import the useAuth hook
 import { loginUrl } from '../../apiPath/url';
 
@@ -106,10 +106,16 @@ const Login = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full p-2 text-white rounded-lg ${isSubmitting ? 'bg-gray-500' : 'bg-blue-500 hover:bg-blue-600'}`}
+              className={`w-full p-2 text-white rounded-lg ${isSubmitting ? 'bg-gray-500' : 'bg-colorRed hover:bg-red-600'}`}
             >
               {isSubmitting ? 'Logging in...' : 'Login'}
             </button>
+            <div>
+              <span
+                className='text-sm mr-1 '> don&apos;t have an account?
+              </span>
+              <NavLink to={'/signup'} className={'underline underline-offset-1'}>signup</NavLink>
+            </div>
           </Form>
         )}
       </Formik>

@@ -53,8 +53,8 @@ const BottomHeader = () => {
         />
         {/* logo */}
 
+        {/* search */}
         <div className="relative">
-          {/* search */}
           <input
             type="text"
             name="search"

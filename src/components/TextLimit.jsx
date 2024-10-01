@@ -1,6 +1,4 @@
-
-const TextLimit = ({ text, limit = 100 }) => {
-
+const TextLimit = ({ text = "", limit = 100 }) => {
   const isTextLong = text.length > limit;
 
   return (

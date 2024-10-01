@@ -4,11 +4,16 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { signupUrl } from '../../apiPath/url.js';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 
 
 
 const Signup = () => {
+
+  const nav = useNavigate()
+
+
   const [showPassword, setShowPassword] = useState(false);
   const [signupError, setSignupError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -153,6 +158,12 @@ const Signup = () => {
             >
               {isSubmitting ? 'Signing up...' : 'Signup'}
             </button>
+            <div className='mt-2'>
+              <span
+                className='text-sm mr-1 '> already have an account?
+              </span>
+              <NavLink to={'/login'} className={'underline underline-offset-1'}>signup</NavLink>
+            </div>
           </Form>
         )}
       </Formik>

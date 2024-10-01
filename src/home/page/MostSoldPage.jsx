@@ -1,20 +1,19 @@
-import PopularDishData from '../../assets/Data/PopularDishData'
+import menuData from "../../assets/Data/menu/alldata";
 import CurveLine from '../../assets/icon/red Curve.svg';
-import Arrow from '../../assets/icon/Arrow-next.svg';
 
-const PopularDishesPage = () => {
+const MostSoldPage = () => {
   return (
     <div className='space-y-32 px-10 py-10 transition-all duration-1000 bg-[#F0F2FF]'>
       {/* Heading */}
       <div className='relative w-fit'>
-        <h2 className='font-bold text-3xl pl-10'>Our Popular Dishes</h2>
-        <img src={CurveLine} alt="CurveLine" className='w-[100px] absolute top-10 right-0' />
+        <h2 className='font-bold text-3xl pl-10'>Our Most Sold</h2>
+        <img src={CurveLine} alt="CurveLine" className='w-[65px] absolute top-8 right-0' />
       </div>
 
       {/* Dishes - Display only the first 3 */}
       <div className="flex flex-wrap justify-center gap-24 items-center ">
         {
-          PopularDishData.map((item, idx) => (
+          menuData.mostSold.map((item, idx) => (
             <div key={idx} className='w-[230px] h-[280px] relative rounded-2xl shadow-xl bg-white'>
               <div className='h-[100px]'>
                 <img
@@ -49,4 +48,4 @@ const PopularDishesPage = () => {
   )
 }
 
-export default PopularDishesPage;
+export default MostSoldPage;

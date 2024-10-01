@@ -3,12 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaHeart, FaPlus, FaMinus } from "react-icons/fa6";
 import { GoStarFill } from "react-icons/go";
 import { addToCart, increaseItemQuantity, decreaseItemQuantity } from '../../features/cartSlice';
-import PopularDishData from '../../assets/Data/PopularDishData';
+import menuData from '../../assets/Data/menu/alldata'; // Importing the menu data
 
 const DetailPage = () => {
   const nav = useNavigate();
   const { id } = useParams();
-  const product = PopularDishData.find(item => item.id === parseInt(id));
+
+  // Flattening menuData to find the specific product
+  const allDishes = [
+    ...menuData.momo,
+    ...menuData.friedRice,
+    ...menuData.chowmein,
+    ...menuData.biryani,
+    ...menuData.breakfast,
+  ];
+
+  const product = allDishes.find(item => item.id === parseInt(id));
   const dispatch = useDispatch();
   const cart = useSelector(state => state.allCart.cart);
 
@@ -34,7 +44,7 @@ const DetailPage = () => {
     dispatch(decreaseItemQuantity(product.id)); // This handles removal if quantity goes to 0
   };
 
-  const afterDiscount = product.price * (1 - product.discountPercentage / 100);
+  const afterDiscount = product.price * (1 - (product.discountPercentage || 0) / 100);
 
   // Check if the cart is empty
   const isCartEmpty = cart.length === 0;
@@ -58,7 +68,7 @@ const DetailPage = () => {
         <div className="space-y-3">
           <p className='space-x-2 text-lg'>
             <span className='font-semibold'>Cooking Time:</span>
-            <span>{product.cookingTime || '30'}min</span>
+            <span>{product.cookingTime || '30'} min</span>
           </p>
           <p className='space-x-2 text-base'>
             <span className='font-semibold text-lg'>Discount:</span>
@@ -99,7 +109,7 @@ const DetailPage = () => {
           <div className="flex justify-between items-center px-5 absolute bottom-0 w-full text-sm">
             <span className='flex items-center justify-between gap-1'>
               <GoStarFill size={30} color="gold" />
-              <span>13</span>
+              <span>{product.rating || 'N/A'}</span>
             </span>
             <div className='flex gap-2 '>
               <button
@@ -138,4 +148,3 @@ const DetailPage = () => {
 };
 
 export default DetailPage;
-

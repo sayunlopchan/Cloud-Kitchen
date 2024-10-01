@@ -8,18 +8,22 @@ import ProductAdd from "./components/Product/ProductAdd";
 
 // users 
 import HomePage from "./home/HomePage";
-import CartPage from "./components/cartPage";
+import CartPage from "./home/page/cartPage";
 import ProductList from "./components/Product/ProductList";
-import MostSoldPage from "./components/page/MostSoldPage";
-import PopularDishesPage from "./components/page/PopularDishesPage";
-import DetailPage from "./components/page/DetailPage";
-import TakeoutPage from "./components/page/TakeoutPage";
-import FillMyForm from "./components/page/FillMyForm";
-import Payment from "./components/page/Payment";
-import Menu from "./home/HomeFeatures/Menu";
+
+// pages
+import MostSoldPage from "./home/page/MostSoldPage";
+import MostPopularPage from "./home/page/MostPopularPage";
+import DetailPage from "./home/page/DetailPage";
+import TakeoutPage from "./home/page/TakeoutPage";
+import FillMyForm from "./home/page/FillMyForm";
+import Payment from "./home/page/Payment";
+
+
+import MenuPage from "./home/page/MenuPage";
 import Signup from "./features/Auth/Signup";
 
-import ProtectedRoute from './features/Auth/ProtectedRoute'; // Import ProtectedRoute
+import ProtectedRoute from './features/Auth/ProtectedRoute';
 
 const App = () => {
 
@@ -72,7 +76,7 @@ const App = () => {
         },
         {
           path: "/popular-dishes",
-          element: <PopularDishesPage />
+          element: <MostPopularPage />
         },
         {
           path: "/most-sold",
@@ -96,7 +100,7 @@ const App = () => {
         },
         {
           path: "/the-best-bhansha-express-menu",
-          element: <Menu />
+          element: <MenuPage />
         },
       ]
     }

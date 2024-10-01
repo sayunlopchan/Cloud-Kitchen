@@ -5,7 +5,7 @@ import {
   removeItem,
   decreaseItemQuantity,
   increaseItemQuantity,
-} from "../features/cartSlice";
+} from "../../features/cartSlice";
 import { NavLink } from "react-router-dom";
 
 const CartPage = () => {

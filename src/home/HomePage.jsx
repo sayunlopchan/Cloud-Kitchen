@@ -4,6 +4,7 @@ import ExclusiveOfferBanner from './HomeFeatures/ExclusiveOfferBanner';
 import PopularDish from './HomeFeatures/PopularDishes';
 import MostSold from './HomeFeatures/MostSold';
 import TakeoutBanner from './HomeFeatures/TakeoutBanner';
+import Workflow from './HomeFeatures/Workflow';
 
 const HomePage = () => {
 
@@ -15,7 +16,7 @@ const HomePage = () => {
       <ExclusiveOfferBanner />
       <PopularDish />
       <MostSold />
-
+      <Workflow />
     </div>
   );
 };

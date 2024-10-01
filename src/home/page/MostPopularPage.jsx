@@ -1,19 +1,19 @@
-import PopularDishData from '../../assets/Data/PopularDishData'
+import menuData from "../../assets/Data/menu/alldata";
 import CurveLine from '../../assets/icon/red Curve.svg';
 
-const MostSoldPage = () => {
+const MostPopularPage = () => {
   return (
     <div className='space-y-32 px-10 py-10 transition-all duration-1000 bg-[#F0F2FF]'>
       {/* Heading */}
       <div className='relative w-fit'>
-        <h2 className='font-bold text-3xl pl-10'>Our Most Sold</h2>
-        <img src={CurveLine} alt="CurveLine" className='w-[65px] absolute top-8 right-0' />
+        <h2 className='font-bold text-3xl pl-10'>Our Popular Dishes</h2>
+        <img src={CurveLine} alt="CurveLine" className='w-[100px] absolute top-10 right-0' />
       </div>
 
       {/* Dishes - Display only the first 3 */}
       <div className="flex flex-wrap justify-center gap-24 items-center ">
         {
-          PopularDishData.map((item, idx) => (
+          menuData.mostPopular.map((item, idx) => (
             <div key={idx} className='w-[230px] h-[280px] relative rounded-2xl shadow-xl bg-white'>
               <div className='h-[100px]'>
                 <img
@@ -24,10 +24,10 @@ const MostSoldPage = () => {
               </div>
               <div className='p-2'>
                 <h2 className='text-2xl font-bold'>{item.title}</h2>
-                {item.discount > 0 ? (
+                {item.discountPercentage > 0 ? (
                   <div>
                     <span className='text-2xl font-semibold line-through text-red-600'>Rs.{item.price}</span>
-                    <span className='text-2xl font-semibold ml-2'>Rs.{(item.price - item.discount).toFixed(2)}</span>
+                    <span className='text-2xl font-semibold ml-2'>Rs.{(item.price - item.discountPercentage)}</span>
                   </div>
                 ) : (
                   <h2 className='text-2xl font-semibold'>Rs.{item.price}</h2>
@@ -48,4 +48,4 @@ const MostSoldPage = () => {
   )
 }
 
-export default MostSoldPage;
+export default MostPopularPage;

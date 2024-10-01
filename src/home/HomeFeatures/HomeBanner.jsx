@@ -28,7 +28,7 @@ function HomeBanner() {
         <div className="space-y-5">
           {/* Title */}
           <h1 className="font-bold text-3xl lg:text-[3.5rem] lg:leading-none">
-            The Best In The <span className="text-main">TOWN,</span>
+            The Best In The <span className="text-colorRed">TOWN,</span>
             <br />
             Delivery
             <br />

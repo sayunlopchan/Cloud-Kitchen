@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import LeafletMap from '../LeafletMap';
+import LeafletMap from '../../components/LeafletMap';
 
 
 
@@ -67,11 +67,15 @@ const TakeoutPage = () => {
             <p>Rs. {totalPrice}</p>
           </div>
           {/* Total Price */}
-
+          <p className='text-center text-secendaryText'>
+            <span className='text-colorRed'>*</span>
+            please wait for phone call confirmation after order
+            <span className='text-colorRed'>*</span>
+          </p>
           {/* Button */}
           <div className="w-full flex justify-center pb-2">
             <button className=" bg-black text-white px-28 py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300">
-              Order
+              Confirm Takeout
             </button>
           </div>
           {/* Button */}
