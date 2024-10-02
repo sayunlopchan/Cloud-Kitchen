@@ -11,12 +11,12 @@ const HomePage = () => {
 
   return (
     <div>
+      <HomeBanner />
       <TakeoutBanner />
-      {/* <HomeBanner />
       <ExclusiveOfferBanner />
       <PopularDish />
       <MostSold />
-      <Workflow /> */}
+      <Workflow />
     </div>
   );
 };
