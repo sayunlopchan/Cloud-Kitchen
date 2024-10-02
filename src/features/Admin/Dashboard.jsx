@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { orderUrl } from '../../apiPath/url';
 
+
 const Dashboard = () => {
   const [orders, setOrders] = useState([]);
-  const [newOrder, setNewOrder] = useState(null);
   const [notification, setNotification] = useState('');
 
   // Fetch orders from the backend
@@ -33,16 +33,11 @@ const Dashboard = () => {
 
   // Effect to handle new order notifications
   useEffect(() => {
-    if (newOrder) {
-      setNotification(`New order received: ${newOrder._id}`);
+    if (orders.length > 0) {
+      setNotification(`Fetched ${orders.length} orders.`);
       setTimeout(() => setNotification(''), 3000); // Clear notification after 3 seconds
     }
-  }, [newOrder]);
-
-  // Handle new order arrival (you can replace this with a real-time solution)
-  const handleNewOrder = (order) => {
-    setNewOrder(order);
-  };
+  }, [orders]);
 
   return (
     <div className="p-10 h-screen">

@@ -1,4 +1,4 @@
-// FillMyForm.js
+// FillMyForm_org.js
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
@@ -61,9 +61,7 @@ const FillMyForm = () => {
                 <div className='flex justify-between gap-5'>
                   {/* First Name */}
                   <div>
-                    <label className="block text-gray-700" htmlFor="firstName">
-                      First Name
-                    </label>
+                    <label className="block text-gray-700" htmlFor="firstName">First Name</label>
                     <Field
                       type="text"
                       id="firstName"
@@ -74,9 +72,7 @@ const FillMyForm = () => {
                   </div>
                   {/* Last Name */}
                   <div>
-                    <label className="block text-gray-700" htmlFor="lastName">
-                      Last Name
-                    </label>
+                    <label className="block text-gray-700" htmlFor="lastName">Last Name</label>
                     <Field
                       type="text"
                       id="lastName"
@@ -88,9 +84,7 @@ const FillMyForm = () => {
                 </div>
 
                 <div>
-                  <label className="block text-gray-700" htmlFor="email">
-                    Email
-                  </label>
+                  <label className="block text-gray-700" htmlFor="email">Email</label>
                   <Field
                     type="email"
                     id="email"
@@ -101,9 +95,7 @@ const FillMyForm = () => {
                 </div>
 
                 <div>
-                  <label className="block text-gray-700" htmlFor="phoneNumber">
-                    Phone Number
-                  </label>
+                  <label className="block text-gray-700" htmlFor="phoneNumber">Phone Number</label>
                   <Field
                     type="tel"
                     id="phoneNumber"
@@ -114,9 +106,7 @@ const FillMyForm = () => {
                 </div>
 
                 <div>
-                  <label className="block text-gray-700" htmlFor="location">
-                    Location
-                  </label>
+                  <label className="block text-gray-700" htmlFor="location">Location</label>
                   <Field
                     type="text"
                     id="location"

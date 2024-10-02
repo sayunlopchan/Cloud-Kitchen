@@ -6,17 +6,14 @@ import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext'; // Import the useAuth hook
 import { loginUrl } from '../../apiPath/url';
-
 import logo from '../../assets/logo/Bhansha-Express-Logo-Only.svg';
-
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState('');
-  const { login } = useAuth(); // Destructure login from useAuth
+  const { login } = useAuth();
   const navigate = useNavigate();
 
-  // Validation schema using Yup
   const validationSchema = Yup.object({
     email: Yup.string()
       .email('Invalid email format')
@@ -28,20 +25,14 @@ const Login = () => {
 
   const handleLogin = async (values, { setSubmitting }) => {
     try {
-      setLoginError(''); // Reset error message
+      setLoginError('');
 
-      // POST login request
       const response = await axios.post(loginUrl, values);
 
       if (response.data.token) {
-        const userData = response.data.user; // Store user data, including isAdmin
-
-        // Call login from AuthContext
+        const userData = response.data.user;
         login(userData);
-
-
-        // Redirect based on admin status
-        navigate(userData.isAdmin ? '/dashboard' : '/'); // Redirect to dashboard if admin, otherwise homepage
+        navigate(userData.isAdmin ? '/dashboard' : '/');
       } else {
         setLoginError(response.data.message || 'Invalid credentials');
       }
@@ -52,18 +43,13 @@ const Login = () => {
         setLoginError('Network error. Please try again later.');
       }
     } finally {
-      setSubmitting(false); // Ensure submitting state is reset
+      setSubmitting(false);
     }
   };
 
   return (
     <div className="w-full flex flex-col justify-center items-center h-screen">
-
-      <img
-        src={logo}
-        alt="Bhansha Express logo"
-        className='size-20' />
-
+      <img src={logo} alt="Bhansha Express logo" className='size-20' />
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={validationSchema}
@@ -72,11 +58,7 @@ const Login = () => {
         {({ isSubmitting }) => (
           <Form className="bg-white p-6 rounded-lg shadow-md w-80">
             <h2 className="text-xl font-bold mb-4">Login</h2>
-
-            {/* Display server-side login error */}
             {loginError && <p className="text-red-500 mb-2">{loginError}</p>}
-
-            {/* Email field */}
             <div className="mb-4">
               <label htmlFor="email" className="block mb-2">Email:</label>
               <Field
@@ -88,8 +70,6 @@ const Login = () => {
               />
               <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
             </div>
-
-            {/* Password field */}
             <div className="mb-4">
               <label htmlFor="password" className="block mb-2">Password:</label>
               <div className="relative">
@@ -110,8 +90,6 @@ const Login = () => {
               </div>
               <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
             </div>
-
-            {/* Submit button */}
             <button
               type="submit"
               disabled={isSubmitting}
@@ -120,9 +98,7 @@ const Login = () => {
               {isSubmitting ? 'Logging in...' : 'Login'}
             </button>
             <div>
-              <span
-                className='text-sm mr-1 '> don&apos;t have an account?
-              </span>
+              <span className='text-sm mr-1 '> don&apos;t have an account?</span>
               <NavLink to={'/signup'} className={'underline underline-offset-1'}>signup</NavLink>
             </div>
           </Form>

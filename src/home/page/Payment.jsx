@@ -1,5 +1,5 @@
 // Payment.js
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { orderUrl } from '../../apiPath/url'; // Adjust the path accordingly
