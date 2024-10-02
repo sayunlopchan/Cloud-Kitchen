@@ -162,7 +162,7 @@ const Signup = () => {
               <span
                 className='text-sm mr-1 '> already have an account?
               </span>
-              <NavLink to={'/login'} className={'underline underline-offset-1'}>signup</NavLink>
+              <NavLink to={'/login'} className={'underline underline-offset-1'}>login</NavLink>
             </div>
           </Form>
         )}

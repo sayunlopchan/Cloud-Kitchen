@@ -1,18 +1,18 @@
+// FillMyForm.js
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
-
+import { setUserData } from '../../features/formSlice';
 
 const FillMyForm = () => {
-  const nav = useNavigate()
-  const cart = useSelector((state) => state.allCart.cart); // Access cart from Redux state
-  const totalPrice = useSelector((state) => state.allCart.totalPrice); // Access totalPrice from Redux state
-  const [locationValue, setLocationValue] = useState('N/A'); // Track location state for summary
+  const dispatch = useDispatch();
+  const nav = useNavigate();
+  const cart = useSelector((state) => state.allCart.cart);
+  const totalPrice = useSelector((state) => state.allCart.totalPrice);
+  const [locationValue, setLocationValue] = useState('N/A');
 
-  // Form validation schema using Yup
   const validationSchema = Yup.object({
     firstName: Yup.string().required('First name is required.'),
     lastName: Yup.string().required('Last name is required.'),
@@ -38,7 +38,7 @@ const FillMyForm = () => {
       {/* Navigation */}
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-5 px-3 p-2">
-        {/* form Container */}
+        {/* Form Container */}
         <div className="md:col-span-7 flex justify-center rounded-lg overflow-hidden">
           <Formik
             initialValues={{
@@ -50,8 +50,9 @@ const FillMyForm = () => {
             }}
             validationSchema={validationSchema}
             onSubmit={(values) => {
-              console.log('Form data submitted:', values);
+              dispatch(setUserData(values)); // Save form data to the store
               setLocationValue(values.location);
+              nav("/pay-my-order");
             }}
           >
             {() => (
@@ -125,23 +126,19 @@ const FillMyForm = () => {
                   <ErrorMessage name="location" component="p" className="text-red-500 text-sm" />
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full px-4 py-2 font-semibold text-white bg-green-600 rounded-md hover:bg-green-700"
-                >
+                <button type="submit" className="bg-black text-white w-full py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300">
                   Submit
                 </button>
               </Form>
             )}
           </Formik>
         </div>
-        {/* form Container */}
+        {/* Form Container */}
 
         {/* Summary */}
         <div className="md:col-span-5 border rounded-lg bg-white">
           <h2 className="text-xl lg:text-3xl text-center m-2 font-semibold">Order Summary</h2>
 
-          {/* Loop through cart items */}
           <div className="p-5 h-[250px] overflow-y-scroll">
             {cart.length === 0 ? (
               <p>Your cart is empty</p>
@@ -160,16 +157,12 @@ const FillMyForm = () => {
               ))
             )}
           </div>
-          {/* Loop through cart items */}
 
-          {/* Total Price */}
           <div className="flex justify-between px-5 py-3 border-t-2">
             <h2 className="font-semibold">Total Price:</h2>
             <p>Rs. {totalPrice}</p>
           </div>
-          {/* Total Price */}
 
-          {/* Location */}
           <div className='w-full px-5 py-1 text-sm'>
             <p className='space-x-1'>
               <span className='font-semibold'>Location:</span>
@@ -181,17 +174,6 @@ const FillMyForm = () => {
               <span className='text-colorRed'>*</span>
             </p>
           </div>
-          {/* Location */}
-
-          {/* Button */}
-          <div className="w-full flex justify-center px-10 pb-2">
-            <button
-              onClick={() => nav("/pay-my-order")}
-              className="bg-black text-white w-full py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300">
-              Process Payment
-            </button>
-          </div>
-          {/* Button */}
         </div>
         {/* Summary */}
       </div>

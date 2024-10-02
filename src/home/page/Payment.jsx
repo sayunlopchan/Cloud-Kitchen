@@ -1,9 +1,35 @@
-import { NavLink } from 'react-router-dom';
+// Payment.js
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { orderUrl } from '../../apiPath/url'; // Adjust the path accordingly
 
 const Payment = () => {
-  const cart = useSelector((state) => state.allCart.cart); // Access cart from Redux state
-  const totalPrice = useSelector((state) => state.allCart.totalPrice); // Access totalPrice from Redux state
+  const cart = useSelector((state) => state.allCart.cart);
+  const totalPrice = useSelector((state) => state.allCart.totalPrice);
+  const userData = useSelector((state) => state.form.userData); // Get user data from Redux store
+
+  const handleOrder = async () => {
+    if (cart.length === 0) {
+      alert("Your cart is empty. Please add items to the cart before placing an order.");
+      return;
+    }
+
+    const orderData = {
+      items: cart,
+      totalPrice: totalPrice,
+      user: userData, // Include user data
+    };
+
+    try {
+      const response = await axios.post(orderUrl, orderData);
+      console.log('Order successful:', response.data);
+      // Optionally, redirect or update the UI
+    } catch (error) {
+      console.error('Error placing order:', error);
+      // Handle error (e.g., show error message)
+    }
+  };
 
   return (
     <div className="p-10 lg:py-5 lg:px-20 bg-clay h-full">
@@ -22,7 +48,6 @@ const Payment = () => {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-5 px-3 p-2">
         {/* Table Container */}
         <div className="md:col-span-7 flex justify-center rounded-lg overflow-hidden">
-          {/* Table for Order Summary */}
           <table className="min-w-full bg-white border border-gray-300">
             <thead>
               <tr className="bg-gray-200">
@@ -55,35 +80,27 @@ const Payment = () => {
               </tr>
             </tfoot>
           </table>
-          {/* Table for Order Summary */}
         </div>
-        {/* Table Container */}
 
         {/* Summary */}
         <div className="md:col-span-5 border rounded-lg bg-white">
-
-          {/* heading */}
           <h2 className="text-xl lg:text-3xl text-center m-2 font-semibold">
             Choose Payment
           </h2>
-
-
           <div className="grid grid-cols-2 place-items-center gap-5 px-5 py-3 border-t-2">
+            {/* Payment method icons or buttons can be placed here */}
             <div className='w-20 h-10 lg:w-40 lg:h-20 bg-secendaryText'></div>
             <div className='w-20 h-10 lg:w-40 lg:h-20 bg-secendaryText'></div>
             <div className='w-20 h-10 lg:w-40 lg:h-20 bg-secendaryText'></div>
             <div className='w-20 h-10 lg:w-40 lg:h-20 bg-secendaryText'></div>
           </div>
-
-
-
-
           <div className="w-full flex justify-center pb-2">
-            {/* Button */}
-            <button className="bg-black text-white px-28 py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300">
+            <button
+              onClick={handleOrder}
+              className="bg-black text-white px-28 py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300"
+            >
               Order
             </button>
-            {/* Button */}
           </div>
         </div>
         {/* Summary */}

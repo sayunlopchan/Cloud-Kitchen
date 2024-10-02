@@ -23,7 +23,7 @@ const LeafletMap = () => {
     },
     {
       geocode: [27.61988963583777, 83.47537405609275],
-      popUp: "Tilotama"
+      popUp: "Tilottama"
     },
   ];
 

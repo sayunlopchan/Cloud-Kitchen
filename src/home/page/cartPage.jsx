@@ -9,13 +9,7 @@ import {
 import { NavLink } from "react-router-dom";
 
 const CartPage = () => {
-  const { cart, totalQuantity, totalPrice } = useSelector(
-    (state) => state.allCart
-  );
-
-
-
-
+  const { cart, totalQuantity, totalPrice } = useSelector((state) => state.allCart);
   const dispatch = useDispatch();
   const finalTotal = totalPrice;
 
@@ -129,18 +123,24 @@ const CartPage = () => {
                 </button>
               </div>
               <div className="flex flex-col items-center">
+                {/* Proceed to Checkout Button */}
                 <NavLink
-                  to="/fill-my-form"
-                  className="flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-300 border-2 hover:border-green-500"
+                  to={cart.length > 0 ? "/fill-my-form" : "#"}
+                  className={`flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-300 border-2 ${cart.length > 0 ? "hover:border-green-500" : "border-gray-400 text-gray-400 cursor-not-allowed"
+                    }`}
+                  onClick={cart.length === 0 ? (e) => e.preventDefault() : null} // Prevent navigation if cart is empty
                 >
                   Proceed to Checkout
                 </NavLink>
 
                 <p>Or</p>
 
+                {/* Takeout Button */}
                 <NavLink
-                  to="/takeout-location-near-me"
-                  className="flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium bg-black transition-all duration-300 border-2 text-white"
+                  to={cart.length > 0 ? "/takeout-location-near-me" : "#"}
+                  className={`flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-300 border-2 ${cart.length > 0 ? "bg-black text-white hover:bg-gray-800" : "border-gray-400 text-gray-400 cursor-not-allowed"
+                    }`}
+                  onClick={cart.length === 0 ? (e) => e.preventDefault() : null} // Prevent navigation if cart is empty
                 >
                   Takeout
                 </NavLink>
