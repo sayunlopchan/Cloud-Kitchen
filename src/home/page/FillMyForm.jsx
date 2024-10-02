@@ -13,6 +13,17 @@ const FillMyForm = () => {
   const totalPrice = useSelector((state) => state.allCart.totalPrice);
   const [locationValue, setLocationValue] = useState('N/A');
 
+  const getInitialValues = () => {
+    const storedData = localStorage.getItem('formData');
+    return storedData ? JSON.parse(storedData) : {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phoneNumber: '',
+      location: '',
+    };
+  };
+
   const validationSchema = Yup.object({
     firstName: Yup.string().required('First name is required.'),
     lastName: Yup.string().required('Last name is required.'),
@@ -41,16 +52,11 @@ const FillMyForm = () => {
         {/* Form Container */}
         <div className="md:col-span-7 flex justify-center rounded-lg overflow-hidden">
           <Formik
-            initialValues={{
-              firstName: '',
-              lastName: '',
-              email: '',
-              phoneNumber: '',
-              location: '',
-            }}
+            initialValues={getInitialValues()} // Get initial values from local storage
             validationSchema={validationSchema}
             onSubmit={(values) => {
               dispatch(setUserData(values)); // Save form data to the store
+              localStorage.setItem('formData', JSON.stringify(values)); // Save form data to local storage
               setLocationValue(values.location);
               nav("/pay-my-order");
             }}
@@ -116,7 +122,11 @@ const FillMyForm = () => {
                   <ErrorMessage name="location" component="p" className="text-red-500 text-sm" />
                 </div>
 
-                <button type="submit" className="bg-black text-white w-full py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300">
+                <button
+                  type="submit"
+                  disabled={cart.length === 0} // Disable button if cart is empty
+                  className={`bg-black text-white w-full py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300 ${cart.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                >
                   Submit
                 </button>
               </Form>
@@ -154,10 +164,6 @@ const FillMyForm = () => {
           </div>
 
           <div className='w-full px-5 py-1 text-sm'>
-            <p className='space-x-1'>
-              <span className='font-semibold'>Location:</span>
-              <span>{locationValue}</span>
-            </p>
             <p className='text-center text-secendaryText'>
               <span className='text-colorRed'>*</span>
               please wait for phone call confirmation after order

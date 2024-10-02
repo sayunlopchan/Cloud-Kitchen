@@ -78,11 +78,13 @@ const Workflow = () => {
         </div>
         {/* three */}
 
-
       </div>
-      <img src={arrow_curved} alt="arrow" className='w-16' />
+      {/* Or */}
+      <h2 className='text-center text-lg font-bold py-10'>Or</h2>
+      {/* Or */}
 
-      <div className='w-full flex justify-center items-center pb-10'>
+      <div className='w-full flex justify-center items-center py-10'>
+
         {/* takeout */}
         <div className='relative w-[240px] h-[165px] border-colorRed bg-white border-2 rounded-[60px]'>
           <div className='flex justify-center h-[55px]'>

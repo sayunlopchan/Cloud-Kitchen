@@ -1,13 +1,16 @@
-// Payment.js
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { orderUrl } from '../../apiPath/url'; // Adjust the path accordingly
+import { clearCart } from '../../features/cartSlice';
+import { useState } from 'react';
 
 const Payment = () => {
   const cart = useSelector((state) => state.allCart.cart);
   const totalPrice = useSelector((state) => state.allCart.totalPrice);
   const userData = useSelector((state) => state.form.userData); // Get user data from Redux store
+  const [notification, setNotification] = useState(''); // State for notification message
+  const dispatch = useDispatch(); // Use useDispatch to dispatch actions
 
   const handleOrder = async () => {
     if (cart.length === 0) {
@@ -24,6 +27,18 @@ const Payment = () => {
     try {
       const response = await axios.post(orderUrl, orderData);
       console.log('Order successful:', response.data);
+
+      // Dispatch clearCart action
+      dispatch(clearCart());
+
+      // Set notification message
+      setNotification('Order successfully sent!');
+
+      // Clear notification after 5 seconds
+      setTimeout(() => {
+        setNotification('');
+      }, 5000);
+
       // Optionally, redirect or update the UI
     } catch (error) {
       console.error('Error placing order:', error);
@@ -44,6 +59,13 @@ const Payment = () => {
         </NavLink>
       </div>
       {/* Navigation */}
+
+      {/* Notification */}
+      {notification && (
+        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 fixed bottom-20 right-0" role="alert">
+          <span className="block sm:inline">{notification}</span>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-5 px-3 p-2">
         {/* Table Container */}

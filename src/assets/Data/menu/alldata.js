@@ -17,7 +17,78 @@ import img14 from '../../img/foodItems/Grilled buff Sandwich.jpg';
 import img15 from '../../img/foodItems/Scrumbled egg with hash potato.jpg';
 
 
+// Breakfast Data
+const breakfast = [
+  {
+    id: 18,
+    title: "Poached Egg with Brown Bread",
+    img: img10,
+    price: 100,
+    discountPercentage: 10,
+    description: "A delicious poached egg served on brown bread.",
+    rating: 4.5,
+    likes: 120,
+    category: "breakfast"
+  },
+  {
+    id: 19,
+    title: "Boiled Egg",
+    img: img11,
+    price: 50,
+    discountPercentage: 0,
+    description: "Classic boiled egg.",
+    rating: 4.0,
+    likes: 95,
+    category: "breakfast"
+  },
+  {
+    id: 20,
+    title: "Sandwich",
+    img: img12,
+    price: 80,
+    discountPercentage: 5,
+    description: "Freshly made sandwich.",
+    rating: 4.3,
+    likes: 80,
+    category: "breakfast"
+  },
+  {
+    id: 21,
+    title: "Grilled Chicken Sandwich",
+    img: img13,
+    price: 120,
+    discountPercentage: 15,
+    description: "Grilled chicken sandwich for a hearty breakfast.",
+    rating: 4.7,
+    likes: 150,
+    category: "breakfast"
+  },
+  {
+    id: 22,
+    title: "Grilled Buff Sandwich",
+    img: img14,
+    price: 130,
+    discountPercentage: 10,
+    description: "Delicious grilled buff sandwich.",
+    rating: 4.6,
+    likes: 110,
+    category: "breakfast"
+  },
+  {
+    id: 23,
+    title: "Scrambled Egg with Hash Potato",
+    img: img15,
+    price: 110,
+    discountPercentage: 8,
+    description: "Scrambled egg served with crispy hash potatoes.",
+    rating: 4.4,
+    likes: 90,
+    category: "breakfast"
+  },
+];
 
+
+// Nepali nasta data below
 // Momo Data
 const momo = [
   {
@@ -222,75 +293,6 @@ const biryani = [
   },
 ];
 
-// Breakfast Data
-const breakfast = [
-  {
-    id: 18,
-    title: "Poached Egg with Brown Bread",
-    img: img10,
-    price: 100,
-    discountPercentage: 10,
-    description: "A delicious poached egg served on brown bread.",
-    rating: 4.5,
-    likes: 120,
-    category: "breakfast"
-  },
-  {
-    id: 19,
-    title: "Boiled Egg",
-    img: img11,
-    price: 50,
-    discountPercentage: 0,
-    description: "Classic boiled egg.",
-    rating: 4.0,
-    likes: 95,
-    category: "breakfast"
-  },
-  {
-    id: 20,
-    title: "Sandwich",
-    img: img12,
-    price: 80,
-    discountPercentage: 5,
-    description: "Freshly made sandwich.",
-    rating: 4.3,
-    likes: 80,
-    category: "breakfast"
-  },
-  {
-    id: 21,
-    title: "Grilled Chicken Sandwich",
-    img: img13,
-    price: 120,
-    discountPercentage: 15,
-    description: "Grilled chicken sandwich for a hearty breakfast.",
-    rating: 4.7,
-    likes: 150,
-    category: "breakfast"
-  },
-  {
-    id: 22,
-    title: "Grilled Buff Sandwich",
-    img: img14,
-    price: 130,
-    discountPercentage: 10,
-    description: "Delicious grilled buff sandwich.",
-    rating: 4.6,
-    likes: 110,
-    category: "breakfast"
-  },
-  {
-    id: 23,
-    title: "Scrambled Egg with Hash Potato",
-    img: img15,
-    price: 110,
-    discountPercentage: 8,
-    description: "Scrambled egg served with crispy hash potatoes.",
-    rating: 4.4,
-    likes: 90,
-    category: "breakfast"
-  },
-];
 
 // Most sold
 const mostSold = [
@@ -300,6 +302,8 @@ const mostSold = [
   biryani[0],
   breakfast[0],
 ];
+
+// Most Popular
 const mostPopular = [
   momo[2],
   friedRice[2],
@@ -307,6 +311,8 @@ const mostPopular = [
   biryani[0],
   breakfast[2],
 ];
+
+// Exclusive Offer
 const exclusiveOffer = [
   momo[1],
   biryani[0],

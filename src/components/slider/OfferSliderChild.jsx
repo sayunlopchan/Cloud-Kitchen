@@ -1,8 +1,12 @@
+import cardBase from '../../assets/icon/active.svg'
+
+
+
 
 const OfferSliderChild = () => {
   return (
     <div>
-      ss
+      <img src={cardBase} alt="" />
     </div>
   )
 }
