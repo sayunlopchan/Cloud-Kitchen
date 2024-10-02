@@ -8,7 +8,7 @@ const TakeoutBanner = () => {
   const nav = useNavigate();
 
   return (
-    <div className="h-[360px] lg:h-[500px] relative">
+    <div className="h-[360px] lg:h-[500px] relative overflow-x-hidden">
       <img
         src={bg_taxture}
         alt="No-Time-To-Make-Breakfast.png"
@@ -21,8 +21,7 @@ const TakeoutBanner = () => {
       absolute 
       -right-16 
       lg:-right-32 
-      -top-5
-      lg:-top-5
+      -top-0
       w-[300px]
       lg:w-[500px]"
       />
@@ -33,7 +32,7 @@ const TakeoutBanner = () => {
       absolute
       font-bold
       text-white
-      pl-10
+      pl-5
       lg:pl-20
       pt-10
       space-y-5"
@@ -58,7 +57,7 @@ const TakeoutBanner = () => {
         <div className="pt-10 space-y-2">
           <h2 className="lg:text-3xl">Available now at:</h2>
 
-          <div className="flex gap-x-2 lg:text-2xl font-semibold">
+          <div className="flex gap-x-2 text-sm lg:text-2xl font-semibold">
             {/* Butwal */}
             <span className="flex items-center gap-x-1">
               <img
