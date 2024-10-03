@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaHeart, FaPlus, FaMinus } from "react-icons/fa6";
 import { GoStarFill } from "react-icons/go";
 import { addToCart, increaseItemQuantity, decreaseItemQuantity } from '../../features/cartSlice';
-import menuData from '../../assets/Data/menu/alldata'; // Importing the menu data
+import menuData from '../../assets/Data/menu/alldata';
 
 const DetailPage = () => {
   const nav = useNavigate();
@@ -41,13 +41,13 @@ const DetailPage = () => {
   };
 
   const handleDecreaseQuantity = () => {
-    dispatch(decreaseItemQuantity(product.id)); // This handles removal if quantity goes to 0
+    dispatch(decreaseItemQuantity(product.id));
   };
 
   const afterDiscount = product.price * (1 - (product.discountPercentage || 0) / 100);
 
-  // Check if the cart is empty
-  const isCartEmpty = cart.length === 0;
+  // Check if the current product is in the cart
+  const isInCart = Boolean(cartItem);
 
   return (
     <div className='grid grid-cols-1 lg:grid-cols-12 bg-clay py-5 px-5 lg:px-20 space-y-10'>
@@ -114,15 +114,15 @@ const DetailPage = () => {
             <div className='flex gap-2 '>
               <button
                 onClick={() => nav('/fill-my-form')}
-                disabled={isCartEmpty} // Disable if cart is empty
-                className={`bg-colorRed text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${isCartEmpty ? 'opacity-50 cursor-not-allowed' : ''}`}
+                disabled={!isInCart} // Disable if product is not in cart
+                className={`bg-colorRed text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${!isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 Purchase
               </button>
               <button
                 onClick={() => nav('/takeout-location-near-me')}
-                disabled={isCartEmpty} // Disable if cart is empty
-                className={`bg-black text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${isCartEmpty ? 'opacity-50 cursor-not-allowed' : ''}`}
+                disabled={!isInCart} // Disable if product is not in cart
+                className={`bg-black text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${!isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 Takeout
               </button>
