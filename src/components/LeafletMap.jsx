@@ -45,7 +45,7 @@ const LeafletMap = () => {
       setCurrentLocation(userLocation); // Update to the user's location
 
       if (mapRef.current) {
-        mapRef.current.setView(userLocation, 13); // Center map to user's location
+        mapRef.current.setView(userLocation, 10);
       }
     }, (error) => {
       console.error("Error getting location", error);
@@ -90,7 +90,6 @@ const LeafletMap = () => {
       <button
         onClick={handleNavigateToUser}
         className="absolute bottom-5 right-5 z-[1000] text-blue-500 cursor-pointer"
-      // disabled={!currentLocation} // Disable if current location is not available
       >
         <MdGpsFixed size={30} />
       </button>

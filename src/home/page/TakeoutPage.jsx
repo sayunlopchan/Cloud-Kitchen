@@ -1,40 +1,83 @@
+// components/TakeoutPage.js
+
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'; // Import useDispatch
 import LeafletMap from '../../components/LeafletMap';
-
-
+import Dialog from '../../components/Dialog';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { orderUrl } from '../../apiPath/url';
+import { clearCart } from '../../features/cartSlice'; // Import clearCart action
 
 const TakeoutPage = () => {
-  const cart = useSelector((state) => state.allCart.cart); // Access cart from Redux state
-  const totalPrice = useSelector((state) => state.allCart.totalPrice); // Access totalPrice from Redux state
+  const cart = useSelector((state) => state.allCart.cart);
+  const totalPrice = useSelector((state) => state.allCart.totalPrice);
+  const userData = useSelector((state) => state.form.userData); // Get user data from Redux store
+  const dispatch = useDispatch(); // Initialize useDispatch
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [loading, setLoading] = useState(false); // Loading state
+  const [takeoutLocation, setTakeoutLocation] = useState(''); // State for takeout location
 
+  const handleTakeout = async () => {
+    setLoading(true); // Set loading to true
+    try {
+      // Construct order data to send to the backend
+      const orderData = {
+        items: cart,
+        totalPrice,
+        user: userData,
+        paymentMethod: 'Takeout', // Set payment method to "Takeout"
+        takeoutLocation: takeoutLocation || 'Your location here', // Use user input for location
+      };
+
+      // Make an API request to create the order
+      const response = await axios.post(orderUrl, orderData);
+
+      // Handle successful response
+      if (response.status === 201) {
+        setDialogMessage(`Your Order Has Been Placed!, Please Wait For Our Call.`);
+        setIsSuccess(true);
+        dispatch(clearCart()); // Clear the cart in Redux store
+      }
+    } catch (error) {
+      console.error('Error confirming takeout:', error.response || error); // Log detailed error
+      setDialogMessage(error.response?.data?.message || 'Failed to confirm takeout. Please try again.');
+      setIsSuccess(false);
+    } finally {
+      setLoading(false); // Set loading to false after the request is done
+      setDialogOpen(true);
+    }
+  };
+
+  const closeDialog = () => {
+    setDialogOpen(false);
+  };
 
   return (
     <div className="p-10 lg:px-20 bg-clay h-full">
       {/* Navigation */}
-      <div className="flex items-center gap-2 pb-1 pl-5 text-2xl font-semibold ">
+      <div className="flex items-center gap-2 pb-1 pl-5 text-2xl font-semibold">
         <NavLink to={'/cart'}>CART</NavLink>
         &gt;
-        <NavLink to={'#'} className={'text-colorRed'}>
+        <NavLink to={'/fill-my-form-takeout'}>Form</NavLink>
+        &gt;
+        <NavLink to={'#'} className="text-colorRed">
           Takeout Location
         </NavLink>
       </div>
-      {/* Navigation */}
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-5 px-3 p-2">
         {/* Title */}
         <h2 className="md:col-span-12 max-md:order-2 px-3 font-semibold text-lg">Takeout Location</h2>
-        {/* Title */}
 
         {/* Map Container */}
-        <div className="md:col-span-7 max-md:order-3 flex justify-center rounded-lg overflow-hidden">
-          {/* Map */}
+        <div className="md:col-span-7 max-md:order-3 flex justify-center rounded-lg overflow-hidden -z-0">
           <div className="h-[400px] w-full bg-gray-400">
-            <LeafletMap />
+            <LeafletMap setLocation={setTakeoutLocation} /> {/* Pass function to set location */}
           </div>
-          {/* Map */}
         </div>
-        {/* Map Container */}
 
         {/* Summary */}
         <div className="md:col-span-5 max-md:order-1 border rounded-lg bg-white">
@@ -59,28 +102,35 @@ const TakeoutPage = () => {
               ))
             )}
           </div>
-          {/* Loop through cart items */}
 
           {/* Total Price */}
           <div className="flex justify-between px-5 py-3 border-t-2">
             <h2 className="font-semibold">Total Price:</h2>
             <p>Rs. {totalPrice}</p>
           </div>
-          {/* Total Price */}
-          <p className='text-center text-secendaryText'>
-            <span className='text-colorRed'>*</span>
-            please wait for phone call confirmation after order
-            <span className='text-colorRed'>*</span>
+
+          <p className="text-center text-secondaryText">
+            <span className="text-colorRed">*</span>
+            Please wait for phone call confirmation after order
+            <span className="text-colorRed">*</span>
           </p>
+
           {/* Button */}
           <div className="w-full flex justify-center pb-2">
-            <button className=" bg-black text-white px-28 py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300">
-              Confirm Takeout
+            <button
+              onClick={handleTakeout}
+              className="bg-black text-white px-28 py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300"
+              disabled={loading} // Disable button while loading
+            >
+              {loading ? 'Confirming...' : 'Confirm Takeout'}
             </button>
           </div>
-          {/* Button */}
         </div>
-        {/* Summary */}
+      </div>
+
+      {/* Dialog for notifications */}
+      <div className="z-[10000]">
+        <Dialog isOpen={dialogOpen} onClose={closeDialog} message={dialogMessage} isSuccess={isSuccess} />
       </div>
     </div>
   );

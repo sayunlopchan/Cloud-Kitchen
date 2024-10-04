@@ -1,22 +1,51 @@
 import curve from "../../assets/icon/red Curve.svg";
-import { FiSearch } from "react-icons/fi";
+// import { FiSearch } from "react-icons/fi";
 import Card from "../../components/Card";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/cartSlice";
 
 import menuData from "../../assets/Data/menu/alldata";
 const { breakfast } = menuData;
 const { momo } = menuData;
 const { friedRice } = menuData;
 const { chowmein } = menuData;
+const { keemaNoodle } = menuData;
+const { salad } = menuData;
+const { cheeseball } = menuData;
+const { crispy } = menuData;
+const { snack } = menuData;
 const { biryani } = menuData;
 
 const MenuPage = () => {
   const nav = useNavigate();
+  const dispatch = useDispatch();
+
+
+
+
+  const handleAddToCart = (item) => {
+    const discountedPrice = item.discountPercentage
+      ? item.price * (1 - item.discountPercentage / 100)
+      : item.price;
+
+    dispatch(
+      addToCart({
+        id: item.id,
+        title: item.title,
+        price: discountedPrice,
+        img: item.img,
+      })
+    );
+  };
+
+
+
 
   return (
     <div className="space-y-5">
       {/* search */}
-      <div className="relative mx-auto w-[60%] lg:w-[30%]">
+      {/* <div className="relative mx-auto w-[60%] lg:w-[30%]">
         <input
           type="text"
           name="search"
@@ -24,11 +53,11 @@ const MenuPage = () => {
           className="outline-none border-2 w-full h-10 rounded-full px-4"
         />
         <FiSearch size={25} className="absolute right-3 top-2 cursor-pointer" />
-      </div>
+      </div> */}
       {/* search */}
 
-      {/* All Menu */}
-      <div className="w-full flex justify-center ">
+      {/* All Menu title */}
+      <div className="w-full  flex justify-center ">
         <div className="relative w-fit mt-5">
           <h2 className="font-semibold text-center text-lg lg:text-3xl">
             Menu
@@ -40,11 +69,14 @@ const MenuPage = () => {
           />
         </div>
       </div>
-      {/* All Menu */}
+      {/* All Menu title*/}
 
       {/* Quick Category */}
-      <header className="w-full">
+      {/* <header className="w-full">
         <nav className="flex flex-wrap gap-5 justify-center py-5 text-sm lg:text-lg">
+          <span className="border-2 border-colorRed px-3 py-1 rounded-2xl">
+            All Menu
+          </span>
           <span className="border-2 border-colorRed px-3 py-1 rounded-2xl">
             BreakFast
           </span>
@@ -67,12 +99,12 @@ const MenuPage = () => {
             Biryani
           </span>
         </nav>
-      </header>
+      </header> */}
       {/* Quick Category */}
 
       {/* BreakFast section */}
-      <section className="py-20 px-10">
-        <h2 className="font-semibold text-2xl mb-40 border-b-4 border-colorRed w-fit">
+      <section className="px-10">
+        <h2 className="font-semibold text-2xl mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
           Breakfast
         </h2>
         <div
@@ -88,6 +120,7 @@ const MenuPage = () => {
             <Card
               key={item.id}
               item={item}
+              handleAddToCart={handleAddToCart}
               onClick={() => nav(`/product-detail/${item.id}`)}
             />
           ))}
@@ -96,14 +129,14 @@ const MenuPage = () => {
       {/* BreakFast section */}
 
       {/* Nepali Nasta section*/}
-      <section className="py-20 px-10">
+      <section className="px-10 pb-20">
         {/* nepali nasta */}
         <h2 className="font-semibold text-2xl mb-5 border-b-4 border-colorRed w-fit">
           Nepali Nasta
         </h2>
 
         {/* momo */}
-        <h2 className="font-semibold text-2xl mb-40 border-b-4 border-colorRed w-fit">
+        <h2 className="font-semibold text-2xl mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
           Momo
         </h2>
 
@@ -122,12 +155,13 @@ const MenuPage = () => {
             <Card
               key={item.id}
               item={item}
+              handleAddToCart={handleAddToCart}
               onClick={() => nav(`/product-detail/${item.id}`)}
             />
           ))}
         </div>
 
-        <h2 className="font-semibold text-2xl mb-40 border-b-4 border-colorRed w-fit">
+        <h2 className="font-semibold text-2xl mt-20 mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
           Fried Rice
         </h2>
 
@@ -145,62 +179,69 @@ place-content-center "
             <Card
               key={item.id}
               item={item}
+              handleAddToCart={handleAddToCart}
               onClick={() => nav(`/product-detail/${item.id}`)}
             />
           ))}
         </div>
 
-        <h2 className="font-semibold text-2xl mb-40 border-b-4 border-colorRed w-fit">
+        <h2 className="font-semibold text-2xl mt-20 mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
           Chowmein
         </h2>
 
-        <div
-          className="grid grid-cols-2
-md:grid-cols-3
-gap-y-20
-lg:px-40
-max-sm:gap-y-10
-max-md:gap-y-20
-place-items-center 
-place-content-center "
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-y-20 lg:px-40 max-sm:gap-y-10 max-md:gap-y-20 place-items- place-content-center "
         >
           {chowmein.map((item) => (
             <Card
               key={item.id}
               item={item}
+              handleAddToCart={handleAddToCart}
               onClick={() => nav(`/product-detail/${item.id}`)}
             />
           ))}
         </div>
 
 
-        <h2 className="font-semibold text-2xl mb-40 border-b-4 border-colorRed w-fit">
+        <h2 className="font-semibold text-2xl mt-20  mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
           Biryani
         </h2>
 
-        <div
-          className="grid grid-cols-2
-md:grid-cols-3
-gap-y-20
-lg:px-40
-max-sm:gap-y-10
-max-md:gap-y-20
-place-items-center 
-place-content-center "
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-y-20 lg:px-40 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center "
         >
           {biryani.map((item) => (
             <Card
               key={item.id}
               item={item}
+              handleAddToCart={handleAddToCart}
+              onClick={() => nav(`/product-detail/${item.id}`)}
+            />
+          ))}
+        </div>
+
+        <h2 className="font-semibold text-2xl mt-20  mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
+          Biryani
+        </h2>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-y-20 lg:px-40 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center "
+        >
+          {biryani.map((item) => (
+            <Card
+              key={item.id}
+              item={item}
+              handleAddToCart={handleAddToCart}
               onClick={() => nav(`/product-detail/${item.id}`)}
             />
           ))}
         </div>
 
 
-      </section>
+      </section >
       {/* Nepali Nasta section */}
-    </div>
+
+
+
+
+    </div >
   );
 };
 

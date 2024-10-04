@@ -1,10 +1,14 @@
-import { useNavigate } from "react-router-dom";
 import menuData from "../../assets/Data/menu/alldata";
 import CurveLine from "../../assets/icon/red Curve.svg";
 import Arrow from "../../assets/icon/Arrow-next.svg";
+import Card from "../../components/Card";
+
+
+
+
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
-import Card from "../../components/Card";
 
 const MostSold = () => {
   const nav = useNavigate();

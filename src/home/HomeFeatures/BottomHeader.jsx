@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "../../features/cartSlice";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { FiSearch } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 // logo
@@ -10,6 +10,7 @@ import logo from '../../assets/logo/Bhansha-Express-typo-logo.svg';
 
 const BottomHeader = () => {
   const nav = useNavigate();
+  const location = useLocation(); // Get the current location
   const dispatch = useDispatch();
   const { cart, totalQuantity, totalPrice } = useSelector((state) => state.allCart);
 
@@ -37,9 +38,18 @@ const BottomHeader = () => {
     };
   }, []);
 
+  // Check if the current path is one of the excluded paths
+  const isExcludedPath =
+    ['/login', '/signup', '/dashboard', '/takeout-location-near-me', '/fill-my-form-payment', '/fill-my-form-takeout', '/pay-my-order'].includes(location.pathname);
+
+  // Don't render the header if the current path is excluded
+  if (isExcludedPath) {
+    return null; // Don't render the BottomHeader
+  }
+
   return (
     <header
-      className={`flex items-center justify-between px-5 py-2 fixed bottom-5 z-[1000] w-[90vw] rounded-xl bg-white shadow-lg transition-transform duration-1000 ease-in-out mx-auto ${showHeader ? ' translate-y-0' : 'hidden translate-y-5'
+      className={`flex items-center justify-between px-5 py-2 fixed bottom-5 z-[1000] w-[90vw] rounded-xl bg-white shadow-lg transition-transform duration-1000 ease-in-out mx-auto ${showHeader ? 'translate-y-0' : 'hidden translate-y-5'
         }`}
       style={{ left: "50%", transform: "translateX(-50%)" }}
     >
@@ -87,9 +97,11 @@ const BottomHeader = () => {
         <h2 className="text-lg">Nrs.{totalPrice}</h2>
 
         <button
-          onClick={() => nav("/the-best-bhansha-express-menu")}
-          className="bg-colorRed text-white px-2 py-1 lg:px-10 lg:py-3 rounded-lg">
-          Menu
+          onClick={() => totalQuantity > 0 && nav("/fill-my-form-payment")} // Only navigate if totalQuantity is greater than 0
+          className={`bg-colorRed text-white px-2 py-1 lg:px-4 lg:py-2 rounded-lg ${totalQuantity === 0 ? 'opacity-50 cursor-not-allowed' : ''}`} // Disable styling
+          disabled={totalQuantity === 0} // Disable button if cart is empty
+        >
+          Payment
         </button>
       </div>
     </header>

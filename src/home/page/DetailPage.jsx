@@ -3,11 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaHeart, FaPlus, FaMinus } from "react-icons/fa6";
 import { GoStarFill } from "react-icons/go";
 import { addToCart, increaseItemQuantity, decreaseItemQuantity } from '../../features/cartSlice';
+import { useState, useEffect } from 'react'; // Import useEffect
+
+
+// menu data
 import menuData from '../../assets/Data/menu/alldata';
 
 const DetailPage = () => {
   const nav = useNavigate();
   const { id } = useParams();
+  const dispatch = useDispatch();
+
+  // State to manage the current main image
+  const [mainImage, setMainImage] = useState(null);
 
   // Flattening menuData to find the specific product
   const allDishes = [
@@ -19,10 +27,15 @@ const DetailPage = () => {
   ];
 
   const product = allDishes.find(item => item.id === parseInt(id));
-  const dispatch = useDispatch();
   const cart = useSelector(state => state.allCart.cart);
-
   const cartItem = cart.find(item => item.id === product?.id);
+
+  // Set initial main image to the product's main image using useEffect
+  useEffect(() => {
+    if (product) {
+      setMainImage(product.img);
+    }
+  }, [product]); // Run when product changes
 
   if (!product) {
     return <h2>Product not found</h2>;
@@ -45,25 +58,49 @@ const DetailPage = () => {
   };
 
   const afterDiscount = product.price * (1 - (product.discountPercentage || 0) / 100);
-
-  // Check if the current product is in the cart
   const isInCart = Boolean(cartItem);
 
+  // Handle thumbnail click to change main image
+  const handleThumbnailClick = (image) => {
+    setMainImage(image);
+  };
+
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-12 bg-clay py-5 px-5 lg:px-20 space-y-10'>
+    <div className='grid grid-cols-1 lg:grid-cols-12 bg-clay py-5 px-5 lg:px-20 space-y-10 '>
+
       {/* Image Section */}
-      <div className='lg:col-span-6 flex justify-center items-center mb-5 lg:mb-0'>
-        <img
-          src={product.img}
-          alt={product.title}
-          className='w-full sm:w-[360px] lg:w-[80%] h-auto rounded-lg'
-        />
+      <div className='lg:col-span-6 relative h-[430px] bg-gray-500'>
+
+        {/* Main image */}
+        <div className='flex justify-center items-center h-full object-cover bg-green-500'>
+          <img
+            src={mainImage || product.img}
+            alt={product.title}
+            className='object-cover sm:w-[360px] rounded-lg'
+          />
+        </div>
+        {/* Main image */}
+
+        {/* Thumbnail images */}
+        <div className='h-24 w-full px-10 py-2 gap-2 grid grid-cols-4 absolute bottom-0 bg-orange-500'>
+          {product.imgArr.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt={`Thumbnail ${index + 1}`}
+              className='size-full cursor-pointer'
+              onClick={() => handleThumbnailClick(img)} // Change main image on click
+            />
+          ))}
+        </div>
+        {/* Thumbnail images */}
       </div>
+      {/* Image Section */}
 
       {/* Details Section */}
-      <div className='lg:col-span-6 flex flex-col gap-5 relative'>
+      <div className='lg:col-span-6 flex flex-col gap-y-5 relative'>
         <h2 className='font-bold lg:text-3xl text-xl'>{product.title}</h2>
-        <p className='text-secendaryText text-base'>{product.description}</p>
+        <p className='text-secendaryText text-base h-[160px] overflow-scroll'>{product.description}</p>
 
         <div className="space-y-3">
           <p className='space-x-2 text-lg'>
@@ -114,14 +151,14 @@ const DetailPage = () => {
             <div className='flex gap-2 '>
               <button
                 onClick={() => nav('/fill-my-form')}
-                disabled={!isInCart} // Disable if product is not in cart
+                disabled={!isInCart}
                 className={`bg-colorRed text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${!isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 Purchase
               </button>
               <button
-                onClick={() => nav('/takeout-location-near-me')}
-                disabled={!isInCart} // Disable if product is not in cart
+                onClick={() => nav('/fill-my-form')}
+                disabled={!isInCart}
                 className={`bg-black text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${!isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 Takeout
@@ -133,6 +170,7 @@ const DetailPage = () => {
           </div>
         </div>
       </div>
+      {/* Details Section */}
 
       {/* Suggestion Section */}
       <div className='col-span-full space-y-5'>
@@ -143,6 +181,7 @@ const DetailPage = () => {
           <p className='text-gray-500 flex justify-center items-center pt-20'>No Data for now!</p>
         </div>
       </div>
+      {/* Suggestion Section */}
     </div>
   );
 };

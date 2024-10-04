@@ -1,49 +1,70 @@
+// components/Payment.js
+
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { orderUrl } from '../../apiPath/url'; // Adjust the path accordingly
 import { clearCart } from '../../features/cartSlice';
-import { useState } from 'react';
+import cod from '../../assets/icon/COD_icon.png';
+import esewa from '../../assets/icon/esewa_og.webp';
+import Dialog from '../../components/Dialog'; // Import the Dialog component
 
 const Payment = () => {
   const cart = useSelector((state) => state.allCart.cart);
   const totalPrice = useSelector((state) => state.allCart.totalPrice);
   const userData = useSelector((state) => state.form.userData); // Get user data from Redux store
-  const [notification, setNotification] = useState(''); // State for notification message
-  const dispatch = useDispatch(); // Use useDispatch to dispatch actions
+  const dispatch = useDispatch(); // Initialize useDispatch
+
+  // State variables for Dialog
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [loading, setLoading] = useState(false); // Loading state
+  const [paymentMethod, setPaymentMethod] = useState('Cash on Delivery'); // State for payment method
 
   const handleOrder = async () => {
+    // Check if the cart is empty
     if (cart.length === 0) {
       alert("Your cart is empty. Please add items to the cart before placing an order.");
-      return;
+      return; // Exit the function if the cart is empty
     }
 
+    // Prepare order data to send to the backend
     const orderData = {
       items: cart,
       totalPrice: totalPrice,
-      user: userData, // Include user data
+      user: userData,
+      paymentMethod: paymentMethod, // Include selected payment method
+      takeoutLocation: paymentMethod === 'Takeout' ? userData.location : null // Include location only if 'Takeout'
     };
 
+    setLoading(true); // Set loading to true
+
     try {
+      // Send order data to the server
       const response = await axios.post(orderUrl, orderData);
       console.log('Order successful:', response.data);
 
-      // Dispatch clearCart action
+      // Dispatch clearCart action to reset the cart in Redux store
       dispatch(clearCart());
 
-      // Set notification message
-      setNotification('Order successfully sent!');
-
-      // Clear notification after 5 seconds
-      setTimeout(() => {
-        setNotification('');
-      }, 5000);
-
-      // Optionally, redirect or update the UI
+      // Set success dialog message
+      setDialogMessage('Order successfully placed!');
+      setIsSuccess(true);
     } catch (error) {
-      console.error('Error placing order:', error);
-      // Handle error (e.g., show error message)
+      console.error('Error placing order:', error.response || error);
+      // Set error dialog message
+      setDialogMessage(error.response?.data?.message || 'Failed to place order. Please try again.');
+      setIsSuccess(false);
+    } finally {
+      setLoading(false); // Set loading to false after the request is done
+      setDialogOpen(true); // Open the dialog
     }
+  };
+
+  const closeDialog = () => {
+    setDialogOpen(false);
   };
 
   return (
@@ -52,25 +73,27 @@ const Payment = () => {
       <div className="flex items-center gap-2 pb-1 pl-5 text-2xl font-semibold">
         <NavLink to={'/cart'}>CART</NavLink>
         &gt;
-        <NavLink to={'/fill-my-form'}>Form</NavLink>
+        <NavLink to={'/fill-my-form-payment'}>Form</NavLink>
         &gt;
         <NavLink to={'#'} className={'text-colorRed'}>
           Payment
         </NavLink>
       </div>
-      {/* Navigation */}
 
-      {/* Notification */}
-      {notification && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 fixed bottom-20 right-0" role="alert">
-          <span className="block sm:inline">{notification}</span>
-        </div>
-      )}
+      {/* Dialog for notifications */}
+      <div className="z-[10000]">
+        <Dialog
+          isOpen={dialogOpen}
+          onClose={closeDialog}
+          message={dialogMessage}
+          isSuccess={isSuccess}
+        />
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-5 px-3 p-2">
+      <div className="max-sm:text-sm lg:h-[400px]   grid grid-cols-1 md:grid-cols-12 gap-5 px-3 p-2">
         {/* Table Container */}
-        <div className="md:col-span-7 flex justify-center rounded-lg overflow-hidden">
-          <table className="min-w-full bg-white border border-gray-300">
+        <div className="md:col-span-7 flex justify-center rounded-lg overflow-scroll">
+          <table className="min-w-full bg-white border border-gray-300 ">
             <thead>
               <tr className="bg-gray-200">
                 <th className="py-2 px-4 border-b text-left">Item Name</th>
@@ -105,23 +128,40 @@ const Payment = () => {
         </div>
 
         {/* Summary */}
-        <div className="md:col-span-5 border rounded-lg bg-white">
-          <h2 className="text-xl lg:text-3xl text-center m-2 font-semibold">
-            Choose Payment
-          </h2>
+        <div className="md:col-span-5 border rounded-lg bg-white relative">
+          <h2 className="text-xl lg:text-3xl text-center m-2 font-semibold">Choose Payment</h2>
           <div className="grid grid-cols-2 place-items-center gap-5 px-5 py-3 border-t-2">
-            {/* Payment method icons or buttons can be placed here */}
-            <div className='w-20 h-10 lg:w-40 lg:h-20 bg-secendaryText'></div>
-            <div className='w-20 h-10 lg:w-40 lg:h-20 bg-secendaryText'></div>
-            <div className='w-20 h-10 lg:w-40 lg:h-20 bg-secendaryText'></div>
-            <div className='w-20 h-10 lg:w-40 lg:h-20 bg-secendaryText'></div>
+            {/* Cash on Delivery Option */}
+            <div
+              className={`w-20 h-10 lg:w-40 lg:h-20 bg-white overflow-hidden border-2 flex justify-center items-center cursor-pointer ${paymentMethod === 'Cash on Delivery' ? 'border-blue-500' : ''}`}
+              onClick={() => setPaymentMethod('Cash on Delivery')}
+            >
+              <img src={cod} alt="Cash on Delivery" className="object-cover w-[60%]" />
+            </div>
+
+            {/* Takeout Option */}
+            <div className="relative">
+              <div
+                className={`w-20 h-10 lg:w-40 lg:h-20 bg-slate-300 border-2 overflow-hidden cursor-pointer ${paymentMethod === 'Takeout' ? 'border-blue-500' : ''}`}
+                onClick={() => setPaymentMethod('Takeout')}
+              >
+                <img src={esewa} alt="Takeout" className="object-cover w-full h-full" />
+              </div>
+              {/* Overlay for esewa */}
+              <div className="absolute inset-0 bg-black opacity-60 flex justify-center items-center">
+                <span className="text-white font-bold text-sm text-center lg:text-lg">Coming Soon</span>
+              </div>
+            </div>
           </div>
+
+          {/* Order Button */}
           <div className="w-full flex justify-center pb-2">
             <button
               onClick={handleOrder}
               className="bg-black text-white px-28 py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300"
+              disabled={loading} // Disable button while loading
             >
-              Order
+              {loading ? 'Processing...' : 'Order'}
             </button>
           </div>
         </div>
