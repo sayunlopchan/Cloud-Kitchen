@@ -3,6 +3,8 @@ import OfferSlider from "../../components/slider/OfferSlider";
 import DiscountSticker from "../../assets/icon/discount-sticker.png";
 
 
+import menuData from "../../assets/Data/menu/alldata.js";
+
 
 // svg
 import SliderBg from "../../assets/icon/bg-dark.png";
@@ -71,7 +73,14 @@ function HomeBanner() {
 
         <img src={SliderBg} alt="background" className="h-full w-full " />
         <div className="absolute top-0 h-full">
-          <OfferSlider />
+          <OfferSlider
+            offers={menuData.OfferSlideData}
+            autoSlide={true}
+            autoSlideInterval={5000}
+            transitionDuration={500}
+            disableButtonDuration={1000}
+            showArrows={true}
+          />
         </div>
 
       </div>

@@ -101,7 +101,7 @@ const BottomHeader = () => {
           className={`bg-colorRed text-white px-2 py-1 lg:px-4 lg:py-2 rounded-lg ${totalQuantity === 0 ? 'opacity-50 cursor-not-allowed' : ''}`} // Disable styling
           disabled={totalQuantity === 0} // Disable button if cart is empty
         >
-          Payment
+          Checkout
         </button>
       </div>
     </header>

@@ -1,11 +1,19 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
-import icon from '../assets/logo/Bhansha-Express-logo.svg'; // Marker icon
-import userIcon from '../assets/icon/custom-user-icon.svg';
 import { MdGpsFixed } from "react-icons/md";
+
+
+
+
+// icons
+import userIcon from '../assets/icon/custom-user-icon.svg';
+import icon from '../assets/logo/Bhansha-Express-logo.svg';
+
+
+
 
 const LeafletMap = () => {
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -59,9 +67,9 @@ const LeafletMap = () => {
   };
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-[400px] w-full">
       <MapContainer
-        center={currentLocation || [27.620840542090686, 83.47506031658617]}
+        center={currentLocation}
         zoom={13}
         ref={mapRef}
       >

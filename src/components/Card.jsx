@@ -31,7 +31,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
         </h2>
 
         {item.discountPercentage ? (
-          <div className="max-sm:text-sm max-md:text-lg text-base md:text-lg lg:text-xl font-semibold text-secendaryText">
+          <div className="max-sm:text-sm max-md:text-lg text-base md:text-lg font-semibold text-secendaryText">
             Rs.
             <span className="w-fit relative text-gray-800">
               <span className="w-full absolute border-b-2  lg:border-b-[3px] border-red-500 top-2  sm:top-[10px]  lg:top-3" >

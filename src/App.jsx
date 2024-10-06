@@ -4,12 +4,10 @@ import RootLayout from "./RootLayout/RootLayout";
 // admin 
 import Login from "./features/Auth/Login";
 import Dashboard from "./features/Admin/Dashboard";
-import ProductAdd from "./components/Product/ProductAdd";
 
 // users 
 import HomePage from "./home/page/HomePage";
 import CartPage from "./home/page/cartPage";
-import ProductList from "./components/Product/ProductList";
 
 // pages
 import MostSoldPage from "./home/page/MostSoldPage";
@@ -25,6 +23,10 @@ import Signup from "./features/Auth/Signup";
 
 import ProtectedRoute from './features/Auth/ProtectedRoute';
 import FillMyFormTO from "./home/page/FillMyFormTO";
+import Aboutus from "./home/page/infomaticPage/Aboutus";
+import TermsandConditions from "./home/page/infomaticPage/TermsandConditions";
+import Faq from "./home/page/infomaticPage/Faq";
+import PrivacyandPolicy from "./home/page/infomaticPage/PrivacyandPolicy";
 
 const App = () => {
 
@@ -50,10 +52,6 @@ const App = () => {
 
         // admin routes
         {
-          path: "/products",
-          element: <ProductList />
-        },
-        {
           path: "/dashboard",
           element: (
             <ProtectedRoute>
@@ -61,14 +59,7 @@ const App = () => {
             </ProtectedRoute>
           )
         },
-        {
-          path: "/product-add",
-          element: (
-            <ProtectedRoute>
-              <ProductAdd />
-            </ProtectedRoute>
-          )
-        },
+
 
         // other pages
         {
@@ -106,6 +97,28 @@ const App = () => {
         {
           path: "/the-best-bhansha-express-menu",
           element: <MenuPage />
+        },
+
+
+
+
+        // infomatic page
+
+        {
+          path: "/Aboutus-Bhansha-Express",
+          element: <Aboutus />
+        },
+        {
+          path: "/Terms-and-Conditions-Bhansha-Express",
+          element: <TermsandConditions />
+        },
+        {
+          path: "/FAQ-Bhansha-Express",
+          element: <Faq />
+        },
+        {
+          path: "/Privacy-and-Policy-Bhansha-Express",
+          element: <PrivacyandPolicy />
         },
       ]
     }

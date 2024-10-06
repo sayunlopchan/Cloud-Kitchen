@@ -1,33 +1,33 @@
-import { useNavigate } from "react-router-dom";
+// components/OfferSliderChild.js
+import menuData from "../../assets/Data/menu/alldata.js";
+import { useSelector } from 'react-redux'; // Import useSelector
 import active_cardBase from "../../assets/icon/active.svg";
 import notactive_cardBase from "../../assets/icon/not-active.svg";
-import img1 from "../../assets/img/foodItems/B.chilly momo.png";
-import img2 from "../../assets/img/foodItems/B.chilly momo.png";
-import img3 from "../../assets/img/foodItems/B.chilly momo.png";
+import TextLimit from "../TextLimit.jsx";
 
-const OfferSliderChild = ({ activeIndex, activeImage }) => {
+const OfferSliderChild = () => {
+  const activeImage = useSelector((state) => state.offer.activeImage); // Get active image from Redux
 
-  const nav = useNavigate();
-
-  const cards = [
-    { img: img1, title: 'Momo' },
-    { img: img2, title: 'Breakfast' },
-    { img: img3, title: 'Chowmin' },
-  ];
+  // Define the cards data with images and names from OfferSlideData
+  const cardsData = menuData.OfferSlideData.map((offer, index) => ({
+    id: index + 1, // Assuming id is just the index + 1
+    img: offer.img, // Use the image path from OfferSlideData
+    name: offer.title, // Use the name from OfferSlideData
+  }));
 
   return (
     <div className="flex justify-around w-full gap-x-2">
-      {cards.map((card, index) => (
-        <div
-          key={index}
-          onClick={() => nav()}
-          className="relative flex justify-center">
-          <div className={`absolute size-[60px] sm:size-[80px] md:size-[85px] lg:size-[100px] rounded-full overflow-hidden ${index === activeIndex - 1 ? 'border-colorRed border-2 shadow-md shadow-colorRed' : ''}`}>
-            <img src={activeIndex - 1 === index ? activeImage : card.img} alt="img" />
+      {cardsData.map((card) => (
+        <div key={card.id} className="relative flex justify-center">
+          <div
+            className={`absolute size-[60px] sm:size-[80px] md:size-[85px] lg:size-[100px] rounded-full overflow-hidden border-2 shadow-md transition-all duration-500 bg-white ${card.img === activeImage ? 'border-colorRed border-2 shadow-colorRed mb-5' : 'border-black'
+              }`}
+          >
+            <img src={card.img} alt={`Card ${card.id}`} />
           </div>
-          <h2 className="size-fit absolute top-28">{card.title}</h2>
+          <h2 className="size-fit absolute top-28"><TextLimit text={card.name} limit={18} /></h2>
           <img
-            src={index === activeIndex - 1 ? active_cardBase : notactive_cardBase}
+            src={card.img === activeImage ? active_cardBase : notactive_cardBase}
             alt="card-base"
             className="w-full h-28 sm:w-[200px] md:w-full lg:w-[12.5rem] lg:h-40"
           />

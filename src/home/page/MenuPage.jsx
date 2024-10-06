@@ -1,21 +1,12 @@
 import curve from "../../assets/icon/red Curve.svg";
-// import { FiSearch } from "react-icons/fi";
+
 import Card from "../../components/Card";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
 
 import menuData from "../../assets/Data/menu/alldata";
-const { breakfast } = menuData;
-const { momo } = menuData;
-const { friedRice } = menuData;
-const { chowmein } = menuData;
-const { keemaNoodle } = menuData;
-const { salad } = menuData;
-const { cheeseball } = menuData;
-const { crispy } = menuData;
-const { snack } = menuData;
-const { biryani } = menuData;
+
 
 const MenuPage = () => {
   const nav = useNavigate();
@@ -44,18 +35,6 @@ const MenuPage = () => {
 
   return (
     <div className="space-y-5">
-      {/* search */}
-      {/* <div className="relative mx-auto w-[60%] lg:w-[30%]">
-        <input
-          type="text"
-          name="search"
-          id="search"
-          className="outline-none border-2 w-full h-10 rounded-full px-4"
-        />
-        <FiSearch size={25} className="absolute right-3 top-2 cursor-pointer" />
-      </div> */}
-      {/* search */}
-
       {/* All Menu title */}
       <div className="w-full  flex justify-center ">
         <div className="relative w-fit mt-5">
@@ -72,51 +51,14 @@ const MenuPage = () => {
       {/* All Menu title*/}
 
       {/* Quick Category */}
-      {/* <header className="w-full">
-        <nav className="flex flex-wrap gap-5 justify-center py-5 text-sm lg:text-lg">
-          <span className="border-2 border-colorRed px-3 py-1 rounded-2xl">
-            All Menu
-          </span>
-          <span className="border-2 border-colorRed px-3 py-1 rounded-2xl">
-            BreakFast
-          </span>
-          <span className="border-2 border-colorRed px-3 py-1 rounded-2xl">
-            Nepali Nasta
-          </span>
-          <span className="border-2 border-colorRed px-3 py-1 rounded-2xl">
-            Snacks
-          </span>
-          <span className="border-2 border-colorRed px-3 py-1 rounded-2xl">
-            Crispy & Crunchy
-          </span>
-          <span className="border-2 border-colorRed px-3 py-1 rounded-2xl">
-            Combos & Special
-          </span>
-          <span className="border-2 border-colorRed px-3 py-1 rounded-2xl">
-            Salad
-          </span>
-          <span className="border-2 border-colorRed px-3 py-1 rounded-2xl">
-            Biryani
-          </span>
-        </nav>
-      </header> */}
-      {/* Quick Category */}
 
       {/* BreakFast section */}
       <section className="px-10">
         <h2 className="font-semibold text-2xl mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
           Breakfast
         </h2>
-        <div
-          className="grid grid-cols-2
-        md:grid-cols-3
-        gap-y-20
-        lg:px-40
-        max-sm:gap-y-10
-        max-md:gap-y-20
-        place-items-center place-content-center "
-        >
-          {breakfast.map((item) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+          {menuData.breakfast.map((item) => (
             <Card
               key={item.id}
               item={item}
@@ -128,30 +70,17 @@ const MenuPage = () => {
       </section>
       {/* BreakFast section */}
 
-      {/* Nepali Nasta section*/}
-      <section className="px-10 pb-20">
-        {/* nepali nasta */}
-        <h2 className="font-semibold text-2xl mb-5 border-b-4 border-colorRed w-fit">
+
+
+      <section className="px-10 ">
+        <h2 className="font-semibold text-2xl pt-10 border-b-4 border-colorRed w-fit">
           Nepali Nasta
         </h2>
-
-        {/* momo */}
-        <h2 className="font-semibold text-2xl mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
+        <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit">
           Momo
         </h2>
-
-        {/* momo loop */}
-        <div
-          className="grid grid-cols-2
-        md:grid-cols-3
-        gap-y-20
-        lg:px-40
-        max-sm:gap-y-10
-        max-md:gap-y-20
-        place-items-center 
-        place-content-center "
-        >
-          {momo.map((item) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+          {menuData.momo.map((item) => (
             <Card
               key={item.id}
               item={item}
@@ -160,22 +89,30 @@ const MenuPage = () => {
             />
           ))}
         </div>
+      </section>
 
-        <h2 className="font-semibold text-2xl mt-20 mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
+      <section className="px-10 ">
+        <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit">
+          Chowmin
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+          {menuData.chowmein.map((item) => (
+            <Card
+              key={item.id}
+              item={item}
+              handleAddToCart={handleAddToCart}
+              onClick={() => nav(`/product-detail/${item.id}`)}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="px-10 ">
+        <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit">
           Fried Rice
         </h2>
-
-        <div
-          className="grid grid-cols-2
-md:grid-cols-3
-gap-y-20
-lg:px-40
-max-sm:gap-y-10
-max-md:gap-y-20
-place-items-center 
-place-content-center "
-        >
-          {friedRice.map((item) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+          {menuData.friedRice.map((item) => (
             <Card
               key={item.id}
               item={item}
@@ -184,14 +121,15 @@ place-content-center "
             />
           ))}
         </div>
+      </section>
 
-        <h2 className="font-semibold text-2xl mt-20 mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
-          Chowmein
+
+      <section className="px-10 ">
+        <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit">
+          Keema Noodle
         </h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-y-20 lg:px-40 max-sm:gap-y-10 max-md:gap-y-20 place-items- place-content-center "
-        >
-          {chowmein.map((item) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+          {menuData.keemaNoodle.map((item) => (
             <Card
               key={item.id}
               item={item}
@@ -200,15 +138,87 @@ place-content-center "
             />
           ))}
         </div>
+      </section>
 
 
-        <h2 className="font-semibold text-2xl mt-20  mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
+      <section className="px-10 ">
+        <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit">
+          Cheeseball
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+          {menuData.cheeseball.map((item) => (
+            <Card
+              key={item.id}
+              item={item}
+              handleAddToCart={handleAddToCart}
+              onClick={() => nav(`/product-detail/${item.id}`)}
+            />
+          ))}
+        </div>
+      </section>
+
+
+
+      <section className="px-10 ">
+        <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit">
+          Crispy
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+          {menuData.crispy.map((item) => (
+            <Card
+              key={item.id}
+              item={item}
+              handleAddToCart={handleAddToCart}
+              onClick={() => nav(`/product-detail/${item.id}`)}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="px-10 ">
+        <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit">
+          Snacks
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+          {menuData.snack.map((item) => (
+            <Card
+              key={item.id}
+              item={item}
+              handleAddToCart={handleAddToCart}
+              onClick={() => nav(`/product-detail/${item.id}`)}
+            />
+          ))}
+        </div>
+      </section>
+
+
+      <section className="px-10 ">
+        <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit">
+          Salad
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+          {menuData.salad.map((item) => (
+            <Card
+              key={item.id}
+              item={item}
+              handleAddToCart={handleAddToCart}
+              onClick={() => nav(`/product-detail/${item.id}`)}
+            />
+          ))}
+        </div>
+      </section>
+
+
+
+
+
+      {/* biryani */}
+      <section className="px-10 ">
+        <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit">
           Biryani
         </h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-y-20 lg:px-40 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center "
-        >
-          {biryani.map((item) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+          {menuData.biryani.map((item) => (
             <Card
               key={item.id}
               item={item}
@@ -217,28 +227,7 @@ place-content-center "
             />
           ))}
         </div>
-
-        <h2 className="font-semibold text-2xl mt-20  mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
-          Biryani
-        </h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-y-20 lg:px-40 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center "
-        >
-          {biryani.map((item) => (
-            <Card
-              key={item.id}
-              item={item}
-              handleAddToCart={handleAddToCart}
-              onClick={() => nav(`/product-detail/${item.id}`)}
-            />
-          ))}
-        </div>
-
-
-      </section >
-      {/* Nepali Nasta section */}
-
-
+      </section>
 
 
     </div >

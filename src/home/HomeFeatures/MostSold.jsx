@@ -55,7 +55,7 @@ const MostSold = () => {
       </div>
 
       <button
-        onClick={() => nav("/popular-dishes")}
+        onClick={() => nav("/most-sold")}
         aria-label="View all popular dishes"
         className="bg-red-600 px-3 py-2 rounded-tr-2xl rounded-bl-2xl flex items-center justify-center mx-auto text-white font-semibold hover:bg-red-800 transition-all duration-300"
       >

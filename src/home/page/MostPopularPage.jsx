@@ -1,51 +1,61 @@
 import menuData from "../../assets/Data/menu/alldata";
-import CurveLine from '../../assets/icon/red Curve.svg';
+import CurveLine from "../../assets/icon/red Curve.svg";
+import Card from "../../components/Card";
+
+
+
+
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/cartSlice";
 
 const MostPopularPage = () => {
+  const nav = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item) => {
+    const discountedPrice = item.discountPercentage
+      ? item.price * (1 - item.discountPercentage / 100)
+      : item.price;
+
+    dispatch(
+      addToCart({
+        id: item.id,
+        title: item.title,
+        price: discountedPrice,
+        img: item.img,
+      })
+    );
+  };
+
   return (
-    <div className='space-y-32 px-10 py-10 transition-all duration-1000 bg-[#F0F2FF]'>
+    <div className="space-y-32 px-5 lg:px-10 py-10 transition-all duration-1000 bg-clay">
+
       {/* Heading */}
-      <div className='relative w-fit'>
-        <h2 className='font-bold text-3xl pl-10'>Our Popular Dishes</h2>
-        <img src={CurveLine} alt="CurveLine" className='w-[100px] absolute top-10 right-0' />
+      <div className="relative w-fit">
+        <h2 className="font-bold text-3xl pl-10">Most Popular</h2>
+        <img
+          src={CurveLine}
+          alt="Decorative curve line"
+          className="w-[100px] absolute top-10 right-0"
+        />
+      </div>
+      {/* Heading */}
+
+      {/* Dishes - Display only the items from the mostSold array */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center">
+        {menuData.mostPopular.map((item) => (
+          <Card
+            key={item.id}
+            item={item}
+            handleAddToCart={handleAddToCart}
+            onClick={() => nav(`/product-detail/${item.id}`)}
+          />
+        ))}
       </div>
 
-      {/* Dishes - Display only the first 3 */}
-      <div className="flex flex-wrap justify-center gap-24 items-center ">
-        {
-          menuData.mostPopular.map((item, idx) => (
-            <div key={idx} className='w-[230px] h-[280px] relative rounded-2xl shadow-xl bg-white'>
-              <div className='h-[100px]'>
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className='w-[130px] h-[130px] rounded-full border-red-600 border-4 absolute right-0 -top-10'
-                />
-              </div>
-              <div className='p-2'>
-                <h2 className='text-2xl font-bold'>{item.title}</h2>
-                {item.discountPercentage > 0 ? (
-                  <div>
-                    <span className='text-2xl font-semibold line-through text-red-600'>Rs.{item.price}</span>
-                    <span className='text-2xl font-semibold ml-2'>Rs.{(item.price - item.discountPercentage)}</span>
-                  </div>
-                ) : (
-                  <h2 className='text-2xl font-semibold'>Rs.{item.price}</h2>
-                )}
-              </div>
-              <div className="absolute bottom-2 right-2 m-2">
-                <button
-                  className="bg-red-600 text-white text-lg font-semibold px-5 py-2 transition-all duration-500 border hover:rounded-xl"
-                >
-                  Add To Cart
-                </button>
-              </div>
-            </div>
-          ))
-        }
-      </div>
     </div>
-  )
-}
+  );
+};
 
 export default MostPopularPage;
