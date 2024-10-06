@@ -4,21 +4,28 @@ import { useSelector } from 'react-redux'; // Import useSelector
 import active_cardBase from "../../assets/icon/active.svg";
 import notactive_cardBase from "../../assets/icon/not-active.svg";
 import TextLimit from "../TextLimit.jsx";
+import { useNavigate } from "react-router-dom";
 
 const OfferSliderChild = () => {
+
+
+  // nav
+  const nav = useNavigate();
+
+
   const activeImage = useSelector((state) => state.offer.activeImage); // Get active image from Redux
 
   // Define the cards data with images and names from OfferSlideData
   const cardsData = menuData.OfferSlideData.map((offer, index) => ({
-    id: index + 1, // Assuming id is just the index + 1
-    img: offer.img, // Use the image path from OfferSlideData
-    name: offer.title, // Use the name from OfferSlideData
+    id: offer.id,
+    img: offer.img,
+    name: offer.title,
   }));
 
   return (
     <div className="flex justify-around w-full gap-x-2">
       {cardsData.map((card) => (
-        <div key={card.id} className="relative flex justify-center">
+        <div key={card.id} className="relative flex justify-center cursor-pointer" onClick={() => nav(`/product-detail/${card.id}`)}>
           <div
             className={`absolute size-[60px] sm:size-[80px] md:size-[85px] lg:size-[100px] rounded-full overflow-hidden border-2 shadow-md transition-all duration-500 bg-white ${card.img === activeImage ? 'border-colorRed border-2 shadow-colorRed mb-5' : 'border-black'
               }`}
