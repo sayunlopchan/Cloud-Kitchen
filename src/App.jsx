@@ -19,7 +19,7 @@ import Payment from "./home/page/Payment";
 
 
 import MenuPage from "./home/page/MenuPage";
-import Signup from "./features/Auth/Signup";
+// import Signup from "./features/Auth/Signup";
 
 import ProtectedRoute from './features/Auth/ProtectedRoute';
 import FillMyFormTO from "./home/page/FillMyFormTO";
@@ -45,10 +45,10 @@ const App = () => {
           path: "/login",
           element: <Login />
         },
-        {
-          path: "/signup",
-          element: <Signup />
-        },
+        // {
+        //   path: "/signup",
+        //   element: <Signup />
+        // },
 
         // admin routes
         {
@@ -83,11 +83,11 @@ const App = () => {
           element: <TakeoutPage />
         },
         {
-          path: "/fill-my-form-payment",
+          path: "/bhansha-express-form-payment",
           element: <FillMyForm />
         },
         {
-          path: "/fill-my-form-takeout",
+          path: "/bhansha-express-form-takeout",
           element: <FillMyFormTO />
         },
         {
@@ -120,6 +120,17 @@ const App = () => {
           path: "/Privacy-and-Policy-Bhansha-Express",
           element: <PrivacyandPolicy />
         },
+        {
+          path: "/ContactPage-Bhansha-Express",
+          element: <PrivacyandPolicy />
+        },
+
+        // 404 Page Not Found
+        {
+          path: "/Privacy-and-Policy-Bhansha-Express",
+          element: <PrivacyandPolicy />
+        },
+
       ]
     }
   ]);

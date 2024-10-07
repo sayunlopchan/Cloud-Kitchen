@@ -1,14 +1,14 @@
 // components/Payment.js
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import { orderUrl } from '../../apiPath/url'; // Adjust the path accordingly
-import { clearCart } from '../../features/cartSlice';
+import { orderUrl } from '../../apiPath/url';
+import { clearCart } from '../../store/cartSlice';
 import cod from '../../assets/icon/COD_icon.png';
 import esewa from '../../assets/icon/esewa_og.webp';
-import Dialog from '../../components/Dialog'; // Import the Dialog component
+import Dialog from '../../components/Dialog';
 
 const Payment = () => {
   const cart = useSelector((state) => state.allCart.cart);

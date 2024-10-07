@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getCartTotal } from "../../features/cartSlice";
+import { getCartTotal } from "../../store/cartSlice";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";

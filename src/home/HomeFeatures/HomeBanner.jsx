@@ -64,10 +64,10 @@ function HomeBanner() {
       <div className="md:col-span-4 relative">
 
         {/* discount offer card */}
-        <div className="size-24 lg:size-36 shadow-lg absolute z-20 rounded-2xl bg-white border-2 left-0 lg:-left-20 top-20 py-5 px-2">
+        <div className="size-[100px] lg:size-36 shadow-lg absolute z-20 rounded-2xl bg-white border-2 left-0 lg:-left-20 top-20 py-5 px-2">
           <h2 className="text-sm lg:text-2xl font-bold text-red-500">10%</h2>
-          <h3 className="text-sm lg:text-xl lg:font-semibold text-black">Discount for 2 Orders</h3>
-          <img src={DiscountSticker} alt={DiscountSticker} className="size-14 absolute -top-6 -right-5" />
+          <h3 className="text-sm lg:text-xl lg:font-semibold text-black">Discount On Every Purchase</h3>
+          <img src={DiscountSticker} alt='Discount Sticker' className="size-14 absolute -top-6 -right-5" />
         </div>
         {/* discount offer card */}
 

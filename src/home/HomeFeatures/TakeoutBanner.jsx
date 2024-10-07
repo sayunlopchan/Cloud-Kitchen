@@ -87,16 +87,7 @@ const TakeoutBanner = () => {
             </span>
             {/* Tilottama */}
 
-            {/* Bhairahawa */}
-            <span className="flex items-center gap-x-1">
-              <img
-                src={location}
-                alt="Bhansha Express pin location"
-                className="size-6"
-              />
-              <span>Bhairahawa</span>
-            </span>
-            {/* Bhairahawa */}
+
           </div>
         </div>
 

@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { setUserData } from '../../features/formSlice';
+import { setUserData } from '../../store/formSlice';
 
 const FillMyFormTO = () => {
   const dispatch = useDispatch();

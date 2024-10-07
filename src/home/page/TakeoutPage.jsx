@@ -1,24 +1,24 @@
 // components/TakeoutPage.js
 
 import { NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'; // Import useDispatch
+import { useSelector, useDispatch } from 'react-redux';
 import LeafletMap from '../../components/LeafletMap';
 import Dialog from '../../components/Dialog';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { orderUrl } from '../../apiPath/url';
-import { clearCart } from '../../features/cartSlice'; // Import clearCart action
+import { clearCart } from '../../store/cartSlice';
 
 const TakeoutPage = () => {
   const cart = useSelector((state) => state.allCart.cart);
   const totalPrice = useSelector((state) => state.allCart.totalPrice);
   const userData = useSelector((state) => state.form.userData); // Get user data from Redux store
-  const dispatch = useDispatch(); // Initialize useDispatch
+  const dispatch = useDispatch();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMessage, setDialogMessage] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
-  const [loading, setLoading] = useState(false); // Loading state
-  const [takeoutLocation, setTakeoutLocation] = useState(''); // State for takeout location
+  const [loading, setLoading] = useState(false);
+  const [takeoutLocation, setTakeoutLocation] = useState('');
 
   const handleTakeout = async () => {
     setLoading(true); // Set loading to true

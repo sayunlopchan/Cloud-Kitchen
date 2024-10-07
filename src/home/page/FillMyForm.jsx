@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { setUserData } from '../../features/formSlice';
+import { setUserData } from '../../store/formSlice';
 
 const FillMyForm = () => {
   const dispatch = useDispatch();

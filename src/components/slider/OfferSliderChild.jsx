@@ -32,7 +32,9 @@ const OfferSliderChild = () => {
           >
             <img src={card.img} alt={`Card ${card.id}`} />
           </div>
-          <h2 className="size-fit absolute top-28"><TextLimit text={card.name} limit={18} /></h2>
+          <h2 className={`size-fit absolute top-28 transition-all duration-300 ${card.img === activeImage ? 'text-colorRed' : ''}`}>
+            <TextLimit text={card.name} limit={18} />
+          </h2>
           <img
             src={card.img === activeImage ? active_cardBase : notactive_cardBase}
             alt="card-base"

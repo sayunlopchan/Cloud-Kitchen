@@ -3,7 +3,7 @@ import curve from "../../assets/icon/red Curve.svg";
 import Card from "../../components/Card";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../features/cartSlice";
+import { addToCart } from "../../store/cartSlice";
 
 import menuData from "../../assets/Data/menu/alldata";
 
@@ -93,7 +93,7 @@ const MenuPage = () => {
 
       <section className="px-10 ">
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit">
-          Chowmin
+          chowmein
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
           {menuData.chowmein.map((item) => (

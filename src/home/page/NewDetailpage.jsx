@@ -2,13 +2,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { GoStarFill } from "react-icons/go";
-import { addToCart, increaseItemQuantity, decreaseItemQuantity } from '../../features/cartSlice';
+import { addToCart, increaseItemQuantity, decreaseItemQuantity } from '../../store/cartSlice';
 import menuData from '../../assets/Data/menu/alldata';
-import { useState } from 'react'; // Import useState
+import { useState } from 'react';
 
 const NewDetailpage = () => {
   const nav = useNavigate();
-  const { id } = useParams(); // This should be a UUID
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   // State to manage the current main image
@@ -154,14 +154,14 @@ const NewDetailpage = () => {
             {/* buttons */}
             <div className='flex gap-2'>
               <button
-                onClick={() => nav('/fill-my-form-payment')}
+                onClick={() => nav('/bhansha-express-form-payment')}
                 disabled={!isInCart}
                 className={`bg-colorRed text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${!isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 Purchase
               </button>
               <button
-                onClick={() => nav('/fill-my-form-takeout')}
+                onClick={() => nav('/bhansha-express-form-takeout')}
                 disabled={!isInCart}
                 className={`bg-black text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${!isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
               >

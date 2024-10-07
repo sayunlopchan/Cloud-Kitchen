@@ -7,7 +7,7 @@ import Card from "../../components/Card";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../features/cartSlice";
+import { addToCart } from "../../store/cartSlice";
 
 const MostPopularPage = () => {
   const nav = useNavigate();

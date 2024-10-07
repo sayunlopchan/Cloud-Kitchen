@@ -233,12 +233,12 @@ const Dashboard = () => {
 
       {/* Modal to display selected item details */}
       {selectedItem && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70 z-50 transition-opacity duration-300 ease-in-out">
-          <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-1/3 lg:w-1/4 p-6 animate-fadeIn">
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70 z-50 transition-opacity duration-300 ease-in-out ">
+          <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-1/3 lg:w-1/4 p-6 animate-fadeIn ">
             <h3 className="text-xl font-bold mb-4 border-b pb-2 border-gray-200 text-center bg-gray-100 rounded">
               Food Detail
             </h3>
-            <ul className="list-disc list-inside mb-4">
+            <ul className="list-disc list-inside mb-4 h-[400px] overflow-scroll">
               {selectedItem.map((item, index) => (
                 <li key={index} className="py-1 text-gray-700 border-b-2">
                   <li>{item.title}</li>

@@ -97,10 +97,10 @@ const Login = () => {
             >
               {isSubmitting ? 'Logging in...' : 'Login'}
             </button>
-            <div>
+            {/* <div>
               <span className='text-sm mr-1 '> don&apos;t have an account?</span>
               <NavLink to={'/signup'} className={'underline underline-offset-1'}>signup</NavLink>
-            </div>
+            </div> */}
           </Form>
         )}
       </Formik>

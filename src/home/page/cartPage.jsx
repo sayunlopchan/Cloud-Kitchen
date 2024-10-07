@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   getCartTotal,
   removeItem,
   decreaseItemQuantity,
   increaseItemQuantity,
-} from "../../features/cartSlice";
-import { NavLink, useNavigate } from "react-router-dom";
+} from "../../store/cartSlice";
 
 const CartPage = () => {
   const { cart, totalQuantity, totalPrice } = useSelector((state) => state.allCart);

@@ -7,8 +7,8 @@ import { FaInstagram } from "react-icons/fa";
 
 
 import logo from '../../assets/logo/Bhansha-Express-typo-logo.svg'
-import { useNavigate } from "react-router-dom";
-import { aboutus, facebook, faq, instagram, phoneNumber, privacypolicy, termsandconditions } from "../../links/link";
+import { NavLink, useNavigate } from "react-router-dom";
+import { aboutus, facebook, faq, instagram, privacypolicy, termsandconditions } from "../../links/link";
 
 
 
@@ -19,14 +19,14 @@ const Footer = () => {
   return (
     <div className='lg:h-[560px] text-white'>
       {/* footer-orange */}
-      <div className='bg-colorOrange grid grid-cols-1 md:grid-cols-2 py-5 lg:gap-x-10'>
-        <div className="flex items-center lg:gap-x-3   ">
+      <div className='bg-colorOrange grid grid-cols-2 py-2 lg:gap-x-10'>
+        <div className="flex items-center justify-end lg:gap-x-3   ">
           <span className="rounded-full overflow-hidden p-2">
             <FaLocationDot className="bg-colorOrange size-5 lg:size-10" />
           </span>
           <span>
             <h2 className="font-semibold text-lg">Location</h2>
-            <p className="text-sm">Butwal,Bhairahawa,Tilottama</p>
+            <p className="text-sm">Butwal,Tilottama</p>
           </span>
         </div>
         <div className="flex items-center lg:gap-x-3  ">
@@ -35,7 +35,7 @@ const Footer = () => {
           </span>
           <span>
             <h2 className="font-semibold text-lg">Email</h2>
-            <p className="text-sm">Butwal,Bhairahawa,Tilottama</p>
+            <NavLink className="text-sm" to=''>bhanshaexpress.com</NavLink>
           </span>
         </div>
       </div>

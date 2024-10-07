@@ -8,7 +8,7 @@ import Card from "../../components/Card";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../features/cartSlice";
+import { addToCart } from "../../store/cartSlice";
 
 const MostSold = () => {
   const nav = useNavigate();

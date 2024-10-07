@@ -14,7 +14,7 @@ const ExclusiveOfferBanner = () => {
     <div className='px-10 py-10 space-y-10 transition-all duration-1000 bg-clay'>
       {/* Heading */}
       <div className='relative w-fit'>
-        <h2 className='font-bold text-lg lg:text-3xl pl-10'>20-30% off on Exclusive deals</h2>
+        <h2 className='font-bold text-xl lg:text-3xl pl-10'>0-10% off on Exclusive deals</h2>
         <img src={CurveLine} alt="Curve Line" className='w-[130px] absolute lg:top-10 lg:right-24 right-0' />
       </div>
       {/* Heading */}
