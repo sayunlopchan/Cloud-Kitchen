@@ -32,11 +32,11 @@ import CartPage from "./home/page/cartPage.jsx";
 
 
 
-import Aboutus from "./home/page/infomaticPage/AboutUs.jsx";
-import TermsandConditions from "./home/page/infomaticPage/TermsAndConditions";
-import PrivacyandPolicy from "./home/page/infomaticPage/PrivacyandPolicy.jsx";
-import ContactPage from "./home/page/infomaticPage/ContactPage.jsx";
-import FaqPage from "./home/page/infomaticPage/Faq.jsx";
+// import Aboutus from "./home/page/infomaticPage/AboutUs.jsx";
+// import TermsandConditions from "./home/page/infomaticPage/TermsAndConditions";
+// import PrivacyandPolicy from "./home/page/infomaticPage/PrivacyandPolicy.jsx";
+// import ContactPage from "./home/page/infomaticPage/ContactPage.jsx";
+// import FaqPage from "./home/page/infomaticPage/Faq.jsx";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -66,15 +66,17 @@ const App = () => {
         { path: paths.MENU_PAGE, element: <MenuPage /> },
 
 
-        // infomative pages
-        { path: paths.ABOUT_US_PAGE, element: <Aboutus /> },
-        {
-          path: paths.TERMS_AND_CONDITIONS_PAGE,
-          element: <TermsandConditions />,
-        },
-        { path: paths.FAQ_PAGE, element: <FaqPage /> },
-        { path: paths.PRIVACY_POLICY_PAGE, element: < PrivacyandPolicy /> },
-        { path: paths.CONTACT_US_PAGE, element: <ContactPage /> },
+        //  infomative pages
+
+
+        // { path: paths.ABOUT_US_PAGE, element: <Aboutus /> },
+        // {
+        //   path: paths.TERMS_AND_CONDITIONS_PAGE,
+        //   element: <TermsandConditions />,
+        // },
+        // { path: paths.FAQ_PAGE, element: <FaqPage /> },
+        // { path: paths.PRIVACY_POLICY_PAGE, element: < PrivacyandPolicy /> },
+        // { path: paths.CONTACT_US_PAGE, element: <ContactPage /> },
 
         { path: "*", element: <PageNotFound /> },
       ],
