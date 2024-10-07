@@ -21,23 +21,26 @@ import FillMyFormTO from "./home/page/FillMyFormTO";
 
 // Informational Pages
 
-import TermsAndConditions from "./home/page/infomaticPage/TermsAndConditions";
-import Faq from "./home/page/infomaticPage/Faq";
-import PrivacyAndPolicy from "./home/page/infomaticPage/PrivacyAndPolicy";
 import PageNotFound from "./home/page/PageNotFound";
 
 // Protected Route
-import ProtectedRoute from './features/Auth/ProtectedRoute';
+import ProtectedRoute from "./features/Auth/ProtectedRoute";
 
 // Route Paths
 import * as paths from "./Routes/Path.js";
 import CartPage from "./home/page/cartPage.jsx";
+
+
+
 import Aboutus from "./home/page/infomaticPage/AboutUs.jsx";
+import TermsandConditions from "./home/page/infomaticPage/TermsAndConditions";
+import PrivacyandPolicy from "./home/page/infomaticPage/PrivacyandPolicy.jsx";
+import ContactPage from "./home/page/infomaticPage/ContactPage.jsx";
 
 const App = () => {
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: "/",
       element: <RootLayout />,
       children: [
         { index: true, element: <HomePage /> },
@@ -49,7 +52,7 @@ const App = () => {
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          )
+          ),
         },
         { path: paths.CART_PAGE, element: <CartPage /> },
         { path: paths.MOST_POPULAR_PAGE, element: <MostPopularPage /> },
@@ -60,15 +63,21 @@ const App = () => {
         { path: paths.TAKEOUT_FORM_PAGE, element: <FillMyFormTO /> },
         { path: paths.PAYMENT_PAGE, element: <Payment /> },
         { path: paths.MENU_PAGE, element: <MenuPage /> },
+
+
+        // infomative pages
         { path: paths.ABOUT_US_PAGE, element: <Aboutus /> },
-        { path: paths.TERMS_AND_CONDITIONS_PAGE, element: <TermsAndConditions /> },
+        {
+          path: paths.TERMS_AND_CONDITIONS_PAGE,
+          element: <TermsandConditions />,
+        },
         { path: paths.FAQ_PAGE, element: <Faq /> },
-        { path: paths.PRIVACY_POLICY_PAGE, element: <PrivacyAndPolicy /> },
-        { path: paths.PAGE_NOT_FOUND, element: <PageNotFound /> },
-        // Fallback route for undefined paths
-        { path: '*', element: <PageNotFound /> },
-      ]
-    }
+        { path: paths.PRIVACY_POLICY_PAGE, element: < PrivacyandPolicy /> },
+        { path: paths.CONTACT_US_PAGE, element: <ContactPage /> },
+
+        { path: "*", element: <PageNotFound /> },
+      ],
+    },
   ]);
 
   return <RouterProvider router={router} />;
