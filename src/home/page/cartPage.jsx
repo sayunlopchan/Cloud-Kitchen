@@ -8,6 +8,8 @@ import {
   increaseItemQuantity,
 } from "../../store/cartSlice";
 
+import * as paths from '../../Routes/Path'
+
 const CartPage = () => {
   const { cart, totalQuantity, totalPrice } = useSelector((state) => state.allCart);
   const dispatch = useDispatch();
@@ -39,7 +41,7 @@ const CartPage = () => {
 
                     <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                       <NavLink
-                        onClick={() => nav(`/product-detail/${item.id}`)}
+                        onClick={() => nav(`${paths.DETAIL_PAGE.replace(':id', item.id)}`)}
                         className="shrink-0 md:order-1">
                         <img className="size-20" src={item.img} alt={item.title} />
                       </NavLink>
@@ -75,7 +77,9 @@ const CartPage = () => {
                         </div>
                       </div>
                       <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                        <NavLink onClick={() => nav(`/product-detail/${item.id}`)} className="text-base font-medium text-gray-900 hover:underline">
+                        <NavLink
+                          onClick={() => nav(`${paths.DETAIL_PAGE.replace(':id', item.id)}`)}
+                          className="text-base font-medium text-gray-900 hover:underline">
                           {item.title}
                         </NavLink>
                         <div className="flex items-center gap-4">
@@ -132,7 +136,7 @@ const CartPage = () => {
               <div className="flex flex-col items-center">
                 {/* Proceed to Checkout Button */}
                 <NavLink
-                  to={cart.length > 0 ? "/fill-my-form-payment" : "#"}
+                  to={cart.length > 0 ? paths.PAYMENT_FORM_PAGE : "#"}
                   className={`flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-300 border-2 ${cart.length > 0 ? "hover:border-green-500" : "border-gray-400 text-gray-400 cursor-not-allowed"
                     }`}
                   onClick={cart.length === 0 ? (e) => e.preventDefault() : null} // Prevent navigation if cart is empty
@@ -144,7 +148,7 @@ const CartPage = () => {
 
                 {/* Takeout Button */}
                 <NavLink
-                  to={cart.length > 0 ? "/fill-my-form-takeout" : "#"}
+                  to={cart.length > 0 ? paths.TAKEOUT_FORM_PAGE : "#"}
                   className={`flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-300 border-2 ${cart.length > 0 ? "bg-black text-white hover:bg-gray-800" : "border-gray-400 text-gray-400 cursor-not-allowed"
                     }`}
                   onClick={cart.length === 0 ? (e) => e.preventDefault() : null} // Prevent navigation if cart is empty

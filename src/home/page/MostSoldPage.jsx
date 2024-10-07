@@ -8,6 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
 
+
+// paths
+import { DETAIL_PAGE } from "../../Routes/Path";
+
 const MostSoldPage = () => {
   const nav = useNavigate();
   const dispatch = useDispatch();
@@ -48,8 +52,7 @@ const MostSoldPage = () => {
             key={item.id}
             item={item}
             handleAddToCart={handleAddToCart}
-            onClick={() => nav(`/product-detail/${item.id}`)}
-          />
+            onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)} />
         ))}
       </div>
 

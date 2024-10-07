@@ -10,6 +10,8 @@ import logo from '../../assets/logo/Bhansha-Express-typo-logo.svg';
 import mainlogo from '../../assets/logo/Bhansha-Express-logo.svg';
 import meme from '../../assets/icon/Two-Buttons.jpg';
 
+import * as paths from '../../Routes/Path'
+
 const BottomHeader = () => {
   const nav = useNavigate();
   const location = useLocation();
@@ -48,9 +50,18 @@ const BottomHeader = () => {
     };
   }, []);
 
+
+  // Exclude Bottom nav form page 
   const isExcludedPath = [
-    '/login', '/signup', '/dashboard', '/takeout-location-near-me',
-    '/fill-my-form-payment', '/fill-my-form-takeout', '/pay-my-order'
+    paths.LOGIN_PAGE,
+    paths.SIGNUP_PAGE,
+    paths.DASHBOARD_PAGE,
+
+    paths.PAYMENT_PAGE,
+    paths.TAKEOUT_PAGE,
+
+    paths.PAYMENT_FORM_PAGE,
+    paths.TAKEOUT_FORM_PAGE,
   ].includes(location.pathname);
 
   if (isExcludedPath) {
@@ -66,12 +77,12 @@ const BottomHeader = () => {
   };
 
   const handleOnlinePayment = () => {
-    nav("/bhansha-express-form-payment");
+    nav(paths.PAYMENT_FORM_PAGE);
     handleCloseModal();
   };
 
   const handleTakeout = () => {
-    nav("/bhansha-express-form-takeout");
+    nav(paths.TAKEOUT_FORM_PAGE);
     handleCloseModal();
   };
 
@@ -107,7 +118,7 @@ const BottomHeader = () => {
 
         <div className="flex items-center gap-3">
           <div
-            onClick={() => nav("/cart")}
+            onClick={() => nav(paths.CART_PAGE)}
             className={`relative group cursor-pointer ${animateBag ? 'animate-pop' : ''}`}
           >
             <span

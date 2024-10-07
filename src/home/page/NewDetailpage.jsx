@@ -6,6 +6,10 @@ import { addToCart, increaseItemQuantity, decreaseItemQuantity } from '../../sto
 import menuData from '../../assets/Data/menu/alldata';
 import { useState } from 'react';
 
+
+
+import * as paths from '../../Routes/Path'
+
 const NewDetailpage = () => {
   const nav = useNavigate();
   const { id } = useParams();
@@ -154,14 +158,14 @@ const NewDetailpage = () => {
             {/* buttons */}
             <div className='flex gap-2'>
               <button
-                onClick={() => nav('/bhansha-express-form-payment')}
+                onClick={() => nav(paths.PAYMENT_FORM_PAGE)}
                 disabled={!isInCart}
                 className={`bg-colorRed text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${!isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 Purchase
               </button>
               <button
-                onClick={() => nav('/bhansha-express-form-takeout')}
+                onClick={() => nav(paths.TAKEOUT_FORM_PAGE)}
                 disabled={!isInCart}
                 className={`bg-black text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${!isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
               >

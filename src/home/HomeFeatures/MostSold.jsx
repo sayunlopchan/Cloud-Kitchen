@@ -10,6 +10,12 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
 
+
+
+
+// paths
+import * as paths from '../../Routes/Path'
+
 const MostSold = () => {
   const nav = useNavigate();
   const dispatch = useDispatch();
@@ -49,13 +55,14 @@ const MostSold = () => {
             key={item.id}
             item={item}
             handleAddToCart={handleAddToCart}
-            onClick={() => nav(`/product-detail/${item.id}`)}
+            onClick={() => nav(`${paths.DETAIL_PAGE.replace(':id', item.id)}`)}
+
           />
         ))}
       </div>
 
       <button
-        onClick={() => nav("/most-sold")}
+        onClick={() => nav(paths.MOST_SOLD_PAGE)}
         aria-label="View all popular dishes"
         className="bg-red-600 px-3 py-2 rounded-tr-2xl rounded-bl-2xl flex items-center justify-center mx-auto text-white font-semibold hover:bg-red-800 transition-all duration-300"
       >

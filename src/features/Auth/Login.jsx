@@ -7,6 +7,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext'; // Import the useAuth hook
 import { loginUrl } from '../../apiPath/url';
 import logo from '../../assets/logo/Bhansha-Express-Logo-Only.svg';
+import { SIGNUP_PAGE } from '../../Routes/Path';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -99,7 +100,7 @@ const Login = () => {
             </button>
             {/* <div>
               <span className='text-sm mr-1 '> don&apos;t have an account?</span>
-              <NavLink to={'/signup'} className={'underline underline-offset-1'}>signup</NavLink>
+              <NavLink to={SIGNUP_PAGE} className={'underline underline-offset-1'}>signup</NavLink>
             </div> */}
           </Form>
         )}

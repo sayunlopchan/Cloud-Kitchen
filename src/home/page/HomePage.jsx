@@ -1,11 +1,15 @@
+import PopupAd from '../../components/PopupAd';
 
 import HomeBanner from '../HomeFeatures/HomeBanner';
 import ExclusiveOfferBanner from '../HomeFeatures/ExclusiveOfferBanner';
-import PopularDish from '../HomeFeatures/PopularDishes';
-import MostSold from '../HomeFeatures/MostSold';
 import TakeoutBanner from '../HomeFeatures/TakeoutBanner';
+
+import MostSold from '../HomeFeatures/MostSold';
+import PopularSection from '../HomeFeatures/PopularSection';
+
 import Workflow from '../HomeFeatures/Workflow';
-import PopupAd from '../../components/PopupAd';
+
+
 
 const HomePage = () => {
 
@@ -16,9 +20,9 @@ const HomePage = () => {
       <HomeBanner />
       <TakeoutBanner />
       <ExclusiveOfferBanner />
+      <PopularSection />
       <MostSold />
       <Workflow />
-      <PopularDish />
     </div>
   );
 };

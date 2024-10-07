@@ -6,9 +6,10 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
 
 import Arrow from "../../assets/icon/Arrow-next.svg";
+import * as paths from '../../Routes/Path'
 
-const PopularDishes = () => {
-  const navigate = useNavigate();
+const PopularSection = () => {
+  const nav = useNavigate();
   const dispatch = useDispatch();
 
   const handleAddToCart = (item) => {
@@ -36,13 +37,13 @@ const PopularDishes = () => {
             key={item.id}
             item={item}
             handleAddToCart={handleAddToCart}
-            onClick={() => navigate(`/product-detail/${item.id}`)}
+            onClick={() => nav(`${paths.DETAIL_PAGE.replace(':id', item.id)}`)}
           />
         ))}
       </div>
 
       <button
-        onClick={() => navigate("/popular-dishes")}
+        onClick={() => navigate(paths.MOST_POPULAR_PAGE)}
         className="bg-red-600 px-3 py-2 rounded-tr-2xl rounded-bl-2xl flex items-center justify-center mx-auto text-white font-semibold hover:bg-red-800 transition-all duration-300"
       >
         View All
@@ -52,4 +53,4 @@ const PopularDishes = () => {
   );
 };
 
-export default PopularDishes;
+export default PopularSection;

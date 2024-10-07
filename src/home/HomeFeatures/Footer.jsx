@@ -8,7 +8,12 @@ import { FaInstagram } from "react-icons/fa";
 
 import logo from '../../assets/logo/Bhansha-Express-typo-logo.svg'
 import { NavLink, useNavigate } from "react-router-dom";
-import { aboutus, facebook, faq, instagram, privacypolicy, termsandconditions } from "../../links/link";
+
+
+
+
+import * as paths from '../../Routes/Path.js';
+
 
 
 
@@ -55,11 +60,11 @@ const Footer = () => {
         <div className="col-span-3 lg:col-span-3 lg:mx-auto p-5">
           <h2 className="font-bold text-2xl">Our Company</h2>
           <ul>
-            <li onClick={() => nav(aboutus)} className="cursor-pointer">About Us</li>
-            <li onClick={() => nav(faq)} className="cursor-pointer">FAQ</li>
+            <li onClick={() => nav(paths.ABOUT_US_PAGE)} className="cursor-pointer">About Us</li>
+            <li onClick={() => nav(paths.FAQ_PAGE)} className="cursor-pointer">FAQ</li>
             <li className="cursor-pointer">Contact Us</li>
-            <li onClick={() => nav(termsandconditions)} className="cursor-pointer">Terms & Conditions</li>
-            <li onClick={() => nav(privacypolicy)} className="cursor-pointer">Privacy Policy</li>
+            <li onClick={() => nav(paths.TERMS_AND_CONDITIONS_PAGE)} className="cursor-pointer">Terms & Conditions</li>
+            <li onClick={() => nav(paths.PRIVACY_POLICY_PAGE)} className="cursor-pointer">Privacy Policy</li>
           </ul>
         </div>
         <div className="col-span-3 lg:col-span-3 lg:mx-auto p-5">
@@ -82,11 +87,11 @@ const Footer = () => {
 
           <div className="max-md:mx-auto">
             <span className="flex items-center gap-x-5">
-              <span className="flex items-center gap-x-2" onClick={() => nav(facebook)}>
+              <span className="flex items-center gap-x-2" onClick={() => nav(paths.FACEBOOK)}>
                 <FaFacebook size={25} className="cursor-pointer" />
                 <p className="cursor-pointer">Facebook</p>
               </span>
-              <span className="flex items-center gap-x-2" onClick={() => nav(instagram)}>
+              <span className="flex items-center gap-x-2" onClick={() => nav(paths.INSTAGRAM)}>
                 <FaInstagram size={25} className="cursor-pointer" />
                 <p className="cursor-pointer">Instagram</p>
               </span>

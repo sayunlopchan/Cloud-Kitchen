@@ -1,6 +1,10 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
-const ProtectedRoute = ({ children, redirectPath = "/login" }) => {
+import { LOGIN_PAGE } from "../../Routes/Path";
+
+
+
+const ProtectedRoute = ({ children, redirectPath = LOGIN_PAGE }) => {
   const { user, isAdmin } = useAuth();
 
   // You can modify the logic based on what you want to protect

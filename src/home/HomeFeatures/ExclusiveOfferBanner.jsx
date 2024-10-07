@@ -4,6 +4,10 @@
 import CurveLine from '../../assets/icon/red Curve.svg';
 import menuData from '../../assets/Data/menu/alldata';
 import { useNavigate } from 'react-router-dom';
+import * as paths from '../../Routes/Path';
+
+
+
 
 const ExclusiveOfferBanner = () => {
 
@@ -24,7 +28,7 @@ const ExclusiveOfferBanner = () => {
         {selectedOffers.map((item, idx) => (
           <div
             key={item.id}
-            onClick={() => nav(`/product-detail/${item.id}`)}
+            onClick={() => nav(`${paths.DETAIL_PAGE.replace(':id', item.id)}`)}
             className='w-full h-40 lg:h-52 bg-slate-400 relative rounded-xl group transition-all duration-500 overflow-hidden'
           >
             <div className='overlay h-full w-full rounded-xl absolute z-10' />

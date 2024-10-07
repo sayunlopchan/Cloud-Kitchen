@@ -9,6 +9,7 @@ import { useEffect } from "react";
 // logo
 import logo from '../../assets/logo/Bhansha-Express-typo-logo.svg'
 
+import * as paths from '../../Routes/Path'
 
 
 const Header = () => {
@@ -24,13 +25,13 @@ const Header = () => {
 
   // Check if the current pathname matches the specified routes
   const isBgClay =
-    location.pathname.includes("/product-detail/") ||
-    location.pathname === "/menu" ||
-    location.pathname === "/cart" ||
-    location.pathname === "/most-sold" ||
-    location.pathname === "/takeout-location-near-me" ||
-    location.pathname === "/fill-my-form" ||
-    location.pathname === "/popular-dishes";
+    location.pathname.includes(paths.DETAIL_PAGE) ||
+    location.pathname === paths.MENU_PAGE ||
+    location.pathname === paths.CART_PAGE ||
+    location.pathname === paths.MOST_SOLD_PAGE ||
+    location.pathname === paths.MOST_POPULAR_PAGE ||
+    location.pathname === paths.TAKEOUT_FORM_PAGE ||
+    location.pathname === paths.PAYMENT_FORM_PAGE;
 
 
   return (
@@ -44,7 +45,7 @@ const Header = () => {
       <div className="flex items-center gap-3">
 
         <div
-          onClick={() => nav("/cart")}
+          onClick={() => nav(paths.CART_PAGE)}
           className="relative group cursor-pointer">
           <span
             className={`absolute top-1 right-0 size-4 flex items-center justify-center rounded-full text-[10px] border border-gray-500 ${totalQuantity > 0 ? 'animate-bounce border-none text-white bg-red-500' : 'bg-white'}`}
@@ -55,7 +56,7 @@ const Header = () => {
 
         </div>
         <button
-          onClick={() => nav("/the-best-bhansha-express-menu")}
+          onClick={() => nav(paths.MENU_PAGE)}
           className="bg-colorRed text-white px-2 py-1 lg:px-10 lg:py-3 rounded-lg">
           Menu
         </button>

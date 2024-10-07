@@ -9,6 +9,9 @@ import axios from 'axios';
 import { orderUrl } from '../../apiPath/url';
 import { clearCart } from '../../store/cartSlice';
 
+
+import * as paths from '../../Routes/Path'
+
 const TakeoutPage = () => {
   const cart = useSelector((state) => state.allCart.cart);
   const totalPrice = useSelector((state) => state.allCart.totalPrice);
@@ -59,9 +62,9 @@ const TakeoutPage = () => {
     <div className="p-10 lg:px-20 bg-clay h-full">
       {/* Navigation */}
       <div className="flex items-center gap-2 pb-1 pl-5 text-2xl font-semibold">
-        <NavLink to={'/cart'}>CART</NavLink>
+        <NavLink to={paths.CART_PAGE}>CART</NavLink>
         &gt;
-        <NavLink to={'/fill-my-form-takeout'}>Form</NavLink>
+        <NavLink to={paths.TAKEOUT_FORM_PAGE}>Form</NavLink>
         &gt;
         <NavLink to={'#'} className="text-colorRed">
           Takeout Location

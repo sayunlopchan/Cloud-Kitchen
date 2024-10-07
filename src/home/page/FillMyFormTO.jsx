@@ -4,6 +4,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { setUserData } from '../../store/formSlice';
 
+import * as paths from '../../Routes/Path'
+
+
+
+
 const FillMyFormTO = () => {
   const dispatch = useDispatch();
   const nav = useNavigate();
@@ -33,7 +38,7 @@ const FillMyFormTO = () => {
     <div className="p-10 lg:py-5 lg:px-20 bg-clay h-full">
       {/* Navigation */}
       <div className="flex items-center gap-2 pb-1 pl-5 text-2xl font-semibold">
-        <NavLink to={'/cart'}>CART</NavLink>
+        <NavLink to={paths.CART_PAGE}>CART</NavLink>
         &gt;
         <NavLink to={'#'} className={'text-colorRed'}>
           Form
@@ -54,7 +59,7 @@ const FillMyFormTO = () => {
             onSubmit={(values) => {
               dispatch(setUserData(values)); // Save form data to the store
               localStorage.setItem('formData', JSON.stringify(values)); // Save form data to local storage
-              nav("/takeout-location-near-me", { state: { formData: values } }); // Navigate with form data
+              nav(paths.TAKEOUT_PAGE, { state: { formData: values } }); // Navigate with form data
             }}
           >
             {() => (

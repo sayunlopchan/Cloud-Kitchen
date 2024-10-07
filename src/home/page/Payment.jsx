@@ -10,6 +10,8 @@ import cod from '../../assets/icon/COD_icon.png';
 import esewa from '../../assets/icon/esewa_og.webp';
 import Dialog from '../../components/Dialog';
 
+import * as paths from '../../Routes/Path'
+
 const Payment = () => {
   const cart = useSelector((state) => state.allCart.cart);
   const totalPrice = useSelector((state) => state.allCart.totalPrice);
@@ -71,9 +73,9 @@ const Payment = () => {
     <div className="p-10 lg:py-5 lg:px-20 bg-clay h-full">
       {/* Navigation */}
       <div className="flex items-center gap-2 pb-1 pl-5 text-2xl font-semibold">
-        <NavLink to={'/cart'}>CART</NavLink>
+        <NavLink to={paths.CART_PAGE}>CART</NavLink>
         &gt;
-        <NavLink to={'/fill-my-form-payment'}>Form</NavLink>
+        <NavLink to={paths.PAYMENT_FORM_PAGE}>Form</NavLink>
         &gt;
         <NavLink to={'#'} className={'text-colorRed'}>
           Payment

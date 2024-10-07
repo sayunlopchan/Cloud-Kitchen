@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
 
 import menuData from "../../assets/Data/menu/alldata";
+import { DETAIL_PAGE } from "../../Routes/Path";
 
 
 const MenuPage = () => {
@@ -63,7 +64,7 @@ const MenuPage = () => {
               key={item.id}
               item={item}
               handleAddToCart={handleAddToCart}
-              onClick={() => nav(`/product-detail/${item.id}`)}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
             />
           ))}
         </div>
@@ -85,7 +86,7 @@ const MenuPage = () => {
               key={item.id}
               item={item}
               handleAddToCart={handleAddToCart}
-              onClick={() => nav(`/product-detail/${item.id}`)}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
             />
           ))}
         </div>
@@ -101,7 +102,7 @@ const MenuPage = () => {
               key={item.id}
               item={item}
               handleAddToCart={handleAddToCart}
-              onClick={() => nav(`/product-detail/${item.id}`)}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
             />
           ))}
         </div>
@@ -117,7 +118,7 @@ const MenuPage = () => {
               key={item.id}
               item={item}
               handleAddToCart={handleAddToCart}
-              onClick={() => nav(`/product-detail/${item.id}`)}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
             />
           ))}
         </div>
@@ -134,7 +135,7 @@ const MenuPage = () => {
               key={item.id}
               item={item}
               handleAddToCart={handleAddToCart}
-              onClick={() => nav(`/product-detail/${item.id}`)}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
             />
           ))}
         </div>
@@ -151,7 +152,7 @@ const MenuPage = () => {
               key={item.id}
               item={item}
               handleAddToCart={handleAddToCart}
-              onClick={() => nav(`/product-detail/${item.id}`)}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
             />
           ))}
         </div>
@@ -169,7 +170,7 @@ const MenuPage = () => {
               key={item.id}
               item={item}
               handleAddToCart={handleAddToCart}
-              onClick={() => nav(`/product-detail/${item.id}`)}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
             />
           ))}
         </div>
@@ -185,7 +186,7 @@ const MenuPage = () => {
               key={item.id}
               item={item}
               handleAddToCart={handleAddToCart}
-              onClick={() => nav(`/product-detail/${item.id}`)}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
             />
           ))}
         </div>
@@ -202,7 +203,7 @@ const MenuPage = () => {
               key={item.id}
               item={item}
               handleAddToCart={handleAddToCart}
-              onClick={() => nav(`/product-detail/${item.id}`)}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
             />
           ))}
         </div>
@@ -223,7 +224,7 @@ const MenuPage = () => {
               key={item.id}
               item={item}
               handleAddToCart={handleAddToCart}
-              onClick={() => nav(`/product-detail/${item.id}`)}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
             />
           ))}
         </div>

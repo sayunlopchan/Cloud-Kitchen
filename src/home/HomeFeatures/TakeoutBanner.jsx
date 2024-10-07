@@ -3,6 +3,7 @@ import hand from "../../assets/bg-texture/hand.png";
 import location from "../../assets/icon/location-pin-white.svg";
 import cart from "../../assets/icon/cart-colorred.svg";
 import { useNavigate } from "react-router-dom";
+import { MENU_PAGE } from "../../Routes/Path";
 
 const TakeoutBanner = () => {
   const nav = useNavigate();
@@ -92,7 +93,7 @@ const TakeoutBanner = () => {
         </div>
 
         <div
-          onClick={() => nav("/the-best-bhansha-express-menu")}
+          onClick={() => nav(MENU_PAGE)}
           className="bg-white text-colorRed text-xl w-fit px-5 py-2 rounded-full flex gap-x-2 items-center cursor-pointer"
         >
           <span>
