@@ -36,6 +36,7 @@ import Aboutus from "./home/page/infomaticPage/AboutUs.jsx";
 import TermsandConditions from "./home/page/infomaticPage/TermsAndConditions";
 import PrivacyandPolicy from "./home/page/infomaticPage/PrivacyandPolicy.jsx";
 import ContactPage from "./home/page/infomaticPage/ContactPage.jsx";
+import FaqPage from "./home/page/infomaticPage/Faq.jsx";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -71,7 +72,7 @@ const App = () => {
           path: paths.TERMS_AND_CONDITIONS_PAGE,
           element: <TermsandConditions />,
         },
-        { path: paths.FAQ_PAGE, element: <Faq /> },
+        { path: paths.FAQ_PAGE, element: <FaqPage /> },
         { path: paths.PRIVACY_POLICY_PAGE, element: < PrivacyandPolicy /> },
         { path: paths.CONTACT_US_PAGE, element: <ContactPage /> },
 
