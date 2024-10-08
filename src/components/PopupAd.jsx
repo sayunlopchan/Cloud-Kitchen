@@ -29,7 +29,7 @@ const PopupAd = () => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-[1000] px-3">
-      <div className="bg-white rounded-lg shadow-lg p-1 w-[90vw] h-[70vh] md:w-[70vw] lg:w-[58vw] lg:h-[95vh] relative">
+      <div className="bg-white rounded-lg shadow-lg p-1 w-[90vw] h-[70vh] md:w-[70vw] lg:w-[45vw] lg:h-[80vh] relative">
         <img src={ad} alt="offer ad" className="size-full rounded-md" />
         {/* Close button */}
         <button className="absolute top-2 right-4 rounded-full text-white text-2xl" onClick={handleClose}>

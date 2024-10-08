@@ -98,7 +98,7 @@ const OfferSlider = ({
           }}
         >
           {/* Cloned Last Slide (for infinite loop effect) */}
-          <div className="slide">
+          <div className="slide ">
             <img src={offers[totalSlides - 1].img} alt={`Offer ${totalSlides}`} className="slide-image" />
           </div>
 

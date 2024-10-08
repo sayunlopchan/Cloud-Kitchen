@@ -1,10 +1,14 @@
 
 const Aboutus = () => {
   return (
-    <div>
+    <div className="my-10">
       <h2 className='text-center underline underline-offset-4 text-xl font-bold'>About Us/Bhansha Express</h2>
 
-      <p className='px-10 text-secendaryText text-justify pt-10'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt illo eaque quisquam ab omnis tempore debitis, enim unde fuga quaerat impedit non sunt exercitationem corporis nesciunt ipsam, et itaque sequi minima cupiditate dolorem a! Corrupti earum voluptatem ex, autem, quisquam alias perspiciatis voluptates itaque, reprehenderit repudiandae dolorum saepe provident deserunt accusantium rerum aut blanditiis odio magni ullam quis maxime. Consectetur laudantium sed deleniti recusandae, qui reiciendis aliquid autem eius praesentium odio voluptatem ratione dicta illo dignissimos eligendi totam minima at exercitationem quis officia porro perferendis tenetur odit cum! Quaerat fugit nemo ex, quasi odio earum architecto asperiores amet sapiente natus?</p>
+      <p className='px-10 text-secendaryText text-justify pt-10'> <strong>Bhasnha Express</strong> is a cloud kitchen restaurant based in Butwal and Tilottama, Nepal. We specialize in delivering freshly prepared meals straight to your doorstep, offering a wide range of dishes crafted to satisfy various tastes. As a cloud kitchen, we focus solely on delivery services, ensuring fast and efficient service without the hassle of dine-in.
+        <br />
+        Our free delivery service covers the entire Butwal and Tilottama areas, making it easy for customers to enjoy our meals at home or work. Bhasnha Express is committed to providing convenience and delicious food with flexible payment options, including cash on delivery and mobile banking transfers.
+        <br />
+        At Bhasnha Express, we strive to deliver more than just food—we deliver satisfaction and quality, all with a simple, stress-free ordering process.</p>
 
     </div>
   )

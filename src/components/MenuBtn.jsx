@@ -39,13 +39,14 @@ const MenuBtn = () => {
   }
 
   return (
-    <div className="fixed bottom-36 right-5 z-[1000]">
+    <div className="fixed bottom-44 animate-bounce right-5 z-[1000]">
       {isVisible && (
         <button
           onClick={() => nav(paths.MENU_PAGE)}
-          className="p-2 bg-colorRed text-white rounded-full shadow-2xl focus:outline-none animate-bounce"
+          className="p-2 bg-colorRed text-white rounded-full shadow-2xl flex items-center gap-x-1 border animate-pop"
         >
           <IoRestaurantSharp size={30} />
+          <span>Menu</span>
         </button>
       )}
     </div>

@@ -1,10 +1,11 @@
 // components/OfferSliderChild.js
 import menuData from "../../assets/Data/menu/alldata.js";
-import { useSelector } from 'react-redux'; // Import useSelector
+import { useSelector } from 'react-redux';
 import active_cardBase from "../../assets/icon/active.svg";
 import notactive_cardBase from "../../assets/icon/not-active.svg";
 import TextLimit from "../TextLimit.jsx";
 import { useNavigate } from "react-router-dom";
+import { DETAIL_PAGE } from "../../Routes/Path.js";
 
 const OfferSliderChild = () => {
 
@@ -25,7 +26,10 @@ const OfferSliderChild = () => {
   return (
     <div className="flex justify-around w-full gap-x-2">
       {cardsData.map((card) => (
-        <div key={card.id} className="relative flex justify-center cursor-pointer" onClick={() => nav(`/product-detail/${card.id}`)}>
+        <div
+          key={card.id}
+          className="relative flex justify-center cursor-pointer" onClick={() => nav(`${DETAIL_PAGE.replace(':id', card.id)}`)}>
+
           <div
             className={`absolute size-[60px] sm:size-[80px] md:size-[85px] lg:size-[100px] rounded-full overflow-hidden border-2 shadow-md transition-all duration-500 bg-white ${card.img === activeImage ? 'border-colorRed border-2 shadow-colorRed mb-5' : 'border-black'
               }`}

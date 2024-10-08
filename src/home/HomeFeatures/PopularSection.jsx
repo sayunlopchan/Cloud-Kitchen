@@ -8,6 +8,9 @@ import { addToCart } from "../../store/cartSlice";
 import Arrow from "../../assets/icon/Arrow-next.svg";
 import * as paths from '../../Routes/Path'
 
+
+import CurveLine from "../../assets/icon/red Curve.svg";
+
 const PopularSection = () => {
   const nav = useNavigate();
   const dispatch = useDispatch();
@@ -29,9 +32,15 @@ const PopularSection = () => {
 
   return (
     <div className="space-y-32 px-5 lg:px-10 py-10 transition-all duration-1000 bg-[#F0F2FF]">
-      <h2 className="font-bold text-3xl pl-10">Our Most Popular</h2>
-
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 place-items-center place-content-center">
+      <div className="relative w-fit">
+        <h2 className="font-bold text-3xl pl-10">Most Popular</h2>
+        <img
+          src={CurveLine}
+          alt="Decorative curve line"
+          className="w-[100px] absolute top-10 right-0"
+        />
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 place-items-center ">
         {menuData.mostPopular.slice(0, 4).map((item) => (
           <Card
             key={item.id}
@@ -43,7 +52,7 @@ const PopularSection = () => {
       </div>
 
       <button
-        onClick={() => navigate(paths.MOST_POPULAR_PAGE)}
+        onClick={() => nav(paths.MOST_POPULAR_PAGE)}
         className="bg-red-600 px-3 py-2 rounded-tr-2xl rounded-bl-2xl flex items-center justify-center mx-auto text-white font-semibold hover:bg-red-800 transition-all duration-300"
       >
         View All

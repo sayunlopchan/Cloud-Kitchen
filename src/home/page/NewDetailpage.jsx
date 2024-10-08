@@ -1,24 +1,21 @@
+// NewDetailpage.js
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { GoStarFill } from "react-icons/go";
 import { addToCart, increaseItemQuantity, decreaseItemQuantity } from '../../store/cartSlice';
 import menuData from '../../assets/Data/menu/alldata';
-import { useState } from 'react';
-
-
-
-import * as paths from '../../Routes/Path'
+import { useEffect, useState } from 'react';
+import * as paths from '../../Routes/Path';
+import SuggestionCard from '../../components/SuggestionCard';
 
 const NewDetailpage = () => {
   const nav = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  // State to manage the current main image
   const [mainImage, setMainImage] = useState(null);
 
-  // Flattening menuData to find the specific product
   const allDishes = [
     ...menuData.breakfast,
     ...menuData.momo,
@@ -32,15 +29,15 @@ const NewDetailpage = () => {
     ...menuData.biryani,
   ];
 
-  // Find the product using the UUID
-  const product = allDishes.find(item => item.id === id); // Changed to use id directly
+  const product = allDishes.find(item => item.id === id);
   const cart = useSelector(state => state.allCart.cart);
   const cartItem = cart.find(item => item.id === product?.id);
 
-  // Set initial main image to the product's main image
-  if (!mainImage && product) {
-    setMainImage(product.img);
-  }
+  useEffect(() => {
+    if (product) {
+      setMainImage(product.img);
+    }
+  }, [product]);
 
   if (!product) {
     return <h2>Product not found</h2>;
@@ -52,27 +49,25 @@ const NewDetailpage = () => {
       : product.price;
 
     if (cartItem) {
-      dispatch(increaseItemQuantity(product.id)); // Use UUID
+      dispatch(increaseItemQuantity(product.id));
     } else {
       dispatch(addToCart({ ...product, price: discountedPrice }));
     }
   };
 
   const handleDecreaseQuantity = () => {
-    dispatch(decreaseItemQuantity(product.id)); // Use UUID
+    dispatch(decreaseItemQuantity(product.id));
   };
 
   const afterDiscount = product.price * (1 - (product.discountPercentage || 0) / 100);
   const isInCart = Boolean(cartItem);
 
-  // Handle thumbnail click to change main image
   const handleThumbnailClick = (image) => {
     setMainImage(image);
   };
 
   return (
     <div className="bg-clay">
-
       <div className="container mx-auto p-4">
         <div className="flex flex-wrap">
           {/* Product Images */}
@@ -80,7 +75,7 @@ const NewDetailpage = () => {
             <img
               src={mainImage || product.img}
               alt={product.title}
-              className='w-full h-[280px] sm:h-[320px] lg:h-[70%] rounded-lg'
+              className='w-full h-[280px] sm:h-[320px] lg:h-[70%] rounded-lg object-contain'
             />
             <div className="flex gap-x-4 py-5 justify-center overflow-x-auto">
               {product.imgArr.map((img, index) => (
@@ -178,14 +173,15 @@ const NewDetailpage = () => {
         </div>
       </div>
 
-
       {/* Suggestion Section */}
-      <div className='space-y-5 pb-20'>
-        <h2 className='text-2xl font-semibold text-center'>Best With {product.title}</h2>
-        <div className='flex gap-x-5'>
-          <div className='w-[260px] h-[300px] bg-white shadow-lg mx-auto'>
-            <p className='text-gray-500 flex justify-center items-center pt-20'>No Data for now!</p>
-          </div>
+      <div className='space-y-10 pb-20'>
+        <h2 className='text-2xl font-semibold text-center py-10'>Best With {product.title}</h2>
+        <div className='flex justify-center items-center gap-x-5'>
+          <SuggestionCard
+            product={product}
+            handleAddToCart={handleAddToCart}
+            onClick={() => nav(`${paths.DETAIL_PAGE.replace(':id', product.id)}`)} // Pass the navigation function
+          />
         </div>
       </div>
       {/* Suggestion Section */}

@@ -4,17 +4,23 @@ import collectMeal from '../../assets/icon/foodbag.jpg'
 import takeout from '../../assets/icon/Takeout1.jpg'
 
 import CurveLine from "../../assets/icon/red Curve.svg";
-import or_arrow from '../../assets/icon/orArrow.svg'
-import step_arrow from '../../assets/icon/Arrow nextt.svg'
+import WorkFlowCard from '../../components/WorkFlowCard';
 
+
+
+import arrow_next from '../../assets/icon/Next-Arrow.svg'
+import arrow_next_2 from '../../assets/icon/Arrow_nextt_2.svg'
+
+
+import { HiOutlineArrowLongUp } from "react-icons/hi2";
 
 
 const Workflow = () => {
   return (
-    <div className='bg-clay px-10 space-y-10'>
+    <div className='bg-clay space-y-20 '>
 
       {/* Heading */}
-      <div className="relative w-fit py-20">
+      <div className="relative w-fit py-2">
         <h2 className="font-bold text-3xl pl-10">How it Work</h2>
         <img
           src={CurveLine}
@@ -24,89 +30,76 @@ const Workflow = () => {
       </div>
       {/* Heading */}
 
-      <div className='grid grid-cols-1 md:grid-cols-3  place-items-center gap-y-20 relative '>
-        {/* one */}
-        <div className='relative w-[240px] h-[165px] md:w-[215px] md:h-[160px] lg:w-[240px] lg:h-[165px] border-colorRed bg-white border-2 rounded-[60px]'>
-          <div className='flex justify-center h-[55px]'>
-            <div className='absolute -top-16 size-[120px] bg-gray-400 rounded-full overflow-hidden'>
-              <img src={chooseYourMealIcon} alt="Confirm Location img" className='object-cover object-right size-full' />
-            </div>
-          </div>
-          <div className='text-center'>
-            <h2
-              className='text-colorRed font-semibold text-lg'>Choose Your Meal</h2>
-            <p className='text-sm text-secendaryText'>
-              We deliver your food within
-              30 min of order.
-              Fast, Fresh and Yummy!</p>
-          </div>
-
-        </div>
-        {/* one */}
-        <img src={step_arrow} alt="" className='w-20 absolute left-[30%] z-10 max-lg:hidden' />
 
 
 
-        {/* two */}
-        <div className='relative w-[240px] h-[165px] md:w-[215px] md:h-[160px] lg:w-[240px] lg:h-[165px] border-colorRed bg-white border-2 rounded-[60px]'>
-          <div className='flex justify-center h-[55px]'>
-            <div className='absolute -top-16 size-[120px] bg-gray-400 rounded-full overflow-hidden'>
-              <img src={confirmLocation} alt="Confirm Location img" className='object-cover size-full' />
-            </div>
-          </div>
-          <div className='text-center'>
-            <h2
-              className='text-colorRed font-semibold text-lg'>Confirm Your Location</h2>
-            <p className='text-sm text-secendaryText'>
-              We deliver your food to
-              your designated location!</p>
-          </div>
 
-        </div>
-        {/* two */}
-        <img src={step_arrow} alt="" className='w-20 absolute right-[30%] z-10 max-lg:hidden' />
-        {/* three */}
-        <div className='relative w-[240px] h-[165px] md:w-[215px] md:h-[160px] lg:w-[240px] lg:h-[165px] border-colorRed bg-white border-2 rounded-[60px]'>
-          <div className='flex justify-center h-[55px]'>
-            <div className='absolute -top-16 size-[120px] bg-gray-400 rounded-full overflow-hidden'>
-              <img src={collectMeal} alt="Confirm Location img" className='object-cover size-full' />
-            </div>
-          </div>
-          <div className='text-center'>
-            <h2
-              className='text-colorRed font-semibold text-lg'>Collect Your Order</h2>
-            <p className='text-sm text-secendaryText'>
-              Get Your Order Fresh,Delicious
-              and Ready to eat!</p>
-          </div>
 
-        </div>
-        {/* three */}
-        <img src={or_arrow} alt="" className='h-[280px] absolute left-[20%] top-[110%] z-10 -rotate-1 max-lg:hidden' />
-      </div>
-      {/* Or */}
-      <h2 className='text-center text-lg font-bold py-10'>Or</h2>
-      {/* Or */}
-
+      {/* ///////////////////////////////////////////////////// */}
       <div className='w-full flex justify-center items-center py-10'>
 
-        {/* takeout */}
-        <div className='relative w-[240px] h-[165px] md:w-[215px] md:h-[160px] lg:w-[240px] lg:h-[165px] border-colorRed bg-white border-2 rounded-[60px]'>
-          <div className='flex justify-center h-[55px]'>
-            <div className='absolute -top-16 size-[120px] bg-gray-400 rounded-full overflow-hidden'>
-              <img src={takeout} alt="Confirm Location img" className='object-cover object-left size-full' />
-            </div>
-          </div>
-          <div className='text-center'>
-            <h2
-              className='text-colorRed font-semibold text-lg'>Get Your Takeout</h2>
-            <p className='text-sm text-secendaryText'>
-              Visit the nearest kitchen
-              around you and Take Your Meal!</p>
+        <div className='grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-12 place-content-center relative gap-1 '>
+
+
+          <img src={arrow_next} alt="" className='w-[100px] absolute top-[15%] left-[20%] -rotate-[30deg] max-lg:hidden ' />
+
+          <img src={arrow_next_2} alt="" className='w-[100px] absolute lg:bottom-[20%] lg:left-[20%] lg:-rotate-[140deg] max-lg:hidden ' />
+
+          <div className='lg:col-span-4 lg:row-span-12 flex  justify-center items-center max-lg:order-3 max-lg:pt-20'>
+            <WorkFlowCard
+              image={chooseYourMealIcon}
+              title="Choose Your Meal"
+              description="We deliver your food within 30 min of order. Fast, Fresh and Yummy!"
+            />
           </div>
 
+          <div className=' lg:col-span-3 lg:row-span-4 max-lg:order-2 max-lg:pt-20 flex flex-col justify-center items-center'>
+            <WorkFlowCard
+              image={confirmLocation}
+              title="Confirm Your Location"
+              description="We deliver your food to your designated location!" />
+            <HiOutlineArrowLongUp size={60} className='lg:hidden ' />
+          </div>
+
+
+          <div className='lg:col-span-2 lg:row-span-4 flex items-center justify-center'>
+            <img src={arrow_next_2} alt="" className='w-[100px] rotate-180 max-lg:hidden' />
+          </div>
+
+
+          <div className=' lg:col-span-3 lg:row-span-4 max-lg:order-1 flex flex-col justify-center items-center'>
+            <WorkFlowCard
+              image={collectMeal}
+              title="Collect Your Food"
+              description="Get Your Order Fresh,Delicious and Ready to eat!" />
+            <HiOutlineArrowLongUp size={60} className='lg:hidden ' />
+          </div>
+
+
+
+          <div className='lg:col-span-8 lg:row-span-4 flex pl-28 items-center max-sm:order-5 max-sm:py-10 max-lg:hidden'>
+            <h2 className='font-semibold text-2xl'>OR</h2>
+          </div>
+
+
+
+          <div className='lg:col-span-3 lg:row-span-4 max-lg:order-6 flex flex-col justify-center items-center'>
+
+            <HiOutlineArrowLongUp
+              size={60}
+              className='mb-20 lg:hidden rotate-180'
+            />
+
+            <WorkFlowCard
+              image={takeout}
+              title="Get Your Takeout"
+              description="Visit the nearest kitchen around you and Take Your Meal!"
+            />
+
+          </div>
+
+
         </div>
-        {/* takeout */}
       </div>
 
     </div>

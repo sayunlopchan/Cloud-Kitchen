@@ -10,6 +10,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
 
   const [animations, setAnimations] = useState([]); // Track multiple animations
   const [clickCount, setClickCount] = useState(0); // State to track number of clicks
+  const [isPopAnimating, setIsPopAnimating] = useState(false); // State for pop animation
 
   // Trigger new animation instance
   const triggerCartAnimation = () => {
@@ -28,6 +29,12 @@ const Card = ({ item, handleAddToCart, onClick }) => {
     saveToLocalStorage(item); // Save the item to local storage
     triggerCartAnimation();
     setClickCount((prevCount) => (prevCount + 1) % 3); // Cycle clickCount between 0, 1, and 2
+
+    // Trigger pop animation
+    setIsPopAnimating(true);
+    setTimeout(() => {
+      setIsPopAnimating(false);
+    }, 300); // Duration of the pop animation
   };
 
   // Save the cart item to local storage
@@ -71,17 +78,19 @@ const Card = ({ item, handleAddToCart, onClick }) => {
     >
       {/* image */}
       <div className="max-sm:h-[60px] max-md:h-[100px] h-[85px] md:h-[100px]">
-        <img
-          src={item.img}
-          alt={item.title}
-          className="size-[100px] max-sm:size-[80px] max-md:size-[120px] md:size-[115px] lg:size-[130px] rounded-full border-red-600 border-2 md:border-4 absolute -right-5 -top-5 lg:-top-10"
-        />
+        <div className="size-[100px] max-sm:size-[80px] max-md:size-[120px] md:size-[115px] lg:size-[130px] rounded-full border-red-600 border-2 md:border-4 absolute -right-5 -top-5 lg:-top-10 overflow-hidden bg-white">
+          <img
+            src={item.img}
+            alt={item.title}
+            className=""
+          />
+        </div>
       </div>
       {/* image */}
 
-      <div className="px-2">
-        <h2 className="text-lg max-sm:text-base max-md:text-2xl md:text-xl lg:text-2xl font-semibold pr-4">
-          <TextLimit text={item.title} limit={18} />
+      <div className="px-4">
+        <h2 className="text-lg max-sm:text-base max-md:text-2xl md:text-xl lg:text-2xl font-bold pr-4">
+          <TextLimit text={item.title} limit={20} />
         </h2>
 
         {/* price */}
@@ -89,8 +98,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
           <div className="max-sm:text-sm max-md:text-lg text-base md:text-lg font-semibold text-secendaryText space-x-1">
             Rs.
             <span className="w-fit relative text-gray-800">
-              <span className="w-full absolute border-b-2 lg:border-b-[3px] border-red-500 top-2 sm:top-[10px] lg:top-3">
-              </span>
+              <span className="w-full absolute border-b-2 lg:border-b-[3px] border-red-500 top-2 sm:top-[10px] lg:top-3"></span>
               <span className="max-sm:text-sm max-md:text-lg text-base md:text-lg lg:text-xl font-semibold text-secendaryText">
                 {item.price}
               </span>
@@ -115,11 +123,11 @@ const Card = ({ item, handleAddToCart, onClick }) => {
         <div className="relative">
           <button
             className={`bg-red-600 text-white
-          text-[10px] sm:text-sm lg:text-base
-          px-1 
-          sm:px-2 py-2
-            transition-all duration-500 border 
-            hover:rounded-xl mr-2 mb-3`}
+              text-[10px] sm:text-sm lg:text-base
+              px-1 
+              sm:px-2 py-2
+              transition-all duration-500 border rounded-lg
+              hover:rounded-xl mr-3 mb-3 ${isPopAnimating ? 'animate-pop' : ''}`}
             onClick={(e) => {
               e.stopPropagation();
               handleAddToCartAndSave(item); // Call the new function
@@ -131,7 +139,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
 
           {/* Render multiple instances of the animation */}
           {animations.map((key) => (
-            <span key={key} className={` bg-colorRed rounded-full text-white flex justify-center items-center absolute -top-10 ${getLeftPosition()} text-sm lg:text-base animate-jumpscare`}>
+            <span key={key} className={`bg-colorRed rounded-full text-white flex justify-center items-center absolute -top-10 ${getLeftPosition()} text-sm lg:text-base animate-jumpscare`}>
               +1
             </span>
           ))}

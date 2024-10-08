@@ -22,7 +22,7 @@ const Footer = () => {
   const nav = useNavigate()
 
   return (
-    <div className='lg:h-[560px] text-white'>
+    <div className='lg:h-[470px] text-white'>
       {/* footer-orange */}
       <div className='bg-colorOrange grid grid-cols-2 py-2 lg:gap-x-10'>
         <div className="flex items-center justify-end lg:gap-x-3   ">
@@ -60,9 +60,17 @@ const Footer = () => {
         <div className="col-span-3 lg:col-span-3 lg:mx-auto p-5">
           <h2 className="font-bold text-2xl">Our Company</h2>
           <ul>
-            <li onClick={() => nav(paths.ABOUT_US_PAGE)} className="cursor-pointer">About Us</li>
-            <li onClick={() => nav(paths.FAQ_PAGE)} className="cursor-pointer">FAQ</li>
-            <li className="cursor-pointer">Contact Us</li>
+            <li
+              onClick={() => nav(paths.ABOUT_US_PAGE)} className="cursor-pointer">About Us</li>
+
+            <li
+              onClick={() => nav(paths.FAQ_PAGE)}
+              className="cursor-pointer">FAQ</li>
+
+            <li
+              onClick={() => nav(paths.CONTACT_US_PAGE)}
+              className="cursor-pointer">Contact Us</li>
+
             <li onClick={() => nav(paths.TERMS_AND_CONDITIONS_PAGE)} className="cursor-pointer">Terms & Conditions</li>
             <li onClick={() => nav(paths.PRIVACY_POLICY_PAGE)} className="cursor-pointer">Privacy Policy</li>
           </ul>
@@ -82,24 +90,30 @@ const Footer = () => {
         </div>
 
 
-        <div className="col-span-full border-t-2 border-white flex  justify-between pt-3 px-5 pb-20 text-lg flex-wrap">
+        <div className="col-span-full border-t-2 border-white flex  justify-between pt-3 px-5 text-lg flex-wrap">
           <span><h2>@2024,Bhansha Express</h2></span>
 
           <div className="max-md:mx-auto">
             <span className="flex items-center gap-x-5">
-              <span className="flex items-center gap-x-2" onClick={() => nav(paths.FACEBOOK)}>
+              <NavLink
+                to={'https://www.facebook.com/profile.php?id=61566833344153&mibextid=ZbWKwL'}
+                target="_blank"
+                className="flex items-center gap-x-2">
                 <FaFacebook size={25} className="cursor-pointer" />
                 <p className="cursor-pointer">Facebook</p>
-              </span>
-              <span className="flex items-center gap-x-2" onClick={() => nav(paths.INSTAGRAM)}>
+              </NavLink>
+              <NavLink
+                to={'/'}
+                target="_blank"
+                className="flex items-center gap-x-2">
                 <FaInstagram size={25} className="cursor-pointer" />
                 <p className="cursor-pointer">Instagram</p>
-              </span>
+              </NavLink>
             </span>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

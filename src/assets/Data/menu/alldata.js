@@ -766,15 +766,167 @@ const exclusiveOffer = [
   breakfast[2]
 ];
 
+import combo_1 from '../../img/combo/cajun-chicken-and-crispy-bacon.avif';
+import combo_2 from '../../img/combo/chicken-wrap.jpg';
+import combo_3 from '../../img/combo/Completed-best-buffalo-chicken-wrap-scaled.webp';
+import combo_4 from '../../img/combo/Crispy-Sesame-Chicken-and-Fried-Rice-Recipe.webp';
+import combo_5 from '../../img/combo/Hawaiian-BBQ-Chicken-Wraps.jpg';
+import combo_6 from '../../img/combo/spicy-veggie-wrap.jpg';
+import combo_7 from '../../img/combo/Thai-Peanut-Chicken-Wraps.jpg';
 
-// 
-const OfferSlideData = [
-  snack[4],
-  snack[1],
-  snack[0],
+const combo = [
+  {
+    id: uuidv4(),
+    title: "Cajun Chicken and Crispy Bacon",
+    img: combo_1,
+    imgArr: [combo_1],
+    price: 200,
+    discountPercentage: 10,
+    description: "Spicy cajun chicken paired with crispy bacon, perfect for a hearty meal.",
+    rating: 4.6,
+    likes: 160,
+    category: "combo"
+  },
+  {
+    id: uuidv4(),
+    title: "Chicken Wrap",
+    img: combo_2,
+    imgArr: [combo_2],
+    price: 180,
+    discountPercentage: 10,
+    description: "A delicious chicken wrap filled with fresh veggies and sauce.",
+    rating: 4.5,
+    likes: 120,
+    category: "combo"
+  },
+  {
+    id: uuidv4(),
+    title: "Buffalo Chicken Wrap",
+    img: combo_3,
+    imgArr: [combo_3],
+    price: 220,
+    discountPercentage: 10,
+    description: "Tangy buffalo chicken with a crunchy texture wrapped to perfection.",
+    rating: 4.8,
+    likes: 200,
+    category: "combo"
+  },
+  {
+    id: uuidv4(),
+    title: "Crispy Sesame Chicken and Fried Rice",
+    img: combo_4,
+    imgArr: [combo_4],
+    price: 250,
+    discountPercentage: 10,
+    description: "Crispy sesame chicken served with flavorful fried rice.",
+    rating: 4.7,
+    likes: 175,
+    category: "combo"
+  },
+  {
+    id: uuidv4(),
+    title: "Hawaiian BBQ Chicken Wraps",
+    img: combo_5,
+    imgArr: [combo_5],
+    price: 210,
+    discountPercentage: 10,
+    description: "Grilled Hawaiian BBQ chicken wrapped with fresh ingredients.",
+    rating: 4.6,
+    likes: 140,
+    category: "combo"
+  },
+  {
+    id: uuidv4(),
+    title: "Spicy Veggie Wrap",
+    img: combo_6,
+    imgArr: [combo_6],
+    price: 160,
+    discountPercentage: 10,
+    description: "A healthy and spicy veggie wrap for a refreshing meal.",
+    rating: 4.4,
+    likes: 110,
+    category: "combo"
+  },
+  {
+    id: uuidv4(),
+    title: "Thai Peanut Chicken Wraps",
+    img: combo_7,
+    imgArr: [combo_7],
+    price: 230,
+    discountPercentage: 10,
+    description: "Flavorful Thai peanut chicken wrapped for a delicious bite.",
+    rating: 4.9,
+    likes: 190,
+    category: "combo"
+  }
+];
 
+
+
+import offer_1 from '../../ad/combo_1.png'
+import offer_2 from '../../ad/combo_2.png'
+import offer_3 from '../../ad/combo_3.png'
+import offer_4 from '../../ad/combo_4.png'
+
+
+
+const offerData = [
+  {
+    id: uuidv4(),
+    title: "Combo",
+    img: offer_1,
+    imgArr: [offer_1],
+    price: 200,
+    discountPercentage: 10,
+    description: "",
+    rating: 4.6,
+    likes: 160,
+    category: "combo"
+  },
+  {
+    id: uuidv4(),
+    title: "Combo",
+    img: offer_2,
+    imgArr: [offer_2],
+    price: 200,
+    discountPercentage: 10,
+    description: "",
+    rating: 4.6,
+    likes: 160,
+    category: "combo"
+  },
+  {
+    id: uuidv4(),
+    title: "Combo",
+    img: offer_3,
+    imgArr: [offer_3],
+    price: 200,
+    discountPercentage: 10,
+    description: "",
+    rating: 4.6,
+    likes: 160,
+    category: "combo"
+  },
+  {
+    id: uuidv4(),
+    title: "Combo",
+    img: offer_4,
+    imgArr: [offer_4],
+    price: 200,
+    discountPercentage: 10,
+    description: "",
+    rating: 4.6,
+    likes: 160,
+    category: "combo"
+  },
 ]
 
+
+const OfferSlideData = [
+  offerData[0],
+  offerData[1],
+  offerData[2],
+]
 
 
 // Exporting all data together
@@ -790,6 +942,7 @@ const menuData = {
   snack,
   crispy,
   salad,
+  combo,
 
 
   // highlights

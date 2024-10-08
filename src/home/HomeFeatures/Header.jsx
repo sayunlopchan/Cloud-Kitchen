@@ -25,13 +25,15 @@ const Header = () => {
 
   // Check if the current pathname matches the specified routes
   const isBgClay =
-    location.pathname.includes(paths.DETAIL_PAGE) ||
+    location.pathname.startsWith('/product-detail/') ||
     location.pathname === paths.MENU_PAGE ||
     location.pathname === paths.CART_PAGE ||
     location.pathname === paths.MOST_SOLD_PAGE ||
     location.pathname === paths.MOST_POPULAR_PAGE ||
     location.pathname === paths.TAKEOUT_FORM_PAGE ||
-    location.pathname === paths.PAYMENT_FORM_PAGE;
+    location.pathname === paths.PAYMENT_FORM_PAGE ||
+    location.pathname === paths.TAKEOUT_PAGE ||
+    location.pathname === paths.PAYMENT_PAGE;
 
 
   return (

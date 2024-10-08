@@ -104,7 +104,7 @@ const BottomHeader = () => {
           {/* logo */}
 
           {/* search */}
-          <div className="relative">
+          {/* <div className="relative">
             <input
               type="text"
               name="search"
@@ -112,7 +112,7 @@ const BottomHeader = () => {
               className="outline-none border-b w-full h-10"
             />
             <FiSearch size={25} className="absolute right-1 top-2 cursor-pointer" />
-          </div>
+          </div> */}
         </div>
         {/* search */}
 
