@@ -20,7 +20,7 @@ const SuggestionCard = ({ product, handleAddToCart, onClick }) => {
   useEffect(() => {
     const snacks = getRandomSnacks();
     setRandomSnacks(snacks);
-    setLoading(false); // Set loading to false after fetching snacks
+    setLoading(false);
   }, []);
 
   return (
@@ -34,9 +34,9 @@ const SuggestionCard = ({ product, handleAddToCart, onClick }) => {
           randomSnacks.map((snackItem) => (
             <Card
               key={snackItem.id}
-              item={snackItem} // Pass the snack item as a prop
-              handleAddToCart={handleAddToCart} // Pass the handleAddToCart function
-              onClick={onClick} // Pass the onClick function
+              item={snackItem}
+              handleAddToCart={handleAddToCart}
+              onClick={onClick}
             />
           ))
         )}
@@ -50,8 +50,8 @@ SuggestionCard.propTypes = {
   product: PropTypes.shape({
     title: PropTypes.string.isRequired,
   }).isRequired,
-  handleAddToCart: PropTypes.func.isRequired, // Ensure to specify that it's required
-  onClick: PropTypes.func.isRequired, // Ensure to specify that it's required
+  handleAddToCart: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default SuggestionCard;

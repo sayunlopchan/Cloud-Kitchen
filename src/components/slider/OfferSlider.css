@@ -23,15 +23,11 @@
 }
 
 .slide {
-  min-width: 100%;
-  text-align: center;
-  padding: 0;
-  display: flex;
-  justify-content: center;
+  @apply min-w-full text-center flex justify-center;
 }
 
 .slide-image {
-  @apply h-[360px] relative top-20;
+  @apply object-cover w-full lg:w-[360px] relative -top-28 lg:top-0;
 }
 .btn-div {
   @apply absolute -bottom-2 sm:bottom-2 md:-bottom-5 space-x-5 flex;

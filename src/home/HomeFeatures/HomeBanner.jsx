@@ -1,5 +1,4 @@
 import Best_icon from "../../assets/icon/Best-sticker.png";
-import OfferSlider from "../../components/slider/OfferSlider";
 import DiscountSticker from "../../assets/icon/discount-sticker.png";
 
 
@@ -7,15 +6,15 @@ import menuData from "../../assets/Data/menu/alldata.js";
 
 
 // svg
-import SliderBg from "../../assets/icon/bg-dark.png";
 import OfferSliderChild from "../../components/slider/OfferSliderChild";
+import Test from "../../components/slider/Test.jsx";
 
 
 function HomeBanner() {
   return (
-    <div className="w-full h-full grid grid-cols-1 md:grid-cols-12 mt-[-65px] transition-all duration-1000 px-10 lg:px-20 py-20 ">
+    <div className="w-full h-full grid grid-cols-1 md:grid-cols-12 mt-[-65px] transition-all duration-1000 px-10 lg:px-10 py-20">
 
-      <div className="w-full h-full md:col-span-8  ">
+      <div className="w-full h-full md:col-span-7 ">
 
 
         {/* Sticker */}
@@ -55,25 +54,26 @@ function HomeBanner() {
         </div>
 
 
-        <div className="flex gap-5 mt-20  max-sm:hidden">
+        <div className="flex gap-5 mt-20 max-md:hidden">
           <OfferSliderChild />
         </div>
 
       </div>
 
-      <div className="md:col-span-4 relative">
+      <div className=" md:col-span-5 relative">
 
         {/* discount offer card */}
         <div className="size-[100px] lg:size-36 shadow-lg absolute z-20 rounded-2xl bg-white border-2 left-0 lg:-left-20 top-20 py-5 px-2">
+
           <h2 className="text-sm lg:text-2xl font-bold text-red-500">10%</h2>
           <h3 className="text-sm lg:text-xl lg:font-semibold text-black">Discount On Every Purchase</h3>
           <img src={DiscountSticker} alt='Discount Sticker' className="size-14 absolute -top-6 -right-5" />
         </div>
         {/* discount offer card */}
 
-        <img src={SliderBg} alt="background" className="h-full w-full " />
-        <div className="absolute top-0 h-full">
-          <OfferSlider
+
+        <div className="md:absolute md:w-full md:-bottom-2 lg:bottom-5">
+          <Test
             offers={menuData.OfferSlideData}
             autoSlide={true}
             autoSlideInterval={5000}
@@ -86,7 +86,7 @@ function HomeBanner() {
       </div>
 
 
-      <div className="flex gap-5 mt-20 sm:hidden">
+      <div className="flex gap-5 mt-20 col-span-full md:hidden">
         <OfferSliderChild />
       </div>
 
