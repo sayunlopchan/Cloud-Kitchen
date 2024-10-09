@@ -35,25 +35,28 @@ const Footer = () => {
   return (
     <div className='lg:h-[470px] text-white'>
       {/* footer-orange */}
-      <div className='bg-colorOrange grid grid-cols-2 py-2 lg:gap-x-10'>
+      <div className='bg-colorOrange grid grid-cols-2 py-2 lg:gap-x-24'>
+
         <div className="flex items-center justify-end lg:gap-x-3   ">
           <span className="rounded-full overflow-hidden p-2">
-            <FaLocationDot className="bg-colorOrange size-5 lg:size-10" />
+            <FaLocationDot className="bg-colorOrange size-8 lg:size-10" />
           </span>
           <span>
             <h2 className="font-semibold text-lg">Location</h2>
             <p className="text-sm">Butwal,Tilottama</p>
           </span>
         </div>
+
         <div className="flex items-center lg:gap-x-3  ">
           <span className="rounded-full overflow-hidden p-2">
-            <HiOutlineMail className="bg-colorOrange size-5 lg:size-10" />
+            <HiOutlineMail className="bg-colorOrange size-8 lg:size-10" />
           </span>
           <span>
             <h2 className="font-semibold text-lg">Email</h2>
             <NavLink className="text-sm" to=''>bhanshaexpress.com</NavLink>
           </span>
         </div>
+
       </div>
       {/* footer-orange */}
 

@@ -111,7 +111,7 @@ const Slider = ({
       {showArrows && (
         <div className="absolute bottom-0 left-[10%] md:left-[20%] z-10 flex items-center">
           <button
-            className="py-0 px-4 lg:py-2 lg:px-6 text-white bg-gray-950 rounded-l border rounded-tr-[30px] rounded-bl-[30px]"
+            className="py-0 px-4 lg:py-2 lg:px-6 text-white  rounded-l rounded-tr-[30px] rounded-bl-[30px] hover:text-orange-600 transition-all duration-300"
             disabled={isButtonDisabled}
             onClick={prevSlide}
           >
@@ -122,7 +122,7 @@ const Slider = ({
       {showArrows && (
         <div className="absolute bottom-0 right-[10%] md:right-[20%] z-10 flex items-center">
           <button
-            className="py-0 px-4 lg:py-2 lg:px-6 text-white bg-gray-950 rounded-r border rounded-tl-[30px] rounded-br-[30px]"
+            className="py-0 px-4 lg:py-2 lg:px-6 text-white  rounded-r  rounded-tl-[30px] rounded-br-[30px] hover:scale-100 hover:text-orange-600 transition-all duration-300"
             onClick={nextSlide}
             disabled={isButtonDisabled}
           >

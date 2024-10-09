@@ -32,7 +32,7 @@ const PopupAd = () => {
       <div className="bg-white rounded-lg shadow-lg py-10 px-5 relative
       size-full
       w-[300px] h-[300px]
-      md:size-[400px] md:bg-green-400
+      md:size-[400px] 
       lg:size-[500px]
       ">
         <img src={ad} alt="offer ad" className="size-full rounded-md" />
