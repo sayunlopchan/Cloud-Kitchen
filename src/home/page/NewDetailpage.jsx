@@ -26,7 +26,10 @@ const NewDetailpage = () => {
     ...menuData.salad,
     ...menuData.crispy,
     ...menuData.snack,
-    ...menuData.biryani,
+    ...menuData.combo,
+    ...menuData.other,
+    ...menuData.OfferSlideData,
+    ...menuData.exclusiveOffer,
   ];
 
   const product = allDishes.find(item => item.id === id);

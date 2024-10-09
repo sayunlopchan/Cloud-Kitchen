@@ -11,7 +11,11 @@ const Dashboard = () => {
   const [selectedOrderUserInfo, setSelectedOrderUserInfo] = useState(null);
   const [statusEditOrder, setStatusEditOrder] = useState(null);
   const [newStatus, setNewStatus] = useState('');
-  const [selectedItem, setSelectedItem] = useState(null); // New state for selected item
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const ordersPerPage = 10;
 
   // Fetch orders from the backend
   const fetchOrders = async () => {
@@ -94,25 +98,8 @@ const Dashboard = () => {
     }
   };
 
-  // Function to format the order ID
   const formatOrderId = (index) => {
-    if (index < 1000000) {
-      return `BE${(index + 1).toString().padStart(6, '0')}`;
-    } else if (index < 1000000 + 26) {
-      return `BE${(index - 1000000).toString().padStart(5, '0')}a1`;
-    } else if (index < 1000000 + 26 + 99999) {
-      const letterIndex = Math.floor((index - (1000000 + 27)) / 99999);
-      const numberPart = (index - (1000000 + 27)) % 99999;
-      const letter = String.fromCharCode(97 + letterIndex);
-      return `BE${letter}${(numberPart + 1).toString().padStart(5, '0')}`;
-    } else if (index < 1000000 + 26 + 99999 + 26) {
-      return `BE${(index - (1000000 + 27 + 99999)).toString().padStart(6, '0')}A1`;
-    } else {
-      const letterIndex = Math.floor((index - (1000000 + 27 + 99999 + 1)) / 99999);
-      const numberPart = (index - (1000000 + 27 + 99999 + 1)) % 99999;
-      const letter = String.fromCharCode(65 + letterIndex);
-      return `BE${letter}${(numberPart + 1).toString().padStart(5, '0')}`;
-    }
+    return (index + 1).toString();
   };
 
   // Function to get background color based on order status
@@ -136,6 +123,12 @@ const Dashboard = () => {
     setSelectedItem(items); // Set selected items to show in the modal
   };
 
+  // Pagination calculations
+  const indexOfLastOrder = currentPage * ordersPerPage;
+  const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
+  const currentOrders = orders.slice(indexOfFirstOrder, indexOfLastOrder);
+  const totalPages = Math.ceil(orders.length / ordersPerPage);
+
   return (
     <div className="p-10">
       <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
@@ -154,6 +147,7 @@ const Dashboard = () => {
         <table className="w-full table-auto border border-gray-300">
           <thead className="max-md:text-sm">
             <tr className="bg-gray-100 text-left">
+              <th className="py-2 px-4 border">SN.</th>
               <th className="py-2 px-4 border">Order ID</th>
               <th className="py-2 px-4 border">Order Items</th>
               <th className="py-2 px-4 border">Quantity</th>
@@ -166,13 +160,16 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody className="text-sm">
-            {orders.map((order, index) => (
+            {currentOrders.map((order, index) => (
               <tr key={order._id}>
                 <td
-                  className="py-2 px-4 border cursor-pointer text-blue-500 underline"
-                  onClick={() => setSelectedOrderUserInfo(order.user)}
+                  className="py-2 px-4 border"
                 >
-                  {formatOrderId(index)} {/* Updated to pass the index */}
+                  {formatOrderId(index + indexOfFirstOrder)}
+                </td>
+                <td className="py-2 px-4 border lg:w-[160px]  cursor-pointer text-blue-500 underline" onClick={() => setSelectedOrderUserInfo({ ...order.user, orderId: order.orderId })}>
+                  {/* order id here */}
+                  {order.orderId}
                 </td>
                 <td className="py-2 px-4 border lg:w-[160px]">
                   {order.items.map((item) => item.title).join(', ')}
@@ -188,7 +185,7 @@ const Dashboard = () => {
                 <td className="py-2 px-4 border">Rs.{order.deliveryCharge || '0'}</td>
                 <td className="py-2 px-4 border">{order.paymentMethod}</td>
                 <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>
-                  {order.status}
+                  {order.status || 'Not Set'}
                 </td>
                 <td className="py-2 px-4 border">
                   <button
@@ -213,6 +210,45 @@ const Dashboard = () => {
         </table>
       </div>
 
+      {/* Pagination Controls */}
+      <div className="flex justify-center mt-4">
+        <button
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+          className={`mx-1 px-3 py-1 rounded ${currentPage === 1
+            ? 'bg-gray-300 cursor-not-allowed'
+            : 'bg-gray-500 text-white hover:bg-gray-600'
+            }`}
+        >
+          Previous
+        </button>
+
+        {/* Page Numbers */}
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((number) => (
+          <button
+            key={number}
+            onClick={() => setCurrentPage(number)}
+            className={`mx-1 mt-2 size-5 flex justify-center items-center rounded-full ${currentPage === number
+              ? 'bg-blue-700 text-white'
+              : 'bg-blue-500 text-white hover:bg-blue-600'
+              }`}
+          >
+            {number}
+          </button>
+        ))}
+
+        <button
+          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          disabled={currentPage === totalPages}
+          className={`mx-1 px-3 py-1 rounded ${currentPage === totalPages
+            ? 'bg-gray-300 cursor-not-allowed'
+            : 'bg-colorRed text-white hover:bg-red-600'
+            }`}
+        >
+          Next
+        </button>
+      </div>
+
       {/* Confirmation dialog for order deletion */}
       {confirmDelete && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -220,10 +256,16 @@ const Dashboard = () => {
             <h3 className="text-lg font-bold mb-4">Confirm Deletion</h3>
             <p>Are you sure you want to delete this order?</p>
             <div className="flex justify-end mt-4">
-              <button className="bg-red-500 text-white py-1 px-3 rounded mr-2" onClick={handleRemoveOrder}>
+              <button
+                className="bg-red-500 text-white py-1 px-3 rounded mr-2"
+                onClick={handleRemoveOrder}
+              >
                 Delete
               </button>
-              <button className="bg-gray-300 py-1 px-3 rounded" onClick={() => setConfirmDelete(false)}>
+              <button
+                className="bg-gray-300 py-1 px-3 rounded"
+                onClick={() => setConfirmDelete(false)}
+              >
                 Cancel
               </button>
             </div>
@@ -241,8 +283,13 @@ const Dashboard = () => {
             <ul className="list-disc list-inside mb-4 h-[400px] overflow-scroll">
               {selectedItem.map((item, index) => (
                 <li key={index} className="py-1 text-gray-700 border-b-2">
-                  <li>{item.title}</li>
-                  <li>(Quantity: {item.quantity})</li>
+                  <div className='space-x-1'>
+                    <strong>Item: </strong> <span>{item.title}</span>
+                  </div>
+                  <div className='space-x-1'>
+                    <strong>Quantity: </strong>
+                    <span>{item.quantity}</span>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -257,7 +304,6 @@ const Dashboard = () => {
           </div>
         </div>
       )}
-
 
       {/* Modal for editing status */}
       {statusEditOrder && (
@@ -298,6 +344,9 @@ const Dashboard = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-5 rounded">
             <h3 className="text-xl font-bold mb-4">User Info</h3>
+
+            {/* Add orderId here */}
+            <p><strong>Order ID:</strong> {selectedOrderUserInfo.orderId}</p>
             <p><strong>Name:</strong> {selectedOrderUserInfo.firstName + " " + selectedOrderUserInfo.lastName}</p>
             <p><strong>Email:</strong> {selectedOrderUserInfo.email}</p>
             <p><strong>Phone:</strong> {selectedOrderUserInfo.phoneNumber}</p>
@@ -324,6 +373,7 @@ const Dashboard = () => {
           </div>
         </div>
       )}
+
     </div>
   );
 };

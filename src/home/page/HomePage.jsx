@@ -18,11 +18,11 @@ const HomePage = () => {
     <div>
       <PopupAd />
       <HomeBanner />
-      {/* <TakeoutBanner />
+      <TakeoutBanner />
       <ExclusiveOfferBanner />
       <PopularSection />
       <MostSold />
-      <Workflow /> */}
+      <Workflow />
     </div>
   );
 };

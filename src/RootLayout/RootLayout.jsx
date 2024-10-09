@@ -14,8 +14,8 @@ const RootLayout = () => {
       <MenuBtn />
       <Header />
       <Outlet />
-      {/* <Footer /> */}
-      {/* <BottomHeader /> */}
+      <Footer />
+      <BottomHeader />
     </>
   )
 }

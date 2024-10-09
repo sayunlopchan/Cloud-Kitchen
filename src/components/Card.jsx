@@ -82,7 +82,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
           <img
             src={item.img}
             alt={item.title}
-            className=""
+            className="object-cover size-full"
           />
         </div>
       </div>

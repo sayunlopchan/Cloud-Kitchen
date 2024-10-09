@@ -21,6 +21,17 @@ const Footer = () => {
 
   const nav = useNavigate()
 
+
+  // Exclude Bottom nav form page 
+  const isExcludedPath = [
+    paths.DASHBOARD_PAGE
+  ].includes(location.pathname);
+
+  if (isExcludedPath) {
+    return null;
+  }
+
+
   return (
     <div className='lg:h-[470px] text-white'>
       {/* footer-orange */}

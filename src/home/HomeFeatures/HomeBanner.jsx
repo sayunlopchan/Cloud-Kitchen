@@ -1,4 +1,4 @@
-import Best_icon from "../../assets/icon/Best-sticker.png";
+import Best_icon from "../../assets/icon/The-Best-Bhansha-Express-Stamp.png";
 import DiscountSticker from "../../assets/icon/discount-sticker.png";
 
 
@@ -7,7 +7,8 @@ import menuData from "../../assets/Data/menu/alldata.js";
 
 // svg
 import OfferSliderChild from "../../components/slider/OfferSliderChild";
-import Test from "../../components/slider/Test.jsx";
+
+import Slider from "../../components/slider/Slider.jsx";
 
 
 function HomeBanner() {
@@ -73,7 +74,7 @@ function HomeBanner() {
 
 
         <div className="md:absolute md:w-full md:-bottom-2 lg:bottom-5">
-          <Test
+          <Slider
             offers={menuData.OfferSlideData}
             autoSlide={true}
             autoSlideInterval={5000}

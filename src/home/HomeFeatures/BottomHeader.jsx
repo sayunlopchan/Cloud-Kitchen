@@ -160,18 +160,34 @@ const BottomHeader = () => {
               <div className="w-full">
                 <div className="bg-slate-400 h-1/2  border-2 border-black flex items-center justify-center gap-x-1 px-1">
 
-                  <div className="w-1/2 h-[100px] border-2 border-black rounded-sm flex justify-center items-center relative">
-                    <button onClick={handleOnlinePayment} className="transition-all duration-500  bg-colorRed hover:bg-red-900 text-white rounded-full size-16 z-10 border text-sm">
-                      Delivery
-                    </button>
-                    <div className="size-16 bg-colorRed border-2 border-black rounded-full absolute top-6"></div>
+                  <div className="w-1/2 h-[100px] border-2 border-black rounded-sm flex justify-center bg-slate-300 relative">
+                    <div className="size-1 bg-black rounded-full absolute top-1 left-1" />
+                    <div className="size-1 bg-black rounded-full absolute bottom-1 left-1" />
+                    <div className="size-1 bg-black rounded-full absolute top-1 right-1" />
+                    <div className="size-1 bg-black rounded-full absolute bottom-1 right-1" />
+
+                    <div className=" flex justify-center items-center relative size-fit group">
+                      <button onClick={handleOnlinePayment} className="transition-all duration-500  bg-colorRed group-hover:bg-red-900 text-white rounded-full size-16 z-10 border text-sm mt-4 hover:mt-5 hover:scale-95">
+                        Delivery
+                      </button>
+                      <div className="size-16 bg-colorRed group-hover:bg-red-900 border-2 border-black rounded-full absolute top-6"></div>
+
+                    </div>
+
                   </div>
 
-                  <div className="w-1/2 h-[100px] border-2 border-black rounded-sm flex justify-center items-center relative">
-                    <button onClick={handleTakeout} className="transition-all duration-500 bg-colorRed hover:bg-red-900 text-white  rounded-full size-16 z-10 border text-sm">
-                      Takeout
-                    </button>
-                    <div className="size-16 bg-colorRed border-2 border-black rounded-full absolute top-6"></div>
+                  <div className="w-1/2 h-[100px] border-2 border-black rounded-sm flex justify-center bg-slate-300 relative">
+                    <div className="size-1 bg-black rounded-full absolute top-1 left-1" />
+                    <div className="size-1 bg-black rounded-full absolute bottom-1 left-1" />
+                    <div className="size-1 bg-black rounded-full absolute top-1 right-1" />
+                    <div className="size-1 bg-black rounded-full absolute bottom-1 right-1" />
+                    <div className=" flex justify-center items-center relative size-fit group">
+
+                      <button onClick={handleTakeout} className="group transition-all duration-500 bg-colorRed group-hover:bg-red-900 text-white  rounded-full size-16 z-10 border text-sm mt-4 hover:mt-5 hover:scale-95">
+                        Takeout
+                      </button>
+                      <div className="size-16 bg-colorRed group-hover:bg-red-900 border-2 border-black rounded-full absolute top-6"></div>
+                    </div>
                   </div>
 
                 </div>

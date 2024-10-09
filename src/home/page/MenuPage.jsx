@@ -15,7 +15,6 @@ const MenuPage = () => {
 
 
 
-
   const handleAddToCart = (item) => {
     const discountedPrice = item.discountPercentage
       ? item.price * (1 - item.discountPercentage / 100)
@@ -35,7 +34,7 @@ const MenuPage = () => {
 
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 bg-clay">
       {/* All Menu title */}
       <div className="w-full  flex justify-center ">
         <div className="relative w-fit mt-5">
@@ -54,7 +53,7 @@ const MenuPage = () => {
       {/* Quick Category */}
 
       {/* BreakFast section */}
-      <section className="px-10">
+      <section className="p-5">
         <h2 className="font-semibold text-2xl mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
           Breakfast
         </h2>
@@ -72,7 +71,7 @@ const MenuPage = () => {
       {/* BreakFast section */}
 
 
-      <section className="px-10 ">
+      <section className="p-5 ">
         <h2 className="font-semibold text-2xl pt-10 border-b-4 border-colorRed w-fit">
           Nepali Nasta
         </h2>
@@ -91,7 +90,7 @@ const MenuPage = () => {
         </div>
       </section>
 
-      <section className="px-10 ">
+      <section className="p-5 ">
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           chowmein
         </h2>
@@ -107,7 +106,7 @@ const MenuPage = () => {
         </div>
       </section>
 
-      <section className="px-10 ">
+      <section className="p-5 ">
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Fried Rice
         </h2>
@@ -124,7 +123,7 @@ const MenuPage = () => {
       </section>
 
 
-      <section className="px-10 ">
+      <section className="p-5 ">
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Keema Noodle
         </h2>
@@ -140,26 +139,7 @@ const MenuPage = () => {
         </div>
       </section>
 
-
-      <section className="px-10 ">
-        <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
-          Cheeseball
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
-          {menuData.cheeseball.map((item) => (
-            <Card
-              key={item.id}
-              item={item}
-              handleAddToCart={handleAddToCart}
-              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
-            />
-          ))}
-        </div>
-      </section>
-
-
-
-      <section className="px-10 ">
+      <section className="p-5 ">
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Crispy
         </h2>
@@ -175,7 +155,7 @@ const MenuPage = () => {
         </div>
       </section>
 
-      <section className="px-10 ">
+      <section className="p-5 ">
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Snacks
         </h2>
@@ -192,7 +172,7 @@ const MenuPage = () => {
       </section>
 
 
-      <section className="px-10 ">
+      <section className="p-5 ">
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Salad
         </h2>
@@ -209,7 +189,7 @@ const MenuPage = () => {
       </section>
 
       {/* combos */}
-      <section className="p-10 ">
+      <section className="p-5 ">
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Combos
         </h2>
@@ -225,8 +205,24 @@ const MenuPage = () => {
         </div>
       </section>
 
+      {/* Others */}
+      <section className="p-5 ">
+        <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
+          Others
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+          {menuData.other.map((item) => (
+            <Card
+              key={item.id}
+              item={item}
+              handleAddToCart={handleAddToCart}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
+            />
+          ))}
+        </div>
+      </section>
       {/* biryani */}
-      <section className="p-10 ">
+      <section className="p-5 ">
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Biryani
         </h2>
