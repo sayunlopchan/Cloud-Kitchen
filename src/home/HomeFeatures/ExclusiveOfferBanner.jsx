@@ -15,7 +15,7 @@ const ExclusiveOfferBanner = () => {
   const selectedOffers = menuData.exclusiveOffer;
 
   return (
-    <div className='px-10 py-10 space-y-10 transition-all duration-1000 bg-clay'>
+    <div className='px-5 py-10 space-y-10 transition-all duration-1000 bg-clay'>
       {/* Heading */}
       <div className='relative w-fit'>
         <h2 className='font-bold text-xl lg:text-3xl pl-10'>0-10% off on Exclusive deals</h2>

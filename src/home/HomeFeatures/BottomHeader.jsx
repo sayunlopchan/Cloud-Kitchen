@@ -1,16 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "../../store/cartSlice";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import { FiSearch } from "react-icons/fi";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 // logo
 import logo from '../../assets/logo/Bhansha-Express-typo-logo.svg';
-import mainlogo from '../../assets/logo/Bhansha-Express-logo.svg';
-import meme from '../../assets/icon/Two-Buttons.jpg';
-
-import * as paths from '../../Routes/Path'
+import COD from '../../assets/icon/COD.jpg';
+import TAKEOUT from '../../assets/icon/food-bag.png';
+import * as paths from '../../Routes/Path';
 
 const BottomHeader = () => {
   const nav = useNavigate();
@@ -21,6 +19,8 @@ const BottomHeader = () => {
   const [showHeader, setShowHeader] = useState(false);
   const [animateBag, setAnimateBag] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null); // Track selected payment method
+
   useEffect(() => {
     dispatch(getCartTotal());
   }, [cart, dispatch]);
@@ -50,16 +50,13 @@ const BottomHeader = () => {
     };
   }, []);
 
-
-  // Exclude Bottom nav form page 
+  // Exclude Bottom nav from certain pages 
   const isExcludedPath = [
     paths.LOGIN_PAGE,
     paths.SIGNUP_PAGE,
     paths.DASHBOARD_PAGE,
-
     paths.PAYMENT_PAGE,
     paths.TAKEOUT_PAGE,
-
     paths.PAYMENT_FORM_PAGE,
     paths.TAKEOUT_FORM_PAGE,
   ].includes(location.pathname);
@@ -74,16 +71,20 @@ const BottomHeader = () => {
 
   const handleCloseModal = () => {
     setShowModal(false); // Close modal
+    setSelectedPaymentMethod(null); // Reset selected payment method
   };
 
-  const handleOnlinePayment = () => {
-    nav(paths.PAYMENT_FORM_PAGE);
-    handleCloseModal();
+  const handlePaymentMethodChange = (method) => {
+    setSelectedPaymentMethod(method); // Update selected payment method
   };
 
-  const handleTakeout = () => {
-    nav(paths.TAKEOUT_FORM_PAGE);
-    handleCloseModal();
+  const handleConfirmPaymentMethod = () => {
+    if (selectedPaymentMethod === 'online') {
+      nav(paths.PAYMENT_FORM_PAGE); // Navigate to online payment
+    } else if (selectedPaymentMethod === 'takeout') {
+      nav(paths.TAKEOUT_FORM_PAGE); // Navigate to takeout
+    }
+    handleCloseModal(); // Close the modal after confirmation
   };
 
   return (
@@ -101,20 +102,7 @@ const BottomHeader = () => {
             onClick={() => nav("/")}
             className="w-20 lg:w-40 cursor-pointer"
           />
-          {/* logo */}
-
-          {/* search */}
-          {/* <div className="relative">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              className="outline-none border-b w-full h-10"
-            />
-            <FiSearch size={25} className="absolute right-1 top-2 cursor-pointer" />
-          </div> */}
         </div>
-        {/* search */}
 
         <div className="flex items-center gap-3">
           <div
@@ -149,61 +137,42 @@ const BottomHeader = () => {
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000] ">
 
-
-
-          <div className="grid grid-cols-12 bg-white p-5 rounded-lg shadow-lg w-[90vw] sm:w-[460px] lg:w-[50vw]  relative">
-            <h2 className="col-span-full text-lg mb-4">Please Choose Your Payment Method</h2>
-
-            <div className="h-full flex col-span-full py-2">
-              <img src={meme} alt="meme" className="h-[300px]" />
-
-              <div className="w-full">
-                <div className="bg-slate-400 h-1/2  border-2 border-black flex items-center justify-center gap-x-1 px-1">
-
-                  <div className="w-1/2 h-[100px] border-2 border-black rounded-sm flex justify-center bg-slate-300 relative">
-                    <div className="size-1 bg-black rounded-full absolute top-1 left-1" />
-                    <div className="size-1 bg-black rounded-full absolute bottom-1 left-1" />
-                    <div className="size-1 bg-black rounded-full absolute top-1 right-1" />
-                    <div className="size-1 bg-black rounded-full absolute bottom-1 right-1" />
-
-                    <div className=" flex justify-center items-center relative size-fit group">
-                      <button onClick={handleOnlinePayment} className="transition-all duration-500  bg-colorRed group-hover:bg-red-900 text-white rounded-full size-16 z-10 border text-sm mt-4 hover:mt-5 hover:scale-95">
-                        Delivery
-                      </button>
-                      <div className="size-16 bg-colorRed group-hover:bg-red-900 border-2 border-black rounded-full absolute top-6"></div>
-
-                    </div>
-
-                  </div>
-
-                  <div className="w-1/2 h-[100px] border-2 border-black rounded-sm flex justify-center bg-slate-300 relative">
-                    <div className="size-1 bg-black rounded-full absolute top-1 left-1" />
-                    <div className="size-1 bg-black rounded-full absolute bottom-1 left-1" />
-                    <div className="size-1 bg-black rounded-full absolute top-1 right-1" />
-                    <div className="size-1 bg-black rounded-full absolute bottom-1 right-1" />
-                    <div className=" flex justify-center items-center relative size-fit group">
-
-                      <button onClick={handleTakeout} className="group transition-all duration-500 bg-colorRed group-hover:bg-red-900 text-white  rounded-full size-16 z-10 border text-sm mt-4 hover:mt-5 hover:scale-95">
-                        Takeout
-                      </button>
-                      <div className="size-16 bg-colorRed group-hover:bg-red-900 border-2 border-black rounded-full absolute top-6"></div>
-                    </div>
-                  </div>
-
-                </div>
-                <img src={mainlogo} alt="" className="mx-auto w-[200px]" />
-              </div>
+          <div className="bg-white w-[500px] rounded-lg overflow-hidden">
+            <div className="flex justify-between p-2">
+              <h1 className="text-lg ml-2 mt-2">Choose Your Payment Method</h1>
+              <button
+                onClick={handleCloseModal}
+                className="px-4 rounded-full">
+                x
+              </button>
             </div>
 
+            <div className="h-full flex flex-col gap-2 p-4">
+              <label
+                className={`flex items-center p-2 border-2 ${selectedPaymentMethod === 'online' ? 'border-blue-500' : 'border-transparent'} rounded-lg cursor-pointer`}
+                onClick={() => handlePaymentMethodChange('online')}
+              >
+                <img src={COD} alt="cash on delivery image" className="w-16 h-16 mr-2" />
+                <span>Cash on Delivery</span>
+              </label>
 
+              <label
+                className={`flex items-center p-2 border-2 ${selectedPaymentMethod === 'takeout' ? 'border-blue-500' : 'border-transparent'} rounded-lg cursor-pointer`}
+                onClick={() => handlePaymentMethodChange('takeout')}
+              >
+                <img src={TAKEOUT} alt="takeout image" className="w-16 h-16 mr-2" />
+                <span>Takeout</span>
+              </label>
 
-            <button onClick={handleCloseModal} className="col-span-full text-start text-gray-500 text-lg absolute top-0 right-0 hover:underline">
-              x
-            </button>
-
+              <button
+                onClick={handleConfirmPaymentMethod}
+                className={`mt-4 bg-green-500 text-white px-4 py-2 rounded-lg ${!selectedPaymentMethod ? 'opacity-50 cursor-not-allowed' : ''}`}
+                disabled={!selectedPaymentMethod}
+              >
+                Confirm
+              </button>
+            </div>
           </div>
-
-
 
         </div>
       )}

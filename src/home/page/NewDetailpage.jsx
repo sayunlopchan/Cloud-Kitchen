@@ -69,6 +69,9 @@ const NewDetailpage = () => {
     setMainImage(image);
   };
 
+  // Calculate the number of empty boxes needed
+  const numberOfEmptyBoxes = product.imgArr.length < 4 ? 4 - product.imgArr.length : 0;
+
   return (
     <div className="bg-clay">
       <div className="container mx-auto p-4">
@@ -90,13 +93,25 @@ const NewDetailpage = () => {
                   onClick={() => handleThumbnailClick(img)}
                 />
               ))}
+              {/* Render empty boxes if imgArr has less than 4 images */}
+              {numberOfEmptyBoxes > 0 && Array.from({ length: numberOfEmptyBoxes }).map((_, index) => (
+                <div key={index} className='size-[100px] border border-dashed border-gray-400 flex items-center justify-center'>
+                  <span>No Image</span>
+                </div>
+              ))}
             </div>
           </div>
           {/* Product Images */}
 
           {/* Product Details */}
-          <div className="w-full md:w-1/2 px-4 md:pt-0">
+          <div className="w-full md:w-1/2 md:pt-0">
             <h2 className="text-3xl font-bold ">{product.title}</h2>
+
+
+            <h3 className='mt-2 text-lg font-bold'>
+              <span>Rs.</span>
+              <span className='font-semibold'>{product.price}</span>
+            </h3>
 
             <div className="mb-2">
               {product.discountPercentage && (
@@ -114,7 +129,7 @@ const NewDetailpage = () => {
 
               <p className='space-x-2 text-base'>
                 <span className='font-semibold text-xl'>Discount:</span>
-                <span className='text-green-500 font-bold text-lg'>
+                <span className=' font-bold text-lg'>
                   {product.discountPercentage ? `${product.discountPercentage}%` : 'Not Available'}
                 </span>
               </p>
@@ -132,7 +147,7 @@ const NewDetailpage = () => {
             <p className="mb-6 h-[100px] overflow-scroll">{product.description}</p>
             <p className='space-x-2 text-lg'>
               <span className='font-semibold'>Cooking Time:</span>
-              <span>{product.cookingTime || '30'} min</span>
+              <span>{product.cookingTime || 'Not Available'}</span>
             </p>
 
             <div className="mb-6">
@@ -183,7 +198,7 @@ const NewDetailpage = () => {
           <SuggestionCard
             product={product}
             handleAddToCart={handleAddToCart}
-            onClick={() => nav(`${paths.DETAIL_PAGE.replace(':id', product.id)}`)} // Pass the navigation function
+            onClick={() => nav(`${paths.DETAIL_PAGE.replace(':id', product.id)}`)}
           />
         </div>
       </div>

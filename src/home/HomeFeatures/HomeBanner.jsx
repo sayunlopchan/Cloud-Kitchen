@@ -13,7 +13,7 @@ import Slider from "../../components/slider/Slider.jsx";
 
 function HomeBanner() {
   return (
-    <div className="w-full h-full grid grid-cols-1 md:grid-cols-12 mt-[-65px] transition-all duration-1000 px-10 lg:px-10 py-20">
+    <div className="w-full h-full grid grid-cols-1 md:grid-cols-12 mt-[-65px] transition-all duration-1000 px-5 lg:px-10 py-20">
 
       <div className="w-full h-full md:col-span-7 ">
 
