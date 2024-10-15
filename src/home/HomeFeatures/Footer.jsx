@@ -98,8 +98,10 @@ const Footer = () => {
         </div>
         <div className="col-span-3 lg:col-span-3 lg:mx-auto p-5">
           <h2 className="font-bold text-2xl">Contact Info</h2>
-          <ul>
-            <li onClick={() => nav("/")}>+977-9999999999</li>
+          <ul className="text-base flex gap-x-1">
+            <a href={paths.CONTACT}>9867247262</a>
+            <span>|</span>
+            <a href={paths.CONTACT_2}>9867247262</a>
           </ul>
         </div>
 

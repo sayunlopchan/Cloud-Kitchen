@@ -204,7 +204,7 @@ const breakfast = [
 const momo = [
   {
     id: uuidv4(),
-    title: "Stem Momo (Chicken)",
+    title: "steam Momo (Chicken)",
     img: c_steam_momo,
     imgArr: [c_steam_momo],
     price: 160,
@@ -216,7 +216,7 @@ const momo = [
   },
   {
     id: uuidv4(),
-    title: "Stem Momo (Veg)",
+    title: "steam Momo (Veg)",
     img: v_steam_momo,
     imgArr: [v_steam_momo],
     price: 110,
@@ -228,7 +228,7 @@ const momo = [
   },
   {
     id: uuidv4(),
-    title: "Stem Momo (Buff)",
+    title: "steam Momo (Buff)",
     img: b_steam_momo,
     imgArr: [b_steam_momo],
     price: 180,
