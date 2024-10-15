@@ -1,4 +1,5 @@
-import { RouterProvider, createHashRouter } from "react-router-dom";
+// src/App.js
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./RootLayout/RootLayout";
 
 // Admin Components
@@ -8,6 +9,7 @@ import Dashboard from "./features/Admin/Dashboard";
 
 // User Components
 import HomePage from "./home/page/HomePage";
+
 import MostSoldPage from "./home/page/MostSoldPage";
 import MostPopularPage from "./home/page/MostPopularPage";
 import NewDetailPage from "./home/page/NewDetailpage";
@@ -18,6 +20,7 @@ import MenuPage from "./home/page/MenuPage";
 import FillMyFormTO from "./home/page/FillMyFormTO";
 
 // Informational Pages
+
 import PageNotFound from "./home/page/PageNotFound";
 
 // Protected Route
@@ -32,9 +35,11 @@ import Faq from "./home/page/infomaticPage/Faq.jsx";
 import PrivacyandPolicy from "./home/page/infomaticPage/PrivacyandPolicy.jsx";
 import TermsandConditions from "./home/page/infomaticPage/TermsandConditions.jsx";
 
+
+
+
 const App = () => {
-  // Switch from createBrowserRouter to createHashRouter
-  const router = createHashRouter([
+  const router = createBrowserRouter([
     {
       path: "/",
       element: <RootLayout />,
@@ -73,7 +78,7 @@ const App = () => {
         },
         {
           path: paths.DETAIL_PAGE,
-          element: <NewDetailPage /> //DYNAMIC ROUTE
+          element: <NewDetailPage /> //DYMAMIC ROUTE
         },
         {
           path: paths.TAKEOUT_PAGE,
@@ -95,7 +100,9 @@ const App = () => {
           path: paths.MENU_PAGE,
           element: <MenuPage />
         },
-        // Informative pages
+
+
+        //  infomative pages
         {
           path: paths.ABOUT_US_PAGE,
           element: <Aboutus />
@@ -116,6 +123,9 @@ const App = () => {
           path: paths.TERMS_AND_CONDITIONS_PAGE,
           element: <TermsandConditions />
         },
+
+
+
         { path: "*", element: <PageNotFound /> },
       ],
     },
