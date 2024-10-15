@@ -63,7 +63,7 @@ const cartSlice = createSlice({
         }
       }
     },
-    // New action to clear the cart
+    // action to clear the cart
     clearCart: (state) => {
       state.cart = [];
       state.totalQuantity = 0;
