@@ -39,7 +39,7 @@ const MostSold = () => {
     <div className="space-y-32 px-5 lg:px-10 py-10 transition-all duration-1000 ">
       {/* Heading */}
       <div className="relative w-fit">
-        <h2 className="font-bold text-3xl pl-10">Most Sold</h2>
+        <h2 className="font-bold text-3xl ">Most Sold</h2>
         <img
           src={CurveLine}
           alt="Decorative curve line"

@@ -22,15 +22,7 @@ const LeafletMap = () => {
   // Pinned locations
   const markers = [
     {
-      geocode: [27.477445243217847, 83.46696668007978],
-      popUp: "Bhairahawa"
-    },
-    {
-      geocode: [27.685686821484325, 83.43390446133502],
-      popUp: "Butwal"
-    },
-    {
-      geocode: [27.61988963583777, 83.47537405609275],
+      geocode: [27.663250, 83.457750],
       popUp: "Tilottama"
     },
   ];
@@ -62,7 +54,7 @@ const LeafletMap = () => {
 
   const handleNavigateToUser = () => {
     if (mapRef.current && currentLocation) {
-      mapRef.current.setView(currentLocation, 13); // Center the map to user's location
+      mapRef.current.setView(currentLocation, 13);
     }
   };
 

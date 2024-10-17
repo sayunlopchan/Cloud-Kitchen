@@ -72,9 +72,7 @@ const MenuPage = () => {
 
 
       <section className="p-5 ">
-        <h2 className="font-semibold text-2xl pt-10 border-b-4 border-colorRed w-fit">
-          Nepali Nasta
-        </h2>
+
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Momo
         </h2>

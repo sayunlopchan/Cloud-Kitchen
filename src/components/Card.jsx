@@ -74,11 +74,11 @@ const Card = ({ item, handleAddToCart, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="max-sm:w-[160px] max-sm:h-[190px] max-md:w-[230px] max-md:h-[280px] md:w-[180px] md:h-[240px] lg:w-[230px] lg:h-[280px] relative rounded-2xl shadow-2xl bg-white cursor-pointer"
+      className="card relative rounded-2xl shadow-2xl bg-white cursor-pointer"
     >
       {/* image */}
-      <div className="max-sm:h-[60px] max-md:h-[100px] h-[85px] md:h-[100px]">
-        <div className="size-[100px] max-sm:size-[80px] max-md:size-[120px] md:size-[115px] lg:size-[130px] rounded-full border-red-600 border-2 md:border-4 absolute -right-5 -top-5 lg:-top-10 overflow-hidden bg-white">
+      <div className=" max-sm:h-[60px] max-md:h-[100px] h-[85px] md:h-[100px]">
+        <div className="card-img rounded-full border-red-600 border-2 md:border-4 absolute -right-2 -top-5 lg:-top-10 overflow-hidden bg-white">
           <img
             src={item.img}
             alt={item.title}

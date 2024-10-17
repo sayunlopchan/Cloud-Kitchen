@@ -13,7 +13,7 @@ import Slider from "../../components/slider/Slider.jsx";
 
 function HomeBanner() {
   return (
-    <div className="w-full h-full grid grid-cols-1 md:grid-cols-12 mt-[-65px] transition-all duration-1000 px-5 lg:px-10 py-20">
+    <div className="w-full h-full grid grid-cols-1 md:grid-cols-12 mt-[-65px] transition-all duration-1000 px-5 lg:px-10 py-20 ">
 
       <div className="w-full h-full md:col-span-7 ">
 
@@ -55,13 +55,13 @@ function HomeBanner() {
         </div>
 
 
-        <div className="flex gap-5 mt-20 max-md:hidden">
+        <div className="flex gap-5 mt-20 max-md:hidden ">
           <OfferSliderChild />
         </div>
 
       </div>
 
-      <div className=" md:col-span-5 relative">
+      <div className=" md:col-span-5 relative ">
 
         {/* discount offer card */}
         <div className="size-[100px] lg:size-36 shadow-lg absolute z-20 rounded-2xl bg-white border-2 left-0 lg:-left-20 top-20 py-5 px-2">
@@ -73,7 +73,11 @@ function HomeBanner() {
         {/* discount offer card */}
 
 
-        <div className="md:absolute md:w-full md:-bottom-2 lg:bottom-5">
+        <div className="md:absolute md:w-full md:-bottom-2 lg:bottom-5 flex justify-center overflow-hidden  ">
+
+
+          <div className="slider-bg absolute bg-gradient-to-tr from-orange-500 to-red-600 rounded-t-full "></div>
+
           <Slider
             offers={menuData.OfferSlideData}
             autoSlide={true}
@@ -85,7 +89,6 @@ function HomeBanner() {
         </div>
 
       </div>
-
 
       <div className="flex gap-5 mt-20 col-span-full md:hidden">
         <OfferSliderChild />

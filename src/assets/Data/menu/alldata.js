@@ -25,9 +25,9 @@ import Grilled_Buff_Sandwich_3 from '../../img/Breakfast/Grilled_Buff_Sandwich_3
 
 // nepali nasta /momo 
 
-import c_steam_momo from '../../../assets/img/Nepali-nasta/momo/chicken-steam-momo.png'
-import b_steam_momo from '../../../assets/img/Nepali-nasta/momo/buff-steam-momo.png'
-import v_steam_momo from '../../../assets/img/Nepali-nasta/momo/veg-momo.png'
+import c_Steam_momo from '../../../assets/img/Nepali-nasta/momo/chicken-Steam-momo.png'
+import b_Steam_momo from '../../../assets/img/Nepali-nasta/momo/buff-Steam-momo.png'
+import v_Steam_momo from '../../../assets/img/Nepali-nasta/momo/veg-momo.png'
 
 import c_c_momo from '../../../assets/img/Nepali-nasta/momo/chicken-chilly-momo.png'
 import v_c_momo from '../../../assets/img/Nepali-nasta/momo/veg-chilly-momo.png'
@@ -204,9 +204,9 @@ const breakfast = [
 const momo = [
   {
     id: uuidv4(),
-    title: "steam Momo (Chicken)",
-    img: c_steam_momo,
-    imgArr: [c_steam_momo],
+    title: "Steam Momo (Chicken)",
+    img: c_Steam_momo,
+    imgArr: [c_Steam_momo],
     price: 160,
     discountPercentage: null,
     description: "Enjoy Nepal mot loved food 'Momo'. A soft fluffy dumpling filled with juicy and flavorful chicken, often served with a spicy sauce 'achar' offers alight yet satisfying bite.",
@@ -216,21 +216,21 @@ const momo = [
   },
   {
     id: uuidv4(),
-    title: "steam Momo (Veg)",
-    img: v_steam_momo,
-    imgArr: [v_steam_momo],
+    title: "Steam Momo (Veg)",
+    img: v_Steam_momo,
+    imgArr: [v_Steam_momo],
     price: 110,
     discountPercentage: 10,
-    description: "Soft steamed dumplings packed with the flavorful mixture of fresh vegetables. It is light & healthy and perfect for satisfying snack, served with a tangy dipping sauce to complement the delicious veggie filling.",
+    description: "Soft Steamed dumplings packed with the flavorful mixture of fresh vegetables. It is light & healthy and perfect for satisfying snack, served with a tangy dipping sauce to complement the delicious veggie filling.",
     rating: 4.4,
     likes: 130,
     category: "nepali nasta"
   },
   {
     id: uuidv4(),
-    title: "steam Momo (Buff)",
-    img: b_steam_momo,
-    imgArr: [b_steam_momo],
+    title: "Steam Momo (Buff)",
+    img: b_Steam_momo,
+    imgArr: [b_Steam_momo],
     price: 180,
     discountPercentage: null,
     description: "Another version of Momo, that is in the heart of every Nepali  person. Filled up with tender and delicious buff meat perfect for meat lovers, served hot with tangy chutney to enhance the rich taste. A classic favorite for a wholesome snack or meal.",
@@ -281,7 +281,7 @@ const momo = [
     imgArr: [b_k_momo],
     price: 190,
     discountPercentage: null,
-    description: "A perfect combination of soft and crispy, Kothey Momo. Buff Kothey Momo half-fried and half-steamed, filled with delicious mixture of buff meat. These Momo are golden on the bottom and tender on top, served with a spicy dipping sauce for extra flavor.",
+    description: "A perfect combination of soft and crispy, Kothey Momo. Buff Kothey Momo half-fried and half-Steamed, filled with delicious mixture of buff meat. These Momo are golden on the bottom and tender on top, served with a spicy dipping sauce for extra flavor.",
     rating: 4.5,
     likes: 180,
     category: "nepali nasta"
@@ -293,7 +293,7 @@ const momo = [
     imgArr: [c_k_momo],
     price: 180,
     discountPercentage: null,
-    description: "A perfect combination of soft and crispy, Kothey Momo. Kothey Momo half-fried and half-steamed, giving them a unique texture. These Momo are golden on the bottom and tender on top, served with a spicy dipping sauce for extra flavor..",
+    description: "A perfect combination of soft and crispy, Kothey Momo. Kothey Momo half-fried and half-Steamed, giving them a unique texture. These Momo are golden on the bottom and tender on top, served with a spicy dipping sauce for extra flavor..",
     rating: 4.5,
     likes: 180,
     category: "nepali nasta"

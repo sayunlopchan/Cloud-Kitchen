@@ -47,12 +47,23 @@ export default {
             transform: 'scale(4)',
           },
         },
+        popup: {
+          '0': {
+            opacity: '0',
+            transform: 'translateY(0) translateX(0)',
+          },
+          '100': {
+            opacity: '1',
+            transform: 'translateY(20px) translateX(5px)'
+          },
+        }
 
       },
       animation: {
         pop: 'pop 0.5s ease-in-out',
         jumpscare: 'jumpscare 0.7s ease-out',
         splash: 'splash 0.6s ease-out',
+        popup: 'popup 1s ease-in-out infinite'
       },
 
 
