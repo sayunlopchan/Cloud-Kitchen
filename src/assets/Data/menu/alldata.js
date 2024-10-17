@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 // Breakfast img imports
 import boiled_egg from '../../../assets/img/Breakfast/boiled-egg.png'
-import grilled_buff_sandwich from '../../../assets/img/Breakfast/Grilled-buff-Sandwich.jpg'
+// import grilled_buff_sandwich from '../../../assets/img/Breakfast/Grilled-buff-Sandwich.jpg'
 import grilled_chicken_sandwich from '../../../assets/img/Breakfast/grilled-chicken-sandwich.jpeg'
 import poached_egg_brown_bread from '../../../assets/img/Breakfast/Poached egg with brown bread.jpg'
 import sandwich from '../../../assets/img/Breakfast/sandwich.png'
@@ -16,16 +16,16 @@ import boiled_egg_2 from '../../img/Breakfast/boil-egg-2.jpg'
 import boiled_egg_3 from '../../img/Breakfast/boil-egg-3.jpg'
 
 // Grilled Buff Sandwich
-import Grilled_Buff_Sandwich_1 from '../../img/Breakfast/Grilled_Buff_Sandwich_1.jpg'
-import Grilled_Buff_Sandwich_2 from '../../img/Breakfast/Grilled_Buff_Sandwich_2.jpg'
-import Grilled_Buff_Sandwich_3 from '../../img/Breakfast/Grilled_Buff_Sandwich_3.jpg'
+// import Grilled_Buff_Sandwich_1 from '../../img/Breakfast/Grilled_Buff_Sandwich_1.jpg'
+// import Grilled_Buff_Sandwich_2 from '../../img/Breakfast/Grilled_Buff_Sandwich_2.jpg'
+// import Grilled_Buff_Sandwich_3 from '../../img/Breakfast/Grilled_Buff_Sandwich_3.jpg'
 
 
 
 
 // nepali nasta /momo 
 
-import c_Steam_momo from '../../../assets/img/Nepali-nasta/momo/chicken-Steam-momo.png'
+import c_Steam_momo from '../../../assets/img/Nepali-nasta/momo/chicken-steam-momo.png'
 import b_Steam_momo from '../../../assets/img/Nepali-nasta/momo/buff-Steam-momo.png'
 import v_Steam_momo from '../../../assets/img/Nepali-nasta/momo/veg-momo.png'
 
@@ -110,7 +110,7 @@ import russian_salad from '../../../assets/img/salad/russian-salad.png'
 import offer_1 from '../../ad/combo_1.png'
 import offer_2 from '../../ad/combo_2.png'
 import offer_3 from '../../ad/combo_3.png'
-import offer_4 from '../../ad/combo_4.png'
+
 
 import combo_1 from '../../img/combo/cajun-chicken-and-crispy-bacon.avif';
 import combo_2 from '../../img/combo/chicken-wrap.jpg';
