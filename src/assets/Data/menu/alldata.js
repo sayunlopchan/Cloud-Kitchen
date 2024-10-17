@@ -26,7 +26,7 @@ import boiled_egg_3 from '../../img/Breakfast/boil-egg-3.jpg'
 // nepali nasta /momo 
 
 import c_Steam_momo from '../../../assets/img/Nepali-nasta/momo/chicken-steam-momo.png'
-import b_Steam_momo from '../../../assets/img/Nepali-nasta/momo/buff-Steam-momo.png'
+import b_Steam_momo from '../../../assets/img/Nepali-nasta/momo/buff-steam-momo.png'
 import v_Steam_momo from '../../../assets/img/Nepali-nasta/momo/veg-momo.png'
 
 import c_c_momo from '../../../assets/img/Nepali-nasta/momo/chicken-chilly-momo.png'
