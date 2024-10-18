@@ -47,6 +47,7 @@ body {
     margin-top: 60px;
   }
 }
+
 @media (min-width: 477px) {
   .slider-bg {
     width: 100%;
@@ -70,38 +71,57 @@ body {
   }
 }
 
+/* CARD TITLE */
+.card-title {
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 /* CARD */
 
 @media (max-width: 360px) {
   .card {
-    width: 140px;
-    height: 180px;
+    width: 150px;
+    height: 170px;
+  }
+  .card-img {
+    width: 70px;
+    height: 70px;
+  }
+  .img-space {
+    width: 100%;
+    height: 50px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 400px) {
+  .card {
+    width: 150px;
+    height: 200px;
   }
   .card-img {
     width: 80px;
     height: 80px;
   }
+  .img-space {
+    width: 100%;
+    height: 70px;
+  }
 }
 
-@media (min-width: 361px) and (max-width: 400px) {
+@media (min-width: 400px) {
   .card {
-    width: 150px;
+    width: 160px;
     height: 200px;
   }
   .card-img {
     width: 90px;
     height: 90px;
   }
-}
-
-@media (min-width: 401px) {
-  .card {
-    width: 150px;
-    height: 200px;
-  }
-  .card-img {
-    width: 90px;
-    height: 90px;
+  .img-space {
+    width: 100%;
+    height: 70px;
   }
 }
 
@@ -114,26 +134,96 @@ body {
     width: 100px;
     height: 100px;
   }
+  .img-space {
+    width: 100%;
+    height: 80px;
+  }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 490px) and (max-width: 600px) {
   .card {
-    width: 190px;
-    height: 240px;
+    width: 200px;
+    height: 230px;
   }
   .card-img {
     width: 100px;
     height: 100px;
   }
+  .img-space {
+    width: 100%;
+    height: 80px;
+  }
+  .card-title {
+    font-size: 20px;
+  }
 }
 
-@media (min-width: 601px) {
+@media (min-width: 601px) and (max-width: 768px) {
   .card {
     width: 220px;
-    height: 280px;
+    height: 260px;
   }
   .card-img {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
+  }
+  .img-space {
+    width: 100%;
+    height: 90px;
+  }
+  .card-title {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 170px;
+    height: 220px;
+  }
+  .card-img {
+    width: 80px;
+    height: 80px;
+  }
+  .img-space {
+    width: 100%;
+    height: 60px;
+  }
+  .card-title {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 920px) {
+  .card {
+    width: 190px;
+    height: 220px;
+  }
+  .card-img {
+    width: 90px;
+    height: 90px;
+  }
+  .img-space {
+    width: 100%;
+    height: 70px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: 210px;
+    height: 240px;
+  }
+  .card-img {
+    width: 110px;
+    height: 110px;
+  }
+  .img-space {
+    width: 100%;
+    height: 70px;
+  }
+  .card-title {
+    font-size: 20px;
+    color: red;
   }
 }

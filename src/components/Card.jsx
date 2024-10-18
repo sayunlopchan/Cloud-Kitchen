@@ -8,9 +8,9 @@ const Card = ({ item, handleAddToCart, onClick }) => {
     ? item.price * (1 - item.discountPercentage / 100)
     : item.price;
 
-  const [animations, setAnimations] = useState([]); // Track multiple animations
-  const [clickCount, setClickCount] = useState(0); // State to track number of clicks
-  const [isPopAnimating, setIsPopAnimating] = useState(false); // State for pop animation
+  const [animations, setAnimations] = useState([]);
+  const [clickCount, setClickCount] = useState(0);
+  const [isPopAnimating, setIsPopAnimating] = useState(false);
 
   // Trigger new animation instance
   const triggerCartAnimation = () => {
@@ -77,7 +77,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
       className="card relative rounded-2xl shadow-2xl bg-white cursor-pointer"
     >
       {/* image */}
-      <div className=" max-sm:h-[60px] max-md:h-[100px] h-[85px] md:h-[100px]">
+      <div className="img-space">
         <div className="card-img rounded-full border-red-600 border-2 md:border-4 absolute -right-2 -top-5 lg:-top-10 overflow-hidden bg-white">
           <img
             src={item.img}
@@ -88,8 +88,8 @@ const Card = ({ item, handleAddToCart, onClick }) => {
       </div>
       {/* image */}
 
-      <div className="px-4">
-        <h2 className="text-lg max-sm:text-base max-md:text-2xl md:text-xl lg:text-2xl font-bold pr-4">
+      <div className="px-2">
+        <h2 className="card-title">
           <TextLimit text={item.title} limit={20} />
         </h2>
 

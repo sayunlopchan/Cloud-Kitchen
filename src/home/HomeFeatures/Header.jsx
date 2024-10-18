@@ -23,6 +23,8 @@ import * as paths from '../../Routes/Path'
 
 // Array of navigation items
 const navItems = [
+  { label: 'Home', path: '/' },
+  { label: 'Menu', path: paths.MENU_PAGE },
   { label: 'About Us', path: paths.ABOUT_US_PAGE },
   { label: 'FAQ', path: paths.FAQ_PAGE },
   { label: 'Contact Us', path: paths.CONTACT_US_PAGE },
@@ -78,7 +80,7 @@ const Header = () => {
   };
 
   return (
-    <header className={`flex justify-between px-5 py-2 h-20 relative z-50 ${isBgClay ? 'bg-clay' : ''}`}>
+    <header className={`flex justify-between px-5 py-2 h-20 relative z-[1000] ${isBgClay ? 'bg-clay' : ''}`}>
       <img
         src={logo}
         alt="Logo"
@@ -108,14 +110,15 @@ const Header = () => {
         </div>
 
         {/* Drawer Menu */}
-        <div className={`fixed inset-0 bg-black bg-opacity-50 z-[1000]  ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+
           <div className={`absolute top-0 right-0 h-full w-4/5 sm:w-[60%] lg:w-[400px] bg-white z-[1000] transition-transform duration-500 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
 
             <div className="flex w-full justify-between p-5">
               <MdOutlineRestaurantMenu size={40} color="red" onClick={handleToggleMenu} className="cursor-pointer" />
               <img src={logo} alt="Bhansha Express Logo" className=" w-48 " />
             </div>
-            <div className="mt-10 w-full ">
+            <div className="mt-10 w-full  ">
               <ul className="text-base md:text-lg px-5 space-y-4">
                 {navItems.map((item, index) => (
                   <li

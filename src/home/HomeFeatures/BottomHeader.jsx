@@ -31,6 +31,8 @@ import * as paths from '../../Routes/Path';
 
 // Array of navigation items
 const navItems = [
+  { label: 'Home', path: '/' },
+  { label: 'Menu', path: paths.MENU_PAGE },
   { label: 'About Us', path: paths.ABOUT_US_PAGE },
   { label: 'FAQ', path: paths.FAQ_PAGE },
   { label: 'Contact Us', path: paths.CONTACT_US_PAGE },
@@ -207,7 +209,7 @@ const BottomHeader = () => {
       </header>
 
       {/* Drawer Menu - moved outside header */}
-      <div className={`fixed inset-0 bg-black bg-opacity-50 z-[1000] ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-[1000] ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <div className={`absolute top-0 right-0 h-full w-4/5 sm:w-[60%] lg:w-[400px] bg-white z-[1000] transition-transform duration-500 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
 
           <div className="flex w-full justify-between p-5">
