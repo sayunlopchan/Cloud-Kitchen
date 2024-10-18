@@ -1,43 +1,41 @@
 // src/App.js
+import React, { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./RootLayout/RootLayout";
 
-// Admin Components
-import Login from "./features/Auth/Login";
-import Signup from "./features/Auth/Signup";
-import Dashboard from "./features/Admin/Dashboard";
+// Import LoadingSkeleton component
+import LoadingSkeleton from "./components/Skeleton/LoadingSkeleton.jsx";
 
-// User Components
-import HomePage from "./home/page/HomePage";
+// Lazy load Admin Components
+const Login = lazy(() => import("./features/Auth/Login"));
+const Signup = lazy(() => import("./features/Auth/Signup"));
+const Dashboard = lazy(() => import("./features/Admin/Dashboard"));
 
-import MostSoldPage from "./home/page/MostSoldPage";
-import MostPopularPage from "./home/page/MostPopularPage";
-import TakeoutPage from "./home/page/TakeoutPage";
-import FillMyForm from "./home/page/FillMyForm";
-import Payment from "./home/page/Payment";
-import MenuPage from "./home/page/MenuPage";
-import FillMyFormTO from "./home/page/FillMyFormTO";
-import Detailpage from "./home/page/Detailpage.jsx";
+// Lazy load User Components
+const HomePage = lazy(() => import("./home/page/HomePage"));
+const MostSoldPage = lazy(() => import("./home/page/MostSoldPage"));
+const MostPopularPage = lazy(() => import("./home/page/MostPopularPage"));
+const TakeoutPage = lazy(() => import("./home/page/TakeoutPage"));
+const FillMyForm = lazy(() => import("./home/page/FillMyForm"));
+const Payment = lazy(() => import("./home/page/Payment"));
+const MenuPage = lazy(() => import("./home/page/MenuPage"));
+const FillMyFormTO = lazy(() => import("./home/page/FillMyFormTO"));
+const Detailpage = lazy(() => import("./home/page/Detailpage.jsx"));
 
 // Informational Pages
-
-import PageNotFound from "./home/page/PageNotFound";
+const PageNotFound = lazy(() => import("./home/page/PageNotFound"));
 
 // Protected Route
 import ProtectedRoute from "./features/Auth/ProtectedRoute";
 
 // Route Paths
 import * as paths from "./Routes/Path.js";
-import CartPage from "./home/page/cartPage.jsx";
-import Aboutus from "./home/page/infomaticPage/Aboutus.jsx";
-import ContactPage from "./home/page/infomaticPage/ContactPage.jsx";
-import Faq from "./home/page/infomaticPage/Faq.jsx";
-import PrivacyandPolicy from "./home/page/infomaticPage/PrivacyandPolicy.jsx";
-import TermsandConditions from "./home/page/infomaticPage/TermsandConditions.jsx";
-
-
-
-
+const CartPage = lazy(() => import("./home/page/cartPage.jsx"));
+const Aboutus = lazy(() => import("./home/page/infomaticPage/Aboutus.jsx"));
+const ContactPage = lazy(() => import("./home/page/infomaticPage/ContactPage.jsx"));
+const Faq = lazy(() => import("./home/page/infomaticPage/Faq.jsx"));
+const PrivacyandPolicy = lazy(() => import("./home/page/infomaticPage/PrivacyandPolicy.jsx"));
+const TermsandConditions = lazy(() => import("./home/page/infomaticPage/TermsandConditions.jsx"));
 
 const App = () => {
   const router = createBrowserRouter([
@@ -47,87 +45,159 @@ const App = () => {
       children: [
         {
           index: true,
-          element: <HomePage />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <HomePage />
+            </Suspense>
+          ),
         },
         {
           path: paths.LOGIN_PAGE,
-          element: <Login />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <Login />
+            </Suspense>
+          ),
         },
         {
           path: paths.SIGNUP_PAGE,
-          element: <Signup />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <Signup />
+            </Suspense>
+          ),
         },
         {
           path: paths.DASHBOARD_PAGE,
           element: (
             <ProtectedRoute>
-              <Dashboard />
+              <Suspense fallback={<LoadingSkeleton />}>
+                <Dashboard />
+              </Suspense>
             </ProtectedRoute>
           ),
         },
         {
           path: paths.CART_PAGE,
-          element: <CartPage />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <CartPage />
+            </Suspense>
+          ),
         },
         {
           path: paths.MOST_POPULAR_PAGE,
-          element: <MostPopularPage />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <MostPopularPage />
+            </Suspense>
+          ),
         },
         {
           path: paths.MOST_SOLD_PAGE,
-          element: <MostSoldPage />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <MostSoldPage />
+            </Suspense>
+          ),
         },
         {
           path: paths.DETAIL_PAGE,
-          element: <Detailpage /> //DYMAMIC ROUTE
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <Detailpage />
+            </Suspense>
+          ), // DYNAMIC ROUTE
         },
         {
           path: paths.TAKEOUT_PAGE,
-          element: <TakeoutPage />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <TakeoutPage />
+            </Suspense>
+          ),
         },
         {
           path: paths.PAYMENT_FORM_PAGE,
-          element: <FillMyForm />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <FillMyForm />
+            </Suspense>
+          ),
         },
         {
           path: paths.TAKEOUT_FORM_PAGE,
-          element: <FillMyFormTO />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <FillMyFormTO />
+            </Suspense>
+          ),
         },
         {
           path: paths.PAYMENT_PAGE,
-          element: <Payment />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <Payment />
+            </Suspense>
+          ),
         },
         {
           path: paths.MENU_PAGE,
-          element: <MenuPage />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <MenuPage />
+            </Suspense>
+          ),
         },
-
-
-        //  infomative pages
+        // Informative pages
         {
           path: paths.ABOUT_US_PAGE,
-          element: <Aboutus />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <Aboutus />
+            </Suspense>
+          ),
         },
         {
           path: paths.CONTACT_US_PAGE,
-          element: <ContactPage />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <ContactPage />
+            </Suspense>
+          ),
         },
         {
           path: paths.FAQ_PAGE,
-          element: <Faq />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <Faq />
+            </Suspense>
+          ),
         },
         {
           path: paths.PRIVACY_POLICY_PAGE,
-          element: <PrivacyandPolicy />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <PrivacyandPolicy />
+            </Suspense>
+          ),
         },
         {
           path: paths.TERMS_AND_CONDITIONS_PAGE,
-          element: <TermsandConditions />
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <TermsandConditions />
+            </Suspense>
+          ),
         },
-
-
-
-        { path: "*", element: <PageNotFound /> },
+        {
+          path: "*",
+          element: (
+            <Suspense fallback={<LoadingSkeleton />}>
+              <PageNotFound />
+            </Suspense>
+          )
+        },
       ],
     },
   ]);

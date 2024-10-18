@@ -76,6 +76,7 @@ body {
   color: #1f2937;
   font-size: 14px;
   font-weight: 700;
+  color: red;
 }
 
 /* CARD */
@@ -190,7 +191,7 @@ body {
     height: 60px;
   }
   .card-title {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -224,6 +225,5 @@ body {
   }
   .card-title {
     font-size: 20px;
-    color: red;
   }
 }

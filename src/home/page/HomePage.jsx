@@ -13,7 +13,6 @@ import Workflow from '../HomeFeatures/Workflow';
 
 const HomePage = () => {
 
-
   return (
     <div>
       <HomeBanner />
