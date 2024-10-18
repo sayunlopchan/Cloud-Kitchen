@@ -28,7 +28,7 @@ const BackToTopBtn = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-28 animate-bounce right-5 z-[1000]">
+    <div className="fixed bottom-28 animate-bounce right-5 z-[100]">
       {isVisible && (
         <button
           onClick={scrollToTop}

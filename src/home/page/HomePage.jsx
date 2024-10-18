@@ -16,13 +16,13 @@ const HomePage = () => {
 
   return (
     <div>
-      {/* <HomeBanner />
+      <HomeBanner />
       <PopupAd />
       <TakeoutBanner />
       <ExclusiveOfferBanner />
       <PopularSection />
-      <Workflow /> */}
       <MostSold />
+      <Workflow />
     </div>
   );
 };

@@ -161,7 +161,7 @@ const BottomHeader = () => {
             src={logo}
             alt="Logo"
             onClick={() => nav("/")}
-            className="w-20 lg:w-40 cursor-pointer"
+            className="w-20 lg:w-40 cursor-pointer max-md:hidden"
           />
 
           <div>
@@ -171,45 +171,6 @@ const BottomHeader = () => {
               className='size-10 cursor-pointer p-1'
               onClick={handleToggleMenu}
             />
-          </div>
-          {/* Drawer Menu */}
-          <div className={`fixed inset-0 bg-black bg-opacity-50 z-[1000] transition-opacity duration-500 ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-            <div className={`absolute top-0 right-0 h-full w-4/5 sm:w-[60%] lg:w-[400px] bg-white z-[1000] transition-transform duration-500 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
-
-              <div className="flex w-full justify-between p-2">
-                <MdOutlineRestaurantMenu size={40} color="red" onClick={handleToggleMenu} className="cursor-pointer" />
-                <img src={logo} alt="Bhansha Express Logo" className=" w-48 " />
-              </div>
-              <div className="mt-10 w-full ">
-                <ul className="text-base md:text-lg px-5 space-y-4">
-                  {navItems.map((item, index) => (
-                    <li
-                      key={index}
-                      className="transition-all duration-500 hover:bg-slate-300 hover:pl-5 border-b-2 cursor-pointer pt-5"
-                      onClick={() => handleNavigation(item.path)}
-                    >
-                      {item.label}
-                    </li>
-                  ))}
-                </ul>
-
-              </div>
-
-
-              {/* Social links */}
-              <div className="text-center mt-5 space-y-5">
-                <h1 className="text-lg">Follow us</h1>
-                <div className="flex justify-center gap-x-4">
-                  {socialLinks.map((link, index) => (
-                    <a key={index} href={link.href} target="_blank" aria-label={link.name} >
-                      {link.icon}
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-
-            </div>
           </div>
 
 
@@ -242,55 +203,92 @@ const BottomHeader = () => {
             Checkout
           </button>
         </div>
-        {/* Modal */}
-        {showModal && (
-          <div className="fixed inset-0 px-1 flex items-center justify-center bg-black bg-opacity-50 z-[1000] ">
 
-            <div className="bg-white w-full lg:w-[500px]  rounded-lg overflow-hidden">
-              <div className="flex justify-between p-2">
-                <h1 className="text-lg ml-2 mt-2">Choose Your Payment Method</h1>
-                <button
-                  onClick={handleCloseModal}
-                  className="px-4 rounded-full transition-all duration-300 hover:scale-125 hover:bg-gray-100">
-
-                  x
-                </button>
-              </div>
-
-              <div className="h-full flex flex-col gap-2 p-4">
-                <label
-                  className={`flex items-center p-2 border-2 ${selectedPaymentMethod === 'online' ? 'border-colorRed' : 'border-transparent'} rounded-lg cursor-pointer`}
-                  onClick={() => handlePaymentMethodChange('online')}
-                >
-                  <img src={COD} alt="cash on delivery image" className="size-28 mr-2" />
-
-                  <span>Cash on Delivery</span>
-                </label>
-
-                <label
-                  className={`flex items-center p-2 border-2 ${selectedPaymentMethod === 'takeout' ? 'border-colorRed' : 'border-transparent'} rounded-lg cursor-pointer`}
-                  onClick={() => handlePaymentMethodChange('takeout')}
-                >
-                  <img src={TAKEOUT} alt="takeout image" className="size-28 mr-2" />
-                  <span>Takeout</span>
-                </label>
-
-                <button
-                  onClick={handleConfirmPaymentMethod}
-                  className={`mt-4 bg-colorRed text-white px-4 py-2 rounded-lg ${!selectedPaymentMethod ? 'opacity-50 cursor-not-allowed' : ''}`}
-
-                  disabled={!selectedPaymentMethod}
-                >
-                  Confirm
-                </button>
-              </div>
-            </div>
-
-          </div>
-        )}
       </header>
 
+      {/* Drawer Menu - moved outside header */}
+      <div className={`fixed inset-0 bg-black bg-opacity-50 z-[1000] ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`absolute top-0 right-0 h-full w-4/5 sm:w-[60%] lg:w-[400px] bg-white z-[1000] transition-transform duration-500 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
 
+          <div className="flex w-full justify-between p-5">
+            <MdOutlineRestaurantMenu size={40} color="red" onClick={handleToggleMenu} className="cursor-pointer" />
+            <img src={logo} alt="Bhansha Express Logo" className=" w-48 " />
+          </div>
+          <div className="mt-10 w-full ">
+            <ul className="text-base md:text-lg px-5 space-y-4">
+              {navItems.map((item, index) => (
+                <li
+                  key={index}
+                  className="transition-all duration-500 hover:bg-slate-300 hover:pl-5 border-b-2 cursor-pointer pt-5"
+                  onClick={() => handleNavigation(item.path)}
+                >
+                  {item.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Social links */}
+          <div className="text-center mt-5 space-y-5">
+            <h1 className="text-lg">Follow us</h1>
+            <div className="flex justify-center gap-x-4">
+              {socialLinks.map((link, index) => (
+                <a key={index} href={link.href} target="_blank" aria-label={link.name} >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 px-1 flex items-center justify-center bg-black bg-opacity-50 z-[1000] ">
+
+          <div className="bg-white w-full lg:w-[500px]  rounded-lg overflow-hidden">
+            <div className="flex justify-between p-2">
+              <h1 className="text-lg ml-2 mt-2">Choose Your Payment Method</h1>
+              <button
+                onClick={handleCloseModal}
+                className="px-4 rounded-full transition-all duration-300 hover:scale-125 hover:bg-gray-100">
+
+                x
+              </button>
+            </div>
+
+            <div className="h-full flex flex-col gap-2 p-4">
+              <label
+                className={`flex items-center p-2 border-2 ${selectedPaymentMethod === 'online' ? 'border-colorRed' : 'border-transparent'} rounded-lg cursor-pointer`}
+                onClick={() => handlePaymentMethodChange('online')}
+              >
+                <img src={COD} alt="cash on delivery image" className="size-28 mr-2" />
+
+                <span>Cash on Delivery</span>
+              </label>
+
+              <label
+                className={`flex items-center p-2 border-2 ${selectedPaymentMethod === 'takeout' ? 'border-colorRed' : 'border-transparent'} rounded-lg cursor-pointer`}
+                onClick={() => handlePaymentMethodChange('takeout')}
+              >
+                <img src={TAKEOUT} alt="takeout image" className="size-28 mr-2" />
+                <span>Takeout</span>
+              </label>
+
+              <button
+                onClick={handleConfirmPaymentMethod}
+                className={`mt-4 bg-colorRed text-white px-4 py-2 rounded-lg ${!selectedPaymentMethod ? 'opacity-50 cursor-not-allowed' : ''}`}
+
+                disabled={!selectedPaymentMethod}
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+
+        </div>
+      )}
     </>
   );
 };

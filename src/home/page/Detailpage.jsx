@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import * as paths from '../../Routes/Path';
 import SuggestionCard from '../../components/SuggestionCard';
 
-const NewDetailpage = () => {
+const Detailpage = () => {
   const nav = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -108,13 +108,10 @@ const NewDetailpage = () => {
             <h2 className="text-3xl font-bold ">{product.title}</h2>
 
 
-            <h3 className='mt-2 text-lg font-bold'>
-              <span>Rs.</span>
-              <span className='font-semibold'>{product.price}</span>
-            </h3>
+
 
             <div className="mb-2">
-              {product.discountPercentage && (
+              {product.discountPercentage ? (
                 <p className='relative'>
                   <span className='text-xl font-semibold'>Rs.</span>
                   <span className='px-1 font-semibold text-lg'>
@@ -125,7 +122,10 @@ const NewDetailpage = () => {
                     </span>
                   </span>
                 </p>
-              )}
+              ) : (<h3 className='mt-2 text-lg font-bold'>
+                <span>Rs.</span>
+                <span className='font-semibold'>{product.price}</span>
+              </h3>)}
 
               <p className='space-x-2 text-base'>
                 <span className='font-semibold text-xl'>Discount:</span>
@@ -207,4 +207,4 @@ const NewDetailpage = () => {
   );
 }
 
-export default NewDetailpage;
+export default Detailpage;

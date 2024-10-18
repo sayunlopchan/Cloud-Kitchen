@@ -108,10 +108,10 @@ const Header = () => {
         </div>
 
         {/* Drawer Menu */}
-        <div className={`fixed inset-0 bg-black bg-opacity-50 z-[1000] transition-opacity duration-500 ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`fixed inset-0 bg-black bg-opacity-50 z-[1000]  ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
           <div className={`absolute top-0 right-0 h-full w-4/5 sm:w-[60%] lg:w-[400px] bg-white z-[1000] transition-transform duration-500 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
 
-            <div className="flex w-full justify-between p-2">
+            <div className="flex w-full justify-between p-5">
               <MdOutlineRestaurantMenu size={40} color="red" onClick={handleToggleMenu} className="cursor-pointer" />
               <img src={logo} alt="Bhansha Express Logo" className=" w-48 " />
             </div>

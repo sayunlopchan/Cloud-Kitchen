@@ -12,12 +12,12 @@ import HomePage from "./home/page/HomePage";
 
 import MostSoldPage from "./home/page/MostSoldPage";
 import MostPopularPage from "./home/page/MostPopularPage";
-import NewDetailPage from "./home/page/NewDetailpage";
 import TakeoutPage from "./home/page/TakeoutPage";
 import FillMyForm from "./home/page/FillMyForm";
 import Payment from "./home/page/Payment";
 import MenuPage from "./home/page/MenuPage";
 import FillMyFormTO from "./home/page/FillMyFormTO";
+import Detailpage from "./home/page/Detailpage.jsx";
 
 // Informational Pages
 
@@ -34,6 +34,7 @@ import ContactPage from "./home/page/infomaticPage/ContactPage.jsx";
 import Faq from "./home/page/infomaticPage/Faq.jsx";
 import PrivacyandPolicy from "./home/page/infomaticPage/PrivacyandPolicy.jsx";
 import TermsandConditions from "./home/page/infomaticPage/TermsandConditions.jsx";
+
 
 
 
@@ -78,7 +79,7 @@ const App = () => {
         },
         {
           path: paths.DETAIL_PAGE,
-          element: <NewDetailPage /> //DYMAMIC ROUTE
+          element: <Detailpage /> //DYMAMIC ROUTE
         },
         {
           path: paths.TAKEOUT_PAGE,
