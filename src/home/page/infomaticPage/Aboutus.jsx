@@ -1,9 +1,19 @@
 
 
 // IMAGE
+import story_1 from '../../../assets/bg-texture/ordering.webp'
+import story_2 from '../../../assets/bg-texture/female-ceo-talking.jpg'
+import story_3 from '../../../assets/bg-texture/What-is-a-brand-story-hero.jpg'
+
+
 import testImg from '../../../assets/bg-texture/ordering.webp'
 import kitchen_ai from '../../../assets/bg-texture/kitchen_ai.jpg'
 import AnimatedComponent from '../../../components/AnimatedComponent/AnimatedComponent'
+
+
+
+
+// gggg
 import { useState } from 'react'
 import { CONTACT_US_PAGE } from '../../../Routes/Path'
 
@@ -11,7 +21,7 @@ import { CONTACT_US_PAGE } from '../../../Routes/Path'
 const Aboutus = () => {
 
   // State to keep track of which button is clicked
-  const [activeBtn, setActiveBtn] = useState(null)
+  const [activeBtn, setActiveBtn] = useState(1)
 
   const handleOpen = (btnNumber) => {
     // Set the active button based on the clicked one
@@ -92,69 +102,83 @@ const Aboutus = () => {
       {/* ANIMATED CARD */}
 
       {/* FUNCTIONAL COMP*/}
-      <div className='py-10 space-y-5 bg-gray-300'>
+      <div className='py-10 space-y-5'>
 
-        <h2 className='text-4xl font-bold text-slate-800 text-center'>Making Taste</h2>
+        <h2 className='text-xl font-normal font-mono tracking-widest text-center text-slate-600'>OUR STORY</h2>
 
 
-        {/* BUTTONS SECTION */}
-        <div className='grid grid-cols-3 gap-x-1 px-10 md:px-20'>
+        <div className='grid grid-cols-1 md:grid-cols-12 p-5 md:p-10 gap-y-5'>
 
-          {/* Button 1 */}
-          <button
-            onClick={() => handleOpen(1)}
-            className='p-5 bg-red-500 text-white cursor-pointer'
-          >btn 1
-          </button>
-          {/* Button 1 */}
+          {/* BUTTONS */}
+          <div className='flex md:flex-col w-fit gap-2 md:col-span-2'>
+            {/* Button 1 */}
+            <button
+              onClick={() => handleOpen(1)}
+              className={`p-5 border cursor-pointer transition-all duration-500 ${activeBtn === 1 ? 'px-6 bg-colorRed text-white shadow-lg' : 'bg-white shadow-md'}`}
+            >2023
+            </button>
+            {/* Button 1 */}
 
-          {/* Button 2 */}
-          <button
-            onClick={() => handleOpen(2)}
-            className=' p-5 bg-red-500 text-white cursor-pointer'
-          >btn 2
-          </button>
-          {/* Button 2 */}
+            {/* Button 2 */}
+            <button
+              onClick={() => handleOpen(2)}
+              className={`p-5 border cursor-pointer transition-all duration-500 ${activeBtn === 2 ? 'px-6 bg-colorRed text-white shadow-lg' : 'bg-white shadow-md'}`}
+            >2024
+            </button>
+            {/* Button 2 */}
 
-          {/* Button 3 */}
-          <button
-            onClick={() => handleOpen(3)}
-            className=' p-5 bg-red-500 text-white cursor-pointer'
-          >btn 3
-          </button>
-          {/* Button 3 */}
+            {/* Button 3 */}
+            <button
+              onClick={() => handleOpen(3)}
+              className={`p-5 border cursor-pointer transition-all duration-500 ${activeBtn === 3 ? 'px-6 bg-colorRed text-white shadow-lg' : 'bg-white shadow-md'}`}
+            >2024
+            </button>
+            {/* Button 3 */}
 
+          </div>
+          {/* BUTTONS */}
+
+
+          {/* ISACTIVE */}
+          <div className='md:col-span-10'>
+            {
+              activeBtn === 1 &&
+              <div className='w-full border p-2 rounded-md space-y-3'>
+                <img src={story_1} alt="story 1" className='h-[400px] w-full object-cover rounded-md' />
+                <h2 className='text-2xl font-bold'>TITLE 1 HERE</h2>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!
+                </p>
+              </div>
+
+            }
+            {
+              activeBtn === 2 &&
+              <div className='w-full border p-2 rounded-md space-y-3'>
+                <img src={story_2} alt="story 1" className='h-[400px] w-full object-cover rounded-md' />
+                <h2 className='text-2xl font-bold'>TITLE 2 HERE</h2>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!
+                </p>
+              </div>
+
+            }
+            {
+              activeBtn === 3 &&
+              <div className='w-full border p-2 rounded-md space-y-3'>
+                <img src={story_3} alt="story 1" className='h-[400px] w-full object-cover rounded-md' />
+                <h2 className='text-2xl font-bold'>TITLE 3 HERE </h2>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!
+                </p>
+              </div>
+
+            }
+          </div>
+          {/* ISACTIVE */}
         </div>
-        {/* BUTTONS SECTION */}
-
-        {/* ISACTIVE */}
-        <div className='px-10'>
-          {
-            activeBtn === 1 &&
-            <div className='w-full border border-black bg-black text-white h-[300px] p-2'>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!
-            </div>
-
-          }
-          {
-            activeBtn === 2 &&
-            <div className='w-full border border-red-500 bg-colorRed text-white h-[300px] p-2'>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!
-            </div>
-
-          }
-          {
-            activeBtn === 3 &&
-            <div className='w-full border border-black bg-white text-black h-[300px] p-2'>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!
-            </div>
-
-          }
-        </div>
-        {/* ISACTIVE */}
+        {/* FUNCTIONAL COMP */}
       </div>
-      {/* FUNCTIONAL COMP */}
-
     </div >
 
   )
