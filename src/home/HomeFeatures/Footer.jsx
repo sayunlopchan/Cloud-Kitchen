@@ -99,7 +99,7 @@ const Footer = () => {
         </div>
 
 
-        <div className="col-span-full border-t-2 border-white flex  justify-between pt-3 text-lg flex-wrap">
+        <div className="col-span-full border-t-2 border-white flex  justify-between pt-3 text-lg flex-wrap space-y-2">
           <span className="text-center pl-2 text-sm md:text-base">© 2024 Bhansha Express. All rights reserved.</span>
 
           <div className="max-md:mx-auto px-5">
