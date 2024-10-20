@@ -11,12 +11,15 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      // Check if the product is already in the cart
-      let find = state.cart.findIndex((item) => item.id === action.payload.id);
+      const { id, quantity = 1 } = action.payload; // Extract quantity or default to 1
+      let find = state.cart.findIndex((item) => item.id === id);
+
       if (find >= 0) {
-        state.cart[find].quantity += 1; // If found, increase the quantity
+        // If the product is already in the cart, increase the quantity by the specified amount
+        state.cart[find].quantity += quantity;
       } else {
-        state.cart.push({ ...action.payload, quantity: 1 }); // Otherwise, add the product with quantity 1
+        // If the product is not in the cart, add it with the specified quantity
+        state.cart.push({ ...action.payload, quantity });
       }
     },
     getCartTotal: (state) => {
@@ -50,20 +53,16 @@ const cartSlice = createSlice({
     decreaseItemQuantity: (state, action) => {
       const itemIndex = state.cart.findIndex(item => item.id === action.payload);
 
-      // If the item exists in the cart
       if (itemIndex >= 0) {
         const currentQuantity = state.cart[itemIndex].quantity;
 
         if (currentQuantity > 1) {
-          // Decrease the quantity if it's greater than 1
           state.cart[itemIndex].quantity -= 1;
         } else {
-          // Remove the item from the cart if quantity is 1
           state.cart.splice(itemIndex, 1);
         }
       }
     },
-    // action to clear the cart
     clearCart: (state) => {
       state.cart = [];
       state.totalQuantity = 0;
@@ -78,7 +77,7 @@ export const {
   removeItem,
   increaseItemQuantity,
   decreaseItemQuantity,
-  clearCart, // Export the new action
+  clearCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

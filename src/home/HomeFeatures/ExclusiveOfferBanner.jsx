@@ -17,9 +17,13 @@ const ExclusiveOfferBanner = () => {
   return (
     <div className='px-5 py-10 space-y-10 transition-all duration-1000 bg-clay'>
       {/* Heading */}
-      <div className='relative w-fit'>
-        <h2 className='font-bold text-xl lg:text-3xl '>Exclusive deals</h2>
-        <img src={CurveLine} alt="Curve Line" className='w-[130px] absolute lg:top-10 lg:right-24 right-0' />
+      <div className="relative w-fit">
+        <h2 className="font-bold text-3xl ">Most Exclusive</h2>
+        <img
+          src={CurveLine}
+          alt="Decorative curve line"
+          className="w-[100px] absolute top-10 right-0"
+        />
       </div>
       {/* Heading */}
 

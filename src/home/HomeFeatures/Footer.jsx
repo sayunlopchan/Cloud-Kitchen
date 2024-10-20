@@ -59,24 +59,22 @@ const Footer = () => {
 
         <div className="col-span-3 lg:col-span-3 p-5 space-y-5">
           <img src={logo} alt="logo" className="w-full bg-white p-2" />
-          <p className="font-semibold">Bhansha Express Is a Online Food Ordering and Delivery Company Based In Butwal, Bhairahawa and Tilottama </p>
+          <p className="font-semibold text-white">Bhansha Express Is a Online Food Ordering and Delivery Company Based In Butwal, Bhairahawa and Tilottama </p>
         </div>
         <div className="col-span-3 lg:col-span-3 lg:mx-auto p-5">
           <h2 className="font-bold text-2xl">Our Company</h2>
           <ul>
             <li
-              onClick={() => nav(paths.ABOUT_US_PAGE)} className="cursor-pointer">About Us</li>
-
+              onClick={() => nav(paths.ABOUT_US_PAGE)} className="cursor-pointer  transition-all duration-300 hover:ml-1">About Us</li>
             <li
               onClick={() => nav(paths.FAQ_PAGE)}
-              className="cursor-pointer">FAQ</li>
-
+              className="cursor-pointer  transition-all duration-300 hover:ml-1">FAQ</li>
             <li
               onClick={() => nav(paths.CONTACT_US_PAGE)}
-              className="cursor-pointer">Contact Us</li>
+              className="cursor-pointer  transition-all duration-300 hover:ml-1">Contact Us</li>
 
-            <li onClick={() => nav(paths.TERMS_AND_CONDITIONS_PAGE)} className="cursor-pointer">Terms & Conditions</li>
-            <li onClick={() => nav(paths.PRIVACY_POLICY_PAGE)} className="cursor-pointer">Privacy Policy</li>
+            <li onClick={() => nav(paths.TERMS_AND_CONDITIONS_PAGE)} className="cursor-pointer  transition-all duration-300 hover:ml-1">Terms & Conditions</li>
+            <li onClick={() => nav(paths.PRIVACY_POLICY_PAGE)} className="cursor-pointer  transition-all duration-300 hover:ml-1">Privacy Policy</li>
           </ul>
         </div>
         <div className="col-span-3 lg:col-span-3 lg:mx-auto p-5">
@@ -88,16 +86,22 @@ const Footer = () => {
         </div>
         <div className="col-span-3 lg:col-span-3 lg:mx-auto p-5">
           <h2 className="font-bold text-2xl">Contact Info</h2>
-          <ul className="text-base flex gap-x-1">
-            <a href={paths.CONTACT}>9867247262</a>
-            <span>|</span>
-            <a href={paths.CONTACT_2}>9867247262</a>
+          <ul className="text-base ">
+            <li className="flex gap-x-1">
+              <a href={paths.CONTACT} className="hover:underline underline-offset-2">9867247262</a>
+              <span>|</span>
+              <a href={paths.CONTACT_2} className="hover:underline underline-offset-2">9867247262</a>
+            </li>
+            <li>
+              <a href={paths.CONTACT_2} className="hover:underline underline-offset-2">info@bhanshaexpress.com</a>
+            </li>
           </ul>
         </div>
 
 
         <div className="col-span-full border-t-2 border-white flex  justify-between pt-3 px-5 text-lg flex-wrap">
-          <span><h2>@2024,Bhansha Express</h2></span>
+          <span><h2>© 2024 Bhansha Express. All rights reserved.
+          </h2></span>
 
           <div className="max-md:mx-auto">
             <span className="flex items-center gap-x-5">
@@ -106,14 +110,14 @@ const Footer = () => {
                 target="_blank"
                 className="flex items-center gap-x-2">
                 <FaFacebook size={25} className="cursor-pointer" />
-                <p className="cursor-pointer">Facebook</p>
+                <p className="cursor-pointer text-white">Facebook</p>
               </NavLink>
               <NavLink
                 to={'/'}
                 target="_blank"
                 className="flex items-center gap-x-2">
                 <FaInstagram size={25} className="cursor-pointer" />
-                <p className="cursor-pointer">Instagram</p>
+                <p className="cursor-pointer text-white">Instagram</p>
               </NavLink>
             </span>
           </div>

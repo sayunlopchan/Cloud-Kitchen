@@ -1,20 +1,20 @@
-// NewDetailpage.js
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { GoStarFill } from "react-icons/go";
-import { addToCart, increaseItemQuantity, decreaseItemQuantity } from '../../store/cartSlice';
+import { addToCart } from '../../store/cartSlice';
 import menuData from '../../assets/Data/menu/alldata';
 import { useEffect, useState } from 'react';
-import * as paths from '../../Routes/Path';
 import SuggestionCard from '../../components/SuggestionCard';
 
 const Detailpage = () => {
-  const nav = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
 
   const [mainImage, setMainImage] = useState(null);
+  const [quantityToAdd, setQuantityToAdd] = useState(0);
+  const [shake, setShake] = useState(false);
+  const [isPopAnimating, setIsPopAnimating] = useState(false);
 
   const allDishes = [
     ...menuData.breakfast,
@@ -51,25 +51,31 @@ const Detailpage = () => {
       ? Math.round(product.price * (1 - product.discountPercentage / 100))
       : product.price;
 
-    if (cartItem) {
-      dispatch(increaseItemQuantity(product.id));
-    } else {
-      dispatch(addToCart({ ...product, price: discountedPrice }));
-    }
+    dispatch(addToCart({ ...product, price: discountedPrice, quantity: quantityToAdd }));
+    setQuantityToAdd(0);
+    // Trigger pop animation
+    setIsPopAnimating(true);
+    setTimeout(() => {
+      setIsPopAnimating(false);
+    }, 300); // Duration of the pop animation
   };
 
   const handleDecreaseQuantity = () => {
-    dispatch(decreaseItemQuantity(product.id));
+    if (quantityToAdd > 1) {
+      setQuantityToAdd(prev => prev - 1);
+    } else if (cartItem) {
+      setShake(true); // Trigger shake animation
+
+      setTimeout(() => setShake(false), 500);
+    }
   };
 
   const afterDiscount = product.price * (1 - (product.discountPercentage || 0) / 100);
-  const isInCart = Boolean(cartItem);
 
   const handleThumbnailClick = (image) => {
     setMainImage(image);
   };
 
-  // Calculate the number of empty boxes needed
   const numberOfEmptyBoxes = product.imgArr.length < 4 ? 4 - product.imgArr.length : 0;
 
   return (
@@ -93,7 +99,6 @@ const Detailpage = () => {
                   onClick={() => handleThumbnailClick(img)}
                 />
               ))}
-              {/* Render empty boxes if imgArr has less than 4 images */}
               {numberOfEmptyBoxes > 0 && Array.from({ length: numberOfEmptyBoxes }).map((_, index) => (
                 <div key={index} className='size-[100px] border border-dashed border-gray-400 flex items-center justify-center'>
                   <span>No Image</span>
@@ -107,9 +112,6 @@ const Detailpage = () => {
           <div className="w-full md:w-1/2 md:pt-0">
             <h2 className="text-3xl font-bold ">{product.title}</h2>
 
-
-
-
             <div className="mb-2">
               {product.discountPercentage ? (
                 <p className='relative'>
@@ -122,27 +124,27 @@ const Detailpage = () => {
                     </span>
                   </span>
                 </p>
-              ) : (<h3 className='mt-2 text-lg font-bold'>
-                <span>Rs.</span>
-                <span className='font-semibold'>{product.price}</span>
-              </h3>)}
+              ) : (
+                <h3 className='mt-2 text-lg font-bold'>
+                  <span>Rs.</span>
+                  <span className='font-semibold'>{product.price}</span>
+                </h3>
+              )}
 
               <p className='space-x-2 text-base'>
                 <span className='font-semibold text-xl'>Discount:</span>
-                <span className=' font-bold text-lg'>
+                <span className='font-bold text-lg'>
                   {product.discountPercentage ? `${product.discountPercentage}%` : 'Not Available'}
                 </span>
               </p>
             </div>
 
-            {/* Star Ratings */}
             <div className="flex items-center mb-4 ">
               <GoStarFill size={26} className='text-colorOrange' />
               <span className="ml-2 text-lg text-gray-600">
                 <span>{product.rating || 'N/A'}</span>
               </span>
             </div>
-            {/* Star Ratings */}
 
             <p className="mb-6 h-[100px] overflow-scroll">{product.description}</p>
             <p className='space-x-2 text-lg'>
@@ -151,60 +153,42 @@ const Detailpage = () => {
             </p>
 
             <div className="mb-6">
-              <div className='bg-gray-300 rounded-3xl flex items-center gap-5 w-fit p-1 mt-5'>
+              <div className={`bg-slate-200 rounded-3xl flex items-center gap-5 w-fit p-1 mt-5 `}>
+
                 <button
-                  className='p-1 bg-colorRed text-white font-semibold text-2xl rounded-full'
+                  className={`p-1 bg-colorRed text-white font-semibold text-2xl rounded-full  ${shake ? 'animate-shake' : ''}`}
                   onClick={handleDecreaseQuantity}
                 >
                   <FaMinus />
                 </button>
-                <span>{cartItem ? cartItem.quantity : 0}</span>
+                <span>{quantityToAdd}</span>
                 <button
                   className='p-1 bg-colorRed text-white font-semibold text-2xl rounded-full'
-                  onClick={handleAddToCart}
+                  onClick={() => setQuantityToAdd(prev => prev + 1)}
                 >
                   <FaPlus />
                 </button>
               </div>
             </div>
 
-            {/* buttons */}
-            <div className='flex gap-2'>
-              <button
-                onClick={() => nav(paths.PAYMENT_FORM_PAGE)}
-                disabled={!isInCart}
-                className={`bg-colorRed text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${!isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
-              >
-                Purchase
-              </button>
-              <button
-                onClick={() => nav(paths.TAKEOUT_FORM_PAGE)}
-                disabled={!isInCart}
-                className={`bg-black text-white font-semibold text-base md:text-lg px-3 md:px-8 py-2 ${!isInCart ? 'opacity-50 cursor-not-allowed' : ''}`}
-              >
-                Takeout
-              </button>
-            </div>
-
+            <button
+              onClick={handleAddToCart}
+              className={`px-6 py-2 bg-colorRed text-white rounded hover:bg-red-800 transition duration-300 ${isPopAnimating ? 'animate-pop' : ''}`}
+            >
+              Add to Cart
+            </button>
           </div>
           {/* Product Details */}
         </div>
-      </div>
-
-      {/* Suggestion Section */}
-      <div className='space-y-10 pb-20'>
-        <h2 className='text-2xl font-semibold text-center py-10'>Best With {product.title}</h2>
-        <div className='flex justify-center items-center gap-x-5'>
-          <SuggestionCard
-            product={product}
-            handleAddToCart={handleAddToCart}
-            onClick={() => nav(`${paths.DETAIL_PAGE.replace(':id', product.id)}`)}
-          />
+        <div className="px-4 lg:mx-auto py-10 w-full lg:w-[85%] space-y-20">
+          <h2 className='font-bold text-lg md:text-3xl'>Suggested For You</h2>
+          <div className="flex flex-wrap justify-center">
+            <SuggestionCard items={allDishes} />
+          </div>
         </div>
       </div>
-      {/* Suggestion Section */}
     </div>
   );
-}
+};
 
 export default Detailpage;

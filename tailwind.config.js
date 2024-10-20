@@ -56,6 +56,20 @@ export default {
             opacity: '1',
             transform: 'translateY(20px) translateX(5px)'
           },
+        },
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(5px)' },
+          '75%': { transform: 'translateX(-5px)' },
+        },
+
+        reverse: {
+          '0%': {
+            transform: 'translateY(10px) translateX(10px) scale(0.5)', // Corrected scale
+          },
+          '100%': {
+            transform: 'translateY(0) translateX(0) scale(1)', // Corrected scale
+          },
         }
 
       },
@@ -63,7 +77,9 @@ export default {
         pop: 'pop 0.5s ease-in-out',
         jumpscare: 'jumpscare 0.7s ease-out',
         splash: 'splash 0.6s ease-out',
-        popup: 'popup 1s ease-in-out infinite'
+        popup: 'popup 1s ease-in-out infinite',
+        shake: 'shake 0.2s ease-in-out',
+        reverse: 'reverse 0.4s ease-in infinite',
       },
 
 

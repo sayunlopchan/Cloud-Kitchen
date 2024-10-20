@@ -24,11 +24,6 @@ import * as paths from '../../Routes/Path';
 
 
 
-
-
-
-
-
 // Array of navigation items
 const navItems = [
   { label: 'Home', path: '/' },

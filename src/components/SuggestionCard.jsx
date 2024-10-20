@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import menuData from '../assets/Data/menu/alldata';
 import Card from './Card';
 
 const SuggestionCard = ({ product, handleAddToCart, onClick }) => {
   const [randomSnacks, setRandomSnacks] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true);
 
   // Function to get three unique random snacks from the snacks array
   const getRandomSnacks = () => {
@@ -43,15 +42,6 @@ const SuggestionCard = ({ product, handleAddToCart, onClick }) => {
       </div>
     </div>
   );
-};
-
-// Prop types for better type checking
-SuggestionCard.propTypes = {
-  product: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  handleAddToCart: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default SuggestionCard;
