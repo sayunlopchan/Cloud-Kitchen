@@ -1,4 +1,4 @@
-
+import React, { Suspense, lazy } from "react";
 
 // IMAGE
 import story_1 from '../../../assets/bg-texture/ordering.webp'
@@ -114,7 +114,7 @@ const Aboutus = () => {
             {/* Button 1 */}
             <button
               onClick={() => handleOpen(1)}
-              className={`p-5 border cursor-pointer transition-all duration-500 ${activeBtn === 1 ? 'px-6 bg-colorRed text-white shadow-lg' : 'bg-white shadow-md'}`}
+              className={`border p-5 cursor-pointer transition-all duration-500 ${activeBtn === 1 ? 'px-6 text-black shadow-xl rounded-md' : 'bg-white'}`}
             >2023
             </button>
             {/* Button 1 */}
@@ -122,7 +122,7 @@ const Aboutus = () => {
             {/* Button 2 */}
             <button
               onClick={() => handleOpen(2)}
-              className={`p-5 border cursor-pointer transition-all duration-500 ${activeBtn === 2 ? 'px-6 bg-colorRed text-white shadow-lg' : 'bg-white shadow-md'}`}
+              className={`border p-5 cursor-pointer transition-all duration-500 ${activeBtn === 2 ? 'px-6 text-black shadow-xl rounded-md' : 'bg-white '}`}
             >2024
             </button>
             {/* Button 2 */}
@@ -130,7 +130,7 @@ const Aboutus = () => {
             {/* Button 3 */}
             <button
               onClick={() => handleOpen(3)}
-              className={`p-5 border cursor-pointer transition-all duration-500 ${activeBtn === 3 ? 'px-6 bg-colorRed text-white shadow-lg' : 'bg-white shadow-md'}`}
+              className={`border p-5 cursor-pointer transition-all duration-500 ${activeBtn === 3 ? 'px-6 text-black shadow-xl rounded-md' : 'bg-white '}`}
             >2024
             </button>
             {/* Button 3 */}
