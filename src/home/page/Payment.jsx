@@ -8,9 +8,9 @@ import { orderUrl } from '../../apiPath/url';
 import { clearCart } from '../../store/cartSlice';
 import cod from '../../assets/icon/COD_icon.png';
 import esewa from '../../assets/icon/esewa_og.webp';
-import Dialog from '../../components/Dialog';
+import Dialog from '../../components/Dialog/Dialog';
 
-import * as paths from '../../Routes/Path'
+import * as paths from '../../Routes/Path';
 
 const Payment = () => {
   const cart = useSelector((state) => state.allCart.cart);
@@ -28,7 +28,9 @@ const Payment = () => {
   const handleOrder = async () => {
     // Check if the cart is empty
     if (cart.length === 0) {
-      alert("Your cart is empty. Please add items to the cart before placing an order.");
+      setDialogMessage("Your cart is empty. Please add items to the cart before placing an order.");
+      setIsSuccess(false);
+      setDialogOpen(true); // Open the dialog for empty cart notification
       return; // Exit the function if the cart is empty
     }
 
@@ -46,7 +48,7 @@ const Payment = () => {
     try {
       // Send order data to the server
       const response = await axios.post(orderUrl, orderData);
-      console.log('Order successful:', response.data);
+      // console.log('Order successful:', response.data);
 
       // Dispatch clearCart action to reset the cart in Redux store
       dispatch(clearCart());
@@ -55,7 +57,7 @@ const Payment = () => {
       setDialogMessage('Order successfully placed!');
       setIsSuccess(true);
     } catch (error) {
-      console.error('Error placing order:', error.response || error);
+      // console.error('Error placing order:', error.response || error);
       // Set error dialog message
       setDialogMessage(error.response?.data?.message || 'Failed to place order. Please try again.');
       setIsSuccess(false);
@@ -92,7 +94,7 @@ const Payment = () => {
         />
       </div>
 
-      <div className="max-sm:text-sm lg:h-[400px]   grid grid-cols-1 md:grid-cols-12 gap-5 px-3 p-2">
+      <div className="max-sm:text-sm lg:h-[400px] grid grid-cols-1 md:grid-cols-12 gap-5 px-3 p-2">
         {/* Table Container */}
         <div className="md:col-span-7 flex justify-center rounded-lg overflow-scroll">
           <table className="min-w-full bg-white border border-gray-300 ">

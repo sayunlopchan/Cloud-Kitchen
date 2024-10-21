@@ -103,7 +103,7 @@ const Slider = ({
         {/* Render the slides */}
         {slides.map((offer, index) => (
           <div key={index} className="flex-shrink-0 w-full">
-            <img src={offer.img} alt={`Offer ${index}`} className="w-full" />
+            <img src={offer.img} alt="Offer" className="w-full" />
           </div>
         ))}
       </div>

@@ -1,10 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  cart: [],
-  totalQuantity: 0,
-  totalPrice: 0,
+const loadCartFromLocalStorage = () => {
+  const storedCart = localStorage.getItem("cart");
+  if (storedCart) {
+    return JSON.parse(storedCart);
+  }
+  return { cart: [], totalQuantity: 0, totalPrice: 0 }; // Default state
 };
+
+const initialState = loadCartFromLocalStorage();
 
 const cartSlice = createSlice({
   name: "cart",
@@ -21,6 +25,8 @@ const cartSlice = createSlice({
         // If the product is not in the cart, add it with the specified quantity
         state.cart.push({ ...action.payload, quantity });
       }
+
+      saveCartToLocalStorage(state); // Save updated cart to local storage
     },
     getCartTotal: (state) => {
       let { totalQuantity, totalPrice } = state.cart.reduce(
@@ -38,9 +44,12 @@ const cartSlice = createSlice({
       );
       state.totalPrice = parseFloat(totalPrice.toFixed(2));
       state.totalQuantity = totalQuantity;
+
+      saveCartToLocalStorage(state); // Save updated totals to local storage
     },
     removeItem: (state, action) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload);
+      saveCartToLocalStorage(state); // Save updated cart to local storage
     },
     increaseItemQuantity: (state, action) => {
       state.cart = state.cart.map((item) => {
@@ -49,6 +58,7 @@ const cartSlice = createSlice({
         }
         return item;
       });
+      saveCartToLocalStorage(state); // Save updated cart to local storage
     },
     decreaseItemQuantity: (state, action) => {
       const itemIndex = state.cart.findIndex(item => item.id === action.payload);
@@ -62,14 +72,21 @@ const cartSlice = createSlice({
           state.cart.splice(itemIndex, 1);
         }
       }
+      saveCartToLocalStorage(state); // Save updated cart to local storage
     },
     clearCart: (state) => {
       state.cart = [];
       state.totalQuantity = 0;
       state.totalPrice = 0;
+      saveCartToLocalStorage(state); // Save updated cart to local storage
     },
   },
 });
+
+// Helper function to save cart to local storage
+const saveCartToLocalStorage = (state) => {
+  localStorage.setItem("cart", JSON.stringify(state));
+};
 
 export const {
   addToCart,

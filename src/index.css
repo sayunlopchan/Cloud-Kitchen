@@ -78,11 +78,31 @@ p {
   color: #1f2937;
   font-size: 14px;
   font-weight: 700;
-  color: red;
+}
+.card-star {
+  width: 25px;
+  height: 25px;
+}
+.star-text,
+.card-price {
+  font-size: 14px;
+}
+
+.card-btn {
+  font-size: 12px;
+  padding: 8px 6px;
+}
+
+.red-cross {
+  width: 100%;
+  position: absolute;
+  border: 1px solid red;
+  top: 8px;
 }
 
 /* CARD */
 
+/*0px - 360px */
 @media (max-width: 360px) {
   .card {
     width: 150px;
@@ -98,10 +118,11 @@ p {
   }
 }
 
+/* 360px - 400px */
 @media (min-width: 360px) and (max-width: 400px) {
   .card {
     width: 150px;
-    height: 200px;
+    height: 170px;
   }
   .card-img {
     width: 80px;
@@ -109,10 +130,11 @@ p {
   }
   .img-space {
     width: 100%;
-    height: 70px;
+    height: 58px;
   }
 }
 
+/* after 400px */
 @media (min-width: 400px) {
   .card {
     width: 160px;
@@ -126,8 +148,14 @@ p {
     width: 100%;
     height: 70px;
   }
+  .card-title,
+  .star-text,
+  .card-price {
+    font-size: 18px;
+  }
 }
 
+/* after 430px */
 @media (min-width: 430px) {
   .card {
     width: 170px;
@@ -141,8 +169,18 @@ p {
     width: 100%;
     height: 80px;
   }
+  .card-title,
+  .star-text,
+  .card-price {
+    font-size: 18px;
+  }
+  .red-cross {
+    border: 1.5px solid red;
+    top: 7px;
+  }
 }
 
+/* after 490px - 600px */
 @media (min-width: 490px) and (max-width: 600px) {
   .card {
     width: 200px;
@@ -156,12 +194,17 @@ p {
     width: 100%;
     height: 80px;
   }
-  .card-title {
+  .card-title,
+  .star-text,
+  .card-price {
     font-size: 20px;
+  }
+  .card-btn {
+    font-size: 16px;
   }
 }
 
-@media (min-width: 601px) and (max-width: 768px) {
+@media (min-width: 601px) {
   .card {
     width: 220px;
     height: 260px;
@@ -174,15 +217,31 @@ p {
     width: 100%;
     height: 90px;
   }
-  .card-title {
+  .card-title,
+  .star-text,
+  .card-price {
     font-size: 24px;
+  }
+  .card-btn {
+    font-size: 18px;
+  }
+  .red-cross {
+    border: 1.5px solid red;
+    top: 5px;
+    margin-left: 2px;
+  }
+}
+@media (min-width: 640px) {
+  .red-cross {
+    border: 1.5px solid red;
+    top: 10px;
   }
 }
 
 @media (min-width: 768px) {
   .card {
     width: 170px;
-    height: 220px;
+    height: 200px;
   }
   .card-img {
     width: 80px;
@@ -192,8 +251,17 @@ p {
     width: 100%;
     height: 60px;
   }
-  .card-title {
+  .card-title,
+  .star-text,
+  .card-price {
     font-size: 16px;
+  }
+  .card-btn {
+    font-size: 14px;
+  }
+  .red-cross {
+    border: 1.5px solid red;
+    top: 12px;
   }
 }
 
@@ -225,7 +293,66 @@ p {
     width: 100%;
     height: 70px;
   }
-  .card-title {
+  .card-title,
+  .star-text,
+  .card-price {
     font-size: 20px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .card {
+    width: 270px;
+    height: 320px;
+  }
+  .card-img {
+    width: 160px;
+    height: 160px;
+  }
+  .img-space {
+    width: 100%;
+    height: 120px;
+  }
+  .card-title,
+  .star-text,
+  .card-price {
+    font-size: 26px;
+  }
+  .card-btn {
+    font-size: 24px;
+    padding: 8px 6px;
+  }
+  .red-cross {
+    border: 1.5px solid red;
+    top: 9px;
+  }
+}
+
+@media (min-width: 2200px) {
+  .card {
+    width: 390px;
+    height: 440px;
+    padding-left: 10px;
+  }
+  .card-img {
+    width: 200px;
+    height: 200px;
+  }
+  .img-space {
+    width: 100%;
+    height: 150px;
+  }
+  .card-title,
+  .star-text,
+  .card-price {
+    font-size: 36px;
+  }
+  .card-btn {
+    font-size: 28px;
+    padding: 8px 6px;
+  }
+  .red-cross {
+    border: 2px solid red;
+    top: 5px;
   }
 }

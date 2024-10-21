@@ -24,4 +24,5 @@ export const INSTAGRAM = '';
 export const CONTACT = 'tel:+9779867247262';
 export const CONTACT_2 = 'tel:+9779806982238';
 export const EMAIL = 'mailto:info@bhanshaexpress.com';
+export const LOCATION = 'https://maps.app.goo.gl/ytuCepfpHihmv4Wb6';
 

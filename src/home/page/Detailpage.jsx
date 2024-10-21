@@ -6,6 +6,7 @@ import { addToCart } from '../../store/cartSlice';
 import menuData from '../../assets/Data/menu/alldata';
 import { useEffect, useState } from 'react';
 import SuggestionCard from '../../components/SuggestionCard';
+import Dialog from '../../components/Dialog/Dialog'; // Import Dialog component
 
 const Detailpage = () => {
   const { id } = useParams();
@@ -15,6 +16,9 @@ const Detailpage = () => {
   const [quantityToAdd, setQuantityToAdd] = useState(0);
   const [shake, setShake] = useState(false);
   const [isPopAnimating, setIsPopAnimating] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false); // State for dialog visibility
+  const [dialogMessage, setDialogMessage] = useState(''); // State for dialog message
+  const [isSuccess, setIsSuccess] = useState(true); // State for success or error status
 
   const allDishes = [
     ...menuData.breakfast,
@@ -46,18 +50,39 @@ const Detailpage = () => {
     return <h2>Product not found</h2>;
   }
 
-  const handleAddToCart = () => {
-    const discountedPrice = product.discountPercentage
-      ? Math.round(product.price * (1 - product.discountPercentage / 100))
-      : product.price;
+  // Updated handleAddToCart function with a `showDialog` flag
+  const handleAddToCart = (item, quantity, showDialog = true) => {
+    const itemToAdd = item || product; // Use the passed item or default to main product
 
-    dispatch(addToCart({ ...product, price: discountedPrice, quantity: quantityToAdd }));
+    if (quantity === 0) {
+      // Show an error message if the quantity is 0
+      if (showDialog) {
+        setDialogMessage('Please add at least one item to the cart!');
+        setIsSuccess(false); // Error dialog
+        setIsDialogOpen(true); // Open dialog
+      }
+      return;
+    }
+
+    const discountedPrice = itemToAdd.discountPercentage
+      ? Math.round(itemToAdd.price * (1 - itemToAdd.discountPercentage / 100))
+      : itemToAdd.price;
+
+    dispatch(addToCart({ ...itemToAdd, price: discountedPrice, quantity }));
     setQuantityToAdd(0);
+
     // Trigger pop animation
     setIsPopAnimating(true);
     setTimeout(() => {
       setIsPopAnimating(false);
     }, 300); // Duration of the pop animation
+
+    // Show dialog only for the main product (when showDialog is true)
+    if (showDialog) {
+      setDialogMessage('Item added to cart successfully!');
+      setIsSuccess(true); // Success dialog
+      setIsDialogOpen(true); // Open dialog
+    }
   };
 
   const handleDecreaseQuantity = () => {
@@ -65,7 +90,6 @@ const Detailpage = () => {
       setQuantityToAdd(prev => prev - 1);
     } else if (cartItem) {
       setShake(true); // Trigger shake animation
-
       setTimeout(() => setShake(false), 500);
     }
   };
@@ -80,7 +104,7 @@ const Detailpage = () => {
 
   return (
     <div className="bg-clay">
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto p-4 md:p-0">
         <div className="flex flex-wrap">
           {/* Product Images */}
           <div className="w-full md:w-1/2 lg:h-[520px] px-4 rounded-lg overflow-hidden">
@@ -172,7 +196,7 @@ const Detailpage = () => {
             </div>
 
             <button
-              onClick={handleAddToCart}
+              onClick={() => handleAddToCart(null, quantityToAdd, true)} // Add main product with dialog
               className={`px-6 py-2 bg-colorRed text-white rounded hover:bg-red-800 transition duration-300 ${isPopAnimating ? 'animate-pop' : ''}`}
             >
               Add to Cart
@@ -180,13 +204,24 @@ const Detailpage = () => {
           </div>
           {/* Product Details */}
         </div>
+        <hr className='border-2' />
         <div className="px-4 lg:mx-auto py-10 w-full lg:w-[85%] space-y-20">
-          <h2 className='font-bold text-lg md:text-3xl'>Suggested For You</h2>
-          <div className="flex flex-wrap justify-center">
-            <SuggestionCard items={allDishes} />
-          </div>
+          <h2 className='font-bold text-lg md:text-2xl lg:text-3xl '> Suggestion with {product.title} </h2>
+
+          {/* Passing handleAddToCart from Detailpage to SuggestionCard */}
+          <SuggestionCard handleAddToCart={handleAddToCart} />
         </div>
       </div>
+
+      {/* Dialog for showing messages */}
+      {isDialogOpen && (
+        <Dialog
+          isOpen={isDialogOpen}
+          message={dialogMessage}
+          onClose={() => setIsDialogOpen(false)} // Close dialog when clicking outside or on close button
+          isSuccess={isSuccess} // Pass success or error state
+        />
+      )}
     </div>
   );
 };

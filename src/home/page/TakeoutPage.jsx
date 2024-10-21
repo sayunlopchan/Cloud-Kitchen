@@ -3,7 +3,7 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import LeafletMap from '../../components/LeafletMap';
-import Dialog from '../../components/Dialog';
+import Dialog from '../../components/Dialog/Dialog';
 import { useState } from 'react';
 import axios from 'axios';
 import { orderUrl } from '../../apiPath/url';

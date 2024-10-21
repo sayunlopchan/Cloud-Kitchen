@@ -44,11 +44,10 @@ const OfferSliderChild = () => {
           className="relative flex justify-center cursor-pointer" onClick={() => nav(`${DETAIL_PAGE.replace(':id', card.id)}`)}>
 
 
-          <div className={`absolute -top-14 z-10 transition-all duration-1000 bg-red-500 rounded-xl pt-1 text-center text-white  h-10 ${card.img === activeImage ? "opacity-100 w-full " : "opacity-0 w-1/3"}`}>
+          <div className={`absolute -top-14 z-10 transition-all duration-500 bg-red-500 rounded-xl pt-1 text-center text-white w-full h-10 ${card.img === activeImage ? "opacity-100 translate-y-0 " : "opacity-0 translate-y-10"}`}>
 
-            <h2 className={`text-xs sm:text-sm ${card.img === activeImage ? "opacity-100 " : "opacity-0"}`}>
-
-              <TextLimit text={card.name} limit={24} />
+            <h2 className={`text-xs transition-all duration-700 px-1 ${card.img === activeImage ? "opacity-100 translate-y-0 " : "opacity-0 translate-y-10"}`}>
+              {card.name}
             </h2>
           </div>
 
@@ -64,13 +63,13 @@ const OfferSliderChild = () => {
                   rounded-full overflow-hidden border-2 shadow-md transition-all duration-500  z-30 ${card.img === activeImage ? 'border-white border-2 shadow-colorRed mb-5' : 'border-colorRed'
               }`}
           >
-            <img src={card.img} alt={`Card ${card.id}`} className="object-cover size-full" />
+            <img src={card.img} alt="" className="object-cover size-full" />
           </div>
 
           <div className="relative">
             <img
               src={card.img === activeImage ? active_cardBase : notactive_cardBase}
-              alt="card-base"
+              alt=""
               className={`
               w-full h-28
               sm:w-[200px]
@@ -82,7 +81,7 @@ const OfferSliderChild = () => {
             />
             <img
               src={card.img === activeImage ? active_cardBase : notactive_cardBase}
-              alt="card-base"
+              alt=""
               className={`
               w-full h-28
               sm:w-[200px]

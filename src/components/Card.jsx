@@ -1,6 +1,5 @@
 import { FaHeart } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa6";
-import TextLimit from "./TextLimit";
 import { useState } from "react";
 
 const Card = ({ item, handleAddToCart, onClick }) => {
@@ -78,7 +77,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
     >
       {/* image */}
       <div className="img-space">
-        <div className="card-img rounded-full border-red-600 border-2 md:border-4 absolute -right-2 -top-5 lg:-top-10 overflow-hidden bg-white">
+        <div className="card-img rounded-full border-red-600 border-2 md:border-4 absolute -right-2 -top-5 lg:-top-10 xl:-right-8  overflow-hidden bg-white">
           <img
             src={item.img}
             alt={item.title}
@@ -88,46 +87,50 @@ const Card = ({ item, handleAddToCart, onClick }) => {
       </div>
       {/* image */}
 
+
+
       <div className="px-2">
+        {/* title */}
         <h2 className="card-title">
-          <TextLimit text={item.title} limit={20} />
+          {item.title}
+          {/* <TextLimit text={item.title} limit={20} /> */}
         </h2>
+        {/* title */}
 
         {/* price */}
         {item.discountPercentage ? (
           <div className="max-sm:text-sm max-md:text-lg text-base md:text-lg font-semibold text-secendaryText space-x-1">
             Rs.
             <span className="w-fit relative text-gray-800">
-              <span className="w-full absolute border-b-2 lg:border-b-[3px] border-red-500 top-2 sm:top-[10px] lg:top-3"></span>
-              <span className="max-sm:text-sm max-md:text-lg text-base md:text-lg lg:text-xl font-semibold text-secendaryText">
+              <span className="red-cross "></span>
+              <span className="card-price">
                 {item.price}
               </span>
             </span>
 
-            <span className="max-sm:text-sm max-md:text-lg text-base md:text-lg lg:text-xl font-semibold text-secendaryText">{discountedPrice}</span>
+            <span className="card-price">{discountedPrice}</span>
           </div>
         ) : (
-          <h2 className="max-sm:text-sm max-md:text-lg text-base md:text-lg lg:text-xl font-semibold text-secendaryText">
+          <h2 className="card-price font-semibold text-secendaryText">
             Rs.{item.price}
           </h2>
         )}
       </div>
 
-      <div className="flex justify-between w-full absolute bottom-0">
+      <div className="flex justify-around items-center w-full absolute bottom-0 py-2">
+
         {/* star */}
-        <span className="ml-2 mt-1 flex items-center justify-center text-gray-700 text-sm md:text-base ">
-          <FaStar className="size-5 sm:size-[1.625rem] lg:size-[1.75rem]" color="gold" /> {item.rating}
+        <span className="ml-2 mt-1 flex items-center justify-center text-gray-700 ">
+          <FaStar className="card-star" color="gold" />
+          <span className="star-text">{item.rating}</span>
         </span>
         {/* star */}
 
         <div className="relative">
           <button
-            className={`bg-red-600 text-white
-              text-[10px] sm:text-sm lg:text-base
-              px-1 
-              sm:px-2 py-2
+            className={`card-btn bg-red-600 text-white
               transition-all duration-500 border rounded-lg
-              hover:rounded-xl mr-3 mb-3 ${isPopAnimating ? 'animate-pop' : ''}`}
+              hover:rounded-xl  ${isPopAnimating ? 'animate-pop' : ''}`}
             onClick={(e) => {
               e.stopPropagation();
               handleAddToCartAndSave(item); // Call the new function
@@ -145,10 +148,10 @@ const Card = ({ item, handleAddToCart, onClick }) => {
           ))}
         </div>
 
-        <span className="absolute right-0 -top-16 sm:-top-28 md:-top-20 lg:-top-24 mr-2 flex flex-col items-center">
-          <FaHeart className="size-5 sm:size-[1.60rem] lg:size-[1.70rem]" color="red" />
-          <p className="text-secendaryText text-sm">{item.likes}</p>
-        </span>
+        {/* <span className="transition-all duration-1000 absolute right-0 -top-10 sm:-top-28 md:-top-20 lg:-top-24 mr-2 flex flex-col items-center bg-green-500 ">
+          <FaHeart className="size-[15px] sm:size-[1.60rem] lg:size-[1.70rem]" color="red" />
+          <p className="text-xs">{item.likes}</p>
+        </span> */}
       </div>
     </div>
   );

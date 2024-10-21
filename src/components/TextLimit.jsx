@@ -3,9 +3,9 @@ const TextLimit = ({ text = "", limit = 100 }) => {
 
   return (
     <div className="text-limit">
-      <p>
+      <span>
         {isTextLong ? `${text.substring(0, limit)}...` : text}
-      </p>
+      </span>
     </div>
   );
 };
