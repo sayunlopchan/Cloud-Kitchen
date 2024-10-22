@@ -31,6 +31,7 @@ const MenuBtn = () => {
     paths.TAKEOUT_FORM_PAGE,
     paths.PAYMENT_PAGE,
     paths.TAKEOUT_PAGE,
+    paths.FAQ_PAGE,
   ];
 
   // Check if the current path matches any of the hide pages

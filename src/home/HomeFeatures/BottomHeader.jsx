@@ -148,7 +148,7 @@ const BottomHeader = () => {
   return (
     <>
       <header
-        className={`flex items-center justify-between px-5 py-2 fixed bottom-5 z-40 w-[90vw] rounded-xl bg-white shadow-lg transition-transform duration-1000 ease-in-out mx-auto ${showHeader ? 'translate-y-0' : 'hidden translate-y-5'
+        className={`flex items-center justify-between px-5 py-2 fixed bottom-5 z-40  w-[360px] sm:w-[90vw] rounded-xl bg-white shadow-lg transition-transform duration-1000 ease-in-out mx-auto ${showHeader ? 'translate-y-0' : 'hidden translate-y-5'
           }`}
         style={{ left: "50%", transform: "translateX(-50%)" }}
       >
@@ -158,7 +158,7 @@ const BottomHeader = () => {
             src={logo}
             alt="Logo"
             onClick={() => nav("/")}
-            className="w-20 lg:w-40 cursor-pointer max-md:hidden"
+            className="w-20 lg:w-40 cursor-pointer hidden lg:block"
           />
 
           <div>
@@ -205,7 +205,7 @@ const BottomHeader = () => {
 
       {/* Drawer Menu - moved outside header */}
       <div className={`fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-[1000] ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-        <div className={`absolute top-0 right-0 h-full w-4/5 sm:w-[60%] lg:w-[400px] bg-white z-[1000] transition-transform duration-500 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className={`absolute top-0 right-0 h-screen w-4/5 sm:w-[60%] lg:w-[400px] bg-white z-[1000] transition-transform duration-500 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
 
           <div className="flex w-full justify-between p-5">
             <MdOutlineRestaurantMenu size={40} color="red" onClick={handleToggleMenu} className="cursor-pointer" />

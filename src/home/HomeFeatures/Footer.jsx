@@ -50,7 +50,7 @@ const Footer = () => {
       {/* footer-orange */}
 
 
-      <div className="bg-colorRed h-full grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-x-[5px] max-lg:pb-20">
+      <div className="bg-colorRed h-full grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-x-[5px] pb-20 lg:pb-0">
 
 
         <div className="col-span-3 lg:col-span-3 p-5 space-y-5">
@@ -100,7 +100,7 @@ const Footer = () => {
         <div className="col-span-full border-t-2 border-white flex  justify-between pt-3 text-lg flex-wrap space-y-2">
           <span className="text-center pl-2 text-sm md:text-base">© 2024 Bhansha Express. All rights reserved.</span>
 
-          <div className="max-md:mx-auto px-5 pb-5 lg:pb-0">
+          <div className="mx-auto md:mx-0 px-5 pb-5 lg:pb-0">
             <span className="flex items-center gap-x-5">
               <NavLink
                 to={'https://www.facebook.com/profile.php?id=61566833344153&mibextid=ZbWKwL'}
