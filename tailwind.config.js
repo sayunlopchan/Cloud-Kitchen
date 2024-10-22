@@ -1,8 +1,10 @@
+const withMT = require("@material-tailwind/react/utils/withMT");
+
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = withMT({
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -10,10 +12,10 @@ export default {
         mainText: '',
         secendaryText: '#1F2937',
         colorRed: '#ff0000', // Red
-        default: '#FFFFFF', //white
+        default: '#FFFFFF', // White
         colorOrange: '#ffa500', // Orange
-        grayblack: '#222121', // grayblack
-        clay: '#F0F2FF', // clay
+        grayblack: '#222121', // Grayblack
+        clay: '#F0F2FF', // Clay
       },
       keyframes: {
         pop: {
@@ -48,11 +50,11 @@ export default {
           },
         },
         popup: {
-          '0': {
+          '0%': {
             opacity: '0',
             transform: 'translateY(0) translateX(0)',
           },
-          '100': {
+          '100%': {
             opacity: '1',
             transform: 'translateY(20px) translateX(5px)'
           },
@@ -62,16 +64,14 @@ export default {
           '50%': { transform: 'translateX(5px)' },
           '75%': { transform: 'translateX(-5px)' },
         },
-
         reverse: {
           '0%': {
-            transform: 'translateY(10px) translateX(10px) scale(0.5)', // Corrected scale
+            transform: 'translateY(10px) translateX(10px) scale(0.5)',
           },
           '100%': {
-            transform: 'translateY(0) translateX(0) scale(1)', // Corrected scale
+            transform: 'translateY(0) translateX(0) scale(1)',
           },
-        }
-
+        },
       },
       animation: {
         pop: 'pop 0.5s ease-in-out',
@@ -81,10 +81,7 @@ export default {
         shake: 'shake 0.2s ease-in-out',
         reverse: 'reverse 0.4s ease-in infinite',
       },
-
-
     },
-
   },
   plugins: [],
-}
+});

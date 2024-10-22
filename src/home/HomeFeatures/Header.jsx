@@ -66,7 +66,8 @@ const Header = () => {
     location.pathname === paths.TAKEOUT_FORM_PAGE ||
     location.pathname === paths.PAYMENT_FORM_PAGE ||
     location.pathname === paths.TAKEOUT_PAGE ||
-    location.pathname === paths.PAYMENT_PAGE;
+    location.pathname === paths.TAKEOUT_PAGE ||
+    location.pathname === paths.FAQ_PAGE;
 
   // Handler function to toggle menu
   const handleToggleMenu = () => {

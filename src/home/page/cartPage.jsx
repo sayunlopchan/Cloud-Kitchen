@@ -26,7 +26,8 @@ const CartPage = () => {
       <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
         <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">Shopping Cart</h2>
         <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
-          <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
+          {/* carts */}
+          <div className="mx-auto w-full flex-none ">
             {/* Cart items Loop */}
             <div className="space-y-6">
               {cart.length === 0 ? (
@@ -101,9 +102,11 @@ const CartPage = () => {
             </div>
             {/* Cart items Loop */}
           </div>
+          {/* carts */}
+
 
           {/* Order Summary */}
-          <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
+          <div className="mx-auto w-[400px] mt-6 flex-1 space-y-6 lg:mt-0 ">
             <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
               <p className="text-xl font-semibold text-gray-900">Order summary</p>
               <div className="space-y-4">
@@ -159,6 +162,8 @@ const CartPage = () => {
             </div>
           </div>
           {/* Order Summary */}
+
+
         </div>
       </div>
     </section>

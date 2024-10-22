@@ -19,7 +19,7 @@ body {
   margin: 0 auto;
 }
 p {
-  @apply text-slate-700;
+  @layer text-slate-700;
 }
 .overlay {
   background: linear-gradient(

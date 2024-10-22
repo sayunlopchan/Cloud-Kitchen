@@ -10,7 +10,6 @@ import PopularSection from '../HomeFeatures/PopularSection';
 import Workflow from '../HomeFeatures/Workflow';
 
 
-
 const HomePage = () => {
 
   return (
@@ -22,6 +21,7 @@ const HomePage = () => {
       <PopularSection />
       <MostSold />
       <Workflow />
+
     </div>
   );
 };
