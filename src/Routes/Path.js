@@ -19,10 +19,17 @@ export const TERMS_AND_CONDITIONS_PAGE = '/terms-and-conditions';
 export const PRIVACY_POLICY_PAGE = '/privacy-and-policy';
 export const CONTACT_US_PAGE = '/contact-us';
 
+
+
+// SOCIALS
 export const FACEBOOK = 'https://www.facebook.com/profile.php?id=61566833344153&mibextid=ZbWKwL';
 export const INSTAGRAM = '';
+export const WHATSAPP = 'https://wa.me/+9779867247262';
+export const EMAIL = 'mailto:info@bhanshaexpress.com';
+
+
+
 export const CONTACT = 'tel:+9779867247262';
 export const CONTACT_2 = 'tel:+9779806982238';
-export const EMAIL = 'mailto:info@bhanshaexpress.com';
 export const LOCATION = 'https://maps.app.goo.gl/ytuCepfpHihmv4Wb6';
 

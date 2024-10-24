@@ -1,7 +1,6 @@
-import React, { Suspense, lazy } from "react";
 
 // IMAGE
-import story_1 from '../../../assets/bg-texture/ordering.webp'
+import story_1 from '../../../assets/bg-texture/minimalist-mexican-cooking-pot.jpg'
 import story_2 from '../../../assets/bg-texture/female-ceo-talking.jpg'
 import story_3 from '../../../assets/bg-texture/What-is-a-brand-story-hero.jpg'
 
@@ -89,7 +88,7 @@ const Aboutus = () => {
       {/* SECOND */}
       <AnimatedComponent>
         <div className='grid grid-cols-1 md:grid-cols-2 max-lg:space-y-20 px-5 lg:px-20 py-10 md:py-20'>
-          <section className='space-y-2 pb-5 md:order-2'>
+          <section className='space-y-2 pb-5 transition-all duration-500 md:order-2'>
             <h2 className='text-lg font-normal text-slate-600'>Our Mission</h2>
 
             <h3 className='text-4xl font-bold text-slate-800'>Delivering Delicious Food with a Delightful Experience.</h3>
@@ -103,7 +102,7 @@ const Aboutus = () => {
             </div>
           </section>
 
-          <section className='flex justify-center md:order-1'>
+          <section className='flex justify-center transition-all duration-500 md:order-1'>
             <img src={testImg} alt="" className='md:size-[250px] lg:size-[400px]' />
           </section>
         </div>
@@ -188,7 +187,7 @@ const Aboutus = () => {
             {
               activeBtn === 1 &&
               <div className='w-full p-2 rounded-md space-y-3'>
-                <img src={story_1} alt="story 1" className='h-[400px] w-full object-cover rounded-md' />
+                <img src={story_1} alt="story 1" className='lg:h-[400px] w-full object-cover rounded-md' />
                 <h2 className='text-2xl font-bold'>TITLE 1 HERE</h2>
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!
@@ -199,7 +198,7 @@ const Aboutus = () => {
             {
               activeBtn === 2 &&
               <div className='w-full p-2 rounded-md space-y-3'>
-                <img src={story_2} alt="story 1" className='h-[400px] w-full object-cover rounded-md' />
+                <img src={story_2} alt="story 1" className='lg:h-[400px] w-full object-cover rounded-md' />
                 <h2 className='text-2xl font-bold'>TITLE 2 HERE</h2>
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!
@@ -210,7 +209,7 @@ const Aboutus = () => {
             {
               activeBtn === 3 &&
               <div className='w-full p-2 rounded-md space-y-3'>
-                <img src={story_3} alt="story 1" className='h-[400px] w-full object-cover rounded-md' />
+                <img src={story_3} alt="story 1" className='lg:h-[400px] w-full object-cover rounded-md' />
                 <h2 className='text-2xl font-bold'>TITLE 3 HERE </h2>
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!

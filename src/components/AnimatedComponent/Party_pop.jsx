@@ -1,9 +1,9 @@
 import Lottie from 'lottie-react';
-import animation from '../../assets/animation/sad.json';
+import animation from '../../assets/animation/Party-pop.json';
 
 
 
-const Sad_effect = () => {
+const Party_pop = () => {
   return (
     <div>
       <Lottie
@@ -15,4 +15,4 @@ const Sad_effect = () => {
   )
 }
 
-export default Sad_effect
+export default Party_pop

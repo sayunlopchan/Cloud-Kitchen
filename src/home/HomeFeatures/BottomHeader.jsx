@@ -38,11 +38,10 @@ const navItems = [
 
 
 const socialLinks = [
-  { href: "https://www.facebook.com/BhanshaExpress", icon: <FaFacebook size={30} />, name: "Facebook" },
-  { href: "https://www.instagram.com/bhanshaexpress?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", icon: <FaInstagram size={30} />, name: "Instagram" },
-  { href: "#", icon: <FaWhatsapp size={30} />, name: "Whatsapp" }
+  { href: paths.FACEBOOK, icon: <FaFacebook size={30} />, name: "Facebook" },
+  { href: paths.INSTAGRAM, icon: <FaInstagram size={30} />, name: "Instagram" },
+  { href: paths.WHATSAPP, icon: <FaWhatsapp size={30} />, name: "Whatsapp" }
 ];
-
 
 
 
@@ -211,15 +210,18 @@ const BottomHeader = () => {
             <MdOutlineRestaurantMenu size={40} color="red" onClick={handleToggleMenu} className="cursor-pointer" />
             <img src={logo} alt="Bhansha Express Logo" className=" w-48 " />
           </div>
-          <div className="mt-10 w-full ">
-            <ul className="text-base md:text-lg px-5 space-y-4">
+
+          <div className="w-full ">
+            <ul className="text-base md:text-lg ">
               {navItems.map((item, index) => (
                 <li
                   key={index}
-                  className="transition-all duration-500 hover:bg-slate-300 hover:pl-5 border-b-2 cursor-pointer pt-5"
+                  className="group transition-all duration-500 hover:bg-gradient-to-r from-colorRed to-colorOrange hover:pl-10 border-b-2 cursor-pointer pt-5 px-5"
                   onClick={() => handleNavigation(item.path)}
                 >
-                  {item.label}
+                  <span className="group-hover:text-white">
+                    {item.label}
+                  </span>
                 </li>
               ))}
             </ul>

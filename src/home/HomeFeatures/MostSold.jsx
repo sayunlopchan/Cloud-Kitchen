@@ -1,7 +1,7 @@
 import menuData from "../../assets/Data/menu/alldata";
 import CurveLine from "../../assets/icon/red Curve.svg";
 import Arrow from "../../assets/icon/Arrow-next.svg";
-import Card from "../../components/Card";
+import Card from "../../components/Card/Card";
 
 
 

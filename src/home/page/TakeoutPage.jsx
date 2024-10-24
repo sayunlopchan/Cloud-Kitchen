@@ -21,7 +21,6 @@ const TakeoutPage = () => {
   const [dialogMessage, setDialogMessage] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [takeoutLocation, setTakeoutLocation] = useState('');
 
   const handleTakeout = async () => {
     setLoading(true); // Set loading to true
@@ -32,7 +31,6 @@ const TakeoutPage = () => {
         totalPrice,
         user: userData,
         paymentMethod: 'Takeout', // Set payment method to "Takeout"
-        takeoutLocation: takeoutLocation || 'Your location here', // Use user input for location
       };
 
       // Make an API request to create the order
@@ -78,7 +76,7 @@ const TakeoutPage = () => {
         {/* Map Container */}
         <div className="md:col-span-7 max-md:order-3 flex justify-center rounded-lg overflow-hidden -z-0">
           <div className="h-[400px] w-full bg-gray-400">
-            <LeafletMap setLocation={setTakeoutLocation} /> {/* Pass function to set location */}
+            <LeafletMap />
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 // components/Dialog.js
 
-import Sad_effect from "../AnimatedComponent/Sad_effect";
 import Success_effect from "../AnimatedComponent/Success_effect";
 
 const Dialog = ({ isOpen, onClose, message, isSuccess }) => {
@@ -22,7 +21,7 @@ const Dialog = ({ isOpen, onClose, message, isSuccess }) => {
               </div>
               :
               <div className="absolute -top-3">
-                <Sad_effect />
+                <Success_effect />
               </div>
           }
         </div>

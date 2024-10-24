@@ -1,6 +1,6 @@
 import curve from "../../assets/icon/red Curve.svg";
 
-import Card from "../../components/Card";
+import Card from "../../components/Card/Card";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
@@ -57,7 +57,7 @@ const MenuPage = () => {
         <h2 className="font-semibold text-2xl mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
           Breakfast
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-4 place-content-center place-items-center ">
           {menuData.breakfast.map((item) => (
             <Card
               key={item.id}
@@ -76,7 +76,7 @@ const MenuPage = () => {
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Momo
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-4 place-content-center place-items-center ">
           {menuData.momo.map((item) => (
             <Card
               key={item.id}
@@ -92,7 +92,7 @@ const MenuPage = () => {
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           chowmein
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-4 place-content-center place-items-center ">
           {menuData.chowmein.map((item) => (
             <Card
               key={item.id}
@@ -108,7 +108,7 @@ const MenuPage = () => {
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Fried Rice
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-4 place-content-center place-items-center ">
           {menuData.friedRice.map((item) => (
             <Card
               key={item.id}
@@ -125,7 +125,7 @@ const MenuPage = () => {
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Keema Noodle
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-4 place-content-center place-items-center ">
           {menuData.keemaNoodle.map((item) => (
             <Card
               key={item.id}
@@ -141,7 +141,7 @@ const MenuPage = () => {
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Crispy
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-4 place-content-center place-items-center ">
           {menuData.crispy.map((item) => (
             <Card
               key={item.id}
@@ -157,7 +157,7 @@ const MenuPage = () => {
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Snacks
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-4 place-content-center place-items-center ">
           {menuData.snack.map((item) => (
             <Card
               key={item.id}
@@ -174,7 +174,7 @@ const MenuPage = () => {
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Salad
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-4 place-content-center place-items-center ">
           {menuData.salad.map((item) => (
             <Card
               key={item.id}
@@ -191,7 +191,7 @@ const MenuPage = () => {
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Combos
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-4 place-content-center place-items-center ">
           {menuData.combo.map((item) => (
             <Card
               key={item.id}
@@ -208,7 +208,7 @@ const MenuPage = () => {
         <h2 className="font-semibold text-2xl mt-10 lg:mb-20 border-b-4 border-colorRed w-fit mb-10">
           Others
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center ">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5  gap-4 place-content-center place-items-center ">
           {menuData.other.map((item) => (
             <Card
               key={item.id}

@@ -2,7 +2,7 @@ import React from 'react'
 
 
 // IMAGE
-import FAQ from '../../../assets/bg-texture/FAQ.png'
+import FAQ from '../../../assets/bg-texture/faq-wobble.png'
 import { AccordionCustomIcon } from '../../../components/Accordian/Accordian'
 
 
@@ -12,15 +12,16 @@ import * as paths from '../../../Routes/Path'
 
 const Faq = () => {
   return (
-    <div className='space-y-20 py-10 bg-clay'>
-      <div className='grid grid-cols-1 md:grid-cols-8 px-5 md:px-20 gap-y-5'>
+    <div className='space-y-20 bg-clay'>
+
+      <div className='grid grid-cols-1 md:grid-cols-8 px-5 md:px-20 gap-y-5 '>
         <div className='bg-transparent md:col-span-1 '></div>
-        <section className='md:col-span-3 space-y-2 pr-5'>
+        <section className='md:col-span-3 space-y-2 lg:pt-20'>
           <h2 className='text-4xl font-bold'>FAQs</h2>
           <p>Have Questions? Here you find the answers most valued by our partners, along with access to step-by-step instructions and support.</p>
         </section>
         <section className=' md:col-span-3 sm:px-20 md:px-0'>
-          <img src={FAQ} alt="" className='border object-cover size-full' />
+          <img src={FAQ} alt="" className=' object-cover size-full' />
         </section>
         <div className='bg-transparent md:col-span-1'></div>
       </div>
@@ -50,7 +51,7 @@ const Faq = () => {
           </ul>
         </section>
         <section className='md:col-span-3 p-5 space-y-3'>
-          <h2 className='text-xl font-bold'>Frequently Asked Questions</h2>
+          <h2 className='text-3xl font-bold'>Frequently Asked Questions</h2>
           <hr className='border-b-[1.5px]' />
           <AccordionCustomIcon />
         </section>

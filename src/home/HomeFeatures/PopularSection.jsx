@@ -1,7 +1,7 @@
 // PopularDishes.js
 import { useNavigate } from "react-router-dom";
 import menuData from "../../assets/Data/menu/alldata";
-import Card from "../../components/Card";
+import Card from "../../components/Card/Card";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
 

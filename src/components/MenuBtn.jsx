@@ -32,6 +32,9 @@ const MenuBtn = () => {
     paths.PAYMENT_PAGE,
     paths.TAKEOUT_PAGE,
     paths.FAQ_PAGE,
+    paths.TERMS_AND_CONDITIONS_PAGE,
+    paths.CONTACT_US_PAGE,
+    paths.PRIVACY_POLICY_PAGE,
   ];
 
   // Check if the current path matches any of the hide pages

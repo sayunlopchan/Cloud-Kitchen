@@ -41,11 +41,11 @@ const Workflow = () => {
         <div className='grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-12 place-content-center relative gap-1 '>
 
 
-          <img src={arrow_next} alt="" className='w-[100px] absolute top-[15%] left-[20%] -rotate-[30deg] max-lg:hidden ' />
+          <img src={arrow_next} alt="" className='w-[100px] absolute top-[15%] left-[20%] -rotate-[30deg] hidden lg:block ' />
 
-          <img src={arrow_next_2} alt="" className='w-[100px] absolute lg:bottom-[20%] lg:left-[20%] lg:-rotate-[140deg] max-lg:hidden ' />
+          <img src={arrow_next_2} alt="" className='w-[100px] absolute lg:bottom-[20%] lg:left-[20%] lg:-rotate-[140deg] hidden lg:block ' />
 
-          <div className='lg:col-span-4 lg:row-span-12 flex  justify-center items-center max-lg:order-3 max-lg:pt-20'>
+          <div className='lg:col-span-4 lg:row-span-12 flex  justify-center items-center order-3 lg:order-none pt-20 lg:pt-0'>
             <WorkFlowCard
               image={chooseYourMealIcon}
               title="Choose Your Meal"
@@ -53,7 +53,7 @@ const Workflow = () => {
             />
           </div>
 
-          <div className=' lg:col-span-3 lg:row-span-4 max-lg:order-2 max-lg:pt-20 flex flex-col justify-center items-center'>
+          <div className=' lg:col-span-3 lg:row-span-4 order-2 lg:order-none pt-20 lg:pt-0 flex flex-col justify-center items-center'>
             <WorkFlowCard
               image={confirmLocation}
               title="Confirm Your Location"
@@ -63,11 +63,11 @@ const Workflow = () => {
 
 
           <div className='lg:col-span-2 lg:row-span-4 flex items-center justify-center'>
-            <img src={arrow_next_2} alt="" className='w-[100px] rotate-180 max-lg:hidden' />
+            <img src={arrow_next_2} alt="" className='w-[100px] rotate-180 hidden lg:block' />
           </div>
 
 
-          <div className=' lg:col-span-3 lg:row-span-4 max-lg:order-1 flex flex-col justify-center items-center'>
+          <div className=' lg:col-span-3 lg:row-span-4 order-1 lg:order-none flex flex-col justify-center items-center'>
             <WorkFlowCard
               image={collectMeal}
               title="Collect Your Food"
@@ -77,13 +77,13 @@ const Workflow = () => {
 
 
 
-          <div className='lg:col-span-8 lg:row-span-4 flex pl-28 items-center max-sm:order-5 max-sm:py-10 max-lg:hidden'>
+          <div className='lg:col-span-8 lg:row-span-4 lg:flex pl-28 items-center order-5 md:order-none py-10 md:py-0 hidden'>
             <h2 className='font-semibold text-2xl'>OR</h2>
           </div>
 
 
 
-          <div className='lg:col-span-3 lg:row-span-4 max-lg:order-6 flex flex-col justify-center items-center'>
+          <div className='lg:col-span-3 lg:row-span-4 order-6 lg:order-none  flex flex-col justify-center items-center'>
 
             <HiOutlineArrowLongUp
               size={60}

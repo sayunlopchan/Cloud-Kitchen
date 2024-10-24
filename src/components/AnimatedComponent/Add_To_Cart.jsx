@@ -1,9 +1,9 @@
 import Lottie from 'lottie-react';
-import animation from '../../assets/animation/sad.json';
+import animation from '../../assets/animation/Add-to-Cart.json';
 
 
 
-const Sad_effect = () => {
+const Add_To_Cart = () => {
   return (
     <div>
       <Lottie
@@ -15,4 +15,4 @@ const Sad_effect = () => {
   )
 }
 
-export default Sad_effect
+export default Add_To_Cart
