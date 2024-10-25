@@ -45,7 +45,7 @@ const MostPopularPage = () => {
       {/* Heading */}
 
       {/* Dishes - Display only the items from the mostSold array */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-20 max-sm:gap-y-10 max-md:gap-y-20 place-items-center place-content-center">
+      <div className="grid-div grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 place-content-center place-items-center">
         {menuData.mostPopular.map((item) => (
           <Card
             key={item.id}

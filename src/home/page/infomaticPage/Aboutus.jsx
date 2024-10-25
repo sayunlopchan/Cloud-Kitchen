@@ -1,11 +1,12 @@
 
 // IMAGE
 import story_1 from '../../../assets/bg-texture/minimalist-mexican-cooking-pot.jpg'
-import story_2 from '../../../assets/bg-texture/female-ceo-talking.jpg'
+import story_2 from '../../../assets/bg-texture/female-courier-red-uniform.jpg'
 import story_3 from '../../../assets/bg-texture/What-is-a-brand-story-hero.jpg'
 
 
-import testImg from '../../../assets/bg-texture/ordering.webp'
+import testImg from '../../../assets/bg-texture/wobble-order.png'
+import delivery from '../../../assets/bg-texture/wobble-deliery.png'
 import kitchen_ai from '../../../assets/bg-texture/kitchen_ai.jpg'
 
 
@@ -20,6 +21,11 @@ import { useNavigate } from "react-router-dom";
 // COMP
 import Stat from "../../../components/Stat";
 import AnimatedComponent from '../../../components/AnimatedComponent/AnimatedComponent'
+
+
+// ANIMATION
+import Lottie from 'lottie-react'
+import animation from '../../../assets/animation/place-place-mark.json'
 
 
 
@@ -103,7 +109,7 @@ const Aboutus = () => {
           </section>
 
           <section className='flex justify-center transition-all duration-500 md:order-1'>
-            <img src={testImg} alt="" className='md:size-[250px] lg:size-[400px]' />
+            <img src={delivery} alt="" className='md:size-[250px] lg:size-[400px]' />
           </section>
         </div>
         {/* SECOND */}
@@ -112,7 +118,9 @@ const Aboutus = () => {
 
 
       {/* STATS */}
+
       <Stat />
+
       {/* STATS */}
 
       {/* BANNER */}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import menuData from '../assets/Data/menu/alldata';
-import Card from './Card';
+import Card from './Card/Card';
 
 const SuggestionCard = ({ handleAddToCart }) => {
   const [randomSnacks, setRandomSnacks] = useState([]);

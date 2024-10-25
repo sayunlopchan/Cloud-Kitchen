@@ -76,8 +76,9 @@ p {
 /* CARD */
 
 .card-base {
-  width: 98%;
-  height: 13rem /* 208px */;
+  width: 100%;
+  height: 190px;
+  background-color: white;
 }
 .card-img {
   width: 100%;
@@ -85,21 +86,24 @@ p {
 }
 .card-title {
   line-height: 20px;
+  height: 45px;
 }
 .card-btn {
+  font-size: 12px;
   padding: 6px 2px;
   background-color: red;
 }
 
 @media (min-width: 360px) {
   .card-base {
-    height: 230px;
-    width: 155px;
+    height: 220px;
+    width: 160px;
   }
   .card-img {
     height: 90px;
   }
   .card-title {
+    height: 54px;
     font-size: 18px;
     margin-top: 5px;
   }
@@ -109,18 +113,18 @@ p {
 }
 @media (min-width: 370px) {
   .card-base {
-    height: 240px;
-    width: 100%;
-    /* background-color: purple; */
+    height: 230px;
+    width: 170px;
   }
   .card-img {
     height: 100px;
   }
 }
+
 @media (min-width: 420px) {
   .card-base {
-    height: 250px;
-    /* background-color: red; */
+    height: 230px;
+    width: 180px;
   }
   .card-img {
     height: 100px;
@@ -129,9 +133,8 @@ p {
 
 @media (min-width: 480px) {
   .card-base {
-    height: 250px;
-    width: 220px;
-    /* background-color: yellowgreen; */
+    height: 240px;
+    width: 200px;
   }
   .card-img {
     height: 110px;
@@ -147,22 +150,36 @@ p {
   }
 }
 
-/* md */
-@media (min-width: 720px) {
+@media (min-width: 600px) {
   .card-base {
-    width: 192px;
-    height: 15rem /* 240px */;
+    width: 220px;
+    height: 250px;
+  }
+  .card-title {
+    height: 65px;
+    /* background-color: red; */
   }
 }
 
+/* md @media (min-width: 720px) {
+  .card-base {
+    width: 220px;
+    height: 240px * /;
+  }
+} */
+
 @media (min-width: 800px) {
   .card-base {
-    height: 200px;
+    padding: 10px;
+    height: 265px;
     width: 230px;
-    /* background-color: red; */
   }
   .card-img {
-    height: 110px;
+    height: 120px;
+  }
+  .card-title {
+    height: 60px;
+    font-size: 20px;
   }
 }
 
@@ -170,13 +187,24 @@ p {
 @media (min-width: 960px) {
   .card-base {
     width: 224px;
-    height: 18rem /* 288px */;
+    height: 275px;
+  }
+  .card-img {
+    height: 8rem /* 128px */;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-base {
+    width: 240px;
+    height: 290px;
   }
   .card-img {
     height: 8rem /* 128px */;
   }
   .card-title {
-    font-size: 1.125rem /* 18px */;
+    line-height: 23px;
+    height: 75px;
   }
 }
 
@@ -184,14 +212,24 @@ p {
 @media (min-width: 1140px) {
   .card-base {
     width: 256px;
-    height: 18rem /* 288px */;
+    height: 300px;
+  }
+  .card-title {
+    font-size: 24px;
+    height: 80px;
+  }
+  .card-btn {
+    font-size: 14px;
   }
 }
 
 /* 2xl */
 @media (min-width: 1320px) {
   .card-base {
-    width: 16rem /* 256px */;
-    height: 20rem /* 320px */;
+    width: 256px;
+    height: 300px;
+  }
+  .card-title {
+    height: 80px;
   }
 }

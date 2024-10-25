@@ -1,5 +1,6 @@
 import { FaHeart } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa6";
+import { CiSquarePlus } from "react-icons/ci";
 import { useState } from "react";
 import TextLimit from "../TextLimit";
 
@@ -71,9 +72,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
     }
   };
   return (
-    <div onClick={onClick} className='card-base transition-all duration-300 border border-gray-300 rounded-lg p-2 lg:p-4
-          
-     shadow-md group'>
+    <div onClick={onClick} className='card-base transition-all duration-300 border border-gray-300 rounded-lg p-2  shadow-md group'>
 
       <div className="bg-white rounded-md overflow-hidden">
         <img
@@ -84,12 +83,12 @@ const Card = ({ item, handleAddToCart, onClick }) => {
       </div>
 
 
-      <h2 className='card-title font-bold lg:text-lg h-14 md:h-10 lg:h-14 2xl:h-20 leading-[20px] pt-1'>
-        <TextLimit text={item.title} />
+      <h2 className='card-title font-bold pt-1'>
+        <TextLimit text={item.title} limit={25} />
       </h2>
 
 
-      <div className=' '>
+      <div className='text-sm md:text-base lg:text-lg'>
         {item.discountPercentage ? (
           <div>
             <span className='line-through text-red-500'>Rs. {item.price}</span>
@@ -101,7 +100,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
       </div>
 
 
-      <div className=' flex justify-between items-center lg:mt-2 relative'>
+      <div className=' flex justify-between items-center relative'>
         <span className="flex items-center">
           <FaStar className="text-yellow-500" />
           <span className="ml-1">{item.rating}</span>
@@ -109,7 +108,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
         <div className="relative">
 
           <button
-            className={`card-btn text-xs text-white
+            className={`card-btn text-white 
             transition-all duration-500 border rounded-lg ${isPopAnimating ? 'animate-pop' : ''}`}
             onClick={(e) => {
               e.stopPropagation();
@@ -117,7 +116,10 @@ const Card = ({ item, handleAddToCart, onClick }) => {
             }}
             aria-label={`Add ${item.title} to cart`}
           >
-            Add To Cart
+            <span className="flex gap-x-2 items-center">
+              <CiSquarePlus size={20} />
+              Add
+            </span>
           </button>
 
           {/* Render multiple instances of the animation */}

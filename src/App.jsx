@@ -3,8 +3,8 @@ import React, { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./RootLayout/RootLayout";
 
-// Import Loading component
-import Loading from "./components/Loading/Loading.jsx";
+// Import LoadingSkeleton component
+import LoadingSkeleton from "./components/Skeleton/LoadingSkeleton.jsx";
 
 // Lazy load Admin Components
 const Login = lazy(() => import("./features/Auth/Login"));
@@ -30,8 +30,7 @@ import ProtectedRoute from "./features/Auth/ProtectedRoute";
 
 // Route Paths
 import * as paths from "./Routes/Path.js";
-// import Loading from "./components/Loading/Loading.jsx";
-const CartPage = lazy(() => import("./home/page/cartPage.jsx"));
+const CartPage = lazy(() => import("./home/page/CartPage.jsx"));
 const Aboutus = lazy(() => import("./home/page/infomaticPage/Aboutus.jsx"));
 const ContactPage = lazy(() => import("./home/page/infomaticPage/ContactPage.jsx"));
 const Faq = lazy(() => import("./home/page/infomaticPage/Faq.jsx"));
@@ -47,7 +46,7 @@ const App = () => {
         {
           index: true,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <HomePage />
             </Suspense>
           ),
@@ -55,7 +54,7 @@ const App = () => {
         {
           path: paths.LOGIN_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <Login />
             </Suspense>
           ),
@@ -63,7 +62,7 @@ const App = () => {
         {
           path: paths.SIGNUP_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <Signup />
             </Suspense>
           ),
@@ -72,7 +71,7 @@ const App = () => {
           path: paths.DASHBOARD_PAGE,
           element: (
             <ProtectedRoute>
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<LoadingSkeleton />}>
                 <Dashboard />
               </Suspense>
             </ProtectedRoute>
@@ -81,7 +80,7 @@ const App = () => {
         {
           path: paths.CART_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <CartPage />
             </Suspense>
           ),
@@ -89,7 +88,7 @@ const App = () => {
         {
           path: paths.MOST_POPULAR_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <MostPopularPage />
             </Suspense>
           ),
@@ -97,7 +96,7 @@ const App = () => {
         {
           path: paths.MOST_SOLD_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <MostSoldPage />
             </Suspense>
           ),
@@ -105,7 +104,7 @@ const App = () => {
         {
           path: paths.DETAIL_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <Detailpage />
             </Suspense>
           ), // DYNAMIC ROUTE
@@ -113,7 +112,7 @@ const App = () => {
         {
           path: paths.TAKEOUT_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <TakeoutPage />
             </Suspense>
           ),
@@ -121,7 +120,7 @@ const App = () => {
         {
           path: paths.PAYMENT_FORM_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <FillMyForm />
             </Suspense>
           ),
@@ -129,7 +128,7 @@ const App = () => {
         {
           path: paths.TAKEOUT_FORM_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <FillMyFormTO />
             </Suspense>
           ),
@@ -137,7 +136,7 @@ const App = () => {
         {
           path: paths.PAYMENT_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <Payment />
             </Suspense>
           ),
@@ -145,7 +144,7 @@ const App = () => {
         {
           path: paths.MENU_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <MenuPage />
             </Suspense>
           ),
@@ -154,7 +153,7 @@ const App = () => {
         {
           path: paths.ABOUT_US_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <Aboutus />
             </Suspense>
           ),
@@ -162,7 +161,7 @@ const App = () => {
         {
           path: paths.CONTACT_US_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <ContactPage />
             </Suspense>
           ),
@@ -170,7 +169,7 @@ const App = () => {
         {
           path: paths.FAQ_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <Faq />
             </Suspense>
           ),
@@ -178,7 +177,7 @@ const App = () => {
         {
           path: paths.PRIVACY_POLICY_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <PrivacyandPolicy />
             </Suspense>
           ),
@@ -186,7 +185,7 @@ const App = () => {
         {
           path: paths.TERMS_AND_CONDITIONS_PAGE,
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <TermsandConditions />
             </Suspense>
           ),
@@ -194,7 +193,7 @@ const App = () => {
         {
           path: "*",
           element: (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<LoadingSkeleton />}>
               <PageNotFound />
             </Suspense>
           )

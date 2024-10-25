@@ -43,7 +43,7 @@ function HomeBanner() {
 
           {/* Para */}
           <p className="text-slate-600 lg:text-lg">
-            <span className="font-bold text-lg">&#34;</span> Get your food delivered within 30 minutes to your location, or pick up
+            <span className="font-bold text-lg">&#34;</span> Get your food delivered to your location, or pick up
             <br />
             your order from a nearby kitchen.
             Fast, fresh, and from the best!

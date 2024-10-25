@@ -1,3 +1,7 @@
+
+
+
+
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -26,7 +30,12 @@ const CartPage = () => {
       <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
         <h2 className="text-xl font-semibold text-gray-900 sm:text-2xl">Shopping Cart</h2>
         <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
+
+
+
+
           <div className="mx-auto w-full flex-none lg:max-w-2xl xl:w-4xl">
+
             {/* Cart items Loop */}
             <div className="space-y-6">
               {cart.length === 0 ? (
@@ -45,6 +54,7 @@ const CartPage = () => {
                         className="shrink-0 md:order-1">
                         <img className="size-20" src={item.img} alt={item.title} />
                       </NavLink>
+
                       <div className="flex items-center justify-between md:order-3 md:justify-end">
                         <div className="flex items-center">
                           <button
@@ -72,10 +82,13 @@ const CartPage = () => {
                             </svg>
                           </button>
                         </div>
+
                         <div className="text-end md:order-4 md:w-32">
                           <p className="text-base font-bold text-gray-900">Rs.{item.price}</p>
                         </div>
                       </div>
+
+
                       <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
                         <NavLink
                           onClick={() => nav(`${paths.DETAIL_PAGE.replace(':id', item.id)}`)}
@@ -100,7 +113,12 @@ const CartPage = () => {
               )}
             </div>
             {/* Cart items Loop */}
+
           </div>
+
+
+
+
 
           {/* Order Summary */}
           <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
@@ -159,6 +177,11 @@ const CartPage = () => {
             </div>
           </div>
           {/* Order Summary */}
+
+
+
+
+
         </div>
       </div>
     </section>

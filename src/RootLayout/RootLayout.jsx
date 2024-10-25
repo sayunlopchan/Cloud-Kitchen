@@ -6,6 +6,10 @@ import Footer from "../home/HomeFeatures/Footer"
 import BackToTopBtn from "../components/BackToTopBtn"
 import MenuBtn from "../components/MenuBtn"
 
+
+
+
+
 const RootLayout = () => {
   return (
     <>

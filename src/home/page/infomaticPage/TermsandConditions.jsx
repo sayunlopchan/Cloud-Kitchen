@@ -110,21 +110,21 @@ const TermsAndConditions = () => {
     if (subIndex !== null && contentRefs.current[index]?.subRefs[subIndex]) {
       contentRefs.current[index].subRefs[subIndex].current.scrollIntoView({
         behavior: 'smooth',
-        block: 'start',
+        block: 'center',
       });
     } else if (contentRefs.current[index]?.ref.current) {
       contentRefs.current[index].ref.current.scrollIntoView({
         behavior: 'smooth',
-        block: 'start',
+        block: 'center',
       });
     }
   };
 
   return (
-    <div className="grid grid-cols-12 w-full">
+    <div className="grid grid-cols-12 w-full h-screen">
       {/* Sidebar - Titles */}
-      <section className=" border-r-2 col-span-3 lg:p-4">
-        <ul className="sticky top-5">
+      <section className="border-r-2 col-span-3 lg:p-4 ">
+        <ul className="">
           {termsAndConditions.map((term, index) => (
             <li
               key={index}
@@ -138,41 +138,49 @@ const TermsAndConditions = () => {
       </section>
 
       {/* Content Section */}
-      <section className="col-span-9 p-4 h-full">
+      <section className="col-span-9 h-full overflow-scroll">
+        <div className='pb-[10000px]'>
 
-        {termsAndConditions.map((term, index) => (
-          <div key={index} className={`mb-4 ${selectedIndex === index && selectedSubIndex === null ? 'transition-all duration-300 border-b-2 bg-gray-200' : ''}`}>
-            <h2
-              ref={contentRefs.current[index]?.ref}
-              className={`text-lg lg:text-2xl font-semibold mb-4 ${selectedIndex === index && selectedSubIndex === null ? 'border-colorRed border-b-2 w-fit text-colorRed' : ''}`}
-              onClick={() => handleSelect(index)}
-            >
-              {term.title}
-            </h2>
-            <p className={`text-xs sm:text-sm md:text-base lg:text-lg ${selectedIndex === index && selectedSubIndex === null ? 'transition-all duration-300 pl-2' : ''}`}>
-              {term.content}
-            </p>
 
-            {/* If subsections exist, render them */}
-            {term.subsections && (
-              <div className="mt-4">
-                {term.subsections.map((subsection, subIndex) => (
-                  <div
-                    key={subIndex}
-                    ref={contentRefs.current[index]?.subRefs[subIndex]}
-                    className={`mb-4 p-2 cursor-pointer ${selectedIndex === index && selectedSubIndex === subIndex ? 'bg-colorRed text-white' : ''}`}
-                    onClick={() => handleSelect(index, subIndex)}
-                  >
-                    <h3 className="text-lg lg:text-xl font-medium">-{subsection.subtitle}</h3>
-                    <p className={`text-xs sm:text-sm md:text-base lg:text-lg ${selectedIndex === index && selectedSubIndex === null ? 'transition-all duration-300 pl-2' : ''}`}>{subsection.content}</p>
+          {termsAndConditions.map((term, index) => (
+
+            <div key={index} className={` mb-4 p-2 ${selectedIndex === index && selectedSubIndex === null ? 'transition-all duration-300 border-b-2 bg-gray-200' : ''}`}>
+              <div className={`mb-4`}>
+                <h2
+                  ref={contentRefs.current[index]?.ref}
+                  className={`text-lg lg:text-2xl font-semibold mb-4 ${selectedIndex === index && selectedSubIndex === null ? 'border-colorRed border-b-2 w-fit text-colorRed' : ''}`}
+                  onClick={() => handleSelect(index)}
+                >
+                  {term.title}
+                </h2>
+                <p className={`text-xs sm:text-sm md:text-base lg:text-lg ${selectedIndex === index && selectedSubIndex === null ? 'transition-all duration-300 pl-2' : ''}`}>
+                  {term.content}
+                </p>
+
+                {/* If subsections exist, render them */}
+                {term.subsections && (
+                  <div className="mt-4">
+                    {term.subsections.map((subsection, subIndex) => (
+                      <div
+                        key={subIndex}
+                        ref={contentRefs.current[index]?.subRefs[subIndex]}
+                        className={`mb-4 p-2 cursor-pointer ${selectedIndex === index && selectedSubIndex === subIndex ? 'bg-colorRed text-white' : ''}`}
+                        onClick={() => handleSelect(index, subIndex)}
+                      >
+                        <h3 className="text-lg lg:text-xl font-medium">-{subsection.subtitle}</h3>
+                        <p className={`text-xs sm:text-sm md:text-base lg:text-lg ${selectedIndex === index && selectedSubIndex === null ? 'transition-all duration-300 pl-2' : ''}`}>{subsection.content}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
+                )}
 
-      </section>
+              </div>
+            </div>
+          ))
+          }
+
+        </div >
+      </section >
     </div >
   );
 };
