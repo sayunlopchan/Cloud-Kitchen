@@ -1,6 +1,8 @@
 // components/Dialog.js
 
 import Success_effect from "../AnimatedComponent/Success_effect";
+import error_effect from "../AnimatedComponent/Error_effect"
+import Error_effect from "../AnimatedComponent/Error_effect";
 
 const Dialog = ({ isOpen, onClose, message, isSuccess }) => {
   if (!isOpen) return null;
@@ -20,8 +22,8 @@ const Dialog = ({ isOpen, onClose, message, isSuccess }) => {
                 <Success_effect />
               </div>
               :
-              <div className="absolute -top-3">
-                <Success_effect />
+              <div className="size-36 flex justify-center w-full">
+                <Error_effect />
               </div>
           }
         </div>
