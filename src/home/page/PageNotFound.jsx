@@ -1,7 +1,7 @@
 
 const PageNotFound = () => {
   return (
-    <div>PageNotFound</div>
+    <div className="flex justify-center items-center h-screen w-screen">PageNotFound</div>
   )
 }
 

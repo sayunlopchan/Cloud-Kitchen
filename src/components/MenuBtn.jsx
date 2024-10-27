@@ -43,7 +43,7 @@ const MenuBtn = () => {
   }
 
   return (
-    <div className="fixed bottom-44 animate-bounce right-5 z-[100]">
+    <div className="fixed bottom-44  right-5 z-[100]">
       {isVisible && (
         <button
           onClick={() => nav(paths.MENU_PAGE)}

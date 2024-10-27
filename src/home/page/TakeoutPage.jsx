@@ -59,8 +59,8 @@ const TakeoutPage = () => {
   return (
     <div className="p-5 lg:px-20 bg-clay h-full">
       {/* Navigation */}
-      <div className="flex items-center gap-2 pb-1 pl-5 text-2xl font-semibold">
-        <NavLink to={paths.CART_PAGE}>CART</NavLink>
+      <div className="flex items-center gap-2 pb-1 pl-5 text-lg lg:text-2xl font-semibold">
+        <NavLink to={paths.CART_PAGE}>Cart</NavLink>
         &gt;
         <NavLink to={paths.TAKEOUT_FORM_PAGE}>Form</NavLink>
         &gt;
@@ -120,7 +120,7 @@ const TakeoutPage = () => {
           <div className="w-full flex justify-center pb-2">
             <button
               onClick={handleTakeout}
-              className="bg-black text-white px-28 py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300"
+              className="bg-black text-white px-16 py-2 rounded-lg hover:bg-[#151515] transition-colors duration-300"
               disabled={loading} // Disable button while loading
             >
               {loading ? 'Confirming...' : 'Confirm Takeout'}

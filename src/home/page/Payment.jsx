@@ -72,10 +72,10 @@ const Payment = () => {
   };
 
   return (
-    <div className="p-5 lg:py-5 lg:px-20 bg-clay h-full">
+    <div className="lg:py-5 lg:px-20 bg-clay h-full">
       {/* Navigation */}
-      <div className="flex items-center gap-2 pb-1 pl-5 text-2xl font-semibold">
-        <NavLink to={paths.CART_PAGE}>CART</NavLink>
+      <div className="flex items-center gap-2 pb-1 pl-5 text-lg lg:text-2xl font-semibold ">
+        <NavLink to={paths.CART_PAGE}>Cart</NavLink>
         &gt;
         <NavLink to={paths.PAYMENT_FORM_PAGE}>Form</NavLink>
         &gt;
@@ -94,16 +94,16 @@ const Payment = () => {
         />
       </div>
 
-      <div className="max-sm:text-sm lg:h-[400px] grid grid-cols-1 md:grid-cols-12 gap-5 px-3 p-2">
+      <div className="max-sm:text-sm  lg:h-[400px] grid grid-cols-1 md:grid-cols-12 gap-5 px-3 p-2">
         {/* Table Container */}
-        <div className="md:col-span-7 flex justify-center rounded-lg overflow-scroll">
-          <table className="min-w-full bg-white border border-gray-300 ">
+        <div className="md:col-span-7 flex justify-center rounded-lg ">
+          <table className="min-w-full bg-white border border-gray-300 text-sm md:text-base">
             <thead>
               <tr className="bg-gray-200">
-                <th className="py-2 px-4 border-b text-left">Item Name</th>
-                <th className="py-2 px-4 border-b text-left">Price</th>
-                <th className="py-2 px-4 border-b text-left">Quantity</th>
-                <th className="py-2 px-4 border-b text-left">Subtotal</th>
+                <th className="py-2 px-4 border-b text-left min-w-[100px]">Item Name</th>
+                <th className="py-2 px-4 border-b text-left min-w-[80px]">Price</th>
+                <th className="py-2 px-4 border-b text-left min-w-[80px]">Quantity</th>
+                <th className="py-2 px-4 border-b text-left min-w-[100px]">Subtotal</th>
               </tr>
             </thead>
             <tbody>
@@ -113,11 +113,11 @@ const Payment = () => {
                 </tr>
               ) : (
                 cart.map((item) => (
-                  <tr key={item.id}>
-                    <td className="py-2 px-4 border-b">{item.title}</td>
-                    <td className="py-2 px-4 border-b">Rs. {item.price}</td>
-                    <td className="py-2 px-4 border-b">{item.quantity}</td>
-                    <td className="py-2 px-4 border-b">Rs. {item.price * item.quantity}</td>
+                  <tr key={item.id} className="border-b">
+                    <td className="py-2 px-4">{item.title}</td>
+                    <td className="py-2 px-4">Rs. {item.price}</td>
+                    <td className="py-2 px-4">{item.quantity}</td>
+                    <td className="py-2 px-4">Rs. {item.price * item.quantity}</td>
                   </tr>
                 ))
               )}
@@ -130,6 +130,7 @@ const Payment = () => {
             </tfoot>
           </table>
         </div>
+
 
         {/* Summary */}
         <div className="md:col-span-5 border rounded-lg bg-white relative">

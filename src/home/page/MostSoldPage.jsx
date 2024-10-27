@@ -1,6 +1,6 @@
 import menuData from "../../assets/Data/menu/alldata";
 import CurveLine from "../../assets/icon/red Curve.svg";
-import Card from "../../components/Card";
+import Card from "../../components/Card/Card";
 
 
 
@@ -46,7 +46,7 @@ const MostSoldPage = () => {
       {/* Heading */}
 
       {/* Dishes - Display only the items from the mostSold array */}
-      <div className="grid-div grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 place-content-center place-items-center">
+      <div className="grid-div grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-10 place-content-center place-items-center">
         {menuData.mostSold.map((item) => (
           <Card
             key={item.id}

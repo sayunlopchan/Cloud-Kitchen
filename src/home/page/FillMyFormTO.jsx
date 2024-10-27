@@ -39,8 +39,8 @@ const FillMyFormTO = () => {
   return (
     <div className="p-5 lg:py-5 lg:px-20 bg-clay h-full">
       {/* Navigation */}
-      <div className="flex items-center gap-2 pb-1 pl-5 text-2xl font-semibold">
-        <NavLink to={paths.CART_PAGE}>CART</NavLink>
+      <div className="flex items-center gap-2 pb-1 pl-5 text-lg lg:text-2xl font-semibold">
+        <NavLink to={paths.CART_PAGE}>Cart</NavLink>
         &gt;
         <NavLink to={'#'} className={'text-colorRed'}>
           Form

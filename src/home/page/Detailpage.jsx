@@ -6,8 +6,7 @@ import { addToCart } from '../../store/cartSlice';
 import menuData from '../../assets/Data/menu/alldata';
 import { useEffect, useState } from 'react';
 import SuggestionCard from '../../components/SuggestionCard';
-import Dialog from '../../components/Dialog/Dialog'; // Import Dialog component
-
+import Dialog from '../../components/Dialog/Cart_Dialog';
 const Detailpage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -104,39 +103,50 @@ const Detailpage = () => {
 
   return (
     <div className="bg-clay">
-      <div className="container mx-auto p-4 md:p-0">
+
+      <div className="container mx-auto pt-2 p-4 md:p-0 md:pt-0">
         <div className="flex flex-wrap">
+
           {/* Product Images */}
-          <div className="w-full md:w-1/2 lg:h-[520px] px-4 rounded-lg overflow-hidden">
+          <div className="w-full md:w-1/2 lg:h-[520px]  rounded-lg overflow-hidden pr-5">
             <img
               src={mainImage || product.img}
               alt={product.title}
-              className='w-full h-[280px] sm:h-[320px] lg:h-[70%] rounded-lg object-contain'
+              className='w-full h-[180px] sm:h-[320px] lg:h-[70%] rounded-lg object-cover  md:object-contain'
             />
-            <div className="flex gap-x-4 py-5 justify-center overflow-x-auto">
+            <div className="flex gap-x-4 py-2 justify-center overflow-x-scroll">
               {product.imgArr.map((img, index) => (
                 <img
                   key={index}
                   src={img}
                   alt={`Thumbnail ${index + 1}`}
-                  className='size-[100px] cursor-pointer'
+                  className='size-[50px] lg:size-[100px] cursor-pointer'
                   onClick={() => handleThumbnailClick(img)}
                 />
               ))}
               {numberOfEmptyBoxes > 0 && Array.from({ length: numberOfEmptyBoxes }).map((_, index) => (
-                <div key={index} className='size-[100px] border border-dashed border-gray-400 flex items-center justify-center'>
+                <div key={index} className='size-[50px] lg:size-[100px] border border-dashed border-gray-400 flex items-center justify-center text-xs sm:text-sm md:text-base'>
                   <span>No Image</span>
                 </div>
               ))}
             </div>
           </div>
+
           {/* Product Images */}
 
-          {/* Product Details */}
-          <div className="w-full md:w-1/2 md:pt-0">
-            <h2 className="text-3xl font-bold ">{product.title}</h2>
 
-            <div className="mb-2">
+
+
+
+
+
+
+
+          {/* Product Details */}
+          <div className="w-full md:w-1/2">
+            <h2 className="text-2xl lg:text-3xl font-bold ">{product.title}</h2>
+
+            <div className="mb-1">
               {product.discountPercentage ? (
                 <p className='relative'>
                   <span className='text-xl font-semibold'>Rs.</span>
@@ -163,14 +173,14 @@ const Detailpage = () => {
               </p>
             </div>
 
-            <div className="flex items-center mb-4 ">
+            <div className="flex items-center mb-1 ">
               <GoStarFill size={26} className='text-colorOrange' />
               <span className="ml-2 text-lg text-gray-600">
                 <span>{product.rating || 'N/A'}</span>
               </span>
             </div>
 
-            <p className="mb-6 h-[100px] overflow-scroll">{product.description}</p>
+            <p className="mb-2 h-[100px] overflow-scroll">{product.description}</p>
             <p className='space-x-2 text-lg'>
               <span className='font-semibold'>Cooking Time:</span>
               <span>{product.cookingTime || 'Not Available'}</span>
@@ -204,7 +214,7 @@ const Detailpage = () => {
           </div>
           {/* Product Details */}
         </div>
-        <hr className='border-2' />
+
         <div className="px-4 lg:mx-auto py-10 w-full lg:w-[85%] space-y-20">
           <h2 className='font-bold text-lg md:text-2xl lg:text-3xl '> Suggestion with {product.title} </h2>
 

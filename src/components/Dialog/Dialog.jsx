@@ -1,31 +1,49 @@
-// components/Dialog.js
-
-import Success_effect from "../AnimatedComponent/Success_effect";
-import error_effect from "../AnimatedComponent/Error_effect"
-import Error_effect from "../AnimatedComponent/Error_effect";
+import Lottie from "lottie-react";
+import Success from "../../assets/animation/Party-pop.json";
+import Error from "../../assets/animation/error.json";
 
 const Dialog = ({ isOpen, onClose, message, isSuccess }) => {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
-      <div className={`bg-white rounded-lg p-5 w-80 lg:w-[450px] lg:h-[300px] text-center ${isSuccess ? 'border border-green-500' : 'border border-red-500'}`}>
-        <h3 className="font-semibold">{isSuccess ? 'Success' : 'Error'}</h3>
-        <p>{message}</p>
-        <button onClick={onClose} className="mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-700 relative z-20">
-          Close
-        </button>
-        <div className="relative -z-0">
+
+      <div className="h-[370px] w-full md:w-[360px] rounded-lg overflow-hidden bg-white mx-5 lg:mx-0">
+
+        <div className="w-full h-50 pt-3 pb-5">
           {
-            isSuccess ?
-              <div className="absolute -top-[132px]">
-                <Success_effect />
+            isSuccess ? (
+              <div className="w-full h-36 rounded-t-lg flex justify-center items-center">
+                <Lottie
+                  animationData={Success}
+                  loop={false}
+                  autoplay={true}
+                  style={{ width: '220px', height: '220px' }}
+                />
               </div>
-              :
-              <div className="size-36 flex justify-center w-full">
-                <Error_effect />
+            ) : (
+              <div className="w-full h-36 rounded-t-lg flex justify-center items-center">
+                <Lottie
+                  animationData={Error}
+                  loop={true}
+                  autoplay={true}
+                  style={{ width: '100%', height: '100%' }}
+                />
               </div>
+            )
           }
+        </div>
+        <div className="w-full text-center p-3 text-gray-600">
+          {
+            isSuccess ? (
+              <span>Success! Your order has been successfully placed.<br /> Thank you for shopping with us!</span>
+            ) : (
+              <span>Oops! There was an issue processing your order. <br />  Please try again or contact support if the problem persists.</span>
+            )
+          }
+        </div>
+        <div className="flex justify-center mt-4">
+          <button onClick={onClose} className="rounded-md px-10 py-2 bg-black text-white transition-all duration-300 hover:scale-90">Close</button>
         </div>
       </div>
     </div>

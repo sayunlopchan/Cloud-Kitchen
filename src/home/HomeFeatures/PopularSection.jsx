@@ -31,7 +31,7 @@ const PopularSection = () => {
   };
 
   return (
-    <div className="space-y-32 px-5 lg:px-10 py-10 transition-all duration-1000 bg-[#F0F2FF]">
+    <div className="space-y-10 px-5 lg:px-10 pb-10 transition-all duration-1000 bg-[#F0F2FF]">
       <div className="relative w-fit">
         <h2 className="font-bold text-3xl ">Most Popular</h2>
         <img
@@ -40,7 +40,7 @@ const PopularSection = () => {
           className="w-[100px] absolute top-10 right-0"
         />
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 place-items-center ">
+      <div className="grid-div grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-10 place-content-center place-items-center">
         {menuData.mostPopular.slice(0, 4).map((item) => (
           <Card
             key={item.id}
