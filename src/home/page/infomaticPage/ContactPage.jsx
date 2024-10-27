@@ -1,9 +1,15 @@
-import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { contactUrl } from '../../../apiPath/url';
+import axios from 'axios';
+import { useState } from 'react';
+import Contact_Dialog from '../../../components/Dialog/Contact_Dialog'
 
 const ContactPage = () => {
-  // Initial values for the form fields
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+
   const initialValues = {
     firstname: '',
     lastname: '',
@@ -12,7 +18,6 @@ const ContactPage = () => {
     message: '',
   };
 
-  // Validation schema using Yup
   const validationSchema = Yup.object({
     firstname: Yup.string().required('First name is required'),
     lastname: Yup.string().required('Last name is required'),
@@ -23,10 +28,24 @@ const ContactPage = () => {
     message: Yup.string().required('Message is required'),
   });
 
-  // Handle form submission
-  const handleSubmit = (values, { resetForm }) => {
-    console.log('Form submitted:', values);
-    resetForm(); // Reset the form after submission
+  const handleSubmit = async (values, { resetForm, setSubmitting }) => {
+    try {
+      const response = await axios.post(contactUrl, values);
+
+      if (response.status === 200) {
+        setIsSuccess(true);
+        setDialogMessage('Success! Your message has been sent successfully.');
+        resetForm();
+      } else {
+        throw new Error('Something went wrong.');
+      }
+    } catch (error) {
+      setIsSuccess(false);
+      setDialogMessage('Oops! There was an issue sending your message. Please try again later.');
+    } finally {
+      setDialogOpen(true);
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -132,6 +151,14 @@ const ContactPage = () => {
             </Form>
           )}
         </Formik>
+
+        {/* Dialog for success/error message */}
+        <Contact_Dialog
+          isOpen={dialogOpen}
+          onClose={() => setDialogOpen(false)}
+          message={dialogMessage}
+          isSuccess={isSuccess}
+        />
       </section>
     </div>
   );

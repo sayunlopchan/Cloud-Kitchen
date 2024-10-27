@@ -34,7 +34,7 @@ const MenuPage = () => {
 
 
   return (
-    <div className="space-y-5 bg-clay">
+    <div className="space-y-5  bg-clay menu">
       {/* All Menu title */}
       <div className="w-full  flex justify-center ">
         <div className="relative w-fit mt-5">

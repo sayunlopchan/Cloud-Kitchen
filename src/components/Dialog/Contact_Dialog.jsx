@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
-import SuccessAnimation from "../../assets/animation/Email_success.json"; // Ensure this is the correct path
-import ErrorAnimation from "../../assets/animation/Email_error.json"; // Ensure this is the correct path
+import SuccessAnimation from "../../assets/animation/Email_succes.json";
+import ErrorAnimation from "../../assets/animation/Email_error.json";
 
 const Contact_Dialog = ({ isOpen, onClose, message, isSuccess }) => {
   if (!isOpen) return null;
@@ -15,7 +15,7 @@ const Contact_Dialog = ({ isOpen, onClose, message, isSuccess }) => {
                 animationData={SuccessAnimation}
                 loop={false}
                 autoplay={true}
-                style={{ width: '220px', height: '220px' }}
+                style={{ width: '100%', height: '100%' }}
               />
             </div>
           ) : (
@@ -30,7 +30,17 @@ const Contact_Dialog = ({ isOpen, onClose, message, isSuccess }) => {
           )}
         </div>
         <div className="w-full text-center p-3 text-gray-600">
-          <span>{message}</span>
+          {isSuccess ? (
+            <span>
+              Success! Your message has been sent successfully.<br />
+              Thank you for contacting us!
+            </span>
+          ) : (
+            <span>
+              Oops! There was an issue processing your message.<br />
+              Please try again or contact support if the problem persists.
+            </span>
+          )}
         </div>
         <div className="flex justify-center mt-4">
           <button onClick={onClose} className="rounded-md px-10 py-2 bg-black text-white transition-all duration-300 hover:scale-90">Close</button>

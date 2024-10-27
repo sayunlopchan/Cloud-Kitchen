@@ -1,10 +1,9 @@
-import React from 'react';
 
 const PrivacyPolicy = () => {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
-      <p className="text-gray-600 mb-6">Last Updated: [Date]</p>
+      <p className="text-gray-600 mb-6">Last Updated: [10/27/2024]</p>
 
       <p className="mb-4">
         Welcome to Bhansha Express! We value your trust and are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you visit our website and use our services. By using Bhansha Express, you agree to the practices described in this policy.
@@ -58,7 +57,9 @@ const PrivacyPolicy = () => {
       <p className="mb-2"><strong>Bhansha Express</strong></p>
       <p className="mb-2">Butwal, Tilottama, Nepal</p>
       <p className="mb-2"><strong>Email:</strong> info@bhanshaexpress.com</p>
-      <p className="mb-2"><strong>Phone:</strong> [Your contact number]</p>
+      <p className="mb-2"><strong>Phone:</strong> 9867247262
+        |
+        9867247262</p>
     </div>
   );
 };
