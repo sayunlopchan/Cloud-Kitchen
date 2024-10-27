@@ -1,5 +1,5 @@
 // src/App.js
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./RootLayout/RootLayout";
 
@@ -21,7 +21,7 @@ const Payment = lazy(() => import("./home/page/Payment"));
 const MenuPage = lazy(() => import("./home/page/MenuPage"));
 const FillMyFormTO = lazy(() => import("./home/page/FillMyFormTO"));
 const Detailpage = lazy(() => import("./home/page/Detailpage.jsx"));
-const CartPage = lazy(() => import("./home/page/CartPage.jsx"));
+
 
 // Informational Pages
 const PageNotFound = lazy(() => import("./home/page/PageNotFound"));
@@ -81,7 +81,7 @@ const App = () => {
           path: paths.CART_PAGE,
           element: (
             <Suspense fallback={<LoadingSkeleton />}>
-              <CartPage />
+
             </Suspense>
           ),
         },
