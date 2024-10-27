@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import Success from "../../assets/animation/Party-pop.json";
+import Success from "../../assets/animation/Succes_Cart.json";
 import Error from "../../assets/animation/error.json";
 
 const Dialog = ({ isOpen, onClose, message, isSuccess }) => {
