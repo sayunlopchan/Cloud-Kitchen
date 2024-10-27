@@ -16,6 +16,7 @@ const HomePage = lazy(() => import("./home/page/HomePage"));
 const MostSoldPage = lazy(() => import("./home/page/MostSoldPage"));
 const MostPopularPage = lazy(() => import("./home/page/MostPopularPage"));
 const TakeoutPage = lazy(() => import("./home/page/TakeoutPage"));
+const CartsPage = lazy(() => import("./home/page/CartsPage.jsx"));
 const FillMyForm = lazy(() => import("./home/page/FillMyForm"));
 const Payment = lazy(() => import("./home/page/Payment"));
 const MenuPage = lazy(() => import("./home/page/MenuPage"));
@@ -81,7 +82,7 @@ const App = () => {
           path: paths.CART_PAGE,
           element: (
             <Suspense fallback={<LoadingSkeleton />}>
-
+              <CartsPage />
             </Suspense>
           ),
         },
