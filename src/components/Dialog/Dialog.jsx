@@ -1,36 +1,46 @@
 import Lottie from "lottie-react";
-import SuccessAnimation from "../../assets/animation/Email_success.json"; // Ensure this is the correct path
-import ErrorAnimation from "../../assets/animation/Email_error.json"; // Ensure this is the correct path
+import Success from "../../assets/animation/Party-pop.json";
+import Error from "../../assets/animation/error.json";
 
-const Contact_Dialog = ({ isOpen, onClose, message, isSuccess }) => {
+const Dialog = ({ isOpen, onClose, message, isSuccess }) => {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
+
       <div className="h-[370px] w-full md:w-[360px] rounded-lg overflow-hidden bg-white mx-5 lg:mx-0">
+
         <div className="w-full h-50 pt-3 pb-5">
-          {isSuccess ? (
-            <div className="w-full h-36 rounded-t-lg flex justify-center items-center">
-              <Lottie
-                animationData={SuccessAnimation}
-                loop={false}
-                autoplay={true}
-                style={{ width: '220px', height: '220px' }}
-              />
-            </div>
-          ) : (
-            <div className="w-full h-36 rounded-t-lg flex justify-center items-center">
-              <Lottie
-                animationData={ErrorAnimation}
-                loop={true}
-                autoplay={true}
-                style={{ width: '100%', height: '100%' }}
-              />
-            </div>
-          )}
+          {
+            isSuccess ? (
+              <div className="w-full h-36 rounded-t-lg flex justify-center items-center">
+                <Lottie
+                  animationData={Success}
+                  loop={false}
+                  autoplay={true}
+                  style={{ width: '220px', height: '220px' }}
+                />
+              </div>
+            ) : (
+              <div className="w-full h-36 rounded-t-lg flex justify-center items-center">
+                <Lottie
+                  animationData={Error}
+                  loop={true}
+                  autoplay={true}
+                  style={{ width: '100%', height: '100%' }}
+                />
+              </div>
+            )
+          }
         </div>
         <div className="w-full text-center p-3 text-gray-600">
-          <span>{message}</span>
+          {
+            isSuccess ? (
+              <span>Success! Your order has been successfully placed.<br /> Thank you for shopping with us!</span>
+            ) : (
+              <span>Oops! There was an issue processing your order. <br />  Please try again or contact support if the problem persists.</span>
+            )
+          }
         </div>
         <div className="flex justify-center mt-4">
           <button onClick={onClose} className="rounded-md px-10 py-2 bg-black text-white transition-all duration-300 hover:scale-90">Close</button>
@@ -40,4 +50,4 @@ const Contact_Dialog = ({ isOpen, onClose, message, isSuccess }) => {
   );
 };
 
-export default Contact_Dialog;
+export default Dialog;
