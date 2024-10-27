@@ -7,17 +7,21 @@ import menuData from '../../assets/Data/menu/alldata';
 import { useEffect, useState } from 'react';
 import SuggestionCard from '../../components/SuggestionCard';
 import Dialog from '../../components/Dialog/Cart_Dialog';
+
 const Detailpage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  // Convert id to a number
+  const numericId = parseInt(id, 10);
 
   const [mainImage, setMainImage] = useState(null);
   const [quantityToAdd, setQuantityToAdd] = useState(0);
   const [shake, setShake] = useState(false);
   const [isPopAnimating, setIsPopAnimating] = useState(false);
-  const [isDialogOpen, setIsDialogOpen] = useState(false); // State for dialog visibility
-  const [dialogMessage, setDialogMessage] = useState(''); // State for dialog message
-  const [isSuccess, setIsSuccess] = useState(true); // State for success or error status
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(true);
 
   const allDishes = [
     ...menuData.breakfast,
@@ -35,7 +39,8 @@ const Detailpage = () => {
     ...menuData.exclusiveOffer,
   ];
 
-  const product = allDishes.find(item => item.id === id);
+  // Find product using numeric ID
+  const product = allDishes.find(item => item.id === numericId);
   const cart = useSelector(state => state.allCart.cart);
   const cartItem = cart.find(item => item.id === product?.id);
 
@@ -49,16 +54,14 @@ const Detailpage = () => {
     return <h2>Product not found</h2>;
   }
 
-  // Updated handleAddToCart function with a `showDialog` flag
   const handleAddToCart = (item, quantity, showDialog = true) => {
-    const itemToAdd = item || product; // Use the passed item or default to main product
+    const itemToAdd = item || product;
 
     if (quantity === 0) {
-      // Show an error message if the quantity is 0
       if (showDialog) {
         setDialogMessage('Please add at least one item to the cart!');
-        setIsSuccess(false); // Error dialog
-        setIsDialogOpen(true); // Open dialog
+        setIsSuccess(false);
+        setIsDialogOpen(true);
       }
       return;
     }
@@ -69,18 +72,15 @@ const Detailpage = () => {
 
     dispatch(addToCart({ ...itemToAdd, price: discountedPrice, quantity }));
     setQuantityToAdd(0);
-
-    // Trigger pop animation
     setIsPopAnimating(true);
     setTimeout(() => {
       setIsPopAnimating(false);
-    }, 300); // Duration of the pop animation
+    }, 300);
 
-    // Show dialog only for the main product (when showDialog is true)
     if (showDialog) {
       setDialogMessage('Item added to cart successfully!');
-      setIsSuccess(true); // Success dialog
-      setIsDialogOpen(true); // Open dialog
+      setIsSuccess(true);
+      setIsDialogOpen(true);
     }
   };
 
@@ -88,7 +88,7 @@ const Detailpage = () => {
     if (quantityToAdd > 1) {
       setQuantityToAdd(prev => prev - 1);
     } else if (cartItem) {
-      setShake(true); // Trigger shake animation
+      setShake(true);
       setTimeout(() => setShake(false), 500);
     }
   };

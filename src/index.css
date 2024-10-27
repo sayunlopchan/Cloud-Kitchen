@@ -40,13 +40,6 @@ p {
   @apply bg-colorRed size-8 text-white rounded-full flex justify-center items-center;
 }
 
-/* .menu {
-  background-image: url("./assets/bg-texture/doodle bg.jpg");
-  background-repeat: repeat;
-  height: 100%;
-  width: 100%;
-} */
-
 /* CARD */
 
 .card-base {

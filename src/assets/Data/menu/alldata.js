@@ -1,8 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
 
 // Breakfast img imports
 import boiled_egg from '../../../assets/img/Breakfast/boiled-egg.png'
-// import grilled_buff_sandwich from '../../../assets/img/Breakfast/Grilled-buff-Sandwich.jpg'
 import grilled_chicken_sandwich from '../../../assets/img/Breakfast/grilled-chicken-sandwich.jpeg'
 import poached_egg_brown_bread from '../../../assets/img/Breakfast/Poached egg with brown bread.jpg'
 import sandwich from '../../../assets/img/Breakfast/sandwich.png'
@@ -14,12 +12,6 @@ import scrambled_egg_hash_potato from '../../../assets/img/Breakfast/scrumbled-e
 import boiled_egg_1 from '../../img/Breakfast/boil-egg-1.jpg'
 import boiled_egg_2 from '../../img/Breakfast/boil-egg-2.jpg'
 import boiled_egg_3 from '../../img/Breakfast/boil-egg-3.jpg'
-
-// Grilled Buff Sandwich
-// import Grilled_Buff_Sandwich_1 from '../../img/Breakfast/Grilled_Buff_Sandwich_1.jpg'
-// import Grilled_Buff_Sandwich_2 from '../../img/Breakfast/Grilled_Buff_Sandwich_2.jpg'
-// import Grilled_Buff_Sandwich_3 from '../../img/Breakfast/Grilled_Buff_Sandwich_3.jpg'
-
 
 
 
@@ -126,7 +118,7 @@ import biryani1 from '../../../assets/img/biryani.webp'
 // Breakfast Data
 const breakfast = [
   {
-    id: uuidv4(),
+    id: 1,
     title: "Boiled Egg",
     img: boiled_egg,
     imgArr: [boiled_egg_1, boiled_egg_2, boiled_egg_3,],
@@ -137,20 +129,9 @@ const breakfast = [
     likes: 95,
     category: "breakfast",
   },
-  // {
-  //   id: uuidv4(),
-  //   title: "Grilled Buff Sandwich",
-  //   img: grilled_buff_sandwich,
-  //   imgArr: [Grilled_Buff_Sandwich_1, Grilled_Buff_Sandwich_2, Grilled_Buff_Sandwich_3, grilled_buff_sandwich],
-  //   price: 210,
-  //   discountPercentage: null,
-  //   description: "Savor a juicy grilled chicken or buffalo sandwich, loaded with fresh veggies and served on toasted bread. This hearty sandwich is perfect for lunch or dinner, offering a delicious combination of flavors that will keep you coming back for more.",
-  //   rating: 4.6,
-  //   likes: 110,
-  //   category: "breakfast",
-  // },
+
   {
-    id: uuidv4(),
+    id: 2,
     title: "Grilled Chicken Sandwich",
     img: grilled_chicken_sandwich,
     imgArr: [grilled_chicken_sandwich],
@@ -162,19 +143,19 @@ const breakfast = [
     category: "breakfast",
   },
   {
-    id: uuidv4(),
+    id: 3,
     title: "Poached Egg with Brown Bread",
     img: poached_egg_brown_bread,
     imgArr: [poached_egg_brown_bread],
     price: 220,
-    discountPercentage: 10,
+    discountPercentage: null,
     description: "Enjoy a soft poached egg served on a slice of crunchy brown bread. This healthy breakfast option is packed with protein and flavor, making it a perfect choice to kickstart your morning and keep you energized throughout the day.",
     rating: 4.5,
     likes: 120,
     category: "breakfast",
   },
   {
-    id: uuidv4(),
+    id: 4,
     title: "Sandwich",
     img: sandwich,
     imgArr: [sandwich],
@@ -186,7 +167,7 @@ const breakfast = [
     category: "breakfast",
   },
   {
-    id: uuidv4(),
+    id: 5,
     title: "Scrambled Egg with Hash Potato",
     img: scrambled_egg_hash_potato,
     imgArr: [scrambled_egg_hash_potato],
@@ -203,7 +184,7 @@ const breakfast = [
 // Momo Data
 const momo = [
   {
-    id: uuidv4(),
+    id: 6,
     title: "Steam Momo (Chicken)",
     img: c_Steam_momo,
     imgArr: [c_Steam_momo],
@@ -215,19 +196,19 @@ const momo = [
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 7,
     title: "Steam Momo (Veg)",
     img: v_Steam_momo,
     imgArr: [v_Steam_momo],
     price: 110,
-    discountPercentage: 10,
+    discountPercentage: null,
     description: "Soft Steamed dumplings packed with the flavorful mixture of fresh vegetables. It is light & healthy and perfect for satisfying snack, served with a tangy dipping sauce to complement the delicious veggie filling.",
     rating: 4.4,
     likes: 130,
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 8,
     title: "Steam Momo (Buff)",
     img: b_Steam_momo,
     imgArr: [b_Steam_momo],
@@ -239,7 +220,7 @@ const momo = [
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 9,
     title: "Chilly momo (buff)",
     img: b_c_momo,
     imgArr: [b_c_momo],
@@ -251,7 +232,7 @@ const momo = [
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 10,
     title: "Chilly Momo (Chicken)",
     img: c_c_momo,
     imgArr: [c_c_momo],
@@ -263,7 +244,7 @@ const momo = [
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 11,
     title: "Chilly Momo (Veg)",
     img: v_c_momo,
     imgArr: [v_c_momo],
@@ -275,7 +256,7 @@ const momo = [
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 12,
     title: "Kothe Momo (Buff)",
     img: b_k_momo,
     imgArr: [b_k_momo],
@@ -287,7 +268,7 @@ const momo = [
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 13,
     title: "Kothe Momo (Chicken)",
     img: c_k_momo,
     imgArr: [c_k_momo],
@@ -303,7 +284,7 @@ const momo = [
 // Fried Rice Data
 const friedRice = [
   {
-    id: uuidv4(),
+    id: 14,
     title: "Chicken Fried Rice",
     img: c_firedRice,
     imgArr: [c_firedRice],
@@ -315,7 +296,7 @@ const friedRice = [
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 15,
     title: "Buff Fried Rice",
     img: b_firedRice,
     imgArr: [b_firedRice],
@@ -327,7 +308,7 @@ const friedRice = [
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 16,
     title: "Veg Fried Rice",
     img: v_firedRice,
     imgArr: [v_firedRice],
@@ -338,20 +319,8 @@ const friedRice = [
     likes: 180,
     category: "nepali nasta"
   },
-  // {
-  //   id: uuidv4(),
-  //   title: "Crunchy Fried Rice",
-  //   img: crunchy_firedRice,
-  //   imgArr: [crunchy_firedRice],
-  //   price: 155,
-  //   discountPercentage: null,
-  //   description: "Savor a bowl of savory fried rice mixed with eggs, fresh vegetables, and your choice of meat. This simple yet satisfying dish is perfect for a quick meal that's packed with flavor and can be enjoyed any time of the day..",
-  //   rating: 4.6,
-  //   likes: 220,
-  //   category: "nepali nasta"
-  // },
   {
-    id: uuidv4(),
+    id: 17,
     title: "Sukuti Fried Rice",
     img: s_firedRice,
     imgArr: [s_firedRice],
@@ -366,20 +335,8 @@ const friedRice = [
 // Chowmein Data
 
 const chowmein = [
-  // {
-  //   id: uuidv4(),
-  //   title: "Chowmein (veg)",
-  //   img: veg_chowmein,
-  //   imgArr: [veg_chowmein],
-  //   price: 100,
-  //   discountPercentage: null,
-  //   description: "A classic vegetable stir-fried chowmein with fresh veggies and flavorful spices.",
-  //   rating: 4.5,
-  //   likes: 120,
-  //   category: "nepali nasta"
-  // },
   {
-    id: uuidv4(),
+    id: 18,
     title: "Chowmein (chicken)",
     img: c_chowmein,
     imgArr: [c_chowmein],
@@ -391,7 +348,7 @@ const chowmein = [
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 19,
     title: "Sukuti Chowmein",
     img: b_chowmein,
     imgArr: [b_chowmein],
@@ -403,7 +360,7 @@ const chowmein = [
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 20,
     title: "Sukuwa Chowmein",
     img: s_chowmein,
     imgArr: [s_chowmein],
@@ -415,7 +372,7 @@ const chowmein = [
     category: "nepali nasta"
   },
   {
-    id: uuidv4(),
+    id: 21,
     title: "Veg With Egg Chowmein",
     img: egg_chowmein,
     imgArr: [egg_chowmein],
@@ -431,7 +388,7 @@ const chowmein = [
 // Kima noodle data
 const keemaNoodle = [
   {
-    id: uuidv4(),
+    id: 22,
     title: "Keema Noodle (chicken keema)",
     img: c_keemaNoodles,
     imgArr: [c_keemaNoodles],
@@ -443,7 +400,7 @@ const keemaNoodle = [
     category: "keema noodle"
   },
   {
-    id: uuidv4(),
+    id: 23,
     title: "Keema Noodle (buff keema)",
     img: b_keemaNoodle,
     imgArr: [b_keemaNoodle],
@@ -454,18 +411,7 @@ const keemaNoodle = [
     likes: 120,
     category: "keema noodle"
   },
-  //  {
-  //     id: uuidv4(),
-  //     title: "Keema Noodle (veg)",
-  //     img: v_keemaNoodles,
-  //     imgArr: [v_keemaNoodles],
-  //     price: 100,
-  //     discountPercentage: null,
-  //     description: "A classic vegetable stir-fried noodle with fresh veggies and flavorful spices.",
-  //     rating: 4.5,
-  //     likes: 120,
-  //     category: "keema noodle"
-  //   }, 
+
 
 ]
 
@@ -474,7 +420,7 @@ const keemaNoodle = [
 // cheeseball data
 const cheeseball = [
   {
-    id: uuidv4(),
+    id: 24,
     title: "Safali with Cheeseball (4 pic)",
     img: c_cheeseball,
     imgArr: [c_cheeseball],
@@ -486,7 +432,7 @@ const cheeseball = [
     category: "keema noodle"
   },
   {
-    id: uuidv4(),
+    id: 25,
     title: "Chicken Cheeseball",
     img: cheeseball2,
     imgArr: [cheeseball2],
@@ -503,7 +449,7 @@ const cheeseball = [
 // Snack
 const snack = [
   {
-    id: uuidv4(),
+    id: 26,
     title: "Chicken Burger with Fries",
     img: chicken_burger_with_fries,
     imgArr: [chicken_burger_with_fries],
@@ -515,7 +461,7 @@ const snack = [
     category: "snacks"
   },
   {
-    id: uuidv4(),
+    id: 27,
     title: "Buff Burger with Fries",
     img: burger_with_fries,
     imgArr: [burger_with_fries],
@@ -527,7 +473,7 @@ const snack = [
     category: "snacks"
   },
   {
-    id: uuidv4(),
+    id: 28,
     title: "Double Patty Burger With Cocktail (Big Boy Burger)",
     img: double_patty_burger,
     imgArr: [double_patty_burger],
@@ -539,7 +485,7 @@ const snack = [
     category: "snacks"
   },
   {
-    id: uuidv4(),
+    id: 29,
     title: "Chicken Manchurian",
     img: chicken_manchurain,
     imgArr: [chicken_manchurain],
@@ -551,7 +497,7 @@ const snack = [
     category: "snacks"
   },
   {
-    id: uuidv4(),
+    id: 30,
     title: "Chicken Tikka",
     img: chicken_tikka,
     imgArr: [chicken_tikka],
@@ -563,7 +509,7 @@ const snack = [
     category: "snacks"
   },
   {
-    id: uuidv4(),
+    id: 31,
     title: "Buff Chilly",
     img: buff_chilly,
     imgArr: [buff_chilly],
@@ -574,20 +520,9 @@ const snack = [
     likes: 120,
     category: "snacks"
   },
-  // {
-  //   id: uuidv4(),
-  //   title: "Paneer Chilly",
-  //   img: paneer_chilly,
-  //   imgArr: [paneer_chilly],
-  //   price: 100,
-  //   discountPercentage: null,
-  //   description: "A vegetarian delight of paneer cubes stir-fried with chilies, offering a spicy crunch.",
-  //   rating: 4.5,
-  //   likes: 120,
-  //   category: "snacks"
-  // },
+
   {
-    id: uuidv4(),
+    id: 32,
     title: "Spring Roll (Non-Veg)",
     img: veg_spring_roll,
     imgArr: [veg_spring_roll],
@@ -599,7 +534,7 @@ const snack = [
     category: "snacks"
   },
   {
-    id: uuidv4(),
+    id: 33,
     title: "Spring Roll (Veg)",
     img: veg_spring_roll,
     imgArr: [veg_spring_roll],
@@ -611,7 +546,7 @@ const snack = [
     category: "snacks"
   },
   {
-    id: uuidv4(),
+    id: 34,
     title: "Veg Tempura",
     img: veg_tempura,
     imgArr: [veg_tempura],
@@ -623,7 +558,7 @@ const snack = [
     category: "snacks"
   },
   {
-    id: uuidv4(),
+    id: 35,
     title: "Butter Chicken",
     img: butter_chicken,
     imgArr: [butter_chicken],
@@ -635,7 +570,7 @@ const snack = [
     category: "snacks"
   },
   {
-    id: uuidv4(),
+    id: 36,
     title: "Pancake with Honey",
     img: pancake_with_honey,
     imgArr: [pancake_with_honey],
@@ -652,7 +587,7 @@ const snack = [
 // Crispy 
 const crispy = [
   {
-    id: uuidv4(),
+    id: 37,
     title: "Chicken Leg Piece (5 pic)",
     img: c_lolipop,
     imgArr: [c_lolipop],
@@ -664,7 +599,7 @@ const crispy = [
     category: "crispy"
   },
   {
-    id: uuidv4(),
+    id: 38,
     title: "Chicken Popcorn",
     img: c_popcorn,
     imgArr: [c_popcorn],
@@ -676,7 +611,7 @@ const crispy = [
     category: "crispy"
   },
   {
-    id: uuidv4(),
+    id: 39,
     title: "Crispy Chicken",
     img: crispy_c,
     imgArr: [crispy_c],
@@ -688,7 +623,7 @@ const crispy = [
     category: "crispy"
   },
   {
-    id: uuidv4(),
+    id: 40,
     title: "Korean Crispy Wings",
     img: k_crispy_wings,
     imgArr: [k_crispy_wings],
@@ -703,7 +638,7 @@ const crispy = [
 
 const salad = [
   {
-    id: uuidv4(),
+    id: 41,
     title: "Caesar Salad",
     img: ceaser_salad,
     imgArr: [ceaser_salad],
@@ -715,7 +650,7 @@ const salad = [
     category: "salad"
   },
   {
-    id: uuidv4(),
+    id: 42,
     title: "Russian Salad",
     img: russian_salad,
     imgArr: [russian_salad],
@@ -727,7 +662,7 @@ const salad = [
     category: "salad"
   },
   {
-    id: uuidv4(),
+    id: 43,
     title: "Chicken HAwaiian Salad",
     img: russian_salad,
     imgArr: [russian_salad],
@@ -762,7 +697,7 @@ import Buff_Choila from '../../img/others/Buff chhoila.jpg'
 
 const other = [
   {
-    id: uuidv4(),
+    id: 44,
     title: "Chicken Pangra",
     img: chicken_pangra,
     imgArr: [chicken_pangra],
@@ -774,7 +709,7 @@ const other = [
     category: "others"
   },
   {
-    id: uuidv4(),
+    id: 45,
     title: "Chicken Kung Pao",
     img: chicken_kung_pao,
     imgArr: [chicken_kung_pao],
@@ -786,7 +721,7 @@ const other = [
     category: "others"
   },
   {
-    id: uuidv4(),
+    id: 46,
     title: "Chicken Sadhako",
     img: Chicken_Sadhako,
     imgArr: [Chicken_Sadhako],
@@ -798,7 +733,7 @@ const other = [
     category: "others"
   },
   {
-    id: uuidv4(),
+    id: 47,
     title: "Boiled Chicken",
     img: boiled_chicken,
     imgArr: [boiled_chicken],
@@ -810,7 +745,7 @@ const other = [
     category: "others"
   },
   {
-    id: uuidv4(),
+    id: 48,
     title: "Piro aalu",
     img: Piro_aalu,
     imgArr: [Piro_aalu],
@@ -822,7 +757,7 @@ const other = [
     category: "others"
   },
   {
-    id: uuidv4(),
+    id: 49,
     title: "Aalu Sadheko",
     img: aalu_Sadhako,
     imgArr: [aalu_Sadhako],
@@ -834,7 +769,7 @@ const other = [
     category: "others"
   },
   {
-    id: uuidv4(),
+    id: 50,
     title: "Jeera Aalu",
     img: Jeera_Aalu,
     imgArr: [Jeera_Aalu],
@@ -846,7 +781,7 @@ const other = [
     category: "others"
   },
   {
-    id: uuidv4(),
+    id: 51,
     title: "Chicken Choila",
     img: Chicken_Choila,
     imgArr: [biryani1],
@@ -858,7 +793,7 @@ const other = [
     category: "others"
   },
   {
-    id: uuidv4(),
+    id: 52,
     title: "Buff Choila",
     img: Buff_Choila,
     imgArr: [Buff_Choila],
@@ -870,12 +805,12 @@ const other = [
     category: "others"
   },
   {
-    id: uuidv4(),
+    id: 53,
     title: "Biryani",
     img: biryani1,
     imgArr: [biryani1],
     price: 220,
-    discountPercentage: 10,
+    discountPercentage: null,
     description: "A fragrant rice dish cooked with tender meat or vegetables and a blend of spices. This aromatic biryani is rich in flavor and texture, making it a beloved meal for those who enjoy hearty, traditional cuisine.",
     rating: 4.6,
     likes: 160,
@@ -898,7 +833,7 @@ const other = [
 
 const combo = [
   {
-    id: uuidv4(),
+    id: 54,
     title: "Cajun Chicken and Crispy Bacon",
     img: combo_1,
     imgArr: [combo_1],
@@ -910,7 +845,7 @@ const combo = [
     category: "combo"
   },
   {
-    id: uuidv4(),
+    id: 55,
     title: "Chicken Wrap",
     img: combo_2,
     imgArr: [combo_2],
@@ -922,7 +857,7 @@ const combo = [
     category: "combo"
   },
   {
-    id: uuidv4(),
+    id: 56,
     title: "Buffalo Chicken Wrap",
     img: combo_3,
     imgArr: [combo_3],
@@ -934,7 +869,7 @@ const combo = [
     category: "combo"
   },
   {
-    id: uuidv4(),
+    id: 67,
     title: "Crispy Sesame Chicken and Fried Rice",
     img: combo_4,
     imgArr: [combo_4],
@@ -946,7 +881,7 @@ const combo = [
     category: "combo"
   },
   {
-    id: uuidv4(),
+    id: 58,
     title: "Hawaiian BBQ Chicken Wraps",
     img: combo_5,
     imgArr: [combo_5],
@@ -958,7 +893,7 @@ const combo = [
     category: "combo"
   },
   {
-    id: uuidv4(),
+    id: 59,
     title: "Spicy Veggie Wrap",
     img: combo_6,
     imgArr: [combo_6],
@@ -970,7 +905,7 @@ const combo = [
     category: "combo"
   },
   {
-    id: uuidv4(),
+    id: 60,
     title: "Thai Peanut Chicken Wraps",
     img: combo_7,
     imgArr: [combo_7],
@@ -988,9 +923,10 @@ const combo = [
 
 
 
+
 const offerData = [
   {
-    id: uuidv4(),
+    id: 61,
     title: "Double patty burger with coke and onions ",
     img: offer_1,
     imgArr: [offer_1],
@@ -1002,7 +938,7 @@ const offerData = [
     category: "combo"
   },
   {
-    id: uuidv4(),
+    id: 62,
     title: "Sesame chicken with veg fried rice and momo ",
     img: offer_2,
     imgArr: [offer_2],
@@ -1014,7 +950,7 @@ const offerData = [
     category: "combo"
   },
   {
-    id: uuidv4(),
+    id: 63,
     title: "Chicken wrap with fried onions and chilly chicken  ",
     img: offer_3,
     imgArr: [offer_3],
@@ -1026,6 +962,7 @@ const offerData = [
     category: "combo"
   },
 ]
+
 
 
 
