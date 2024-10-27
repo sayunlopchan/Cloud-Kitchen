@@ -21,6 +21,7 @@ const Payment = lazy(() => import("./home/page/Payment"));
 const MenuPage = lazy(() => import("./home/page/MenuPage"));
 const FillMyFormTO = lazy(() => import("./home/page/FillMyFormTO"));
 const Detailpage = lazy(() => import("./home/page/Detailpage.jsx"));
+const CartPage = lazy(() => import("./home/page/CartPage.jsx"));
 
 // Informational Pages
 const PageNotFound = lazy(() => import("./home/page/PageNotFound"));
@@ -30,7 +31,6 @@ import ProtectedRoute from "./features/Auth/ProtectedRoute";
 
 // Route Paths
 import * as paths from "./Routes/Path.js";
-const CartPage = lazy(() => import("./home/page/CartPage.jsx"));
 const Aboutus = lazy(() => import("./home/page/infomaticPage/Aboutus.jsx"));
 const ContactPage = lazy(() => import("./home/page/infomaticPage/ContactPage.jsx"));
 const Faq = lazy(() => import("./home/page/infomaticPage/Faq.jsx"));
