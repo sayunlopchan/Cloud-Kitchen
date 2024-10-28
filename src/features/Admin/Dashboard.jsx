@@ -130,7 +130,7 @@ const Dashboard = () => {
   const totalPages = Math.ceil(orders.length / ordersPerPage);
 
   return (
-    <div className="p-10">
+    <div className="px-2 lg:p-10">
       <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
 
       {/* Notification */}
@@ -145,7 +145,7 @@ const Dashboard = () => {
 
       <div className="overflow-x-auto">
         <table className="w-full table-auto border border-gray-300">
-          <thead className="max-md:text-sm">
+          <thead className="text-sm md:text-base">
             <tr className="bg-gray-100 text-left">
               <th className="py-2 px-4 border">SN.</th>
               <th className="py-2 px-4 border">Order ID</th>
@@ -167,23 +167,23 @@ const Dashboard = () => {
                 >
                   {formatOrderId(index + indexOfFirstOrder)}
                 </td>
-                <td className="py-2 px-4 border lg:w-[160px]  cursor-pointer text-blue-500 underline" onClick={() => setSelectedOrderUserInfo({ ...order.user, orderId: order.orderId })}>
+                <td className={`py-2 px-4 border lg:w-[160px]  cursor-pointer text-blue-500 underline ${getStatusBgColor(order.status)}`} onClick={() => setSelectedOrderUserInfo({ ...order.user, orderId: order.orderId })}>
                   {/* order id here */}
                   {order.orderId}
                 </td>
-                <td className="py-2 px-4 border lg:w-[160px]">
+                <td className={`py-2 px-4 border lg:w-[160px] ${getStatusBgColor(order.status)}`}>
                   {order.items.map((item) => item.title).join(', ')}
                 </td>
                 <td
-                  className="py-2 px-4 border cursor-pointer text-blue-500 underline"
+                  className={`py-2 px-4 border cursor-pointer text-blue-500 underline ${getStatusBgColor(order.status)}`}
                   onClick={() => handleQuantityClick(order.items)} // Trigger item modal on click
                 >
                   {order.items.reduce((total, item) => total + item.quantity, 0)}
                 </td>
-                <td className="py-2 px-4 border">Rs.{order.totalPrice}</td>
-                <td className="py-2 px-4 border">{order.discount || '0%'}</td>
-                <td className="py-2 px-4 border">Rs.{order.deliveryCharge || '0'}</td>
-                <td className="py-2 px-4 border">{order.paymentMethod}</td>
+                <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>Rs.{order.totalPrice}</td>
+                <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>{order.discount || '0%'}</td>
+                <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>Rs.{order.deliveryCharge || '0'}</td>
+                <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>{order.paymentMethod}</td>
                 <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>
                   {order.status || 'Not Set'}
                 </td>
@@ -275,7 +275,7 @@ const Dashboard = () => {
 
       {/* Modal to display selected item details */}
       {selectedItem && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70 z-50 transition-opacity duration-300 ease-in-out ">
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70 z-[1000] transition-opacity duration-300 ease-in-out ">
           <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-1/3 lg:w-1/4 p-6 animate-fadeIn ">
             <h3 className="text-xl font-bold mb-4 border-b pb-2 border-gray-200 text-center bg-gray-100 rounded">
               Food Detail
@@ -307,8 +307,9 @@ const Dashboard = () => {
 
       {/* Modal for editing status */}
       {statusEditOrder && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white rounded p-5 shadow-md">
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
+
+          <div className="bg-white rounded p-5 m-3 shadow-md w-full md:w-[400px] 2xl:w-[600px]">
             <h3 className="text-lg font-bold mb-4">Edit Order Status</h3>
             <form onSubmit={submitStatusUpdate}>
               <select
@@ -323,12 +324,12 @@ const Dashboard = () => {
                 <option value="Order Cancel">Order Cancel</option>
               </select>
               <div className="flex justify-end">
-                <button type="submit" className="bg-blue-500 text-white py-1 px-3 rounded mr-2">
+                <button type="submit" className="bg-black text-white py-1 px-3 rounded mr-2">
                   Update
                 </button>
                 <button
                   type="button"
-                  className="bg-gray-300 py-1 px-3 rounded"
+                  className="bg-colorRed text-white py-1 px-3 rounded"
                   onClick={() => setStatusEditOrder(null)}
                 >
                   Cancel
@@ -341,7 +342,7 @@ const Dashboard = () => {
 
       {/* User Info Modal */}
       {selectedOrderUserInfo && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[1000]">
           <div className="bg-white p-5 rounded">
             <h3 className="text-xl font-bold mb-4">User Info</h3>
 

@@ -21,7 +21,6 @@ const HomePage = () => {
       <PopularSection />
       <MostSold />
       <Workflow />
-
     </div>
   );
 };

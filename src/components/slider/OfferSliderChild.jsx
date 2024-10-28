@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 import active_cardBase from "../../assets/icon/childOffer_base.svg";
 import notactive_cardBase from "../../assets/icon/active.svg";
 
-import TextLimit from "../TextLimit.jsx";
 import { useNavigate } from "react-router-dom";
 import { DETAIL_PAGE } from "../../Routes/Path.js";
 

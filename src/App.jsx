@@ -32,6 +32,9 @@ import ProtectedRoute from "./features/Auth/ProtectedRoute";
 
 // Route Paths
 import * as paths from "./Routes/Path.js";
+import Detail_Skeleton from "./components/Skeleton/Detail_Skeleton.jsx";
+import Home_skeleton from "./components/Skeleton/Home_skeleton.jsx";
+import Menu_Skeleton from "./components/Skeleton/Menu_Skeleton.jsx";
 const Aboutus = lazy(() => import("./home/page/infomaticPage/Aboutus.jsx"));
 const ContactPage = lazy(() => import("./home/page/infomaticPage/ContactPage.jsx"));
 const Faq = lazy(() => import("./home/page/infomaticPage/Faq.jsx"));
@@ -47,7 +50,7 @@ const App = () => {
         {
           index: true,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Home_skeleton />}>
               <HomePage />
             </Suspense>
           ),
@@ -105,7 +108,7 @@ const App = () => {
         {
           path: paths.DETAIL_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Detail_Skeleton />}>
               <Detailpage />
             </Suspense>
           ), // DYNAMIC ROUTE
@@ -145,7 +148,7 @@ const App = () => {
         {
           path: paths.MENU_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Menu_Skeleton />}>
               <MenuPage />
             </Suspense>
           ),

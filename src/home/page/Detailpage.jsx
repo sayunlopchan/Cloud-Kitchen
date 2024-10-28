@@ -112,7 +112,7 @@ const Detailpage = () => {
             <img
               src={mainImage || product.img}
               alt={product.title}
-              className='w-full h-[180px] sm:h-[320px] lg:h-[70%] rounded-lg object-cover  md:object-contain'
+              className='w-full h-[180px] sm:h-[320px] lg:h-[70%] rounded-lg object-contain'
             />
             <div className="flex gap-x-4 py-2 justify-center overflow-x-scroll">
               {product.imgArr.map((img, index) => (
@@ -143,7 +143,7 @@ const Detailpage = () => {
 
 
           {/* Product Details */}
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 lg:pr-10">
             <h2 className="text-2xl lg:text-3xl font-bold ">{product.title}</h2>
 
             <div className="mb-1">
@@ -215,8 +215,8 @@ const Detailpage = () => {
           {/* Product Details */}
         </div>
 
-        <div className="px-4 lg:mx-auto py-10 w-full lg:w-[85%] space-y-20">
-          <h2 className='font-bold text-lg md:text-2xl lg:text-3xl '> Suggestion with {product.title} </h2>
+        <div className="py-4 mt-5 space-y-10">
+          <h2 className='font-bold text-center text-lg md:text-2xl lg:text-3xl '> Suggestion with {product.title} </h2>
 
           {/* Passing handleAddToCart from Detailpage to SuggestionCard */}
           <SuggestionCard handleAddToCart={handleAddToCart} />
