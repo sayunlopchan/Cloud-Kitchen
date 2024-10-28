@@ -8,19 +8,21 @@ import MostSold from '../HomeFeatures/MostSold';
 import PopularSection from '../HomeFeatures/PopularSection';
 
 import Workflow from '../HomeFeatures/Workflow';
+import Detail_Skeleton from '../../components/Skeleton/Detail_Skeleton';
 
 
 const HomePage = () => {
 
   return (
     <div>
-      <HomeBanner />
+      {/* <HomeBanner />
       <PopupAd />
       <TakeoutBanner />
       <ExclusiveOfferBanner />
       <PopularSection />
       <MostSold />
-      <Workflow />
+      <Workflow /> */}
+      <Detail_Skeleton />
     </div>
   );
 };
