@@ -10,6 +10,7 @@ import notactive_cardBase from "../../assets/icon/active.svg";
 
 import { useNavigate } from "react-router-dom";
 import { DETAIL_PAGE } from "../../Routes/Path.js";
+import TextLimit from "../TextLimit.jsx";
 
 
 
@@ -46,7 +47,7 @@ const OfferSliderChild = () => {
           <div className={`absolute -top-14 z-10 transition-all duration-500 bg-red-500 rounded-xl pt-1 text-center text-white w-full h-10 ${card.img === activeImage ? "opacity-100 translate-y-0 " : "opacity-0 translate-y-10"}`}>
 
             <h2 className={`text-xs transition-all duration-700 px-1 ${card.img === activeImage ? "opacity-100 translate-y-0 " : "opacity-0 translate-y-10"}`}>
-              {card.name}
+              <TextLimit text={card.name} limit={25} />
             </h2>
           </div>
 

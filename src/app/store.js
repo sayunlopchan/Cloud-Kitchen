@@ -8,7 +8,6 @@ export const store = configureStore({
     allCart: cartReducer,
     form: formReducer,
 
-
     offer: offerReducer,
   },
 

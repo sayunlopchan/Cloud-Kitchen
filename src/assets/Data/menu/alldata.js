@@ -115,6 +115,23 @@ import combo_7 from '../../img/combo/Thai-Peanut-Chicken-Wraps.jpg';
 import biryani1 from '../../../assets/img/biryani.webp'
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Breakfast Data
 const breakfast = [
   {
@@ -919,7 +936,6 @@ const combo = [
 ];
 
 
-
 const offerData = [
   {
     id: 61,
@@ -959,6 +975,11 @@ const offerData = [
   },
 ]
 
+const OfferSlideData = [
+  offerData[0],
+  offerData[1],
+  offerData[2],
+]
 
 
 
@@ -987,11 +1008,6 @@ const exclusiveOffer = [
   breakfast[2]
 ];
 
-const OfferSlideData = [
-  offerData[0],
-  offerData[1],
-  offerData[2],
-]
 
 
 // Exporting all data together

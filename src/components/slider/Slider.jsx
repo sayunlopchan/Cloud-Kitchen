@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CgArrowLongLeft, CgArrowLongRight } from "react-icons/cg";
 import { useDispatch } from "react-redux";
 import { setActiveImage } from "../../store/offerSlice";

@@ -1,4 +1,4 @@
-import { FaHeart } from "react-icons/fa6";
+
 import { FaStar } from "react-icons/fa6";
 import { CiSquarePlus } from "react-icons/ci";
 import { useState } from "react";
@@ -71,6 +71,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
          `;
     }
   };
+
   return (
     <div onClick={onClick} className='card-base bg-white transition-all duration-300  rounded-lg p-2 shadow-md group'>
 
