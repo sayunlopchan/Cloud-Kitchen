@@ -1,17 +1,23 @@
-// src/App.js
+// React and Router Imports
 import { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+// Layout and Routes
 import RootLayout from "./RootLayout/RootLayout";
+import ProtectedRoute from "./features/Auth/ProtectedRoute";
+import * as paths from "./Routes/Path.js";
 
-// Import LoadingSkeleton component
-import LoadingSkeleton from "./components/Skeleton/LoadingSkeleton.jsx";
+// Skeleton and Loading Components
+import Detail_Skeleton from "./components/Skeleton/Detail_Skeleton.jsx";
+import Menu_Skeleton from "./components/Skeleton/Menu_Skeleton.jsx";
+import Loading from "./components/Loading/Loading.jsx";
 
-// Lazy load Admin Components
+// Admin Features (Lazy Loaded)
 const Login = lazy(() => import("./features/Auth/Login"));
 const Signup = lazy(() => import("./features/Auth/Signup"));
 const Dashboard = lazy(() => import("./features/Admin/Dashboard"));
 
-// Lazy load User Components
+// User Pages (Lazy Loaded)
 const HomePage = lazy(() => import("./home/page/HomePage"));
 const MostSoldPage = lazy(() => import("./home/page/MostSoldPage"));
 const MostPopularPage = lazy(() => import("./home/page/MostPopularPage"));
@@ -23,23 +29,13 @@ const MenuPage = lazy(() => import("./home/page/MenuPage"));
 const FillMyFormTO = lazy(() => import("./home/page/FillMyFormTO"));
 const Detailpage = lazy(() => import("./home/page/Detailpage.jsx"));
 
-
-// Informational Pages
-const PageNotFound = lazy(() => import("./home/page/PageNotFound"));
-
-// Protected Route
-import ProtectedRoute from "./features/Auth/ProtectedRoute";
-
-// Route Paths
-import * as paths from "./Routes/Path.js";
-import Detail_Skeleton from "./components/Skeleton/Detail_Skeleton.jsx";
-import Home_skeleton from "./components/Skeleton/Home_skeleton.jsx";
-import Menu_Skeleton from "./components/Skeleton/Menu_Skeleton.jsx";
+// Informational Pages (Lazy Loaded)
 const Aboutus = lazy(() => import("./home/page/infomaticPage/Aboutus.jsx"));
 const ContactPage = lazy(() => import("./home/page/infomaticPage/ContactPage.jsx"));
 const Faq = lazy(() => import("./home/page/infomaticPage/Faq.jsx"));
 const PrivacyandPolicy = lazy(() => import("./home/page/infomaticPage/PrivacyandPolicy.jsx"));
 const TermsandConditions = lazy(() => import("./home/page/infomaticPage/TermsandConditions.jsx"));
+const PageNotFound = lazy(() => import("./home/page/PageNotFound"));
 
 const App = () => {
   const router = createBrowserRouter([
@@ -50,7 +46,7 @@ const App = () => {
         {
           index: true,
           element: (
-            <Suspense fallback={<Home_skeleton />}>
+            <Suspense fallback={<Loading />}>
               <HomePage />
             </Suspense>
           ),
@@ -58,7 +54,7 @@ const App = () => {
         {
           path: paths.LOGIN_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <Login />
             </Suspense>
           ),
@@ -66,7 +62,7 @@ const App = () => {
         {
           path: paths.SIGNUP_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <Signup />
             </Suspense>
           ),
@@ -75,7 +71,7 @@ const App = () => {
           path: paths.DASHBOARD_PAGE,
           element: (
             <ProtectedRoute>
-              <Suspense fallback={<LoadingSkeleton />}>
+              <Suspense fallback={<Loading />}>
                 <Dashboard />
               </Suspense>
             </ProtectedRoute>
@@ -84,7 +80,7 @@ const App = () => {
         {
           path: paths.CART_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <CartsPage />
             </Suspense>
           ),
@@ -92,7 +88,7 @@ const App = () => {
         {
           path: paths.MOST_POPULAR_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <MostPopularPage />
             </Suspense>
           ),
@@ -100,7 +96,7 @@ const App = () => {
         {
           path: paths.MOST_SOLD_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <MostSoldPage />
             </Suspense>
           ),
@@ -116,7 +112,7 @@ const App = () => {
         {
           path: paths.TAKEOUT_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <TakeoutPage />
             </Suspense>
           ),
@@ -124,7 +120,7 @@ const App = () => {
         {
           path: paths.PAYMENT_FORM_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <FillMyForm />
             </Suspense>
           ),
@@ -132,7 +128,7 @@ const App = () => {
         {
           path: paths.TAKEOUT_FORM_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <FillMyFormTO />
             </Suspense>
           ),
@@ -140,7 +136,7 @@ const App = () => {
         {
           path: paths.PAYMENT_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <Payment />
             </Suspense>
           ),
@@ -157,7 +153,7 @@ const App = () => {
         {
           path: paths.ABOUT_US_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <Aboutus />
             </Suspense>
           ),
@@ -165,7 +161,7 @@ const App = () => {
         {
           path: paths.CONTACT_US_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <ContactPage />
             </Suspense>
           ),
@@ -173,7 +169,7 @@ const App = () => {
         {
           path: paths.FAQ_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <Faq />
             </Suspense>
           ),
@@ -181,7 +177,7 @@ const App = () => {
         {
           path: paths.PRIVACY_POLICY_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <PrivacyandPolicy />
             </Suspense>
           ),
@@ -189,7 +185,7 @@ const App = () => {
         {
           path: paths.TERMS_AND_CONDITIONS_PAGE,
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <TermsandConditions />
             </Suspense>
           ),
@@ -197,7 +193,7 @@ const App = () => {
         {
           path: "*",
           element: (
-            <Suspense fallback={<LoadingSkeleton />}>
+            <Suspense fallback={<Loading />}>
               <PageNotFound />
             </Suspense>
           )

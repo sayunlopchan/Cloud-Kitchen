@@ -61,7 +61,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
         return `
         left-10 size-6
         sm:left-20 sm:size-7
-        lg:left-[80px] lg:size-7 
+        lg:left-[20px] lg:size-7 
         `;
       default:
         return `

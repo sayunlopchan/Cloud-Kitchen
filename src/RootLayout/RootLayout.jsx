@@ -30,7 +30,7 @@ const RootLayout = () => {
 
 
   return (
-    <>
+    <div className="flex w-full h-full justify-center items-center">
       {loading ? (
         <div className="w-screen h-screen flex justify-center items-center">
           <Lottie animationData={animation} loop={true} className='size-[100px] md:size-[200px]' />
@@ -46,7 +46,7 @@ const RootLayout = () => {
           <BottomHeader />
         </div>
       )}
-    </>
+    </div>
   )
 }
 

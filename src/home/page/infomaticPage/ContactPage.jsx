@@ -65,12 +65,12 @@ const ContactPage = () => {
         <h3 className="text-lg font-semibold mt-4">Operating Hours</h3>
         <p>Saturday to Sunday: 24/7</p>
 
-        <p className="mt-4">For any inquiries, feel free to contact us via phone or email. We’re here to assist you with your orders and any questions you may have!</p>
+        <p className="mt-4">For any inquiries, feel free to contact us via phone or email. We&apos;re here to assist you with your orders and any questions you may have!</p>
       </section>
 
       {/* Form Section */}
       <section className='lg:col-span-7 p-5 bg-white rounded-lg w-full md:w-2/3 lg:w-[560px] lg:h-[600px] lg:my-10'>
-        <h2 className="text-xl font-bold mb-4">Contact Us</h2>
+        <h2 className="text-xl font-bold mb-4">Send Feedback</h2>
 
         <Formik
           initialValues={initialValues}
@@ -80,7 +80,7 @@ const ContactPage = () => {
           {({ isSubmitting }) => (
             <Form>
               {/* First Name and Last Name */}
-              <div className='flex justify-between gap-2'>
+              <div className="flex justify-between gap-2">
                 <div className="mb-4 w-full">
                   <label htmlFor="firstname" className="block mb-1">First Name</label>
                   <Field
@@ -144,13 +144,15 @@ const ContactPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-colorRed text-white py-2 px-4 rounded hover:bg-red-600 transition duration-200"
+                className={`bg-colorRed text-white py-2 px-4 rounded transition duration-200 ${isSubmitting ? 'cursor-not-allowed bg-gray-500' : 'hover:bg-red-600'
+                  }`}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </Form>
           )}
         </Formik>
+
 
         {/* Dialog for success/error message */}
         <Contact_Dialog

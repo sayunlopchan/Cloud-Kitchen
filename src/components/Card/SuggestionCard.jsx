@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import menuData from '../assets/Data/menu/alldata';
-import Card from './Card/Card';
+import menuData from '../../assets/Data/menu/alldata';
+import Card from './Card';
 
-import { DETAIL_PAGE } from "../../src/Routes/Path";
+import { DETAIL_PAGE } from "../../Routes/Path";
 import { useNavigate } from 'react-router-dom';
 
 

@@ -34,7 +34,7 @@ const Dialog = ({ isOpen, onClose, message, isSuccess }) => {
         <div className="w-full text-center p-3 text-gray-600">
           {isSuccess ? (
             <span>
-              Success! Your message has been sent successfully.<br />
+              Success! Your order has been sent successfully.<br />
               Thank you for contacting us!
             </span>
           ) : (

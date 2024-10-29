@@ -5,7 +5,7 @@ import { GoStarFill } from "react-icons/go";
 import { addToCart } from '../../store/cartSlice';
 import menuData from '../../assets/Data/menu/alldata';
 import { useEffect, useState } from 'react';
-import SuggestionCard from '../../components/SuggestionCard';
+import SuggestionCard from '../../components/Card/SuggestionCard';
 import Dialog from '../../components/Dialog/Cart_Dialog';
 
 const Detailpage = () => {

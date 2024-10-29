@@ -920,10 +920,6 @@ const combo = [
 
 
 
-
-
-
-
 const offerData = [
   {
     id: 61,
