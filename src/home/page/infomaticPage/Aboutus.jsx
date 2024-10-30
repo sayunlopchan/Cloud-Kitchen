@@ -23,10 +23,6 @@ import Stat from "../../../components/Stat";
 import AnimatedComponent from '../../../components/AnimatedComponent/AnimatedComponent'
 
 
-// ANIMATION
-import Lottie from 'lottie-react'
-import animation from '../../../assets/animation/place-place-mark.json'
-
 
 
 const Aboutus = () => {
@@ -196,9 +192,9 @@ const Aboutus = () => {
               activeBtn === 1 &&
               <div className='w-full p-2 rounded-md space-y-3'>
                 <img src={story_1} alt="story 1" className='lg:h-[400px] w-full object-cover rounded-md' />
-                <h2 className='text-2xl font-bold'>TITLE 1 HERE</h2>
+                <h2 className='text-2xl font-bold'>Comming Soon!</h2>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!
+                  Comming Soon!
                 </p>
               </div>
 
@@ -207,9 +203,8 @@ const Aboutus = () => {
               activeBtn === 2 &&
               <div className='w-full p-2 rounded-md space-y-3'>
                 <img src={story_2} alt="story 1" className='lg:h-[400px] w-full object-cover rounded-md' />
-                <h2 className='text-2xl font-bold'>TITLE 2 HERE</h2>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!
+                <h2 className='text-2xl font-bold'>Comming Soon!</h2>
+                <p>Comming Soon!
                 </p>
               </div>
 
@@ -218,9 +213,8 @@ const Aboutus = () => {
               activeBtn === 3 &&
               <div className='w-full p-2 rounded-md space-y-3'>
                 <img src={story_3} alt="story 1" className='lg:h-[400px] w-full object-cover rounded-md' />
-                <h2 className='text-2xl font-bold'>TITLE 3 HERE </h2>
-                <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt amet magnam dolor, corrupti cum voluptatem ducimus nostrum vel! Magnam, ut!
+                <h2 className='text-2xl font-bold'>Comming Soon!</h2>
+                <p>Comming Soon!
                 </p>
               </div>
 

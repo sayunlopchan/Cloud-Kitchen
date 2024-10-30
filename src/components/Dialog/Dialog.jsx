@@ -39,7 +39,7 @@ const Dialog = ({ isOpen, onClose, message, isSuccess }) => {
             </span>
           ) : (
             <span>
-              Oops! There was an issue processing your message.<br />
+              Oops! There was an issue processing your order.<br />
               Please try again or contact support if the problem persists.
             </span>
           )}

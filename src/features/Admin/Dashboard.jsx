@@ -2,8 +2,17 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { orderUrl } from '../../apiPath/url';
 
+
+// animation
+import Lottie from 'lottie-react';
+import animation from '../../assets/animation/Loading_Screen.json';
+
+
 const Dashboard = () => {
+
+
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
   const [notification, setNotification] = useState('');
   const [previousOrderCount, setPreviousOrderCount] = useState(0);
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -19,11 +28,14 @@ const Dashboard = () => {
 
   // Fetch orders from the backend
   const fetchOrders = async () => {
+    setLoading(true); // Start loading
     try {
       const response = await axios.get(orderUrl);
       setOrders(response.data);
     } catch (error) {
       console.error('Error fetching orders:', error);
+    } finally {
+      setLoading(false); // End loading
     }
   };
 
@@ -51,6 +63,11 @@ const Dashboard = () => {
     }
   }, [orders, previousOrderCount]);
 
+
+
+
+
+
   // Handle removing an order
   const handleRemoveOrder = async () => {
     try {
@@ -76,9 +93,9 @@ const Dashboard = () => {
     setNewStatus(order.status || ''); // Initialize with current status
   };
 
-  // Submit the updated status
   const submitStatusUpdate = async (e) => {
     e.preventDefault();
+
     if (!newStatus) {
       setNotification('Please select a status.');
       setTimeout(() => setNotification(''), 3000);
@@ -86,7 +103,12 @@ const Dashboard = () => {
     }
 
     try {
-      await axios.put(`${orderUrl}/${statusEditOrder._id}`, { status: newStatus });
+      // Send the status update to the backend, including the 'notifyUser' flag
+      await axios.put(`${orderUrl}/${statusEditOrder._id}`, {
+        status: newStatus,
+        notifyUser: true // Include this flag to notify user via email 
+      });
+
       setNotification('Order status updated successfully.');
       setStatusEditOrder(null); // Close the status edit modal
       fetchOrders(); // Refresh orders
@@ -97,6 +119,7 @@ const Dashboard = () => {
       setTimeout(() => setNotification(''), 5000);
     }
   };
+
 
   const formatOrderId = (index) => {
     return (index + 1).toString();
@@ -130,8 +153,11 @@ const Dashboard = () => {
   const totalPages = Math.ceil(orders.length / ordersPerPage);
 
   return (
-    <div className="px-2 lg:p-10">
+    <div className="px-2 lg:p-10 ">
       <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
+
+
+
 
       {/* Notification */}
       {notification && (
@@ -142,6 +168,9 @@ const Dashboard = () => {
           <span className="block sm:inline">{notification}</span>
         </div>
       )}
+
+
+      {/* Order Table */}
 
       <div className="overflow-x-auto">
         <table className="w-full table-auto border border-gray-300">
@@ -159,56 +188,41 @@ const Dashboard = () => {
               <th className="py-2 px-4 border">Actions</th>
             </tr>
           </thead>
-          <tbody className="text-sm">
-            {currentOrders.map((order, index) => (
-              <tr key={order._id}>
-                <td
-                  className="py-2 px-4 border"
-                >
-                  {formatOrderId(index + indexOfFirstOrder)}
-                </td>
-                <td className={`py-2 px-4 border lg:w-[160px]  cursor-pointer text-blue-500 underline ${getStatusBgColor(order.status)}`} onClick={() => setSelectedOrderUserInfo({ ...order.user, orderId: order.orderId })}>
-                  {/* order id here */}
-                  {order.orderId}
-                </td>
-                <td className={`py-2 px-4 border lg:w-[160px] ${getStatusBgColor(order.status)}`}>
-                  {order.items.map((item) => item.title).join(', ')}
-                </td>
-                <td
-                  className={`py-2 px-4 border cursor-pointer text-blue-500 underline ${getStatusBgColor(order.status)}`}
-                  onClick={() => handleQuantityClick(order.items)} // Trigger item modal on click
-                >
-                  {order.items.reduce((total, item) => total + item.quantity, 0)}
-                </td>
-                <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>Rs.{order.totalPrice}</td>
-                <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>{order.discount || '0%'}</td>
-                <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>Rs.{order.deliveryCharge || '0'}</td>
-                <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>{order.paymentMethod}</td>
-                <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>
-                  {order.status || 'Not Set'}
-                </td>
-                <td className="py-2 px-4 border">
-                  <button
-                    className="text-blue-500 hover:underline"
-                    onClick={() => handleStatusEdit(order)}
-                  >
-                    Edit Status
-                  </button>
-                  <button
-                    className="text-red-500 hover:underline ml-2"
-                    onClick={() => {
-                      setOrderToDelete(order._id);
-                      setConfirmDelete(true);
-                    }}
-                  >
-                    Delete
-                  </button>
+          <tbody className="text-sm w-full h-[300px]">
+            {loading ? (
+              <tr>
+                <td colSpan="10" className="py-4">
+                  <div className='w-full h-[300px] flex justify-center items-center'>
+                    <Lottie animationData={animation} loop={true} autoplay={true} className='w-[100px] md:w-[150px]' />
+                  </div>
                 </td>
               </tr>
-            ))}
+            ) : (
+              currentOrders.map((order, index) => (
+                <tr key={order._id}>
+                  <td className="py-2 px-4 border">{formatOrderId(index + indexOfFirstOrder)}</td>
+                  <td className={`py-2 px-4 border lg:w-[160px] cursor-pointer text-blue-500 underline ${getStatusBgColor(order.status)}`} onClick={() => setSelectedOrderUserInfo({ ...order.user, orderId: order.orderId })}>
+                    {order.orderId}
+                  </td>
+                  <td className={`py-2 px-4 border lg:w-[160px] ${getStatusBgColor(order.status)}`}>
+                    {order.items.map((item) => item.title).join(', ')}
+                  </td>
+                  {/* other table cells here */}
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
+
+
+
+
+
+
+
+
+
 
       {/* Pagination Controls */}
       <div className="flex justify-center mt-4">
@@ -374,6 +388,11 @@ const Dashboard = () => {
           </div>
         </div>
       )}
+
+
+
+
+
 
     </div>
   );

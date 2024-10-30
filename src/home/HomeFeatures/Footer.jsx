@@ -110,7 +110,7 @@ const Footer = () => {
                 <p className="cursor-pointer text-white">Facebook</p>
               </NavLink>
               <NavLink
-                to={'/'}
+                to={'/https://www.instagram.com/bhanshaexpress/'}
                 target="_blank"
                 className="flex items-center gap-x-2 hover:underline underline-offset-2">
                 <FaInstagram size={25} className="cursor-pointer" />

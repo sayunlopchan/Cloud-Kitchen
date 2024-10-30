@@ -14,7 +14,7 @@ const Loading = () => {
         animationData={animation}
         loop={true}
         autoplay={true}
-        className='w-[100px] md:w-[200px]' // Fixed Tailwind CSS size classes
+        className='w-[100px] md:w-[200px]'
       />
     </div>
   );
