@@ -188,6 +188,7 @@ const Dashboard = () => {
               <th className="py-2 px-4 border">Actions</th>
             </tr>
           </thead>
+
           <tbody className="text-sm w-full h-[300px]">
             {loading ? (
               <tr>
@@ -200,20 +201,57 @@ const Dashboard = () => {
             ) : (
               currentOrders.map((order, index) => (
                 <tr key={order._id}>
-                  <td className="py-2 px-4 border">{formatOrderId(index + indexOfFirstOrder)}</td>
+                  <td className="py-2 px-4 border">
+                    {formatOrderId(index + indexOfFirstOrder)}
+                  </td>
                   <td className={`py-2 px-4 border lg:w-[160px] cursor-pointer text-blue-500 underline ${getStatusBgColor(order.status)}`} onClick={() => setSelectedOrderUserInfo({ ...order.user, orderId: order.orderId })}>
                     {order.orderId}
                   </td>
                   <td className={`py-2 px-4 border lg:w-[160px] ${getStatusBgColor(order.status)}`}>
                     {order.items.map((item) => item.title).join(', ')}
                   </td>
-                  {/* other table cells here */}
+                  <td className={`py-2 px-4 border cursor-pointer text-blue-500 underline ${getStatusBgColor(order.status)}`} onClick={() => handleQuantityClick(order.items)}>
+                    {order.items.reduce((total, item) => total + item.quantity, 0)}
+                  </td>
+                  <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>
+                    Rs.{order.totalPrice}
+                  </td>
+                  <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>
+                    {order.discount || '0%'}
+                  </td>
+                  <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>
+                    Rs.{order.deliveryCharge || '0'}
+                  </td>
+                  <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>
+                    {order.paymentMethod}
+                  </td>
+                  <td className={`py-2 px-4 border ${getStatusBgColor(order.status)}`}>
+                    {order.status || 'Not Set'}
+                  </td>
+                  <td className="py-2 px-4 border">
+                    <button
+                      className="text-blue-500 hover:underline"
+                      onClick={() => handleStatusEdit(order)}
+                    >
+                      Edit Status
+                    </button>
+                    <button
+                      className="text-red-500 hover:underline ml-2"
+                      onClick={() => {
+                        setOrderToDelete(order._id);
+                        setConfirmDelete(true);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))
             )}
           </tbody>
         </table>
       </div>
+
 
 
 
