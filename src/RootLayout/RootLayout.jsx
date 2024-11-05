@@ -1,14 +1,15 @@
 import { Outlet } from "react-router-dom"
 import Header from "../home/HomeFeatures/Header"
-import TopONload from "../components/TopONload"
+
 import BottomHeader from "../home/HomeFeatures/BottomHeader"
 import Footer from "../home/HomeFeatures/Footer"
 import BackToTopBtn from "../components/BackToTopBtn"
-import MenuBtn from "../components/MenuBtn"
+
 import React from "react"
 import Lottie from "lottie-react"
 
 import animation from "../assets/animation/Loading_Screen.json"
+import ScrollToTop from "../components/ScrollToTop"
 
 
 
@@ -37,9 +38,8 @@ const RootLayout = () => {
         </div>
       ) : (
         <div>
-          <TopONload />
+          <ScrollToTop />
           <BackToTopBtn />
-          <MenuBtn />
           <Header />
           <Outlet />
           <Footer />

@@ -173,6 +173,11 @@ const BottomHeader = () => {
         </div>
 
         <div className="flex items-center gap-3">
+
+          <div className="hidden md:block bg-colorRed px-3 py-1 rounded-md text-white cursor-pointer transition-all duration-300 hover:scale-90" onClick={() => nav(paths.MENU_PAGE)}>
+            MENU
+          </div>
+
           <div
             onClick={() => nav(paths.CART_PAGE)}
             className={`relative group cursor-pointer ${animateBag ? 'animate-pop' : ''}`}
