@@ -139,7 +139,7 @@ const Dashboard = () => {
   const totalPages = Math.ceil(orders.length / ordersPerPage);
 
   return (
-    <div className="px-2 lg:p-10">
+    <div className="">
       <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
 
       {/* Notification */}

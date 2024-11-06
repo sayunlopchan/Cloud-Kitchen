@@ -39,11 +39,11 @@ const RootLayout = () => {
       ) : (
         <div>
           <ScrollToTop />
-          <BackToTopBtn />
           <Header />
           <Outlet />
           <Footer />
           <BottomHeader />
+          <BackToTopBtn />
         </div>
       )}
     </div>
