@@ -36,7 +36,6 @@ const BackToTopBtn = () => {
     paths.TERMS_AND_CONDITIONS_PAGE,
     paths.CONTACT_US_PAGE,
     paths.PRIVACY_POLICY_PAGE,
-    "/"
   ];
 
   // Check if the current path matches any of the hide pages
@@ -45,7 +44,7 @@ const BackToTopBtn = () => {
   }
 
   return (
-    <div className="fixed bottom-28 right-5 z-[100]">
+    <div className="fixed bottom-20 lg:bottom-6 right-2 z-[100]">
       {isVisible && (
         <button
           onClick={scrollToTop}

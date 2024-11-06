@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <div>
       <HomeBanner />
-      <PopupAd />
+      {/* <PopupAd /> */}
       <TakeoutBanner />
       <ExclusiveOfferBanner />
       <PopularSection />

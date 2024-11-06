@@ -2,8 +2,6 @@ import Lottie from "lottie-react";
 import SuccessAnimation from "../../assets/animation/Cart_Succesful.json";
 import ErrorAnimation from "../../assets/animation/error.json";
 
-
-
 const Dialog = ({ isOpen, onClose, message, isSuccess }) => {
   if (!isOpen) return null;
 
@@ -32,17 +30,7 @@ const Dialog = ({ isOpen, onClose, message, isSuccess }) => {
           )}
         </div>
         <div className="w-full text-center p-3 text-gray-600">
-          {isSuccess ? (
-            <span>
-              Success! Your order has been sent successfully.<br />
-              Thank you for contacting us!
-            </span>
-          ) : (
-            <span>
-              Oops! There was an issue processing your order.<br />
-              Please try again or contact support if the problem persists.
-            </span>
-          )}
+          <span>{message}</span>
         </div>
         <div className="flex justify-center mt-4">
           <button onClick={onClose} className="rounded-md px-10 py-2 bg-black text-white transition-all duration-300 hover:scale-90">Close</button>

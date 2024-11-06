@@ -24,6 +24,7 @@ const Detailpage = () => {
   const [isSuccess, setIsSuccess] = useState(true);
 
   const allDishes = [
+    ...menuData.combo1000,
     ...menuData.breakfast,
     ...menuData.momo,
     ...menuData.chowmein,
@@ -159,7 +160,7 @@ const Detailpage = () => {
                   </span>
                 </p>
               ) : (
-                <h3 className='mt-2 text-lg font-bold'>
+                <h3 className='mt-2 text-lg font-bold text-gray-800'>
                   <span>Rs.</span>
                   <span className='font-semibold'>{product.price}</span>
                 </h3>
@@ -167,7 +168,7 @@ const Detailpage = () => {
 
               <p className='space-x-2 text-base'>
                 <span className='font-semibold text-xl'>Discount:</span>
-                <span className='font-bold text-lg'>
+                <span className='font-bold text-lg text-gray-800'>
                   {product.discountPercentage ? `${product.discountPercentage}%` : 'Not Available'}
                 </span>
               </p>

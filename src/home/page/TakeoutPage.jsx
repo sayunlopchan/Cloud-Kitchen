@@ -22,9 +22,16 @@ const TakeoutPage = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
+
   const handleTakeout = async () => {
     setLoading(true); // Set loading to true
     try {
+      if (cart.length === 0) {
+        setDialogMessage("Your cart is empty. Please add items to the cart before placing an order.");
+        setIsSuccess(false);
+        setDialogOpen(true); // Open the dialog for empty cart notification
+        return; // Exit the function if the cart is empty
+      }
       // Construct order data to send to the backend
       const orderData = {
         items: cart,
@@ -41,6 +48,7 @@ const TakeoutPage = () => {
         setDialogMessage(`Your Order Has Been Placed!, Please Wait For Our Call.`);
         setIsSuccess(true);
         dispatch(clearCart()); // Clear the cart in Redux store
+
       }
     } catch (error) {
       console.error('Error confirming takeout:', error.response || error); // Log detailed error

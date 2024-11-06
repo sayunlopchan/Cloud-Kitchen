@@ -73,7 +73,7 @@ const Card = ({ item, handleAddToCart, onClick }) => {
   };
 
   return (
-    <div onClick={onClick} className='card-base bg-white transition-all duration-300  rounded-lg p-2 shadow-md group'>
+    <div onClick={onClick} className='card-base bg-white transition-all duration-300  rounded-lg p-2 shadow-md group cursor-pointer'>
 
       <div className="bg-white rounded-md overflow-hidden">
         <img

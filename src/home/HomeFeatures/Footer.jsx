@@ -55,7 +55,7 @@ const Footer = () => {
 
         <div className="col-span-3 lg:col-span-3 p-5 space-y-5">
           <img src={logo} alt="logo" className="w-full bg-white p-2" />
-          <p className="font-semibold text-white">Bhansha Express Is a Online Food Ordering and Delivery Company Based In Butwal, Bhairahawa and Tilottama </p>
+          <p className="font-semibold text-white">Bhansha Express Is a Online Food Ordering and Delivery Company Based In Butwal and Tilottama </p>
         </div>
 
         <div className="col-span-3 lg:col-span-3 lg:mx-auto p-5">

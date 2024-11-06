@@ -83,6 +83,8 @@ import double_patty_burger from '../../../assets/img/snacks/double-patty-burger.
 import pancake_with_honey from '../../../assets/img/snacks/pancake-with-honey.png'
 
 import buff_chilly from '../../../assets/img/snacks/buff-chilli.png'
+import chicken_chilly from '../../../assets/img/snacks/chicken-chilli.png'
+import paneer_chilly from '../../../assets/img/snacks/paneer-chilly.png'
 
 
 import veg_spring_roll from '../../../assets/img/snacks/veg-spring-roll.png'
@@ -163,8 +165,6 @@ import Double_patty_with_coke_and_onions from '../../img/combo/Double_patty_burg
 
 
 
-//biryanin
-import biryani1 from '../../../assets/img/biryani.webp'
 
 
 
@@ -584,8 +584,8 @@ const snack = [
   {
     id: 31,
     title: "Chicken chilly",
-    img: buff_chilly,
-    imgArr: [buff_chilly],
+    img: chicken_chilly,
+    imgArr: [chicken_chilly],
     price: 300,
     discountPercentage: null,
     description: "A spicy dish of chicken meat cooked with chilies, bringing a burst of flavor in every bite.",
@@ -608,8 +608,8 @@ const snack = [
   {
     id: 312,
     title: "Paneer chilly",
-    img: buff_chilly,
-    imgArr: [buff_chilly],
+    img: paneer_chilly,
+    imgArr: [paneer_chilly],
     price: 400,
     discountPercentage: null,
     description: "A spicy dish of buffalo meat cooked with chilies, bringing a burst of flavor in every bite.",
@@ -879,7 +879,13 @@ import coke200ml from '../../img/others/coke200ml.jpg'
 import coke500ml from '../../img/others/coke500ml.png'
 
 
-// Others Data
+// Others combos Data
+import starter_combo from '../../img/combo/starter_combo.webp'
+import chicken_combo from '../../img/combo/chicken_combo.webp'
+import veg_combo from '../../img/combo/veg_combo.jpg'
+import choila_combo from '../../img/combo/choila_combo.webp'
+import chicken_feast_combo from '../../img/combo/chicken_feast.webp'
+import mega_combo from '../../img/combo/mega_combo.jpg'
 
 
 const other = [
@@ -1242,40 +1248,76 @@ const offerData = [
 const combo1000 = [
   {
     id: 64,
-    title: "Mega combo for Rs.1000",
-    img: Fried_chicken_with_fried_rice_and_chilly_chicken,
-    imgArr: [Fried_chicken_with_fried_rice_and_chilly_chicken],
+    title: "Mega combo special ",
+    img: mega_combo,
+    imgArr: [chicken_kung_pao, peanut_Sadhako, chicken_pangra, c_lolipop],
     price: 1000,
     discountPercentage: null,
-    description: "Fried chicken with fried rice and chili chicken is a mouthwatering feast. The crispy, golden fried chicken is perfectly seasoned, while the fried rice is fluffy and packed with veggies. The chili chicken adds a spicy kick, coated in a tangy sauce that brings the whole dish together. It's a delicious, satisfying meal that combines crunch, comfort, and bold flavors in every bite!",
+    description: " A feast of bold flavors! Spicy Chicken Kung Pao, crunchy Peanut Sadheko, crispy Chicken Lollipop (4 pcs), fiery Peri Peri Chicken Popcorn, fresh salad, and a chilled Coke to complete the meal. Perfect for a taste-packed experience! for just Rs.1000",
     rating: 4.6,
     likes: 160,
     category: "combo"
   },
   {
     id: 65,
-    title: "Mega combo for Rs.1000",
-    img: Fried_chicken_with_fried_rice_and_chilly_chicken,
-    imgArr: [Fried_chicken_with_fried_rice_and_chilly_chicken],
-    price: 1000,
+    title: "Veggie Feast",
+    img: veg_combo,
+    imgArr: [veg_combo, paneer_chilly, veg_spring_roll,],
+    price: 599,
     discountPercentage: null,
-    description: "Fried chicken with fried rice and chili chicken is a mouthwatering feast. The crispy, golden fried chicken is perfectly seasoned, while the fried rice is fluffy and packed with veggies. The chili chicken adds a spicy kick, coated in a tangy sauce that brings the whole dish together. It's a delicious, satisfying meal that combines crunch, comfort, and bold flavors in every bite!",
+    description: "Dive into a flavorful mix! Stir-fried Chowmein, saucy Veg Manchurian, spicy Paneer Chilly, and crispy Spring Rolls. A perfect veg feast in one combo!",
     rating: 4.6,
     likes: 160,
     category: "combo"
   },
   {
     id: 66,
-    title: "Mega combo for Rs.1000",
-    img: Fried_chicken_with_fried_rice_and_chilly_chicken,
-    imgArr: [Fried_chicken_with_fried_rice_and_chilly_chicken],
-    price: 1000,
+    title: "Chicken Feast",
+    img: chicken_feast_combo,
+    imgArr: [chicken_breast, crispy_wings, Chicken_nuggets, Roasted_chicken],
+    price: 1399,
     discountPercentage: null,
-    description: "Fried chicken with fried rice and chili chicken is a mouthwatering feast. The crispy, golden fried chicken is perfectly seasoned, while the fried rice is fluffy and packed with veggies. The chili chicken adds a spicy kick, coated in a tangy sauce that brings the whole dish together. It's a delicious, satisfying meal that combines crunch, comfort, and bold flavors in every bite!",
+    description: "A feast of textures and tastes! Crunchy Crispy Breast (2 pcs), spicy Wings (4 pcs), Sweet & Sour Fried Chicken, tender Roasted Chicken, and juicy Chicken Nuggets. Perfect for chicken lovers!",
     rating: 4.6,
     likes: 160,
     category: "combo"
   },
+  {
+    id: 67,
+    title: "Starter combo",
+    img: starter_combo,
+    imgArr: [starter_combo],
+    price: 380,
+    discountPercentage: null,
+    description: "Golden Fried Momos, savory Chicken Chowmein, crispy Chicken Lollipop, and a refreshing Coke. Perfect for a quick, flavor-packed bite!",
+    rating: 4.6,
+    likes: 160,
+    category: "combo"
+  },
+  {
+    id: 68,
+    title: "Chicken Combo",
+    img: chicken_combo,
+    imgArr: [chicken_combo, Roasted_chicken, Spicy_Wings, Grilled_chicken_wraps],
+    price: 599,
+    discountPercentage: null,
+    description: "Enjoy 2 spicy Wings, tender Roasted Chicken, and crunchy Chicken Wraps for a satisfying bite of bold flavors!",
+    rating: 4.6,
+    likes: 160,
+    category: "combo"
+  },
+  {
+    id: 69,
+    title: "Cholia Combo",
+    img: choila_combo,
+    imgArr: [Jeera_Aalu, Chicken_Choila,],
+    price: 480,
+    discountPercentage: null,
+    description: "Aalu & Chicken Delight: Zesty Aalu Sadheko, flavorful Jeera Aalu, smoky Chicken Choila, and 2 crispy Spring Rolls—a tasty mix of spiced bites!",
+    rating: 4.6,
+    likes: 160,
+    category: "combo"
+  }
 ];
 
 
@@ -1311,9 +1353,9 @@ const mostPopular = [
 
 // Exclusive Offer
 const exclusiveOffer = [
-  momo[1],
-  other[9],
-  breakfast[2]
+  combo1000[0],
+  combo1000[1],
+  combo1000[2],
 ];
 
 

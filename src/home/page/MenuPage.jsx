@@ -52,6 +52,26 @@ const MenuPage = () => {
 
       {/* Quick Category */}
 
+      {/* All combo section */}
+      <section className="p-5">
+        <h2 className="font-semibold text-2xl mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
+          Festival Dhamaka
+        </h2>
+        <div className="grid-div grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-10 place-content-center place-items-center">
+          {menuData.combo1000.map((item) => (
+            <Card
+              key={item.id}
+              item={item}
+              handleAddToCart={handleAddToCart}
+              onClick={() => nav(`${DETAIL_PAGE.replace(':id', item.id)}`)}
+            />
+          ))}
+        </div>
+      </section>
+      {/* BreakFast section */}
+
+
+
       {/* BreakFast section */}
       <section className="p-5">
         <h2 className="font-semibold text-2xl mb-10 lg:mb-20 border-b-4 border-colorRed w-fit">
