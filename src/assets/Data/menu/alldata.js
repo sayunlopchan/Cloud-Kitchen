@@ -36,8 +36,8 @@ import friedMomo1 from '../../../assets/img/Nepali-nasta/momo/friedMomo1.jpeg'
 
 import c_firedRice from '../../../assets/img/Nepali-nasta/friedrice/chicken-fried-rice.png'
 import v_firedRice from '../../../assets/img/Nepali-nasta/friedrice/veg-fried-rice.png'
-import b_firedRice from '../../../assets/img/Nepali-nasta/friedrice/chicken-fried-rice.png'
-import s_firedRice from '../../../assets/img/Nepali-nasta/friedrice/chicken-fried-rice.png'
+import b_firedRice from '../../../assets/img/Nepali-nasta/friedrice/Buff-Fried-Rice.jpg'
+import s_firedRice from '../../../assets/img/Nepali-nasta/friedrice/sukuti_fried_rice.webp'
 
 
 
@@ -46,9 +46,9 @@ import s_firedRice from '../../../assets/img/Nepali-nasta/friedrice/chicken-frie
 
 //chowmein
 import egg_chowmein from '../../../assets/img/Nepali-nasta/noodles/egg-chowmein.png'
-import c_chowmein from '../../../assets/img/Nepali-nasta/noodles/chicken-chowmein.png'
+import c_chowmein from '../../../assets/img/Nepali-nasta/noodles/chicken_chowmein.jpg'
 import b_chowmein from '../../../assets/img/Nepali-nasta/noodles/chicken-chowmein.png'
-import s_chowmein from '../../../assets/img/Nepali-nasta/noodles/chicken-chowmein.png'
+import s_chowmein from '../../../assets/img/Nepali-nasta/noodles/sukuti_chowmin.jpg'
 
 
 
