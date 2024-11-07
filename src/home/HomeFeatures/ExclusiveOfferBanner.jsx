@@ -18,7 +18,7 @@ const ExclusiveOfferBanner = () => {
     <div className='px-5 py-10 space-y-10 transition-all duration-1000 bg-clay'>
       {/* Heading */}
       <div className="relative w-fit">
-        <h2 className="font-bold text-3xl pl-5 ">Festive Offer</h2>
+        <h2 className="font-bold text-3xl lg:pl-5 ">Festive Offer</h2>
         <img
           src={CurveLine}
           alt="Decorative curve line"
