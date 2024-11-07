@@ -32,11 +32,11 @@ const MostSoldPage = () => {
   };
 
   return (
-    <div className="space-y-10 lg:space-y-20 px-5 lg:px-10 pt-10 pb-28 transition-all duration-1000 bg-clay">
+    <div className="space-y-10 lg:space-y-14 px-5 py-10 transition-all duration-1000 bg-clay">
 
       {/* Heading */}
       <div className="relative w-fit">
-        <h2 className="font-bold text-3xl lg:pl-10">Most Sold</h2>
+        <h2 className="font-bold text-3xl lg:pl-0">Most Sold</h2>
         <img
           src={CurveLine}
           alt="Decorative curve line"

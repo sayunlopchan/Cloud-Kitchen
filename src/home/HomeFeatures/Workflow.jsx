@@ -21,7 +21,7 @@ const Workflow = () => {
 
       {/* Heading */}
       <div className="relative w-fit py-2">
-        <h2 className="font-bold text-3xl pl-5">How it Work</h2>
+        <h2 className="font-bold text-3xl pl-10">How it Work</h2>
         <img
           src={CurveLine}
           alt="Decorative curve line"

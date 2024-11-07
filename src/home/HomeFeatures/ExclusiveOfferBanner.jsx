@@ -18,7 +18,7 @@ const ExclusiveOfferBanner = () => {
     <div className='px-5 py-10 space-y-10 transition-all duration-1000 bg-clay'>
       {/* Heading */}
       <div className="relative w-fit">
-        <h2 className="font-bold text-3xl ">Festive Offer</h2>
+        <h2 className="font-bold text-3xl pl-5 ">Festive Offer</h2>
         <img
           src={CurveLine}
           alt="Decorative curve line"
@@ -33,7 +33,7 @@ const ExclusiveOfferBanner = () => {
           <div
             key={item.id}
             onClick={() => nav(`${paths.DETAIL_PAGE.replace(':id', item.id)}`)}
-            className='w-full h-40 lg:h-52 bg-slate-400 relative rounded-xl group transition-all duration-500 overflow-hidden'
+            className='w-full h-40 lg:h-52 2xl:h-80 bg-slate-400 relative rounded-xl group transition-all duration-500 overflow-hidden'
           >
             <div className='overlay h-full w-full rounded-xl absolute z-10' />
             <div className='bg-colorRed w-fit h-8 absolute right-5 rounded-b-lg py-1 px-1 z-10 border'>
