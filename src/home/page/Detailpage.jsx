@@ -109,20 +109,21 @@ const Detailpage = () => {
         <div className="flex flex-wrap">
 
           {/* Product Images */}
-          <div className="w-full md:w-1/2 lg:h-[520px]  rounded-lg overflow-hidden pr-5">
+          <div className="w-full md:w-1/2 lg:h-[520px]  rounded-lg overflow-hidden p-5">
             <img
               src={mainImage || product.img}
               alt={product.title}
               className='w-full h-[180px] sm:h-[320px] lg:h-[70%] rounded-lg object-contain'
             />
-            <div className="flex gap-x-4 py-2 justify-center overflow-x-scroll">
+            <div className="flex gap-x-2 lg:gap-x-4 py-2 justify-center overflow-x-scroll w-full  snap-proximity">
               {product.imgArr.map((img, index) => (
                 <img
                   key={index}
                   src={img}
                   alt={`Thumbnail ${index + 1}`}
-                  className='size-[50px] lg:size-[100px] cursor-pointer'
+                  className='size-[50px] lg:size-[100px] cursor-pointer object-cover'
                   onClick={() => handleThumbnailClick(img)}
+
                 />
               ))}
               {numberOfEmptyBoxes > 0 && Array.from({ length: numberOfEmptyBoxes }).map((_, index) => (
