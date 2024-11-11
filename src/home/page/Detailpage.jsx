@@ -109,13 +109,13 @@ const Detailpage = () => {
         <div className="flex flex-wrap">
 
           {/* Product Images */}
-          <div className="w-full md:w-1/2 lg:h-[520px]  rounded-lg overflow-hidden p-5">
+          <div className="w-full md:w-1/2 lg:h-[520px]  rounded-lg overflow-hidden ">
             <img
               src={mainImage || product.img}
               alt={product.title}
               className='w-full h-[180px] sm:h-[320px] lg:h-[70%] rounded-lg object-contain'
             />
-            <div className="flex gap-x-2 lg:gap-x-4 py-2 justify-center overflow-x-scroll w-full  snap-proximity">
+            <div className="flex gap-x-2 lg:gap-x-4 py-2 justify-center w-full">
               {product.imgArr.map((img, index) => (
                 <img
                   key={index}
@@ -182,7 +182,7 @@ const Detailpage = () => {
               </span>
             </div>
 
-            <p className="mb-2 h-[100px] overflow-scroll">{product.description}</p>
+            <p className="mb-2 h-[100px] overflow-y-scroll bar">{product.description}</p>
             <p className='space-x-2 text-lg'>
               <span className='font-semibold'>Cooking Time:</span>
               <span>{product.cookingTime || 'Not Available'}</span>

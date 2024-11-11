@@ -18,9 +18,23 @@ body {
   min-width: 360px;
   margin: 0 auto;
 }
+
 p {
   @layer text-slate-700;
 }
+
+/* For most browsers */
+.bar {
+  overflow: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+.bar::-webkit-scrollbar {
+  display: none;
+}
+
 .overlay {
   background: linear-gradient(
     to top right,
